@@ -32,6 +32,9 @@ const auth = {
                 document.getElementById('login-btn').click();
             }
         });
+
+        // Set focus on the username input field
+        document.getElementById('username-input').focus();
     },
 
     login(username) {
