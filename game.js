@@ -32,10 +32,10 @@ const game = {
             const description = module.description || 'Expand your knowledge.'; // Placeholder description
 
             menuHtml += `
-                <button class="${colorClass} text-white font-semibold py-8 px-6 rounded-xl shadow-lg transition duration-300 flex flex-col items-center text-center" data-module-id="${module.id}">
-                    <div class="text-5xl mb-4">${icon}</div>
-                    <h2 class="text-2xl font-bold mb-2">${module.name}</h2>
-                    <p class="text-lg opacity-90">${description}</p>
+                <button class="${colorClass} text-white font-semibold py-6 px-4 rounded-xl shadow-lg transition duration-300 flex flex-col items-center text-center" data-module-id="${module.id}">
+                    <div class="text-3xl mb-2">${icon}</div>
+                    <h2 class="text-xl font-bold mb-1">${module.name}</h2>
+                    <p class="text-base opacity-90">${description}</p>
                 </button>
             `;
         });
