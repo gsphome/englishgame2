@@ -219,13 +219,16 @@ const game = {
                     }
                 } else if (this.currentView === 'quiz') { // If quiz is active
                     const quizSummaryContainer = document.getElementById('quiz-summary-container');
-                    const feedbackContainer = document.getElementById('feedback-container');
-                    const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
-
                     if (quizSummaryContainer && e.key === 'Enter') {
-                        game.renderMenu();
+                        const backToMenuBtn = quizSummaryContainer.querySelector('button[onclick*="game.renderMenu()"]');
+                        if (backToMenuBtn) {
+                            backToMenuBtn.click();
+                        }
                         return; // Exit early if summary handled
                     }
+
+                    const feedbackContainer = document.getElementById('feedback-container');
+                    const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
 
                     if (e.key === 'Enter' && feedbackContainer && feedbackContainer.innerHTML !== '' && optionsDisabled) {
                         document.getElementById('next-btn').click();
