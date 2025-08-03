@@ -197,26 +197,21 @@ const game = {
                         }
                     });
                 } else if (this.currentView === 'flashcard') { // If flashcard is active
-                    const appContainer = document.getElementById('app-container');
                     if (e.key === 'Enter') {
-                        if (appContainer.querySelector('.card')) { // If flashcard is active
-                            const card = appContainer.querySelector('.card');
-                            if (card.classList.contains('is-flipped')) {
-                                document.getElementById('next-btn').click();
-                            } else {
-                                card.classList.add('is-flipped');
-                            }
-                        } else if (appContainer.querySelector('.max-w-md.mx-auto.bg-white.p-8.rounded-lg.shadow-md.text-center')) { // If flashcard summary is active
-                            game.renderMenu();
+                        const card = document.querySelector('.card');
+                        if (card && card.classList.contains('is-flipped')) {
+                            game.flashcard.next();
+                        } else {
+                            game.flashcard.flip();
                         }
+                    } else if (e.key === 'Backspace') {
+                        e.preventDefault();
+                        game.flashcard.prev();
                     }
                 } else if (this.currentView === 'quiz') { // If quiz is active
                     const quizSummaryContainer = document.getElementById('quiz-summary-container');
                     if (quizSummaryContainer && e.key === 'Enter') {
-                        const backToMenuBtn = quizSummaryContainer.querySelector('button[onclick*="game.renderMenu()"]');
-                        if (backToMenuBtn) {
-                            backToMenuBtn.click();
-                        }
+                        game.renderMenu(); // Go back to menu from summary
                         return; // Exit early if summary handled
                     }
 
@@ -224,7 +219,10 @@ const game = {
                     const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
 
                     if (e.key === 'Enter' && feedbackContainer && feedbackContainer.innerHTML !== '' && optionsDisabled) {
-                        document.getElementById('next-btn').click();
+                        game.quiz.next();
+                    } else if (e.key === 'Backspace') {
+                        e.preventDefault();
+                        game.quiz.prev();
                     } else {
                         const pressedKey = e.key.toUpperCase();
                         const optionLetters = ['A', 'B', 'C', 'D'];
@@ -241,18 +239,25 @@ const game = {
         });
     },
 
-    renderFlashcard(module) {
-        this.currentView = 'flashcard';
-        let currentIndex = 0;
-        const appContainer = document.getElementById('app-container');
+    flashcard: {
+        currentIndex: 0,
+        moduleData: null,
+        appContainer: null,
 
-        const renderCurrentCard = () => {
-            const cardData = module.data[currentIndex];
-            appContainer.classList.remove('main-menu-active');
-            appContainer.innerHTML = `
+        init(module) {
+            this.currentIndex = 0;
+            this.moduleData = module;
+            this.appContainer = document.getElementById('app-container');
+            this.render();
+        },
+
+        render() {
+            const cardData = this.moduleData.data[this.currentIndex];
+            this.appContainer.classList.remove('main-menu-active');
+            this.appContainer.innerHTML = `
                 <div class="max-w-2xl mx-auto">
-                    <div class="text-center text-gray-600 mb-4">${currentIndex + 1} / ${module.data.length}</div>
-                    <div class="card h-64 w-full cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+                    <div class="text-center text-gray-600 mb-4">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                    <div class="card h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
                         <div class="card-inner">
                             <div class="card-face card-face-front">
                                 <p class="text-3xl">${cardData.en}</p>
@@ -279,22 +284,35 @@ const game = {
                 </div>
             `;
 
-            document.getElementById('prev-btn').addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + module.data.length) % module.data.length;
-                renderCurrentCard();
-            });
+            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+            document.getElementById('next-btn').addEventListener('click', () => this.next());
+        },
 
-            document.getElementById('next-btn').addEventListener('click', () => {
-                if (currentIndex < module.data.length - 1) {
-                    currentIndex++;
-                    renderCurrentCard();
-                } else {
-                    this.showFlashcardSummary(module.data.length);
-                }
-            });
-        };
+        prev() {
+            this.currentIndex = (this.currentIndex - 1 + this.moduleData.data.length) % this.moduleData.data.length;
+            this.render();
+        },
 
-        renderCurrentCard();
+        next() {
+            if (this.currentIndex < this.moduleData.data.length - 1) {
+                this.currentIndex++;
+                this.render();
+            } else {
+                game.showFlashcardSummary(this.moduleData.data.length);
+            }
+        },
+
+        flip() {
+            const card = this.appContainer.querySelector('.card');
+            if (card) {
+                card.classList.toggle('is-flipped');
+            }
+        }
+    },
+
+    renderFlashcard(module) {
+        this.currentView = 'flashcard';
+        this.flashcard.init(module);
     },
 
     showFlashcardSummary(totalCards) {
@@ -313,16 +331,25 @@ const game = {
         this.toggleModal(true);
     },
 
-    renderQuiz(module) {
-        this.currentView = 'quiz';
-        let currentIndex = 0;
-        let sessionScore = { correct: 0, incorrect: 0 };
-        let history = [];
-        const appContainer = document.getElementById('app-container');
+    quiz: {
+        currentIndex: 0,
+        sessionScore: { correct: 0, incorrect: 0 },
+        history: [],
+        moduleData: null,
+        appContainer: null,
 
-        const renderCurrentQuestion = () => {
-            const questionData = module.data[currentIndex];
-            appContainer.classList.remove('main-menu-active');
+        init(module) {
+            this.currentIndex = 0;
+            this.sessionScore = { correct: 0, incorrect: 0 };
+            this.history = [];
+            this.moduleData = module;
+            this.appContainer = document.getElementById('app-container');
+            this.render();
+        },
+
+        render() {
+            const questionData = this.moduleData.data[this.currentIndex];
+            this.appContainer.classList.remove('main-menu-active');
             let optionsHtml = '';
             const optionLetters = ['A', 'B', 'C', 'D'];
             questionData.options.forEach((option, index) => {
@@ -334,10 +361,10 @@ const game = {
                 `;
             });
 
-            appContainer.innerHTML = `
+            this.appContainer.innerHTML = `
                 <div class="max-w-4xl mx-auto">
-                    <div class="text-center text-gray-600 mb-4">${currentIndex + 1} / ${module.data.length}</div>
-                    <div class="text-center text-gray-600 mb-4">${MESSAGES.get('correct')}: ${sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${sessionScore.incorrect}</div>
+                    <div class="text-center text-gray-600 mb-4">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                    <div class="text-center text-gray-600 mb-4">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                     <div class="bg-white p-8 rounded-lg shadow-md">
                         <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                         <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
@@ -355,67 +382,78 @@ const game = {
             `;
 
             document.querySelectorAll('[data-option]').forEach(button => {
-                button.addEventListener('click', () => handleAnswer(button.dataset.option));
+                button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
             });
             
-            document.getElementById('prev-btn').addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    renderCurrentQuestion();
-                }
-            });
+            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+            document.getElementById('next-btn').addEventListener('click', () => this.next());
+            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+        },
 
-            document.getElementById('next-btn').addEventListener('click', () => {
-                 if (currentIndex < module.data.length - 1) {
-                    currentIndex++;
-                    renderCurrentQuestion();
-                } else {
-                    showFinalScore();
-                }
-            });
-            
-            document.getElementById('undo-btn').addEventListener('click', () => {
-                const lastAction = history.pop();
-                if (lastAction && !lastAction.correct) {
-                    sessionScore.incorrect--;
-                    renderCurrentQuestion();
-                } else if(lastAction) {
-                    history.push(lastAction);
-                }
-            });
-        };
-
-        const handleAnswer = (selectedOption) => {
-            const questionData = module.data[currentIndex];
+        handleAnswer(selectedOption) {
+            const questionData = this.moduleData.data[this.currentIndex];
             const isCorrect = selectedOption === questionData.correct;
-            history.push({ correct: isCorrect });
+            this.history.push({ correct: isCorrect });
 
             if (isCorrect) {
-                sessionScore.correct++;
+                this.sessionScore.correct++;
                 document.querySelector(`[data-option="${selectedOption}"]`).classList.add('bg-green-500', 'text-white');
             } else {
-                sessionScore.incorrect++;
+                this.sessionScore.incorrect++;
                 document.querySelector(`[data-option="${selectedOption}"]`).classList.add('bg-red-500', 'text-white');
                 document.querySelector(`[data-option="${questionData.correct}"]`).classList.add('bg-green-500', 'text-white');
             }
             
             document.getElementById('feedback-container').innerHTML = `<p class="text-lg">${questionData.explanation}</p>`;
             document.querySelectorAll('[data-option]').forEach(b => b.disabled = true);
-        };
-        
-        const showFinalScore = () => {
-            auth.updateGlobalScore(sessionScore);
-            this.renderHeader();
-            appContainer.innerHTML = `
+        },
+
+        prev() {
+            if (this.currentIndex > 0) {
+                // If the current question has been answered, undo it before going back
+                if (document.querySelectorAll('[data-option][disabled]').length > 0) {
+                    this.undo();
+                }
+                this.currentIndex--;
+                this.render();
+            }
+        },
+
+        next() {
+            if (this.currentIndex < this.moduleData.data.length - 1) {
+                this.currentIndex++;
+                this.render();
+            } else {
+                this.showFinalScore();
+            }
+        },
+
+        undo() {
+            const lastAction = this.history.pop();
+            if (lastAction && !lastAction.correct) {
+                this.sessionScore.incorrect--;
+                this.render();
+            } else if(lastAction) {
+                this.history.push(lastAction);
+            }
+        },
+
+        showFinalScore() {
+            auth.updateGlobalScore(this.sessionScore);
+            game.renderHeader();
+            this.appContainer.innerHTML = `
                  <div id="quiz-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                     <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                    <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${sessionScore.correct}</p>
-                    <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${sessionScore.incorrect}</p>
+                    <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                    <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
                     <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                  </div>
             `;
         }
+    },
 
-        renderCurrentQuestion();
+    renderQuiz(module) {
+        this.currentView = 'quiz';
+        this.quiz.init(module);
     }
 };
