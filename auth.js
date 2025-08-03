@@ -26,6 +26,12 @@ const auth = {
                 this.login(username);
             }
         });
+
+        document.getElementById('username-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('login-btn').click();
+            }
+        });
     },
 
     login(username) {
