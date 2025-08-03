@@ -170,12 +170,28 @@ const game = {
             });
 
             document.getElementById('next-btn').addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % module.data.length;
-                renderCurrentCard();
+                if (currentIndex < module.data.length - 1) {
+                    currentIndex++;
+                    renderCurrentCard();
+                } else {
+                    this.showFlashcardSummary(module.data.length);
+                }
             });
         };
 
         renderCurrentCard();
+    },
+
+    showFlashcardSummary(totalCards) {
+        const appContainer = document.getElementById('app-container');
+        appContainer.classList.remove('main-menu-active');
+        appContainer.innerHTML = `
+            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+                <h1 class="text-2xl font-bold mb-4">${MESSAGES.en.sessionScore}</h1>
+                <p class="text-xl mb-4">${MESSAGES.en.correct}: ${totalCards}</p>
+                <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.en.backToMenu}</button>
+            </div>
+        `;
     },
 
     renderQuiz(module) {
