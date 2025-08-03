@@ -410,7 +410,10 @@ const game = {
             }
             
             document.getElementById('feedback-container').innerHTML = `<p class="text-lg">${questionData.explanation}</p>`;
-            document.querySelectorAll('[data-option]').forEach(b => b.disabled = true);
+            document.querySelectorAll('[data-option]').forEach(b => {
+                b.disabled = true;
+                b.classList.remove('hover:bg-gray-200');
+            });
         },
 
         prev() {
