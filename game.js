@@ -20,47 +20,26 @@ const game = {
 
     renderMenu() {
         const appContainer = document.getElementById('app-container');
-        const groupedModules = learningModules.reduce((acc, module) => {
-            if (!acc[module.gameMode]) {
-                acc[module.gameMode] = [];
-            }
-            acc[module.gameMode].push(module);
-            return acc;
-        }, {});
-
         let menuHtml = `<h1 class="text-3xl font-bold text-center mb-8">${MESSAGES.en.mainMenu}</h1>`;
 
-        const gameModeOrder = ['quiz', 'flashcard', 'completion'];
-        const quizModuleOrder = ['quiz-phrasal-verbs', 'idioms-quiz'];
+        const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-        menuHtml += `<div class="flex flex-row justify-around gap-8">`; // Container for horizontal categories
+        menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
 
-        gameModeOrder.forEach(gameMode => {
-            if (groupedModules[gameMode]) {
-                menuHtml += `<div class="flex flex-col items-center">`; // Each category section as a column
-                menuHtml += `<h2 class="text-2xl font-semibold mt-6 mb-4 capitalize">${gameMode}s</h2>`;
-                menuHtml += `<div class="flex flex-col gap-4">`; // Modules within category as a column
+        learningModules.forEach((module, index) => {
+            const colorClass = colors[index % colors.length];
+            const icon = module.icon || '📚'; // Placeholder icon
+            const description = module.description || 'Expand your knowledge.'; // Placeholder description
 
-                let modulesToRender = groupedModules[gameMode];
-
-                if (gameMode === 'quiz') {
-                    modulesToRender.sort((a, b) => {
-                        return quizModuleOrder.indexOf(a.id) - quizModuleOrder.indexOf(b.id);
-                    });
-                }
-
-                modulesToRender.forEach(module => {
-                    menuHtml += `
-                        <button class="bg-white hover:bg-gray-200 text-gray-800 font-semibold py-4 px-6 rounded-lg shadow-md transition duration-300" data-module-id="${module.id}">
-                            ${module.name}
-                        </button>
-                    `;
-                });
-                menuHtml += `</div>`; // Close modules div
-                menuHtml += `</div>`; // Close category section div
-            }
+            menuHtml += `
+                <button class="${colorClass} text-white font-semibold py-8 px-6 rounded-xl shadow-lg transition duration-300 flex flex-col items-center text-center" data-module-id="${module.id}">
+                    <div class="text-5xl mb-4">${icon}</div>
+                    <h2 class="text-2xl font-bold mb-2">${module.name}</h2>
+                    <p class="text-lg opacity-90">${description}</p>
+                </button>
+            `;
         });
-        menuHtml += `</div>`; // Close horizontal categories container
+        menuHtml += `</div>`;
 
         appContainer.innerHTML = menuHtml;
 
