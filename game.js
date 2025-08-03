@@ -528,7 +528,7 @@ const game = {
                     <div class="text-center text-gray-600 mb-4">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
                     <div class="text-center text-gray-600 mb-4">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                     <div class="bg-white p-8 rounded-lg shadow-md">
-                        <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" />')}</p>
+                        <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
                         <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                     </div>
                     <div class="flex justify-between mt-4">
@@ -546,8 +546,10 @@ const game = {
             document.getElementById('next-btn').addEventListener('click', () => this.next());
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
             const inputElement = document.getElementById('completion-input');
-            inputElement.value = ''; // Clear the input field
-            inputElement.focus();
+            setTimeout(() => {
+                inputElement.value = ''; // Clear the input field
+                inputElement.focus();
+            }, 0);
         },
 
         handleAnswer() {
