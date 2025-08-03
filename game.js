@@ -42,6 +42,7 @@ const game = {
         menuHtml += `</div>`;
 
         appContainer.innerHTML = menuHtml;
+        appContainer.classList.add('main-menu-active');
 
         document.querySelectorAll('[data-module-id]').forEach(button => {
             button.addEventListener('click', () => {
@@ -65,10 +66,37 @@ const game = {
     },
 
     addKeyboardListeners() {
+        const modal = document.getElementById('confirmation-modal');
+        const yesButton = document.getElementById('confirm-yes');
+        const noButton = document.getElementById('confirm-no');
+        const messageElement = document.getElementById('confirmation-message');
+
+        const toggleModal = (show) => {
+            modal.classList.toggle('hidden', !show);
+            if (show) {
+                messageElement.textContent = MESSAGES.en.confirmLogoutMessage;
+            }
+        };
+
+        yesButton.addEventListener('click', () => {
+            auth.logout();
+            toggleModal(false);
+        });
+
+        noButton.addEventListener('click', () => {
+            toggleModal(false);
+        });
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                this.renderMenu();
-            } else if (document.getElementById('app-container').querySelector('h1').innerText === MESSAGES.en.mainMenu) { // Check if main menu is active
+                if (!modal.classList.contains('hidden')) { // If modal is open, close it
+                    toggleModal(false);
+                } else if (document.getElementById('app-container').classList.contains('main-menu-active')) {
+                    toggleModal(true);
+                } else {
+                    this.renderMenu();
+                }
+            } else if (document.getElementById('app-container').classList.contains('main-menu-active')) { // Check if main menu is active
                 const pressedKey = e.key.toUpperCase();
                 const moduleButtons = document.querySelectorAll('[data-module-id]');
                 moduleButtons.forEach((button, index) => {
@@ -86,6 +114,7 @@ const game = {
 
         const renderCurrentCard = () => {
             const cardData = module.data[currentIndex];
+            appContainer.classList.remove('main-menu-active');
             appContainer.innerHTML = `
                 <div class="max-w-2xl mx-auto">
                     <div class="card h-64 w-full cursor-pointer" onclick="this.classList.toggle('is-flipped')">
@@ -137,6 +166,7 @@ const game = {
 
         const renderCurrentQuestion = () => {
             const questionData = module.data[currentIndex];
+            appContainer.classList.remove('main-menu-active');
             let optionsHtml = '';
             const optionLetters = ['A', 'B', 'C', 'D'];
             questionData.options.forEach((option, index) => {

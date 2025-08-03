@@ -25,6 +25,8 @@ const MESSAGES = {
         backToMenu: "Back to Menu",
         sessionScore: "Session Score",
         correct: "Correct",
-        incorrect: "Incorrect"
+        incorrect: "Incorrect",
+        confirmLogout: "Confirm Logout",
+        confirmLogoutMessage: "Are you sure you want to logout?"
     }
 };
