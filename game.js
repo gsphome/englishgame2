@@ -88,22 +88,28 @@ const game = {
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (!modal.classList.contains('hidden')) { // If modal is open, close it
-                    toggleModal(false);
-                } else if (document.getElementById('app-container').classList.contains('main-menu-active')) {
-                    toggleModal(true);
-                } else {
-                    this.renderMenu();
+            if (!modal.classList.contains('hidden')) { // If modal is open
+                if (e.key === 'Enter') {
+                    yesButton.click();
+                } else if (e.key === 'Escape') {
+                    toggleModal(false); // Close modal on Escape
                 }
-            } else if (document.getElementById('app-container').classList.contains('main-menu-active')) { // Check if main menu is active
-                const pressedKey = e.key.toUpperCase();
-                const moduleButtons = document.querySelectorAll('[data-module-id]');
-                moduleButtons.forEach((button, index) => {
-                    if (String.fromCharCode(65 + index) === pressedKey) {
-                        button.click();
+            } else { // Modal is not open
+                if (e.key === 'Escape') {
+                    if (document.getElementById('app-container').classList.contains('main-menu-active')) {
+                        toggleModal(true); // Show logout modal
+                    } else {
+                        this.renderMenu(); // Go back to main menu
                     }
-                });
+                } else if (document.getElementById('app-container').classList.contains('main-menu-active')) { // Check if main menu is active
+                    const pressedKey = e.key.toUpperCase();
+                    const moduleButtons = document.querySelectorAll('[data-module-id]');
+                    moduleButtons.forEach((button, index) => {
+                        if (String.fromCharCode(65 + index) === pressedKey) {
+                            button.click();
+                        }
+                    });
+                }
             }
         });
     },
