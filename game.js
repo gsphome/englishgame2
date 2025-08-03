@@ -33,9 +33,11 @@ const game = {
 
             menuHtml += `
                 <button class="${colorClass} text-white font-semibold w-44 h-44 py-6 px-4 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center" data-module-id="${module.id}">
-                    <div class="text-4xl mb-2">${String.fromCharCode(65 + index)}</div>
-                    <h2 class="text-2xl font-bold mb-1">${module.name}</h2>
-                    <p class="text-lg opacity-90">${description}</p>
+                    <div class="flex items-center justify-center mb-2">
+                        <span class="text-2xl mr-1">${String.fromCharCode(65 + index)}</span>
+                        <h2 class="text-2xl">${module.name}</h2>
+                    </div>
+                    <p class="text-base opacity-90">${description}</p>
                 </button>
             `;
         });
