@@ -36,7 +36,7 @@ const MESSAGES = {
         confirmLogout: "Confirm Logout",
         confirmLogoutMessage: "Are you sure you want to logout?",
         flashcardSummaryMessage: "Congratulations! You have studied {count} cards.",
-                usernamePlaceholder: "Enter your name"
+        usernamePlaceholder: "Enter your name"
     },
 
     get(key) {
@@ -57,5 +57,4 @@ const MESSAGES = {
     addListener(listener) {
         this._listeners.push(listener);
     }
-};
 };
