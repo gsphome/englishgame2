@@ -13,13 +13,6 @@ const game = {
         }
     },
 
-    toggleModal(show) {
-        this.modal.classList.toggle('hidden', !show);
-        if (show) {
-            this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
-        }
-    },
-
     init() {
         this.modal = document.getElementById('confirmation-modal');
         this.yesButton = document.getElementById('confirm-yes');
@@ -249,6 +242,7 @@ const game = {
     },
 
     renderFlashcard(module) {
+        this.currentView = 'flashcard';
         let currentIndex = 0;
         const appContainer = document.getElementById('app-container');
 
