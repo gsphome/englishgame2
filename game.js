@@ -9,7 +9,9 @@ const game = {
     toggleModal(show) {
         this.modal.classList.toggle('hidden', !show);
         if (show) {
+            if (show) {
             this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
+        }
         }
     },
 

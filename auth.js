@@ -2,6 +2,16 @@ const auth = {
     user: null,
 
     init() {
+        // Set initial language (e.g., from localStorage or default)
+        const savedLang = localStorage.getItem('appLang');
+        if (savedLang) {
+            MESSAGES.setLanguage(savedLang);
+        } else {
+            MESSAGES.setLanguage('en'); // Default to English
+        }
+
+        MESSAGES.addListener(this.renderLogin.bind(this)); // Add listener for login screen re-render
+
         this.user = JSON.parse(localStorage.getItem('user'));
         if (!this.user) {
             this.renderLogin();
