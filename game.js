@@ -341,7 +341,7 @@ const game = {
                     <div class="bg-white p-8 rounded-lg shadow-md">
                         <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                         <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
-                        <div id="feedback-container" class="mt-6"></div>
+                        <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                     </div>
                     <div class="flex justify-between mt-4">
                         <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
