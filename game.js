@@ -86,7 +86,7 @@ const game = {
         header.innerHTML = `
             <div class="container mx-auto flex justify-between items-center p-4">
                 <div class="font-bold text-xl">${user.username}</div>
-                <div id="global-score" class="text-lg">${MESSAGES.get('globalScore')}: ${user.globalScore.correct} / ${user.globalScore.incorrect}</div>
+                <div id="global-score" class="text-lg">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
                 <button id="hamburger-btn" class="text-2xl">&#9776;</button>
             </div>
         `;
