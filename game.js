@@ -13,6 +13,13 @@ const game = {
         }
     },
 
+    toggleModal(show) {
+        this.modal.classList.toggle('hidden', !show);
+        if (show) {
+            this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
+        }
+    },
+
     init() {
         console.log('game object:', game);
         console.log('game.showLogoutConfirmation:', game.showLogoutConfirmation);
@@ -55,6 +62,11 @@ const game = {
         MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.renderCurrentView.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
+        MESSAGES.addListener(() => {
+            if (!this.modal.classList.contains('hidden')) {
+                this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
+            }
+        });
 
         this.renderHeader();
         this.renderMenu();
@@ -153,25 +165,17 @@ const game = {
     },
 
     addKeyboardListeners() {
-        const modal = document.getElementById('confirmation-modal');
-        const yesButton = document.getElementById('confirm-yes');
-        const noButton = document.getElementById('confirm-no');
-        const messageElement = document.getElementById('confirmation-message');
-
-        const toggleModal = (show) => {
-            modal.classList.toggle('hidden', !show);
-            if (show) {
-                messageElement.textContent = MESSAGES.en.confirmLogoutMessage;
-            }
-        };
+        const modal = this.modal;
+        const yesButton = this.yesButton;
+        const noButton = this.noButton;
 
         yesButton.addEventListener('click', () => {
             auth.logout();
-            toggleModal(false);
+            this.toggleModal(false);
         });
 
         noButton.addEventListener('click', () => {
-            toggleModal(false);
+            this.toggleModal(false);
         });
 
         document.addEventListener('keydown', (e) => {
@@ -179,14 +183,14 @@ const game = {
                 if (e.key === 'Enter') {
                     yesButton.click();
                 } else if (e.key === 'Escape') {
-                    toggleModal(false); // Close modal on Escape
+                    this.toggleModal(false); // Close modal on Escape
                 }
             } else if (document.body.classList.contains('hamburger-menu-open')) { // If hamburger menu is open
                 this.toggleHamburgerMenu(false); // Close hamburger menu on Escape
             } else { // Modal and hamburger menu are not open
                 if (e.key === 'Escape') {
                     if (document.getElementById('app-container').classList.contains('main-menu-active')) {
-                        toggleModal(true); // Show logout modal
+                        this.toggleModal(true); // Show logout modal
                     } else {
                         this.renderMenu(); // Go back to main menu
                     }
