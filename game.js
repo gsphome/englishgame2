@@ -33,7 +33,7 @@ const game = {
 
             menuHtml += `
                 <button class="${colorClass} text-white font-semibold w-44 h-44 py-6 px-4 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center" data-module-id="${module.id}">
-                    <div class="text-5xl mb-2">${icon}</div>
+                    <div class="text-4xl mb-2">${String.fromCharCode(65 + index)}</div>
                     <h2 class="text-2xl font-bold mb-1">${module.name}</h2>
                     <p class="text-lg opacity-90">${description}</p>
                 </button>
@@ -68,6 +68,14 @@ const game = {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.renderMenu();
+            } else if (document.getElementById('app-container').querySelector('h1').innerText === MESSAGES.en.mainMenu) { // Check if main menu is active
+                const pressedKey = e.key.toUpperCase();
+                const moduleButtons = document.querySelectorAll('[data-module-id]');
+                moduleButtons.forEach((button, index) => {
+                    if (String.fromCharCode(65 + index) === pressedKey) {
+                        button.click();
+                    }
+                });
             }
         });
     },
