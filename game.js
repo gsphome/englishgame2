@@ -289,8 +289,10 @@ const game = {
         },
 
         prev() {
-            this.currentIndex = (this.currentIndex - 1 + this.moduleData.data.length) % this.moduleData.data.length;
-            this.render();
+            if (this.currentIndex > 0) {
+                this.currentIndex--;
+                this.render();
+            }
         },
 
         next() {
