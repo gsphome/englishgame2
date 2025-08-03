@@ -36,3 +36,22 @@
     background-color: #f0f9ff;
     transform: rotateY(180deg);
 }
+
+/* Hamburger Menu Styles */
+#hamburger-menu {
+    transform: translateX(100%);
+}
+
+body.hamburger-menu-open #hamburger-menu {
+    transform: translateX(0);
+}
+
+#menu-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.hamburger-menu-open #menu-overlay {
+    opacity: 0.5;
+    pointer-events: auto;
+}

@@ -23,6 +23,12 @@ const game = {
         this.noButton = document.getElementById('confirm-no');
         this.messageElement = document.getElementById('confirmation-message');
 
+        this.hamburgerMenu = document.getElementById('hamburger-menu');
+        this.menuOverlay = document.getElementById('menu-overlay');
+        this.closeMenuBtn = document.getElementById('close-menu-btn');
+        this.menuLangToggleBtn = document.getElementById('menu-lang-toggle-btn');
+        this.menuLogoutBtn = document.getElementById('menu-logout-btn');
+
         this.yesButton.addEventListener('click', () => {
             auth.logout();
             this.toggleModal(false);
@@ -32,12 +38,41 @@ const game = {
             this.toggleModal(false);
         });
 
+        this.closeMenuBtn.addEventListener('click', () => this.toggleHamburgerMenu(false));
+        this.menuOverlay.addEventListener('click', () => this.toggleHamburgerMenu(false));
+
+        this.menuLangToggleBtn.addEventListener('click', () => {
+            const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
+            MESSAGES.setLanguage(newLang);
+            localStorage.setItem('appLang', newLang);
+            this.toggleHamburgerMenu(false); // Close menu after language change
+        });
+
+        this.menuLogoutBtn.addEventListener('click', () => {
+            this.toggleHamburgerMenu(false); // Close menu before showing confirmation
+            this.showLogoutConfirmation();
+        });
+
         MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.renderCurrentView.bind(this));
+        MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
 
         this.renderHeader();
         this.renderMenu();
         this.addKeyboardListeners();
+    },
+
+    updateMenuText() {
+        if (this.menuLangToggleBtn) {
+            this.menuLangToggleBtn.textContent = MESSAGES.getLanguage().toUpperCase();
+        }
+        if (this.menuLogoutBtn) {
+            this.menuLogoutBtn.textContent = MESSAGES.get('logoutButton');
+        }
+    },
+
+    toggleHamburgerMenu(show) {
+        document.body.classList.toggle('hamburger-menu-open', show);
     },
 
     renderHeader() {
@@ -47,16 +82,10 @@ const game = {
             <div class="container mx-auto flex justify-between items-center p-4">
                 <div class="font-bold text-xl">${user.username}</div>
                 <div id="global-score" class="text-lg">${MESSAGES.get('globalScore')}: ${user.globalScore.correct} / ${user.globalScore.incorrect}</div>
-                <button id="logout-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('logoutButton')}</button>
-                <button id="lang-toggle-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">${MESSAGES.getLanguage().toUpperCase()}</button>
+                <button id="hamburger-btn" class="text-2xl">&#9776;</button>
             </div>
         `;
-        document.getElementById('logout-btn').addEventListener('click', () => this.showLogoutConfirmation());
-        document.getElementById('lang-toggle-btn').addEventListener('click', () => {
-            const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
-            MESSAGES.setLanguage(newLang);
-            localStorage.setItem('appLang', newLang);
-        });
+        document.getElementById('hamburger-btn').addEventListener('click', () => this.toggleHamburgerMenu(true));
     },
 
     renderCurrentView() {
@@ -153,7 +182,9 @@ const game = {
                 } else if (e.key === 'Escape') {
                     toggleModal(false); // Close modal on Escape
                 }
-            } else { // Modal is not open
+            } else if (document.body.classList.contains('hamburger-menu-open')) { // If hamburger menu is open
+                this.toggleHamburgerMenu(false); // Close hamburger menu on Escape
+            } else { // Modal and hamburger menu are not open
                 if (e.key === 'Escape') {
                     if (document.getElementById('app-container').classList.contains('main-menu-active')) {
                         toggleModal(true); // Show logout modal
