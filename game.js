@@ -136,6 +136,7 @@ const game = {
             appContainer.classList.remove('main-menu-active');
             appContainer.innerHTML = `
                 <div class="max-w-2xl mx-auto">
+                    <div class="text-center text-gray-600 mb-4">${currentIndex + 1} / ${module.data.length}</div>
                     <div class="card h-64 w-full cursor-pointer" onclick="this.classList.toggle('is-flipped')">
                         <div class="card-inner">
                             <div class="card-face card-face-front">
@@ -199,6 +200,8 @@ const game = {
 
             appContainer.innerHTML = `
                 <div class="max-w-4xl mx-auto">
+                    <div class="text-center text-gray-600 mb-4">${currentIndex + 1} / ${module.data.length}</div>
+                    <div class="text-center text-gray-600 mb-4">${MESSAGES.en.correct}: ${sessionScore.correct} / ${MESSAGES.en.incorrect}: ${sessionScore.incorrect}</div>
                     <div class="bg-white p-8 rounded-lg shadow-md">
                         <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                         <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
