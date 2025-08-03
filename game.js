@@ -223,10 +223,7 @@ const game = {
                     const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
 
                     if (quizSummaryContainer && e.key === 'Enter') {
-                        const backToMenuBtn = quizSummaryContainer.querySelector('button[onclick*="game.renderMenu()"]');
-                        if (backToMenuBtn) {
-                            backToMenuBtn.click();
-                        }
+                        game.renderMenu();
                         return; // Exit early if summary handled
                     }
 
