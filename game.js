@@ -10,7 +10,9 @@ const game = {
         this.modal.classList.toggle('hidden', !show);
         if (show) {
             if (show) {
+            if (show) {
             this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
+        }
         }
         }
     },
@@ -29,14 +31,6 @@ const game = {
         this.noButton.addEventListener('click', () => {
             this.toggleModal(false);
         });
-
-        // Set initial language (e.g., from localStorage or default)
-        const savedLang = localStorage.getItem('appLang');
-        if (savedLang) {
-            MESSAGES.setLanguage(savedLang);
-        } else {
-            MESSAGES.setLanguage('en'); // Default to English
-        }
 
         MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.renderCurrentView.bind(this));
