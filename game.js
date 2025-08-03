@@ -212,6 +212,8 @@ const game = {
                         } else {
                             card.classList.add('is-flipped');
                         }
+                    } else if (appContainer.querySelector('.max-w-md.mx-auto.bg-white.p-8.rounded-lg.shadow-md.text-center')) { // If flashcard summary is active
+                        game.renderMenu();
                     }
                 }
             }
