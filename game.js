@@ -200,10 +200,20 @@ const game = {
                         }
                     });
                 } else if (this.currentView === 'flashcard') { // If flashcard is active
+                    const flashcardSummaryContainer = document.getElementById('flashcard-summary-container');
+                    if (flashcardSummaryContainer && e.key === 'Enter') {
+                        document.getElementById('flashcard-summary-back-to-menu-btn').click();
+                        return; // Exit early if summary handled
+                    }
+
                     if (e.key === 'Enter') {
                         const card = document.querySelector('.card');
                         if (card && card.classList.contains('is-flipped')) {
-                            game.flashcard.next();
+                            if (game.flashcard.currentIndex === game.flashcard.moduleData.data.length - 1) {
+                                game.showFlashcardSummary(game.flashcard.moduleData.data.length);
+                            } else {
+                                game.flashcard.next();
+                            }
                         } else {
                             game.flashcard.flip();
                         }
@@ -324,10 +334,10 @@ const game = {
         const appContainer = document.getElementById('app-container');
         appContainer.classList.remove('main-menu-active');
         appContainer.innerHTML = `
-            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+            <div id="flashcard-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                 <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
                 <p class="text-xl mb-4">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
-                <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                <button id="flashcard-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
             </div>
         `;
     },
