@@ -218,12 +218,21 @@ const game = {
                         }
                     }
                 } else if (this.currentView === 'quiz') { // If quiz is active
-                    if (e.key === 'Enter') {
-                        // If an option has been selected (feedback is shown), pressing Enter goes to next question
-                        if (document.getElementById('feedback-container').innerHTML !== '') {
-                            document.getElementById('next-btn').click();
+                    const quizSummaryContainer = document.getElementById('quiz-summary-container');
+                    const feedbackContainer = document.getElementById('feedback-container');
+                    const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
+
+                    if (quizSummaryContainer && e.key === 'Enter') {
+                        const backToMenuBtn = quizSummaryContainer.querySelector('button[onclick*="game.renderMenu()"]');
+                        if (backToMenuBtn) {
+                            backToMenuBtn.click();
                         }
-                    } else { // Handle A, B, C, D only if Enter was not pressed
+                        return; // Exit early if summary handled
+                    }
+
+                    if (e.key === 'Enter' && feedbackContainer && feedbackContainer.innerHTML !== '' && optionsDisabled) {
+                        document.getElementById('next-btn').click();
+                    } else {
                         const pressedKey = e.key.toUpperCase();
                         const optionLetters = ['A', 'B', 'C', 'D'];
                         const optionIndex = optionLetters.indexOf(pressedKey);
@@ -404,7 +413,7 @@ const game = {
             auth.updateGlobalScore(sessionScore);
             this.renderHeader();
             appContainer.innerHTML = `
-                 <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+                 <div id="quiz-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                     <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
                     <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${sessionScore.correct}</p>
                     <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${sessionScore.incorrect}</p>
