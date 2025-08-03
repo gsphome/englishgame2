@@ -264,6 +264,11 @@ const game = {
                             game.completion.next();
                         }
                     } else if (e.key === 'Backspace') {
+                        const inputElement = document.getElementById('completion-input');
+                        if (inputElement && document.activeElement === inputElement) {
+                            // Allow default backspace behavior for input field
+                            return;
+                        }
                         e.preventDefault();
                         game.completion.prev();
                     }
@@ -540,7 +545,9 @@ const game = {
             document.getElementById('prev-btn').addEventListener('click', () => this.prev());
             document.getElementById('next-btn').addEventListener('click', () => this.next());
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
-            document.getElementById('completion-input').focus();
+            const inputElement = document.getElementById('completion-input');
+            inputElement.value = ''; // Clear the input field
+            inputElement.focus();
         },
 
         handleAnswer() {
