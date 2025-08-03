@@ -605,7 +605,7 @@ const game = {
                     <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
                     <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
                     <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
-                    <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">$ {MESSAGES.get('backToMenu')}</button>
+                    <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                  </div>
             `;
         }
