@@ -14,9 +14,9 @@ const auth = {
         const appContainer = document.getElementById('app-container');
         appContainer.innerHTML = `
             <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-                <h1 class="text-2xl font-bold mb-4">${MESSAGES.en.loginTitle}</h1>
+                <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('loginTitle')}</h1>
                 <input type="text" id="username-input" class="w-full px-4 py-2 border rounded-lg mb-4" placeholder="Enter your name">
-                <button id="login-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.en.loginButton}</button>
+                <button id="login-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('loginButton')}</button>
             </div>
         `;
 

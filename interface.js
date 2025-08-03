@@ -1,4 +1,7 @@
 const MESSAGES = {
+    _currentLanguage: 'en', // Default language
+    _listeners: [],
+
     es: {
         loginTitle: "Bienvenido",
         loginButton: "Iniciar Sesión",
@@ -32,5 +35,24 @@ const MESSAGES = {
         confirmLogout: "Confirm Logout",
         confirmLogoutMessage: "Are you sure you want to logout?",
         flashcardSummaryMessage: "Congratulations! You have studied {count} cards."
+    },
+
+    get(key) {
+        return this[this._currentLanguage][key];
+    },
+
+    setLanguage(lang) {
+        if (this[lang]) {
+            this._currentLanguage = lang;
+            this._listeners.forEach(listener => listener(lang));
+        }
+    },
+
+    getLanguage() {
+        return this._currentLanguage;
+    },
+
+    addListener(listener) {
+        this._listeners.push(listener);
     }
 };

@@ -1,5 +1,44 @@
 const game = {
+    modal: null,
+    yesButton: null,
+    noButton: null,
+    messageElement: null,
+    currentView: null, // To keep track of the current active view (e.g., 'menu', 'flashcard', 'quiz')
+    currentModule: null, // To keep track of the current module data
+
+    toggleModal(show) {
+        this.modal.classList.toggle('hidden', !show);
+        if (show) {
+            this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
+        }
+    },
+
     init() {
+        this.modal = document.getElementById('confirmation-modal');
+        this.yesButton = document.getElementById('confirm-yes');
+        this.noButton = document.getElementById('confirm-no');
+        this.messageElement = document.getElementById('confirmation-message');
+
+        this.yesButton.addEventListener('click', () => {
+            auth.logout();
+            this.toggleModal(false);
+        });
+
+        this.noButton.addEventListener('click', () => {
+            this.toggleModal(false);
+        });
+
+        // Set initial language (e.g., from localStorage or default)
+        const savedLang = localStorage.getItem('appLang');
+        if (savedLang) {
+            MESSAGES.setLanguage(savedLang);
+        } else {
+            MESSAGES.setLanguage('en'); // Default to English
+        }
+
+        MESSAGES.addListener(this.renderHeader.bind(this));
+        MESSAGES.addListener(this.renderCurrentView.bind(this));
+
         this.renderHeader();
         this.renderMenu();
         this.addKeyboardListeners();
@@ -11,16 +50,37 @@ const game = {
         header.innerHTML = `
             <div class="container mx-auto flex justify-between items-center p-4">
                 <div class="font-bold text-xl">${user.username}</div>
-                <div id="global-score" class="text-lg">${MESSAGES.en.globalScore}: ${user.globalScore.correct} / ${user.globalScore.incorrect}</div>
-                <button id="logout-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.en.logoutButton}</button>
+                <div id="global-score" class="text-lg">${MESSAGES.get('globalScore')}: ${user.globalScore.correct} / ${user.globalScore.incorrect}</div>
+                <button id="logout-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('logoutButton')}</button>
+                <button id="lang-toggle-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">${MESSAGES.getLanguage().toUpperCase()}</button>
             </div>
         `;
-        document.getElementById('logout-btn').addEventListener('click', () => auth.logout());
+        document.getElementById('logout-btn').addEventListener('click', () => this.showLogoutConfirmation());
+        document.getElementById('lang-toggle-btn').addEventListener('click', () => {
+            const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
+            MESSAGES.setLanguage(newLang);
+            localStorage.setItem('appLang', newLang);
+        });
+    },
+
+    renderCurrentView() {
+        switch (this.currentView) {
+            case 'menu':
+                this.renderMenu();
+                break;
+            case 'flashcard':
+                this.renderFlashcard(this.currentModule);
+                break;
+            case 'quiz':
+                this.renderQuiz(this.currentModule);
+                break;
+        }
     },
 
     renderMenu() {
+        this.currentView = 'menu';
         const appContainer = document.getElementById('app-container');
-        let menuHtml = `<h1 class="text-3xl font-bold text-center mb-8">${MESSAGES.en.mainMenu}</h1>`;
+        let menuHtml = `<h1 class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
 
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
@@ -154,13 +214,13 @@ const game = {
                     </div>
                     <div class="flex justify-between mt-4">
                         <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-                            ${MESSAGES.en.prevButton}
+                            ${MESSAGES.get('prevButton')}
                         </button>
                         <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-                            ${MESSAGES.en.nextButton}
+                            ${MESSAGES.get('nextButton')}
                         </button>
                     </div>
-                     <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.en.backToMenu}</button>
+                     <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                 </div>
             `;
 
@@ -187,9 +247,9 @@ const game = {
         appContainer.classList.remove('main-menu-active');
         appContainer.innerHTML = `
             <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-                <h1 class="text-2xl font-bold mb-4">${MESSAGES.en.sessionScore}</h1>
-                <p class="text-xl mb-4">${MESSAGES.en.flashcardSummaryMessage.replace('{count}', totalCards)}</p>
-                <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.en.backToMenu}</button>
+                <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
+                <p class="text-xl mb-4">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
+                <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
             </div>
         `;
     },
@@ -217,20 +277,20 @@ const game = {
             appContainer.innerHTML = `
                 <div class="max-w-4xl mx-auto">
                     <div class="text-center text-gray-600 mb-4">${currentIndex + 1} / ${module.data.length}</div>
-                    <div class="text-center text-gray-600 mb-4">${MESSAGES.en.correct}: ${sessionScore.correct} / ${MESSAGES.en.incorrect}: ${sessionScore.incorrect}</div>
+                    <div class="text-center text-gray-600 mb-4">${MESSAGES.get('correct')}: ${sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${sessionScore.incorrect}</div>
                     <div class="bg-white p-8 rounded-lg shadow-md">
                         <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                         <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
                         <div id="feedback-container" class="mt-6"></div>
                     </div>
                     <div class="flex justify-between mt-4">
-                        <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.en.undoButton}</button>
+                        <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
                         <div>
-                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.en.prevButton}</button>
-                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.en.nextButton}</button>
+                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
+                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
                         </div>
                     </div>
-                     <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.en.backToMenu}</button>
+                     <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                 </div>
             `;
 
@@ -288,10 +348,10 @@ const game = {
             this.renderHeader();
             appContainer.innerHTML = `
                  <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-                    <h1 class="text-2xl font-bold mb-4">${MESSAGES.en.sessionScore}</h1>
-                    <p class="text-xl mb-2">${MESSAGES.en.correct}: ${sessionScore.correct}</p>
-                    <p class="text-xl mb-4">${MESSAGES.en.incorrect}: ${sessionScore.incorrect}</p>
-                    <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.en.backToMenu}</button>
+                    <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
+                    <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${sessionScore.correct}</p>
+                    <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${sessionScore.incorrect}</p>
+                    <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                  </div>
             `;
         }
