@@ -21,8 +21,6 @@ const game = {
     },
 
     init() {
-        console.log('game object:', game);
-        console.log('game.showLogoutConfirmation:', game.showLogoutConfirmation);
         this.modal = document.getElementById('confirmation-modal');
         this.yesButton = document.getElementById('confirm-yes');
         this.noButton = document.getElementById('confirm-no');
@@ -54,14 +52,17 @@ const game = {
         });
 
         this.menuLogoutBtn.addEventListener('click', () => {
-            console.log('this inside menuLogoutBtn listener:', this);
             this.toggleHamburgerMenu(false); // Close menu before showing confirmation
             game.showLogoutConfirmation();
         });
 
         MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.renderCurrentView.bind(this));
-        MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
+                MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
+
+        this.renderHeader();
+        this.updateMenuText(); // Call explicitly after rendering header
+        this.renderMenu();
         MESSAGES.addListener(() => {
             if (!this.modal.classList.contains('hidden')) {
                 this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
