@@ -30,18 +30,37 @@ const game = {
 
         let menuHtml = `<h1 class="text-3xl font-bold text-center mb-8">${MESSAGES.en.mainMenu}</h1>`;
 
-        for (const gameMode in groupedModules) {
-            menuHtml += `<h2 class="text-2xl font-semibold mt-6 mb-4 capitalize">${gameMode}s</h2>`;
-            menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
-            groupedModules[gameMode].forEach(module => {
-                menuHtml += `
-                    <button class="bg-white hover:bg-gray-200 text-gray-800 font-semibold py-4 px-6 rounded-lg shadow-md transition duration-300" data-module-id="${module.id}">
-                        ${module.name}
-                    </button>
-                `;
-            });
-            menuHtml += `</div>`;
-        }
+        const gameModeOrder = ['quiz', 'flashcard', 'completion'];
+        const quizModuleOrder = ['quiz-phrasal-verbs', 'idioms-quiz'];
+
+        menuHtml += `<div class="flex flex-row justify-around gap-8">`; // Container for horizontal categories
+
+        gameModeOrder.forEach(gameMode => {
+            if (groupedModules[gameMode]) {
+                menuHtml += `<div class="flex flex-col items-center">`; // Each category section as a column
+                menuHtml += `<h2 class="text-2xl font-semibold mt-6 mb-4 capitalize">${gameMode}s</h2>`;
+                menuHtml += `<div class="flex flex-col gap-4">`; // Modules within category as a column
+
+                let modulesToRender = groupedModules[gameMode];
+
+                if (gameMode === 'quiz') {
+                    modulesToRender.sort((a, b) => {
+                        return quizModuleOrder.indexOf(a.id) - quizModuleOrder.indexOf(b.id);
+                    });
+                }
+
+                modulesToRender.forEach(module => {
+                    menuHtml += `
+                        <button class="bg-white hover:bg-gray-200 text-gray-800 font-semibold py-4 px-6 rounded-lg shadow-md transition duration-300" data-module-id="${module.id}">
+                            ${module.name}
+                        </button>
+                    `;
+                });
+                menuHtml += `</div>`; // Close modules div
+                menuHtml += `</div>`; // Close category section div
+            }
+        });
+        menuHtml += `</div>`; // Close horizontal categories container
 
         appContainer.innerHTML = menuHtml;
 
