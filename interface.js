@@ -17,7 +17,8 @@ const MESSAGES = {
         incorrect: "Incorrecto",
         confirmLogout: "Confirmar Cierre de Sesión",
         confirmLogoutMessage: "¿Estás seguro de que quieres cerrar sesión?",
-        flashcardSummaryMessage: "¡Felicidades! Has estudiado {count} tarjetas."
+        flashcardSummaryMessage: "¡Felicidades! Has estudiado {count} tarjetas.",
+        usernamePlaceholder: "Ingresa tu nombre"
     },
     en: {
         loginTitle: "Welcome",
@@ -34,7 +35,8 @@ const MESSAGES = {
         incorrect: "Incorrect",
         confirmLogout: "Confirm Logout",
         confirmLogoutMessage: "Are you sure you want to logout?",
-        flashcardSummaryMessage: "Congratulations! You have studied {count} cards."
+        flashcardSummaryMessage: "Congratulations! You have studied {count} cards.",
+                usernamePlaceholder: "Enter your name"
     },
 
     get(key) {
@@ -55,4 +57,5 @@ const MESSAGES = {
     addListener(listener) {
         this._listeners.push(listener);
     }
+};
 };

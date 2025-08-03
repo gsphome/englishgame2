@@ -9,15 +9,13 @@ const game = {
     toggleModal(show) {
         this.modal.classList.toggle('hidden', !show);
         if (show) {
-            if (show) {
-            if (show) {
             this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
-        }
-        }
         }
     },
 
     init() {
+        console.log('game object:', game);
+        console.log('game.showLogoutConfirmation:', game.showLogoutConfirmation);
         this.modal = document.getElementById('confirmation-modal');
         this.yesButton = document.getElementById('confirm-yes');
         this.noButton = document.getElementById('confirm-no');
@@ -49,8 +47,9 @@ const game = {
         });
 
         this.menuLogoutBtn.addEventListener('click', () => {
+            console.log('this inside menuLogoutBtn listener:', this);
             this.toggleHamburgerMenu(false); // Close menu before showing confirmation
-            this.showLogoutConfirmation();
+            game.showLogoutConfirmation();
         });
 
         MESSAGES.addListener(this.renderHeader.bind(this));
@@ -279,6 +278,10 @@ const game = {
                 <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
             </div>
         `;
+    },
+
+    showLogoutConfirmation() {
+        this.toggleModal(true);
     },
 
     renderQuiz(module) {
