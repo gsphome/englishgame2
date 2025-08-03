@@ -85,9 +85,12 @@ const game = {
         const user = auth.getUser();
         header.innerHTML = `
             <div class="container mx-auto flex justify-between items-center p-4">
-                <div class="font-bold text-xl">${user.username}</div>
+                <div></div>
                 <div id="global-score" class="text-lg">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
-                <button id="hamburger-btn" class="text-2xl">&#9776;</button>
+                <div class="flex items-center">
+                    <div class="font-bold text-xl mr-4">${user.username}</div>
+                    <button id="hamburger-btn" class="text-2xl">&#9776;</button>
+                </div>
             </div>
         `;
         document.getElementById('hamburger-btn').addEventListener('click', () => this.toggleHamburgerMenu(true));
