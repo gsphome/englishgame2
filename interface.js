@@ -27,6 +27,7 @@ const MESSAGES = {
         correct: "Correct",
         incorrect: "Incorrect",
         confirmLogout: "Confirm Logout",
-        confirmLogoutMessage: "Are you sure you want to logout?"
+        confirmLogoutMessage: "Are you sure you want to logout?",
+        flashcardSummaryMessage: "Congratulations! You have studied {count} cards."
     }
 };
