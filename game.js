@@ -155,8 +155,10 @@ const game = {
                 this.renderFlashcard(module);
                 break;
             case 'quiz':
-            case 'completion':
                 this.renderQuiz(module);
+                break;
+            case 'completion':
+                this.renderCompletion(module);
                 break;
         }
     },
@@ -246,6 +248,24 @@ const game = {
                                 options[optionIndex].click();
                             }
                         }
+                    }
+                } else if (this.currentView === 'completion') { // If completion is active
+                    const completionSummaryContainer = document.getElementById('completion-summary-container');
+                    if (completionSummaryContainer && e.key === 'Enter') {
+                        document.querySelector('#completion-summary-container button').click(); // Click the back to menu button
+                        return; // Exit early if summary handled
+                    }
+
+                    if (e.key === 'Enter') {
+                        const inputElement = document.getElementById('completion-input');
+                        if (inputElement && !inputElement.disabled) {
+                            game.completion.handleAnswer();
+                        } else {
+                            game.completion.next();
+                        }
+                    } else if (e.key === 'Backspace') {
+                        e.preventDefault();
+                        game.completion.prev();
                     }
                 }
             }
@@ -473,5 +493,122 @@ const game = {
     renderQuiz(module) {
         this.currentView = 'quiz';
         this.quiz.init(module);
+    },
+
+    renderCompletion(module) {
+        this.currentView = 'completion';
+        this.completion.init(module);
+    },
+
+    completion: {
+        currentIndex: 0,
+        sessionScore: { correct: 0, incorrect: 0 },
+        history: [],
+        moduleData: null,
+        appContainer: null,
+
+        init(module) {
+            this.currentIndex = 0;
+            this.sessionScore = { correct: 0, incorrect: 0 };
+            this.moduleData = module;
+            this.appContainer = document.getElementById('app-container');
+            this.render();
+        },
+
+        render() {
+            const questionData = this.moduleData.data[this.currentIndex];
+            this.appContainer.classList.remove('main-menu-active');
+            this.appContainer.innerHTML = `
+                <div class="max-w-2xl mx-auto">
+                    <div class="text-center text-gray-600 mb-4">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                    <div class="text-center text-gray-600 mb-4">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" />')}</p>
+                        <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                            ${MESSAGES.get('prevButton')}
+                        </button>
+                        <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+                            ${MESSAGES.get('nextButton')}
+                        </button>
+                    </div>
+                    <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                </div>
+            `;
+
+            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+            document.getElementById('next-btn').addEventListener('click', () => this.next());
+            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+            document.getElementById('completion-input').focus();
+        },
+
+        handleAnswer() {
+            const inputElement = document.getElementById('completion-input');
+            const userAnswer = inputElement.value.trim();
+            const questionData = this.moduleData.data[this.currentIndex];
+            const isCorrect = userAnswer.toLowerCase() === questionData.correct.toLowerCase();
+
+            if (isCorrect) {
+                this.sessionScore.correct++;
+                inputElement.classList.add('text-green-500');
+            } else {
+                this.sessionScore.incorrect++;
+                inputElement.classList.add('text-red-500');
+                document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct: ${questionData.correct}</p>`;
+            }
+            inputElement.disabled = true;
+            this.updateScoreDisplay();
+        },
+
+        undo() {
+            const lastAction = this.history.pop();
+            if (lastAction) {
+                if (lastAction.isCorrect) {
+                    this.sessionScore.correct--;
+                } else {
+                    this.sessionScore.incorrect--;
+                }
+                this.currentIndex = lastAction.index;
+                this.render();
+            }
+        },
+
+        updateScoreDisplay() {
+            const scoreDisplay = this.appContainer.querySelector('.text-center.text-gray-600.mb-4:last-of-type');
+            if (scoreDisplay) {
+                scoreDisplay.innerHTML = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+            }
+        },
+
+        prev() {
+            if (this.currentIndex > 0) {
+                this.currentIndex--;
+                this.render();
+            }
+        },
+
+        next() {
+            if (this.currentIndex < this.moduleData.data.length - 1) {
+                this.currentIndex++;
+                this.render();
+            } else {
+                this.showFinalScore();
+            }
+        },
+
+        showFinalScore() {
+            auth.updateGlobalScore(this.sessionScore);
+            game.renderHeader();
+            this.appContainer.innerHTML = `
+                 <div id="completion-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+                    <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
+                    <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                    <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
+                    <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">$ {MESSAGES.get('backToMenu')}</button>
+                 </div>
+            `;
+        }
     }
 };
