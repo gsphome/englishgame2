@@ -11,7 +11,10 @@ const MESSAGES = {
         backToMenu: "Volver al Menú",
         sessionScore: "Puntaje de la Sesión",
         correct: "Correcto",
-        incorrect: "Incorrecto"
+        incorrect: "Incorrecto",
+        confirmLogout: "Confirmar Cierre de Sesión",
+        confirmLogoutMessage: "¿Estás seguro de que quieres cerrar sesión?",
+        flashcardSummaryMessage: "¡Felicidades! Has estudiado {count} tarjetas."
     },
     en: {
         loginTitle: "Welcome",
