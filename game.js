@@ -195,7 +195,7 @@ const game = {
                     } else {
                         this.renderMenu(); // Go back to main menu
                     }
-                } else if (document.getElementById('app-container').classList.contains('main-menu-active')) { // Check if main menu is active
+                } else if (this.currentView === 'menu') { // Check if main menu is active
                     const pressedKey = e.key.toUpperCase();
                     const moduleButtons = document.querySelectorAll('[data-module-id]');
                     moduleButtons.forEach((button, index) => {
@@ -203,17 +203,36 @@ const game = {
                             button.click();
                         }
                     });
-                } else if (e.key === 'Enter') {
+                } else if (this.currentView === 'flashcard') { // If flashcard is active
                     const appContainer = document.getElementById('app-container');
-                    if (appContainer.querySelector('.card')) { // If flashcard is active
-                        const card = appContainer.querySelector('.card');
-                        if (card.classList.contains('is-flipped')) {
-                            document.getElementById('next-btn').click();
-                        } else {
-                            card.classList.add('is-flipped');
+                    if (e.key === 'Enter') {
+                        if (appContainer.querySelector('.card')) { // If flashcard is active
+                            const card = appContainer.querySelector('.card');
+                            if (card.classList.contains('is-flipped')) {
+                                document.getElementById('next-btn').click();
+                            } else {
+                                card.classList.add('is-flipped');
+                            }
+                        } else if (appContainer.querySelector('.max-w-md.mx-auto.bg-white.p-8.rounded-lg.shadow-md.text-center')) { // If flashcard summary is active
+                            game.renderMenu();
                         }
-                    } else if (appContainer.querySelector('.max-w-md.mx-auto.bg-white.p-8.rounded-lg.shadow-md.text-center')) { // If flashcard summary is active
-                        game.renderMenu();
+                    }
+                } else if (this.currentView === 'quiz') { // If quiz is active
+                    if (e.key === 'Enter') {
+                        // If an option has been selected (feedback is shown), pressing Enter goes to next question
+                        if (document.getElementById('feedback-container').innerHTML !== '') {
+                            document.getElementById('next-btn').click();
+                        }
+                    } else { // Handle A, B, C, D only if Enter was not pressed
+                        const pressedKey = e.key.toUpperCase();
+                        const optionLetters = ['A', 'B', 'C', 'D'];
+                        const optionIndex = optionLetters.indexOf(pressedKey);
+                        if (optionIndex !== -1) {
+                            const options = document.querySelectorAll('[data-option]');
+                            if (options[optionIndex]) {
+                                options[optionIndex].click();
+                            }
+                        }
                     }
                 }
             }
@@ -292,6 +311,7 @@ const game = {
     },
 
     renderQuiz(module) {
+        this.currentView = 'quiz';
         let currentIndex = 0;
         let sessionScore = { correct: 0, incorrect: 0 };
         let history = [];
