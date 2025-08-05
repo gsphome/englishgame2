@@ -13,9 +13,14 @@ const auth = {
             MESSAGES.setLanguage('en'); // Default to English
         }
 
-        MESSAGES.addListener(this.renderLogin.bind(this)); // Add listener for login screen re-render
-
         this.user = JSON.parse(localStorage.getItem('user'));
+
+        MESSAGES.addListener(() => {
+            if (!this.user) {
+                this.renderLogin();
+            }
+        });
+
         if (!this.user) {
             this.renderLogin();
         } else {

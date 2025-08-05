@@ -5,6 +5,7 @@ const game = {
     messageElement: null,
     currentView: null, // To keep track of the current active view (e.g., 'menu', 'flashcard', 'quiz')
     currentModule: null, // To keep track of the current module data
+    randomMode: false, // New property for random mode
 
     toggleModal(show) {
         this.modal.classList.toggle('hidden', !show);
@@ -24,6 +25,8 @@ const game = {
         this.closeMenuBtn = document.getElementById('close-menu-btn');
         this.menuLangToggleBtn = document.getElementById('menu-lang-toggle-btn');
         this.menuLogoutBtn = document.getElementById('menu-logout-btn');
+        this.menuRandomModeBtn = document.getElementById('menu-random-mode-btn');
+        this.randomMode = localStorage.getItem('randomMode') === 'true'; // Initialize from localStorage
 
         this.yesButton.addEventListener('click', () => {
             auth.logout();
@@ -47,6 +50,12 @@ const game = {
         this.menuLogoutBtn.addEventListener('click', () => {
             this.toggleHamburgerMenu(false); // Close menu before showing confirmation
             game.showLogoutConfirmation();
+        });
+
+        this.menuRandomModeBtn.addEventListener('click', () => {
+            this.randomMode = !this.randomMode;
+            localStorage.setItem('randomMode', this.randomMode);
+            this.updateMenuText();
         });
 
         MESSAGES.addListener(this.renderHeader.bind(this));
@@ -73,6 +82,9 @@ const game = {
         }
         if (this.menuLogoutBtn) {
             this.menuLogoutBtn.textContent = MESSAGES.get('logoutButton');
+        }
+        if (this.menuRandomModeBtn) {
+            this.menuRandomModeBtn.textContent = `${MESSAGES.get('randomMode')} ${this.randomMode ? '✅' : '❌'}`;
         }
     },
 
@@ -113,39 +125,55 @@ const game = {
     renderMenu() {
         this.currentView = 'menu';
         const appContainer = document.getElementById('app-container');
-        let menuHtml = `<h1 class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
 
-        const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
+        // Check if the menu is already rendered
+        if (!document.getElementById('main-menu-title')) {
+            let menuHtml = `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
 
-        menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-auto w-fit">`;
+            const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-        learningModules.forEach((module, index) => {
-            const colorClass = colors[index % colors.length];
-            const icon = module.icon || '📚'; // Placeholder icon
-            const description = module.description || 'Expand your knowledge.'; // Placeholder description
+            menuHtml += `<div class="max-h-[22rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-2 mx-auto" style="max-width: 715px;">`; // Wrapper for scroll with border and custom width
+            menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto w-fit">`;
 
-            menuHtml += `
-                <button class="${colorClass} text-white font-semibold w-44 h-44 py-6 px-4 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center" data-module-id="${module.id}">
-                    <h2 class="text-2xl mb-2">
-                        <span class="mr-1">${String.fromCharCode(65 + index)}.</span>${module.name}
-                    </h2>
-                    <p class="text-base opacity-90">
-                        ${description}
-                    </p>
-                </button>
-            `;
-        });
-        menuHtml += `</div>`;
+            learningModules.forEach((module, index) => {
+                const colorClass = colors[index % colors.length];
+                const icon = module.icon || '📚'; // Placeholder icon
+                const description = module.description || ''; // Placeholder description
 
-        appContainer.innerHTML = menuHtml;
-        appContainer.classList.add('main-menu-active');
-
-        document.querySelectorAll('[data-module-id]').forEach(button => {
-            button.addEventListener('click', () => {
-                const moduleId = button.dataset.moduleId;
-                this.startModule(moduleId);
+                menuHtml += `
+                    <button class="${colorClass} text-white font-semibold w-40 h-40 py-4 px-2 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800" data-module-id="${module.id}">
+                        <h2 class="text-xl mb-2 font-bold">
+                            <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name}</span>
+                        </h2>
+                        <p class="text-xs opacity-90" id="module-description-${module.id}">
+                `;
             });
-        });
+            menuHtml += `</div>`;
+            menuHtml += `</div>`; // Close wrapper for scroll
+
+            appContainer.innerHTML = menuHtml;
+            appContainer.classList.add('main-menu-active');
+
+            document.querySelectorAll('[data-module-id]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const moduleId = button.dataset.moduleId;
+                    this.startModule(moduleId);
+                });
+            });
+        } else {
+            // Update existing text content
+            document.getElementById('main-menu-title').textContent = MESSAGES.get('mainMenu');
+            learningModules.forEach((module) => {
+                const moduleNameElement = document.getElementById(`module-name-${module.id}`);
+                if (moduleNameElement) {
+                    moduleNameElement.textContent = module.name;
+                }
+                const moduleDescriptionElement = document.getElementById(`module-description-${module.id}`);
+                if (moduleDescriptionElement) {
+                    moduleDescriptionElement.textContent = module.description || '';
+                }
+            });
+        }
     },
 
     startModule(moduleId) {
@@ -210,14 +238,19 @@ const game = {
 
                     if (e.key === 'Enter') {
                         const card = document.querySelector('.card');
-                        if (card && card.classList.contains('is-flipped')) {
-                            if (game.flashcard.currentIndex === game.flashcard.moduleData.data.length - 1) {
-                                game.showFlashcardSummary(game.flashcard.moduleData.data.length);
+                        if (card) {
+                            if (card.classList.contains('is-flipped')) {
+                                card.classList.remove('is-flipped'); // Unflip the card
+                                setTimeout(() => {
+                                    if (game.flashcard.currentIndex === game.flashcard.moduleData.data.length - 1) {
+                                        game.showFlashcardSummary(game.flashcard.moduleData.data.length);
+                                    } else {
+                                        game.flashcard.next();
+                                    }
+                                }, 150); // Small delay to allow unflip animation
                             } else {
-                                game.flashcard.next();
+                                game.flashcard.flip();
                             }
-                        } else {
-                            game.flashcard.flip();
                         }
                     } else if (e.key === 'Backspace') {
                         e.preventDefault();
@@ -233,7 +266,7 @@ const game = {
                     const feedbackContainer = document.getElementById('feedback-container');
                     const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
 
-                    if (e.key === 'Enter' && feedbackContainer && feedbackContainer.innerHTML !== '' && optionsDisabled) {
+                                        if (e.key === 'Enter' && optionsDisabled) {
                         game.quiz.next();
                     } else if (e.key === 'Backspace') {
                         e.preventDefault();
@@ -292,42 +325,61 @@ const game = {
         render() {
             const cardData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
-            this.appContainer.innerHTML = `
-                <div class="max-w-2xl mx-auto">
-                    <div class="text-center text-gray-600 mb-4">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                    <div class="card h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
-                        <div class="card-inner">
-                            <div class="card-face card-face-front">
-                                <p class="text-3xl">${cardData.en}</p>
-                            </div>
-                            <div class="card-face card-face-back">
-                                <div>
-                                    <p class="text-3xl font-bold">${cardData.es}</p>
-                                    <p class="text-xl text-gray-500">${cardData.ipa}</p>
-                                    <p class="mt-4 italic">"${cardData.example}"</p>
-                                    <p class="text-gray-500 italic">"${cardData.example_es}"</p>
+
+            // Check if the flashcard view is already rendered
+            if (!document.getElementById('flashcard-container')) { // Assuming a main container for flashcard view
+                this.appContainer.innerHTML = `
+                    <div id="flashcard-container" class="max-w-2xl mx-auto">
+                        <div class="text-center text-gray-600 mb-4" id="flashcard-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="card h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
+                            <div class="card-inner">
+                                <div class="card-face card-face-front">
+                                    <p class="text-3xl" id="flashcard-front-text">${cardData.en}</p>
+                                </div>
+                                <div class="card-face card-face-back">
+                                    <div>
+                                        <p class="text-3xl font-bold" id="flashcard-back-text">${cardData.es}</p>
+                                        <p class="text-xl text-gray-500" id="flashcard-ipa">${cardData.ipa}</p>
+                                        <p class="mt-4 italic" id="flashcard-example">"${cardData.example}"</p>
+                                        <p class="text-gray-500 italic" id="flashcard-example-es">"${cardData.example_es}"</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="flex justify-between mt-4">
+                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                                ${MESSAGES.get('prevButton')}
+                            </button>
+                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+                                ${MESSAGES.get('nextButton')}
+                            </button>
+                        </div>
+                         <button id="back-to-menu-flashcard-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                     </div>
-                    <div class="flex justify-between mt-4">
-                        <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-                            ${MESSAGES.get('prevButton')}
-                        </button>
-                        <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-                            ${MESSAGES.get('nextButton')}
-                        </button>
-                    </div>
-                     <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
-                </div>
-            `;
+                `;
 
-            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-            document.getElementById('next-btn').addEventListener('click', () => this.next());
+                document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+                document.getElementById('next-btn').addEventListener('click', () => this.next());
+            } else {
+                // Update existing text content
+                document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+                document.getElementById('flashcard-front-text').textContent = cardData.en;
+                document.getElementById('flashcard-back-text').textContent = cardData.es;
+                document.getElementById('flashcard-ipa').textContent = cardData.ipa;
+                document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
+                document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+                document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
+            }
         },
 
         prev() {
             if (this.currentIndex > 0) {
+                const card = this.appContainer.querySelector('.card');
+                if (card && card.classList.contains('is-flipped')) {
+                    card.classList.remove('is-flipped');
+                }
                 this.currentIndex--;
                 this.render();
             }
@@ -335,6 +387,10 @@ const game = {
 
         next() {
             if (this.currentIndex < this.moduleData.data.length - 1) {
+                const card = this.appContainer.querySelector('.card');
+                if (card && card.classList.contains('is-flipped')) {
+                    card.classList.remove('is-flipped');
+                }
                 this.currentIndex++;
                 this.render();
             } else {
@@ -358,13 +414,20 @@ const game = {
     showFlashcardSummary(totalCards) {
         const appContainer = document.getElementById('app-container');
         appContainer.classList.remove('main-menu-active');
-        appContainer.innerHTML = `
-            <div id="flashcard-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-                <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                <p class="text-xl mb-4">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
-                <button id="flashcard-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
-            </div>
-        `;
+
+        if (!document.getElementById('flashcard-summary-container')) {
+            appContainer.innerHTML = `
+                <div id="flashcard-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+                    <h1 id="flashcard-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
+                    <p id="flashcard-summary-message" class="text-xl mb-4">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
+                    <button id="flashcard-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                </div>
+            `;
+        } else {
+            document.getElementById('flashcard-summary-title').textContent = MESSAGES.get('sessionScore');
+            document.getElementById('flashcard-summary-message').textContent = MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards);
+            document.getElementById('flashcard-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
+        }
     },
 
     showLogoutConfirmation() {
@@ -384,56 +447,93 @@ const game = {
             this.history = [];
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
+
+            if (game.randomMode) {
+                this.moduleData.data = this.shuffleArray(this.moduleData.data);
+            }
             this.render();
         },
 
         render() {
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
-            let optionsHtml = '';
-            const optionLetters = ['A', 'B', 'C', 'D'];
-            questionData.options.forEach((option, index) => {
-                optionsHtml += `
-                    <button class="w-full text-left bg-white hover:bg-gray-200 text-gray-800 font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 flex items-center" data-option="${option}">
-                        <span class="font-bold mr-4">${optionLetters[index]}</span>
-                        <span>${option}</span>
-                    </button>
-                `;
-            });
 
-            this.appContainer.innerHTML = `
-                <div class="max-w-4xl mx-auto">
-                    <div class="text-center text-gray-600 mb-4">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                    <div class="text-center text-gray-600 mb-4">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
-                        <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
-                        <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
-                        <div>
-                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
-                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+            // Create a copy of options to shuffle, so the original data is not permanently altered
+            let optionsToRender = [...questionData.options];
+
+            // Shuffle options if random mode is active
+            if (game.randomMode) {
+                optionsToRender = this.shuffleArray(optionsToRender);
+            }
+
+            if (!document.getElementById('quiz-container')) {
+                let optionsHtml = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+                optionsToRender.forEach((option, index) => {
+                    optionsHtml += `
+                        <button class="w-full text-left bg-white hover:bg-gray-200 text-gray-800 font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 flex items-center" data-option="${option}">
+                            <span class="font-bold mr-4">${optionLetters[index]}</span>
+                            <span>${option}</span>
+                        </button>
+                    `;
+                });
+
+                this.appContainer.innerHTML = `
+                    <div id="quiz-container" class="max-w-4xl mx-auto">
+                        <div class="text-center text-gray-600 mb-4" id="quiz-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="text-center text-gray-600 mb-4" id="quiz-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <p class="text-2xl mb-6" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
+                            <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
+                            <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
+                        <div class="flex justify-between mt-4">
+                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
+                            <div>
+                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
+                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+                            </div>
+                        </div>
+                         <button id="back-to-menu-quiz-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                     </div>
-                     <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
-                </div>
-            `;
+                `;
 
-            document.querySelectorAll('[data-option]').forEach(button => {
-                button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
-            });
-            
-            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-            document.getElementById('next-btn').addEventListener('click', () => this.next());
-            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+                document.querySelectorAll('[data-option]').forEach(button => {
+                    button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
+                });
+                
+                document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+                document.getElementById('next-btn').addEventListener('click', () => this.next());
+                document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+            } else {
+                document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+                document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+                document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
+                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+                document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
+
+                // Update options
+                const optionsContainer = document.getElementById('options-container');
+                optionsContainer.innerHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+                optionsToRender.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.className = "w-full text-left bg-white hover:bg-gray-200 text-gray-800 font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 flex items-center";
+                    button.dataset.option = option;
+                    button.innerHTML = `<span class="font-bold mr-4">${optionLetters[index]}</span><span>${option}</span>`;
+                    button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
+                    optionsContainer.appendChild(button);
+                });
+                document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
+            }
         },
 
         handleAnswer(selectedOption) {
             const questionData = this.moduleData.data[this.currentIndex];
             const isCorrect = selectedOption === questionData.correct;
-            this.history.push({ correct: isCorrect });
+            this.history.push({ correct: isCorrect, index: this.currentIndex });
 
             if (isCorrect) {
                 this.sessionScore.correct++;
@@ -463,6 +563,14 @@ const game = {
         },
 
         next() {
+            // Prevent advancing if no option has been selected for the current question
+            const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
+            if (!optionsDisabled && this.moduleData.data[this.currentIndex].options) { // Check if it's a quiz question and no option is selected
+                // Optionally, provide feedback to the user that an option must be selected
+                // For now, just prevent advancement
+                return;
+            }
+
             if (this.currentIndex < this.moduleData.data.length - 1) {
                 this.currentIndex++;
                 this.render();
@@ -472,26 +580,45 @@ const game = {
         },
 
         undo() {
-            const lastAction = this.history.pop();
-            if (lastAction && !lastAction.correct) {
-                this.sessionScore.incorrect--;
+            if (this.history.length > 0) {
+                const lastAction = this.history.pop();
+                if (lastAction.correct) {
+                    this.sessionScore.correct--;
+                } else {
+                    this.sessionScore.incorrect--;
+                }
+                this.currentIndex = lastAction.index;
                 this.render();
-            } else if(lastAction) {
-                this.history.push(lastAction);
             }
         },
 
         showFinalScore() {
             auth.updateGlobalScore(this.sessionScore);
             game.renderHeader();
-            this.appContainer.innerHTML = `
-                 <div id="quiz-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-                    <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                    <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
-                    <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
-                    <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
-                 </div>
-            `;
+
+            if (!document.getElementById('quiz-summary-container')) {
+                this.appContainer.innerHTML = `
+                     <div id="quiz-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+                        <h1 id="quiz-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
+                        <p id="quiz-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                        <p id="quiz-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
+                        <button id="quiz-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                     </div>
+                `;
+            } else {
+                document.getElementById('quiz-summary-title').textContent = MESSAGES.get('sessionScore');
+                document.getElementById('quiz-summary-correct').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct}`;
+                document.getElementById('quiz-summary-incorrect').textContent = `${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+                document.getElementById('quiz-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
+            }
+        },
+
+        shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
         }
     },
 
@@ -523,28 +650,41 @@ const game = {
         render() {
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
-            this.appContainer.innerHTML = `
-                <div class="max-w-2xl mx-auto">
-                    <div class="text-center text-gray-600 mb-4">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                    <div class="text-center text-gray-600 mb-4">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <p class="text-2xl mb-6">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
-                        <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
-                        <div>
-                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
-                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
-                        </div>
-                    </div>
-                    <button class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
-                </div>
-            `;
 
-            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-            document.getElementById('next-btn').addEventListener('click', () => this.next());
-            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+            if (!document.getElementById('completion-container')) {
+                this.appContainer.innerHTML = `
+                    <div id="completion-container" class="max-w-2xl mx-auto">
+                        <div class="text-center text-gray-600 mb-4" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <p class="text-2xl mb-6" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
+                            <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
+                            <div>
+                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
+                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+                            </div>
+                        </div>
+                        <button id="back-to-menu-completion-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                    </div>
+                `;
+
+                document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+                document.getElementById('next-btn').addEventListener('click', () => this.next());
+                document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+            } else {
+                document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+                document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+                document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
+                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+                document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
+                document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
+            }
+
             const inputElement = document.getElementById('completion-input');
             setTimeout(() => {
                 inputElement.value = ''; // Clear the input field
@@ -609,14 +749,22 @@ const game = {
         showFinalScore() {
             auth.updateGlobalScore(this.sessionScore);
             game.renderHeader();
-            this.appContainer.innerHTML = `
-                 <div id="completion-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-                    <h1 class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                    <p class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
-                    <p class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
-                    <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
-                 </div>
-            `;
+
+            if (!document.getElementById('completion-summary-container')) {
+                this.appContainer.innerHTML = `
+                     <div id="completion-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+                        <h1 id="completion-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
+                        <p id="completion-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                        <p id="completion-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
+                        <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                     </div>
+                `;
+            } else {
+                document.getElementById('completion-summary-title').textContent = MESSAGES.get('sessionScore');
+                document.getElementById('completion-summary-correct').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct}`;
+                document.getElementById('completion-summary-incorrect').textContent = `${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+                document.getElementById('completion-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
+            }
         }
     }
 };
