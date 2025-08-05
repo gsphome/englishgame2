@@ -144,71 +144,49 @@ const game = {
     renderMenu() {
         this.currentView = 'menu';
         const appContainer = document.getElementById('app-container');
+        let menuHtml = `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
 
-        // Check if the menu is already rendered
-        if (!document.getElementById('main-menu-title')) {
-            let menuHtml = `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
+        const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-            const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
+        menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[22rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-2 mx-auto" style="max-width: 715px;">`; // Wrapper for scroll with border and custom width
+        menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto w-fit">`;
 
-            menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[22rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-2 mx-auto" style="max-width: 715px;">`; // Wrapper for scroll with border and custom width
-            menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto w-fit">`;
+        learningModules.forEach((module, index) => {
+            const colorClass = colors[index % colors.length];
+            const icon = module.icon || '📚'; // Placeholder icon
+            const description = module.description || ''; // Placeholder description
 
-            learningModules.forEach((module, index) => {
-                const colorClass = colors[index % colors.length];
-                const icon = module.icon || '📚'; // Placeholder icon
-                const description = module.description || ''; // Placeholder description
+            menuHtml += `
+                <button class="${colorClass} text-white font-semibold w-40 h-40 py-4 px-2 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800" data-module-id="${module.id}">
+                    <h2 class="text-xl mb-2 font-bold">
+                        <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name}</span>
+                    </h2>
+                    <p class="text-xs opacity-90" id="module-description-${module.id}">
+            `;
+        });
+        menuHtml += `</div>`;
+        menuHtml += `</div>`; // Close wrapper for scroll
 
-                menuHtml += `
-                    <button class="${colorClass} text-white font-semibold w-40 h-40 py-4 px-2 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800" data-module-id="${module.id}">
-                        <h2 class="text-xl mb-2 font-bold">
-                            <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name}</span>
-                        </h2>
-                        <p class="text-xs opacity-90" id="module-description-${module.id}">
-                `;
-            });
-            menuHtml += `</div>`;
-            menuHtml += `</div>`; // Close wrapper for scroll
+        appContainer.innerHTML = menuHtml;
+        appContainer.classList.add('main-menu-active');
 
-            appContainer.innerHTML = menuHtml;
-            appContainer.classList.add('main-menu-active');
-
-            // Restore scroll position
-            const scrollWrapper = document.getElementById('main-menu-scroll-wrapper');
-            if (scrollWrapper) {
-                scrollWrapper.scrollTop = this.menuScrollPosition;
-            }
-
-            document.querySelectorAll('[data-module-id]').forEach(button => {
-                button.addEventListener('click', () => {
-                    // Save scroll position before navigating away
-                    const currentScrollWrapper = document.getElementById('main-menu-scroll-wrapper');
-                    if (currentScrollWrapper) {
-                        this.menuScrollPosition = currentScrollWrapper.scrollTop;
-                    }
-                    const moduleId = button.dataset.moduleId;
-                    this.startModule(moduleId);
-                });
-            });
-        } else {
-            // Update existing text content
-            document.getElementById('main-menu-title').textContent = MESSAGES.get('mainMenu');
-            learningModules.forEach((module) => {
-                const moduleNameElement = document.getElementById(`module-name-${module.id}`);
-                if (moduleNameElement) {
-                    moduleNameElement.textContent = module.name;
-                }
-                const moduleDescriptionElement = document.getElementById(`module-description-${module.id}`);
-                if (moduleDescriptionElement) {
-                    moduleDescriptionElement.textContent = module.description || '';
-                }
-            });
-            // Restore scroll position if menu is re-rendered without full re-creation
-            const scrollWrapper = document.getElementById('main-menu-scroll-wrapper');
-            if (scrollWrapper) {
-                scrollWrapper.scrollTop = this.menuScrollPosition;
-            }
+        // Restore scroll position
+        const scrollWrapper = document.getElementById('main-menu-scroll-wrapper');
+        if (scrollWrapper) {
+            scrollWrapper.scrollTop = this.menuScrollPosition;
         }
+
+        document.querySelectorAll('[data-module-id]').forEach(button => {
+            button.addEventListener('click', () => {
+                // Save scroll position before navigating away
+                const currentScrollWrapper = document.getElementById('main-menu-scroll-wrapper');
+                if (currentScrollWrapper) {
+                    this.menuScrollPosition = currentScrollWrapper.scrollTop;
+                }
+                const moduleId = button.dataset.moduleId;
+                this.startModule(moduleId);
+            });
+        });
     },
 
     startModule(moduleId) {
@@ -678,36 +656,6 @@ const game = {
                 [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
-        },
-
-        updateButtonText() {
-            if (document.getElementById('undo-btn')) {
-                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-            }
-            if (document.getElementById('prev-btn')) {
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-            }
-            if (document.getElementById('next-btn')) {
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-            }
-            if (document.getElementById('back-to-menu-quiz-btn')) {
-                document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
-            }
-        },
-
-        updateButtonText() {
-            if (document.getElementById('undo-btn')) {
-                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-            }
-            if (document.getElementById('prev-btn')) {
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-            }
-            if (document.getElementById('next-btn')) {
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-            }
-            if (document.getElementById('back-to-menu-quiz-btn')) {
-                document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
-            }
         }
     },
 

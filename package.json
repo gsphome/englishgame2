@@ -1,0 +1,24 @@
+{
+  "name": "english2-learning-app",
+  "version": "1.0.0",
+  "description": "A simple web application for learning English with flashcards, quizzes, and completion exercises.",
+  "main": "game.js",
+  "scripts": {
+    "start": "http-server . -o",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "english",
+    "learning",
+    "flashcards",
+    "quiz",
+    "education"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "http-server": "^14.1.1"
+  }
+}
