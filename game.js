@@ -397,27 +397,38 @@ const game = {
                 document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
                 document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
             }
+            // Add card-active class after rendering or updating
+            const card = this.appContainer.querySelector('.card');
+            if (card) {
+                card.classList.add('card-active');
+            }
         },
 
         prev() {
             if (this.currentIndex > 0) {
                 const card = this.appContainer.querySelector('.card');
+                if (card) {
+                    card.classList.remove('card-active'); // Remove active class from current card
+                }
                 if (card && card.classList.contains('is-flipped')) {
                     card.classList.remove('is-flipped');
                 }
                 this.currentIndex--;
-                this.render();
+                this.render(); // render() will add card-active to the new card
             }
         },
 
         next() {
             if (this.currentIndex < this.moduleData.data.length - 1) {
                 const card = this.appContainer.querySelector('.card');
+                if (card) {
+                    card.classList.remove('card-active'); // Remove active class from current card
+                }
                 if (card && card.classList.contains('is-flipped')) {
                     card.classList.remove('is-flipped');
                 }
                 this.currentIndex++;
-                this.render();
+                this.render(); // render() will add card-active to the new card
             } else {
                 game.showFlashcardSummary(this.moduleData.data.length);
             }
