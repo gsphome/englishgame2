@@ -44,7 +44,8 @@ const learningModules = [
             { en: "Authority", es: "Autoridad", ipa: "/əˈθɔːrəti/", example: "He has the authority to make decisions.", example_es: "Él tiene la autoridad para tomar decisiones." },
             { en: "Available", es: "Disponible", ipa: "/əˈveɪləbl/", example: "The information is available online.", example_es: "La información está disponible en línea." },
             { en: "Aware", es: "Consciente", ipa: "/əˈweər/", example: "Are you aware of the risks?", example_es: "¿Eres consciente de los riesgos?" },
-            { en: "Challenge", es: "Desafío", ipa: "/ˈtʃælɪndʒ/", example: "This project presents a new challenge.", example_es: "Este proyecto presenta un nuevo desafío." }
+            { en: "Challenge", es: "Desafío", ipa: "/ˈtʃælɪndʒ/", example: "This project presents a new challenge.", example_es: "Este proyecto presenta un nuevo desafío." },
+            { en: "Consequence", es: "Consecuencia", ipa: "/ˈkɒnsɪkwəns/", example: "Every action has a consequence.", example_es: "Cada acción tiene una consecuencia." }
         ]
     },
     {
@@ -795,6 +796,13 @@ const learningModules = [
                 options: ["raining very heavily", "raining animals", "raining lightly", "raining intermittently"],
                 correct: "raining very heavily",
                 explanation: "To 'rain cats and dogs' means to rain very heavily."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">on the ball</span>.",
+                idiom: "on the ball",
+                options: ["alert and competent", "playing soccer", "distracted", "making mistakes"],
+                correct: "alert and competent",
+                explanation: "To be 'on the ball' means to be alert, quick to understand, and competent."
             }
         ]
     },
@@ -1028,7 +1036,8 @@ const learningModules = [
             { sentence: "He needs to put ______ with her bad temper.", correct: "up", explanation: "El phrasal verb 'put up with' significa tolerar.", tip: "Complete the phrasal verb." },
             { sentence: "She needs to take ______ her shoes before entering the house.", correct: "off", explanation: "El phrasal verb 'take off' significa quitarse la ropa o los zapatos.", tip: "Complete the phrasal verb." },
             { sentence: "I need to turn ______ the volume, it's too loud.", correct: "down", explanation: "El phrasal verb 'turn down' significa bajar el volumen o rechazar una oferta.", tip: "Complete the phrasal verb." },
-            { sentence: "He needs to call ______ his appointment.", correct: "off", explanation: "El phrasal verb 'call off' significa cancelar.", tip: "Complete the phrasal verb." }
+            { sentence: "He needs to call ______ his appointment.", correct: "off", explanation: "El phrasal verb 'call off' significa cancelar.", tip: "Complete the phrasal verb." },
+            { sentence: "I need to get ______ with my work.", correct: "on", explanation: "El phrasal verb 'get on with' significa continuar o progresar con algo.", tip: "Complete the phrasal verb." }
         ]
     },
     {
