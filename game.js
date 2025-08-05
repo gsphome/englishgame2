@@ -64,9 +64,6 @@ const game = {
         MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.renderCurrentView.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
-        MESSAGES.addListener(this.flashcard.updateButtonText.bind(this.flashcard)); // New listener for flashcard buttons
-        MESSAGES.addListener(this.quiz.updateButtonText.bind(this.quiz)); // New listener for quiz buttons
-        MESSAGES.addListener(this.completion.updateButtonText.bind(this.completion)); // New listener for completion buttons
 
         this.renderHeader();
         this.updateMenuText(); // Call explicitly after rendering header
@@ -115,6 +112,7 @@ const game = {
     },
 
     renderCurrentView() {
+        console.log('renderCurrentView called. Current view:', this.currentView);
         switch (this.currentView) {
             case 'menu':
                 this.renderMenu();
@@ -352,18 +350,6 @@ const game = {
         moduleData: null,
         appContainer: null,
 
-        updateButtonText() {
-            if (document.getElementById('prev-btn')) {
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-            }
-            if (document.getElementById('next-btn')) {
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-            }
-            if (document.getElementById('back-to-menu-flashcard-btn')) {
-                document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
-            }
-        },
-
         init(module) {
             this.currentIndex = 0;
             this.moduleData = module;
@@ -372,6 +358,7 @@ const game = {
         },
 
         render() {
+            console.log('flashcard.render() called');
             const cardData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -410,6 +397,7 @@ const game = {
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
             } else {
+                console.log('Updating existing flashcard text content.');
                 // Update existing text content
                 document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
                 document.getElementById('flashcard-front-text').textContent = cardData.en;
@@ -504,6 +492,7 @@ const game = {
         },
 
         render() {
+            console.log('quiz.render() called');
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -556,6 +545,7 @@ const game = {
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('undo-btn').addEventListener('click', () => this.undo());
             } else {
+                console.log('Updating existing quiz text content.');
                 document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
                 document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
@@ -747,6 +737,7 @@ const game = {
         },
 
         render() {
+            console.log('completion.render() called');
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -781,6 +772,7 @@ const game = {
                     inputElement.focus();
                 }, 0);
             } else {
+                console.log('Updating existing completion text content.');
                 document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
                 document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
@@ -891,21 +883,8 @@ const game = {
                 document.getElementById('completion-summary-incorrect').textContent = `${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('completion-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
             }
-        },
-
-        updateButtonText() {
-            if (document.getElementById('undo-btn')) {
-                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-            }
-            if (document.getElementById('prev-btn')) {
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-            }
-            if (document.getElementById('next-btn')) {
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-            }
-            if (document.getElementById('back-to-menu-completion-btn')) {
-                document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
-            }
         }
+    }
+};
     }
 };
