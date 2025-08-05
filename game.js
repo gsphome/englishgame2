@@ -159,9 +159,10 @@ const game = {
             menuHtml += `
                 <button class="${colorClass} text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800 md:w-32 md:h-32 md:py-4 md:px-2" data-module-id="${module.id}">
                     <h2 class="text-[0.6rem] mb-0 font-bold md:text-lg md:mb-1">
-                        <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name}</span>
+                        <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name.replace('Flashcard: ', '').replace('Quiz: ', '').replace('Completion: ', '')}</span>
                     </h2>
                     <p class="text-[0.5rem] opacity-90 md:text-xs" id="module-description-${module.id}">
+                        <span class="text-xs">${module.gameMode === 'flashcard' ? '🧠' : module.gameMode === 'quiz' ? '❓' : '✍️'}</span>
             `;
         });
         menuHtml += `</div>`;
