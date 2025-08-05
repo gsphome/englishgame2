@@ -586,121 +586,121 @@ const learningModules = [
                 sentence: "When I started waitressing I needed help with carrying trays, but now I ______ them by myself.",
                 correct: "am used to carrying",
                 explanation: "The correct answer is 'am used to carrying'. This expresses a present habit or state that has become familiar.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "I ______ English every day, but now I don't have time.",
                 correct: "used to read",
                 explanation: "The correct answer is 'used to read'. 'Used to' + base form of the verb expresses a past habit or state that no longer exists.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "Don't worry, it is easy to learn this grammar. You ______ it in no time!",
                 correct: "will get used to",
                 explanation: "The correct answer is 'will get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/pronoun."
             },
             {
                 sentence: "I was surprised to see her running - she ______ when I knew her.",
                 correct: "didn't use to run",
                 explanation: "The correct answer is 'didn't use to run'. The negative form of 'used to' is 'didn't use to' + base form of the verb.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "When I had to take the train to work I ______ very early.",
                 correct: "used to get up",
                 explanation: "The correct answer is 'used to get up'. 'Used to' + base form of the verb expresses a past habit.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "When you were a teenager did you ______ to rap music?",
                 correct: "use to listen",
                 explanation: "The correct answer is 'use to listen'. In questions, 'did' is used with 'use to' + base form of the verb.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "She didn't ______ about fashion but now she spends a lot of money on clothes.",
                 correct: "use to care",
                 explanation: "The correct answer is 'use to care'. In negative sentences, 'didn't use to' + base form of the verb is used.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "I don't like revising for exams but I ______ it.",
                 correct: "am getting used to it",
                 explanation: "The correct answer is 'am getting used to it'. 'Am getting used to' expresses the ongoing process of becoming accustomed to something.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/pronoun."
             },
             {
                 sentence: "He ______ live in a small village, but now he lives in a big city.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "It took me a while, but I ______ waking up early for work.",
                 correct: "got used to",
                 explanation: "The correct answer is 'got used to'. 'Get used to' expresses the process of becoming accustomed to something.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "My grandmother ______ tell me stories every night.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "I ______ coffee in the morning, so I feel strange without it.",
                 correct: "am used to drinking",
                 explanation: "The correct answer is 'am used to drinking'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "Did you ______ play outside a lot when you were a child?",
                 correct: "use to",
                 explanation: "The correct answer is 'use to'. In questions, 'did' is used with 'use to' + base form of the verb.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + base form of the verb."
             },
             {
                 sentence: "She ______ eating spicy food, so she doesn't mind the chili.",
                 correct: "is used to",
                 explanation: "The correct answer is 'is used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "It's hard to ______ living in a new country.",
                 correct: "get used to",
                 explanation: "The correct answer is 'get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "They ______ have a dog, but it died last year.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "I ______ the noise from the street now; it doesn't bother me anymore.",
                 correct: "am used to",
                 explanation: "The correct answer is 'am used to'. 'Be used to' + noun/gerund expresses a present habit or state that has become familiar.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "He ______ smoke, but he quit five years ago.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit that no longer exists.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "You'll ______ the cold weather after a few weeks.",
                 correct: "get used to",
                 explanation: "The correct answer is 'get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             },
             {
                 sentence: "We ______ go to that restaurant every Friday.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit.",
-                tip: "Complete with 'used to' or 'be used to'."
+                tip: "Complete with '[-|get|be]' + used to' + noun/gerund."
             }
         ]
     }
