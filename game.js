@@ -46,6 +46,8 @@ const game = {
             MESSAGES.setLanguage(newLang);
             localStorage.setItem('appLang', newLang);
             this.toggleHamburgerMenu(false); // Close menu after language change
+            this.renderCurrentView(); // Re-render the current view to update text
+            this.updateMenuText(); // Explicitly call to update menu buttons
         });
 
         this.menuLogoutBtn.addEventListener('click', () => {
@@ -61,7 +63,10 @@ const game = {
 
         MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.renderCurrentView.bind(this));
-                MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
+        MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
+        MESSAGES.addListener(this.flashcard.updateButtonText.bind(this.flashcard)); // New listener for flashcard buttons
+        MESSAGES.addListener(this.quiz.updateButtonText.bind(this.quiz)); // New listener for quiz buttons
+        MESSAGES.addListener(this.completion.updateButtonText.bind(this.completion)); // New listener for completion buttons
 
         this.renderHeader();
         this.updateMenuText(); // Call explicitly after rendering header
@@ -115,10 +120,25 @@ const game = {
                 this.renderMenu();
                 break;
             case 'flashcard':
-                this.renderFlashcard(this.currentModule);
+                if (this.currentModule && this.flashcard.moduleData) {
+                    this.flashcard.render();
+                } else {
+                    this.renderFlashcard(this.currentModule);
+                }
                 break;
             case 'quiz':
-                this.renderQuiz(this.currentModule);
+                if (this.currentModule && this.quiz.moduleData) {
+                    this.quiz.render();
+                } else {
+                    this.renderQuiz(this.currentModule);
+                }
+                break;
+            case 'completion':
+                if (this.currentModule && this.completion.moduleData) {
+                    this.completion.render();
+                } else {
+                    this.renderCompletion(this.currentModule);
+                }
                 break;
         }
     },
@@ -331,6 +351,18 @@ const game = {
         currentIndex: 0,
         moduleData: null,
         appContainer: null,
+
+        updateButtonText() {
+            if (document.getElementById('prev-btn')) {
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            }
+            if (document.getElementById('next-btn')) {
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            }
+            if (document.getElementById('back-to-menu-flashcard-btn')) {
+                document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
+            }
+        },
 
         init(module) {
             this.currentIndex = 0;
@@ -656,6 +688,36 @@ const game = {
                 [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
+        },
+
+        updateButtonText() {
+            if (document.getElementById('undo-btn')) {
+                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            }
+            if (document.getElementById('prev-btn')) {
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            }
+            if (document.getElementById('next-btn')) {
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            }
+            if (document.getElementById('back-to-menu-quiz-btn')) {
+                document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
+            }
+        },
+
+        updateButtonText() {
+            if (document.getElementById('undo-btn')) {
+                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            }
+            if (document.getElementById('prev-btn')) {
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            }
+            if (document.getElementById('next-btn')) {
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            }
+            if (document.getElementById('back-to-menu-quiz-btn')) {
+                document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
+            }
         }
     },
 
@@ -688,35 +750,52 @@ const game = {
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
-            this.appContainer.innerHTML = `
-                <div id="completion-container" class="max-w-2xl mx-auto">
-                    <div class="text-center text-gray-600 mb-4" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                    <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <p class="text-2xl mb-6" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
-                        ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
-                        <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
-                        <div>
-                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
-                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+            if (!document.getElementById('completion-container')) {
+                this.appContainer.innerHTML = `
+                    <div id="completion-container" class="max-w-2xl mx-auto">
+                        <div class="text-center text-gray-600 mb-4" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <p class="text-2xl mb-6" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
+                            ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
+                            <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
+                        <div class="flex justify-between mt-4">
+                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
+                            <div>
+                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
+                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+                            </div>
+                        </div>
+                        <button id="back-to-menu-completion-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                     </div>
-                    <button id="back-to-menu-completion-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
-                </div>
-            `;
+                `;
 
-            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-            document.getElementById('next-btn').addEventListener('click', () => this.next());
-            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+                document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+                document.getElementById('next-btn').addEventListener('click', () => this.next());
+                document.getElementById('undo-btn').addEventListener('click', () => this.undo());
 
-            const inputElement = document.getElementById('completion-input');
-            setTimeout(() => {
+                const inputElement = document.getElementById('completion-input');
+                setTimeout(() => {
+                    inputElement.value = ''; // Clear the input field
+                    inputElement.focus();
+                }, 0);
+            } else {
+                document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+                document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+                document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
+                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+                document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
+                document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
+
+                const inputElement = document.getElementById('completion-input');
                 inputElement.value = ''; // Clear the input field
+                inputElement.disabled = false; // Enable input field
+                inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove color classes
                 inputElement.focus();
-            }, 0);
+            }
 
             const completionTipElement = document.getElementById('completion-tip');
             if (questionData.tip) {
@@ -811,6 +890,21 @@ const game = {
                 document.getElementById('completion-summary-correct').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct}`;
                 document.getElementById('completion-summary-incorrect').textContent = `${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('completion-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
+            }
+        },
+
+        updateButtonText() {
+            if (document.getElementById('undo-btn')) {
+                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            }
+            if (document.getElementById('prev-btn')) {
+                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            }
+            if (document.getElementById('next-btn')) {
+                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            }
+            if (document.getElementById('back-to-menu-completion-btn')) {
+                document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
             }
         }
     }
