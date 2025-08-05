@@ -7,6 +7,8 @@ const game = {
     currentView: null, // To keep track of the current active view (e.g., 'menu', 'flashcard', 'quiz')
     currentModule: null, // To keep track of the current module data
     randomMode: false, // New property for random mode
+    startX: 0,
+    startY: 0,
 
     toggleModal(show) {
         this.modal.classList.toggle('hidden', !show);
@@ -77,6 +79,7 @@ const game = {
         this.renderHeader();
         this.renderMenu();
         this.addKeyboardListeners();
+        this.addSwipeListeners();
     },
 
     updateMenuText() {
@@ -148,8 +151,8 @@ const game = {
 
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-        menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[22rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-2 mx-auto" style="max-width: 715px;">`; // Wrapper for scroll with border and custom width
-        menuHtml += `<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto w-fit">`;
+        menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[18rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" style="max-width: 600px;">`; // Wrapper for scroll with border and custom width
+        menuHtml += `<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
             const colorClass = colors[index % colors.length];
@@ -839,5 +842,58 @@ const game = {
                 document.getElementById('completion-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
             }
         }
+    },
+
+    addSwipeListeners() {
+        const appContainer = document.getElementById('app-container');
+        const SWIPE_THRESHOLD = 50; // pixels
+
+        appContainer.addEventListener('touchstart', (e) => {
+            this.startX = e.touches[0].clientX;
+            this.startY = e.touches[0].clientY;
+        });
+
+        appContainer.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+
+            const diffX = endX - this.startX;
+            const diffY = endY - this.startY;
+
+            // Determine if it's a horizontal or vertical swipe
+            if (Math.abs(diffX) > Math.abs(diffY)) { // Horizontal swipe
+                if (Math.abs(diffX) > SWIPE_THRESHOLD) {
+                    if (diffX > 0) { // Swiped right (prev)
+                        if (this.currentView === 'flashcard') {
+                            this.flashcard.prev();
+                        } else if (this.currentView === 'quiz') {
+                            this.quiz.prev();
+                        } else if (this.currentView === 'completion') {
+                            this.completion.prev();
+                        }
+                    } else { // Swiped left (next)
+                        if (this.currentView === 'flashcard') {
+                            this.flashcard.next();
+                        } else if (this.currentView === 'quiz') {
+                            const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
+                            if (optionsDisabled) {
+                                this.quiz.next();
+                            }
+                        } else if (this.currentView === 'completion') {
+                            const inputElement = document.getElementById('completion-input');
+                            if (inputElement && inputElement.disabled) {
+                                this.completion.next();
+                            }
+                        }
+                    }
+                }
+            } else { // Vertical swipe (for flashcard flip)
+                if (Math.abs(diffY) > SWIPE_THRESHOLD) {
+                    if (this.currentView === 'flashcard') {
+                        this.flashcard.flip();
+                    }
+                }
+            }
+        });
     }
 };
