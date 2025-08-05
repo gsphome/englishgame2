@@ -544,37 +544,37 @@ const learningModules = [
         name: 'Completion: Phrasal Verbs',
         gameMode: 'completion',
         data: [
-            { sentence: "She needs to brush _ on her Spanish before the trip.", correct: "up", explanation: "El phrasal verb 'brush up on' significa repasar o mejorar una habilidad que no has usado recientemente.", tip: "Complete the phrasal verb." },
-            { sentence: "They decided to call _ the wedding.", correct: "off", explanation: "El phrasal verb 'call off' significa cancelar.", tip: "Complete the phrasal verb." },
-            { sentence: "He came _ with a great idea for the campaign.", correct: "up", explanation: "El phrasal verb 'come up with' significa pensar en o sugerir una idea o plan.", tip: "Complete the phrasal verb." },
-            { sentence: "I can't put _ with his attitude anymore.", correct: "up", explanation: "El phrasal verb 'put up with' significa tolerar a alguien o algo desagradable.", tip: "Complete the phrasal verb." },
-            { sentence: "She takes _ her mother; they are very similar.", correct: "after", explanation: "El phrasal verb 'take after' significa parecerse a un familiar mayor.", tip: "Complete the phrasal verb." },
-            { sentence: "The negotiations broke _ without an agreement.", correct: "down", explanation: "El phrasal verb 'break down' puede significar dejar de funcionar o fracasar.", tip: "Complete the phrasal verb." },
-            { sentence: "I ran _ an old friend at the supermarket.", correct: "into", explanation: "El phrasal verb 'run into' significa encontrarse con alguien por casualidad.", tip: "Complete the phrasal verb." },
-            { sentence: "He promised to look _ my cat while I'm away.", correct: "after", explanation: "El phrasal verb 'look after' significa cuidar de alguien o algo.", tip: "Complete the phrasal verb." },
-            { sentence: "We need to get _ to the real issue here.", correct: "down", explanation: "El phrasal verb 'get down to' significa empezar a hacer o considerar algo seriamente.", tip: "Complete the phrasal verb." },
-            { sentence: "She finally got _ her fear of flying.", correct: "over", explanation: "El phrasal verb 'get over' significa recuperarse de una enfermedad, sorpresa o miedo.", tip: "Complete the phrasal verb." },
-            { sentence: "The company is looking _ new employees.", correct: "for", explanation: "El phrasal verb 'look for' significa buscar.", tip: "Complete the phrasal verb." },
-            { sentence: "Don't give _! You're almost there.", correct: "up", explanation: "El phrasal verb 'give up' significa rendirse o dejar de intentar.", tip: "Complete the phrasal verb." },
-            { sentence: "The plane will take _ in ten minutes.", correct: "off", explanation: "El phrasal verb 'take off' significa despegar (para aviones) o quitarse (ropa).", tip: "Complete the phrasal verb." },
-            { sentence: "It's cold, you should put _ a jacket.", correct: "on", explanation: "El phrasal verb 'put on' significa ponerse ropa.", tip: "Complete the phrasal verb." },
-            { sentence: "He turned _ the job offer because it didn't pay enough.", correct: "down", explanation: "El phrasal verb 'turn down' significa rechazar una oferta o bajar el volumen.", tip: "Complete the phrasal verb." },
-            { sentence: "They decided to break _ after a long relationship.", correct: "up", explanation: "El phrasal verb 'break up' significa terminar una relación.", tip: "Complete the phrasal verb." },
-            { sentence: "If you don't know the word, look it _ in the dictionary.", correct: "up", explanation: "El phrasal verb 'look up' significa buscar información en un diccionario o libro de referencia.", tip: "Complete the phrasal verb." },
-            { sentence: "Don't bring _ that topic again, it's too sensitive.", correct: "up", explanation: "El phrasal verb 'bring up' significa mencionar un tema o criar a un niño.", tip: "Complete the phrasal verb." },
-            { sentence: "Please go _ with your story, I'm listening.", correct: "on", explanation: "El phrasal verb 'go on' significa continuar o seguir.", tip: "Complete the phrasal verb." },
-            { sentence: "We need to set _ a meeting for next week.", correct: "up", explanation: "El phrasal verb 'set up' significa organizar o establecer algo.", tip: "Complete the phrasal verb." },
-            { sentence: "I hope everything works _ for you.", correct: "out", explanation: "El phrasal verb 'work out' significa resolver un problema o tener éxito.", tip: "Complete the phrasal verb." },
-            { sentence: "I came _ an old photo album while cleaning.", correct: "across", explanation: "El phrasal verb 'come across' significa encontrar algo o a alguien por casualidad.", tip: "Complete the phrasal verb." },
-            { sentence: "She needs to fill _ this form before she leaves.", correct: "in", explanation: "El phrasal verb 'fill in' o 'fill out' significa rellenar un formulario.", tip: "Complete the phrasal verb." },
-            { sentence: "He needs to cut _ on sugar if he wants to lose weight.", correct: "down", explanation: "El phrasal verb 'cut down on' significa reducir el consumo de algo.", tip: "Complete the phrasal verb." },
-            { sentence: "They decided to eat _ tonight instead of cooking.", correct: "out", explanation: "El phrasal verb 'eat out' significa comer fuera de casa.", tip: "Complete the phrasal verb." },
-            { sentence: "I need to pick _ my sister from the airport.", correct: "up", explanation: "El phrasal verb 'pick up' significa recoger a alguien.", tip: "Complete the phrasal verb." },
-            { sentence: "He needs to get _ of bed, it's already noon.", correct: "up", explanation: "El phrasal verb 'get up' significa levantarse.", tip: "Complete the phrasal verb." },
-            { sentence: "She needs to put _ her clothes after washing them.", correct: "away", explanation: "El phrasal verb 'put away' significa guardar algo en su lugar.", tip: "Complete the phrasal verb." },
-            { sentence: "He needs to throw _ his old shoes.", correct: "away", explanation: "El phrasal verb 'throw away' o 'throw out' significa desechar algo.", tip: "Complete the phrasal verb." },
-            { sentence: "I need to tidy _ my room before my parents arrive.", correct: "up", explanation: "El phrasal verb 'tidy up' significa ordenar o arreglar.", tip: "Complete the phrasal verb." },
-            { sentence: "She needs to switch _ the lights when she leaves the room.", correct: "off", explanation: "El phrasal verb 'switch off' significa apagar un aparato eléctrico.", tip: "Complete the phrasal verb." }
+            { sentence: "She needs to brush ______ on her Spanish before the trip.", correct: "up", explanation: "El phrasal verb 'brush up on' significa repasar o mejorar una habilidad que no has usado recientemente.", tip: "Complete the phrasal verb." },
+            { sentence: "They decided to call ______ the wedding.", correct: "off", explanation: "El phrasal verb 'call off' significa cancelar.", tip: "Complete the phrasal verb." },
+            { sentence: "He came ______ with a great idea for the campaign.", correct: "up", explanation: "El phrasal verb 'come up with' significa pensar en o sugerir una idea o plan.", tip: "Complete the phrasal verb." },
+            { sentence: "I can't put ______ with his attitude anymore.", correct: "up", explanation: "El phrasal verb 'put up with' significa tolerar a alguien o algo desagradable.", tip: "Complete the phrasal verb." },
+            { sentence: "She takes ______ her mother; they are very similar.", correct: "after", explanation: "El phrasal verb 'take after' significa parecerse a un familiar mayor.", tip: "Complete the phrasal verb." },
+            { sentence: "The negotiations broke ______ without an agreement.", correct: "down", explanation: "El phrasal verb 'break down' puede significar dejar de funcionar o fracasar.", tip: "Complete the phrasal verb." },
+            { sentence: "I ran ______ an old friend at the supermarket.", correct: "into", explanation: "El phrasal verb 'run into' significa encontrarse con alguien por casualidad.", tip: "Complete the phrasal verb." },
+            { sentence: "He promised to look ______ my cat while I'm away.", correct: "after", explanation: "El phrasal verb 'look after' significa cuidar de alguien o algo.", tip: "Complete the phrasal verb." },
+            { sentence: "We need to get ______ to the real issue here.", correct: "down", explanation: "El phrasal verb 'get down to' significa empezar a hacer o considerar algo seriamente.", tip: "Complete the phrasal verb." },
+            { sentence: "She finally got ______ her fear of flying.", correct: "over", explanation: "El phrasal verb 'get over' significa recuperarse de una enfermedad, sorpresa o miedo.", tip: "Complete the phrasal verb." },
+            { sentence: "The company is looking ______ new employees.", correct: "for", explanation: "El phrasal verb 'look for' significa buscar.", tip: "Complete the phrasal verb." },
+            { sentence: "Don't give ______! You're almost there.", correct: "up", explanation: "El phrasal verb 'give up' significa rendirse o dejar de intentar.", tip: "Complete the phrasal verb." },
+            { sentence: "The plane will take ______ in ten minutes.", correct: "off", explanation: "El phrasal verb 'take off' significa despegar (para aviones) o quitarse (ropa).", tip: "Complete the phrasal verb." },
+            { sentence: "It's cold, you should put ______ a jacket.", correct: "on", explanation: "El phrasal verb 'put on' significa ponerse ropa.", tip: "Complete the phrasal verb." },
+            { sentence: "He turned ______ the job offer because it didn't pay enough.", correct: "down", explanation: "El phrasal verb 'turn down' significa rechazar una oferta o bajar el volumen.", tip: "Complete the phrasal verb." },
+            { sentence: "They decided to break ______ after a long relationship.", correct: "up", explanation: "El phrasal verb 'break up' significa terminar una relación.", tip: "Complete the phrasal verb." },
+            { sentence: "If you don't know the word, look it ______ in the dictionary.", correct: "up", explanation: "El phrasal verb 'look up' significa buscar información en un diccionario o libro de referencia.", tip: "Complete the phrasal verb." },
+            { sentence: "Don't bring ______ that topic again, it's too sensitive.", correct: "up", explanation: "El phrasal verb 'bring up' significa mencionar un tema o criar a un niño.", tip: "Complete the phrasal verb." },
+            { sentence: "Please go ______ with your story, I'm listening.", correct: "on", explanation: "El phrasal verb 'go on' significa continuar o seguir.", tip: "Complete the phrasal verb." },
+            { sentence: "We need to set ______ a meeting for next week.", correct: "up", explanation: "El phrasal verb 'set up' significa organizar o establecer algo.", tip: "Complete the phrasal verb." },
+            { sentence: "I hope everything works ______ for you.", correct: "out", explanation: "El phrasal verb 'work out' significa resolver un problema o tener éxito.", tip: "Complete the phrasal verb." },
+            { sentence: "I came ______ an old photo album while cleaning.", correct: "across", explanation: "El phrasal verb 'come across' significa encontrar algo o a alguien por casualidad.", tip: "Complete the phrasal verb." },
+            { sentence: "She needs to fill ______ this form before she leaves.", correct: "in", explanation: "El phrasal verb 'fill in' o 'fill out' significa rellenar un formulario.", tip: "Complete the phrasal verb." },
+            { sentence: "He needs to cut ______ on sugar if he wants to lose weight.", correct: "down", explanation: "El phrasal verb 'cut down on' significa reducir el consumo de algo.", tip: "Complete the phrasal verb." },
+            { sentence: "They decided to eat ______ tonight instead of cooking.", correct: "out", explanation: "El phrasal verb 'eat out' significa comer fuera de casa.", tip: "Complete the phrasal verb." },
+            { sentence: "I need to pick ______ my sister from the airport.", correct: "up", explanation: "El phrasal verb 'pick up' significa recoger a alguien.", tip: "Complete the phrasal verb." },
+            { sentence: "He needs to get ______ of bed, it's already noon.", correct: "up", explanation: "El phrasal verb 'get up' significa levantarse.", tip: "Complete the phrasal verb." },
+            { sentence: "She needs to put ______ her clothes after washing them.", correct: "away", explanation: "El phrasal verb 'put away' significa guardar algo en su lugar.", tip: "Complete the phrasal verb." },
+            { sentence: "He needs to throw ______ his old shoes.", correct: "away", explanation: "El phrasal verb 'throw away' o 'throw out' significa desechar algo.", tip: "Complete the phrasal verb." },
+            { sentence: "I need to tidy ______ my room before my parents arrive.", correct: "up", explanation: "El phrasal verb 'tidy up' significa ordenar o arreglar.", tip: "Complete the phrasal verb." },
+            { sentence: "She needs to switch ______ the lights when she leaves the room.", correct: "off", explanation: "El phrasal verb 'switch off' significa apagar un aparato eléctrico.", tip: "Complete the phrasal verb." }
         ]
     },
     {
@@ -583,121 +583,121 @@ const learningModules = [
         gameMode: 'completion',
         data: [
             {
-                sentence: "When I started waitressing I needed help with carrying trays, but now I _ them by myself.",
+                sentence: "When I started waitressing I needed help with carrying trays, but now I ______ them by myself.",
                 correct: "am used to carrying",
                 explanation: "The correct answer is 'am used to carrying'. This expresses a present habit or state that has become familiar.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "I _ English every day, but now I don't have time.",
+                sentence: "I ______ English every day, but now I don't have time.",
                 correct: "used to read",
                 explanation: "The correct answer is 'used to read'. 'Used to' + base form of the verb expresses a past habit or state that no longer exists.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "Don't worry, it is easy to learn this grammar. You _ it in no time!",
+                sentence: "Don't worry, it is easy to learn this grammar. You ______ it in no time!",
                 correct: "will get used to",
                 explanation: "The correct answer is 'will get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "I was surprised to see her running - she _ when I knew her.",
+                sentence: "I was surprised to see her running - she ______ when I knew her.",
                 correct: "didn't use to run",
                 explanation: "The correct answer is 'didn't use to run'. The negative form of 'used to' is 'didn't use to' + base form of the verb.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "When I had to take the train to work I _ very early.",
+                sentence: "When I had to take the train to work I ______ very early.",
                 correct: "used to get up",
                 explanation: "The correct answer is 'used to get up'. 'Used to' + base form of the verb expresses a past habit.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "When you were a teenager did you _ to rap music?",
+                sentence: "When you were a teenager did you ______ to rap music?",
                 correct: "use to listen",
                 explanation: "The correct answer is 'use to listen'. In questions, 'did' is used with 'use to' + base form of the verb.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "She didn't _ about fashion but now she spends a lot of money on clothes.",
+                sentence: "She didn't ______ about fashion but now she spends a lot of money on clothes.",
                 correct: "use to care",
                 explanation: "The correct answer is 'use to care'. In negative sentences, 'didn't use to' + base form of the verb is used.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "I don't like revising for exams but I _ it.",
+                sentence: "I don't like revising for exams but I ______ it.",
                 correct: "am getting used to it",
                 explanation: "The correct answer is 'am getting used to it'. 'Am getting used to' expresses the ongoing process of becoming accustomed to something.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "He _ live in a small village, but now he lives in a big city.",
+                sentence: "He ______ live in a small village, but now he lives in a big city.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "It took me a while, but I _ waking up early for work.",
+                sentence: "It took me a while, but I ______ waking up early for work.",
                 correct: "got used to",
                 explanation: "The correct answer is 'got used to'. 'Get used to' expresses the process of becoming accustomed to something.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "My grandmother _ tell me stories every night.",
+                sentence: "My grandmother ______ tell me stories every night.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "I _ coffee in the morning, so I feel strange without it.",
+                sentence: "I ______ coffee in the morning, so I feel strange without it.",
                 correct: "am used to drinking",
                 explanation: "The correct answer is 'am used to drinking'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "Did you _ play outside a lot when you were a child?",
+                sentence: "Did you ______ play outside a lot when you were a child?",
                 correct: "use to",
                 explanation: "The correct answer is 'use to'. In questions, 'did' is used with 'use to' + base form of the verb.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "She _ eating spicy food, so she doesn't mind the chili.",
+                sentence: "She ______ eating spicy food, so she doesn't mind the chili.",
                 correct: "is used to",
                 explanation: "The correct answer is 'is used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "It's hard to _ living in a new country.",
+                sentence: "It's hard to ______ living in a new country.",
                 correct: "get used to",
                 explanation: "The correct answer is 'get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "They _ have a dog, but it died last year.",
+                sentence: "They ______ have a dog, but it died last year.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "I _ the noise from the street now; it doesn't bother me anymore.",
+                sentence: "I ______ the noise from the street now; it doesn't bother me anymore.",
                 correct: "am used to",
                 explanation: "The correct answer is 'am used to'. 'Be used to' + noun/gerund expresses a present habit or state that has become familiar.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "He _ smoke, but he quit five years ago.",
+                sentence: "He ______ smoke, but he quit five years ago.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit that no longer exists.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "You'll _ the cold weather after a few weeks.",
+                sentence: "You'll ______ the cold weather after a few weeks.",
                 correct: "get used to",
                 explanation: "The correct answer is 'get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
                 tip: "Complete with 'used to' or 'be used to'."
             },
             {
-                sentence: "We _ go to that restaurant every Friday.",
+                sentence: "We ______ go to that restaurant every Friday.",
                 correct: "used to",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit.",
                 tip: "Complete with 'used to' or 'be used to'."

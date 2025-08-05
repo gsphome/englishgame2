@@ -651,39 +651,28 @@ const game = {
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
-            if (!document.getElementById('completion-container')) {
-                this.appContainer.innerHTML = `
-                    <div id="completion-container" class="max-w-2xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                        <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
-                        <div class="bg-white p-8 rounded-lg shadow-md">
-                            <p class="text-2xl mb-6" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
-                            <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
-                        </div>
-                        <div class="flex justify-between mt-4">
-                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
-                            <div>
-                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
-                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
-                            </div>
-                        </div>
-                        <button id="back-to-menu-completion-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+            this.appContainer.innerHTML = `
+                <div id="completion-container" class="max-w-2xl mx-auto">
+                    <div class="text-center text-gray-600 mb-4" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                    <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <p class="text-2xl mb-6" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
+                        <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                     </div>
-                `;
+                    <div class="flex justify-between mt-4">
+                        <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
+                        <div>
+                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
+                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+                        </div>
+                    </div>
+                    <button id="back-to-menu-completion-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                </div>
+            `;
 
-                document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-                document.getElementById('next-btn').addEventListener('click', () => this.next());
-                document.getElementById('undo-btn').addEventListener('click', () => this.undo());
-            } else {
-                document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
-                document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
-                document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
-                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-                document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
-                document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
-            }
+            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+            document.getElementById('next-btn').addEventListener('click', () => this.next());
+            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
 
             const inputElement = document.getElementById('completion-input');
             setTimeout(() => {
