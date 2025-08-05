@@ -501,6 +501,7 @@ const game = {
                         <div class="text-center text-gray-600 mb-4" id="quiz-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <p class="text-2xl mb-6" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
+                            ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="quiz-tip">Tip: ${questionData.tip}</p>` : ''}
                             <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
                             <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
@@ -526,6 +527,25 @@ const game = {
                 document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
                 document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
+                const quizTipElement = document.getElementById('quiz-tip');
+                if (questionData.tip) {
+                    if (quizTipElement) {
+                        quizTipElement.textContent = `Tip: ${questionData.tip}`;
+                        quizTipElement.classList.remove('hidden');
+                    } else {
+                        // If the element doesn't exist, create and insert it
+                        const feedbackContainer = document.getElementById('feedback-container');
+                        const newTipElement = document.createElement('p');
+                        newTipElement.id = 'quiz-tip';
+                        newTipElement.className = 'text-lg text-gray-500 mb-4';
+                        newTipElement.textContent = `Tip: ${questionData.tip}`;
+                        feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
+                    }
+                } else {
+                    if (quizTipElement) {
+                        quizTipElement.classList.add('hidden');
+                    }
+                }
                 document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
                 document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
                 document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
@@ -674,6 +694,7 @@ const game = {
                     <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                     <div class="bg-white p-8 rounded-lg shadow-md">
                         <p class="text-2xl mb-6" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
+                        ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
                         <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                     </div>
                     <div class="flex justify-between mt-4">
@@ -696,6 +717,26 @@ const game = {
                 inputElement.value = ''; // Clear the input field
                 inputElement.focus();
             }, 0);
+
+            const completionTipElement = document.getElementById('completion-tip');
+            if (questionData.tip) {
+                if (completionTipElement) {
+                    completionTipElement.textContent = `Tip: ${questionData.tip}`;
+                    completionTipElement.classList.remove('hidden');
+                } else {
+                    // If the element doesn't exist, create and insert it
+                    const feedbackContainer = document.getElementById('feedback-container');
+                    const newTipElement = document.createElement('p');
+                    newTipElement.id = 'completion-tip';
+                    newTipElement.className = 'text-lg text-gray-500 mb-4';
+                    newTipElement.textContent = `Tip: ${questionData.tip}`;
+                    feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
+                }
+            } else {
+                if (completionTipElement) {
+                    completionTipElement.classList.add('hidden');
+                }
+            }
         },
 
         handleAnswer() {
