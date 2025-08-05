@@ -234,6 +234,12 @@ const game = {
                     } else {
                         this.renderMenu(); // Go back to main menu
                     }
+                } else if (e.key === '.') {
+                    const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
+                    MESSAGES.setLanguage(newLang);
+                    localStorage.setItem('appLang', newLang);
+                    this.renderCurrentView();
+                    this.updateMenuText();
                 } else if (this.currentView === 'menu') { // Check if main menu is active
                     const pressedKey = e.key.toUpperCase();
                     const moduleButtons = document.querySelectorAll('[data-module-id]');
