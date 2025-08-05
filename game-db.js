@@ -43,7 +43,8 @@ const learningModules = [
             { en: "Assume", es: "Asumir", ipa: "/əˈsuːm/", example: "Don't assume anything.", example_es: "No asumas nada." },
             { en: "Authority", es: "Autoridad", ipa: "/əˈθɔːrəti/", example: "He has the authority to make decisions.", example_es: "Él tiene la autoridad para tomar decisiones." },
             { en: "Available", es: "Disponible", ipa: "/əˈveɪləbl/", example: "The information is available online.", example_es: "La información está disponible en línea." },
-            { en: "Aware", es: "Consciente", ipa: "/əˈweər/", example: "Are you aware of the risks?", example_es: "¿Eres consciente de los riesgos?" }
+            { en: "Aware", es: "Consciente", ipa: "/əˈweər/", example: "Are you aware of the risks?", example_es: "¿Eres consciente de los riesgos?" },
+            { en: "Challenge", es: "Desafío", ipa: "/ˈtʃælɪndʒ/", example: "This project presents a new challenge.", example_es: "Este proyecto presenta un nuevo desafío." }
         ]
     },
     {
@@ -89,7 +90,8 @@ const learningModules = [
             { en: "Waste management", es: "Gestión de residuos", ipa: "/weɪst ˈmænɪdʒmənt/", example: "Proper waste management is essential for a clean city.", example_es: "Una gestión adecuada de los residuos es esencial para una ciudad limpia." },
             { en: "Water scarcity", es: "Escasez de agua", ipa: "/ˈwɔːtər ˈskersəti/", example: "Water scarcity is a growing concern in many parts of the world.", example_es: "La escasez de agua es una preocupación creciente en muchas partes del mundo." },
             { en: "Wildlife", es: "Vida silvestre", ipa: "/ˈwaɪldlaɪf/", example: "The national park is home to diverse wildlife.", example_es: "El parque nacional es hogar de una vida silvestre diversa." },
-            { en: "Zero waste", es: "Cero residuos", ipa: "/ˈzɪəroʊ weɪst/", example: "The goal of zero waste aims to eliminate all waste.", example_es: "El objetivo de cero residuos busca eliminar todos los residuos." }
+            { en: "Zero waste", es: "Cero residuos", ipa: "/ˈzɪəroʊ weɪst/", example: "The goal of zero waste aims to eliminate all waste.", example_es: "El objetivo de cero residuos busca eliminar todos los residuos." },
+            { en: "Biodegradable", es: "Biodegradable", ipa: "/ˌbaɪoʊdɪˈɡreɪdəbl/", example: "Biodegradable products break down naturally.", example_es: "Los productos biodegradables se descomponen de forma natural." }
         ]
     },
     {
@@ -135,7 +137,8 @@ const learningModules = [
             { en: "Robotics", es: "Robótica", ipa: "/roʊˈbɒtɪks/", example: "Robotics is an exciting field of engineering.", example_es: "La robótica es un campo emocionante de la ingeniería." },
             { en: "Server", es: "Servidor", ipa: "/ˈsɜːrvər/", example: "The website is hosted on a powerful server.", example_es: "El sitio web está alojado en un potente servidor." },
             { en: "Virtualization", es: "Virtualización", ipa: "/ˌvɜːrtʃuəlaɪˈzeɪʃn/", example: "Virtualization allows multiple operating systems to run on one machine.", example_es: "La virtualización permite que múltiples sistemas operativos se ejecuten en una máquina." },
-            { en: "Wearable technology", es: "Tecnología ponible", ipa: "/ˈweərəbl tekˈnɒlədʒi/", example: "Smartwatches are a popular form of wearable technology.", example_es: "Los relojes inteligentes son una forma popular de tecnología ponible." }
+            { en: "Wearable technology", es: "Tecnología ponible", ipa: "/ˈweərəbl tekˈnɒlədʒi/", example: "Smartwatches are a popular form of wearable technology.", example_es: "Los relojes inteligentes son una forma popular de tecnología ponible." },
+            { en: "Augmented reality", es: "Realidad aumentada", ipa: "/ˌɔːɡmentɪd riˈæləti/", example: "Augmented reality apps overlay digital information onto the real world.", example_es: "Las aplicaciones de realidad aumentada superponen información digital al mundo real." }
         ]
     },
     {
@@ -181,7 +184,8 @@ const learningModules = [
             { en: "Regulation", es: "Regulación", ipa: "/ˌreɡjuˈleɪʃn/", example: "Government regulation can affect businesses.", example_es: "La regulación gubernamental puede afectar a las empresas." },
             { en: "Shareholder", es: "Accionista", ipa: "/ˈʃerhoʊldər/", example: "Shareholders will vote on the proposal.", example_es: "Los accionistas votarán sobre la propuesta." },
             { en: "Strategy", es: "Estrategia", ipa: "/ˈstrætədʒi/", example: "The company needs a new business strategy.", example_es: "La empresa necesita una nueva estrategia de negocio." },
-            { en: "Taxation", es: "Impuestos", ipa: "/tækˈseɪʃn/", example: "Taxation policies can influence economic growth.", example_es: "Las políticas fiscales pueden influir en el crecimiento económico." }
+            { en: "Taxation", es: "Impuestos", ipa: "/tækˈseɪʃn/", example: "Taxation policies can influence economic growth.", example_es: "Las políticas fiscales pueden influir en el crecimiento económico." },
+            { en: "Workforce", es: "Mano de obra", ipa: "/ˈwɜːrkfɔːrs/", example: "The company is expanding its workforce.", example_es: "La empresa está expandiendo su mano de obra." }
         ]
     },
     {
@@ -227,7 +231,8 @@ const learningModules = [
             { en: "Fold the clothes", es: "Doblar la ropa", ipa: "/foʊld ðə kloʊðz/", example: "Can you help me fold the clothes?", example_es: "¿Puedes ayudarme a doblar la ropa?" },
             { en: "Put away the clothes", es: "Guardar la ropa", ipa: "/pʊt əˈweɪ ðə kloʊðz/", example: "I need to put away the clean clothes.", example_es: "Necesito guardar la ropa limpia." },
             { en: "Iron the clothes", es: "Planchar la ropa", ipa: "/ˈaɪərn ðə kloʊðz/", example: "I have to iron my shirt for tomorrow.", example_es: "Tengo que planchar mi camisa para mañana." },
-            { en: "Sweep the floor", es: "Barrer el suelo", ipa: "/swiːp ðə flɔːr/", example: "Please sweep the kitchen floor.", example_es: "Por favor, barre el suelo de la cocina." }
+            { en: "Sweep the floor", es: "Barrer el suelo", ipa: "/swiːp ðə flɔːr/", example: "Please sweep the kitchen floor.", example_es: "Por favor, barre el suelo de la cocina." },
+            { en: "Mow the lawn", es: "Cortar el césped", ipa: "/moʊ ðə lɔːn/", example: "It's your turn to mow the lawn.", example_es: "Es tu turno de cortar el césped." }
         ]
     },
     {
@@ -273,7 +278,8 @@ const learningModules = [
             { en: "Find a way around", es: "Encontrar una forma de evitar", ipa: "/faɪnd ə weɪ əˈraʊnd/", example: "We need to find a way around this obstacle.", example_es: "Necesitamos encontrar una forma de evitar este obstáculo." },
             { en: "Get to grips with", es: "Dominar / Entender a fondo", ipa: "/ɡet tuː ɡrɪps wɪð/", example: "He's trying to get to grips with the new software.", example_es: "Está intentando dominar el nuevo software." },
             { en: "Pinpoint", es: "Identificar con precisión", ipa: "/ˈpɪnpɔɪnt/", example: "We need to pinpoint the cause of the problem.", example_es: "Necesitamos identificar con precisión la causa del problema." },
-            { en: "Troubleshoot", es: "Solucionar problemas", ipa: "/ˈtrʌblʃuːt/", example: "I need to troubleshoot the network connection.", example_es: "Necesito solucionar problemas con la conexión de red." }
+            { en: "Troubleshoot", es: "Solucionar problemas", ipa: "/ˈtrʌblʃuːt/", example: "I need to troubleshoot the network connection.", example_es: "Necesito solucionar problemas con la conexión de red." },
+            { en: "Come up with", es: "Idear / Ocurrirse", ipa: "/kʌm ʌp wɪð/", example: "She came up with a brilliant idea.", example_es: "Se le ocurrió una idea brillante." }
         ]
     },
     {
@@ -319,7 +325,8 @@ const learningModules = [
             { en: "Unzip", es: "Bajar la cremallera", ipa: "/ʌnˈzɪp/", example: "Unzip your jacket, it's warm in here.", example_es: "Baja la cremallera de tu chaqueta, hace calor aquí." },
             { en: "Wear out", es: "Desgastar / Gastar (ropa)", ipa: "/weər aʊt/", example: "I've worn out my favorite jeans.", example_es: "He desgastado mis vaqueros favoritos." },
             { en: "Zip down", es: "Bajar la cremallera", ipa: "/zɪp daʊn/", example: "Zip down your jacket if you're hot.", example_es: "Baja la cremallera de tu chaqueta si tienes calor." },
-            { en: "Zip up", es: "Subir la cremallera", ipa: "/zɪp ʌp/", example: "Zip up your jacket, it's cold.", example_es: "Sube la cremallera de tu chaqueta, hace frío." }
+            { en: "Zip up", es: "Subir la cremallera", ipa: "/zɪp ʌp/", example: "Zip up your jacket, it's cold.", example_es: "Sube la cremallera de tu chaqueta, hace frío." },
+            { en: "Dress down", es: "Vestir informal", ipa: "/dres daʊn/", example: "It's a casual office, so you can dress down.", example_es: "Es una oficina informal, así que puedes vestir informal." }
         ]
     },
     {
@@ -365,7 +372,8 @@ const learningModules = [
             { en: "Be beside yourself", es: "Estar fuera de sí", ipa: "/biː bɪˈsaɪd jɔːrˈself/", example: "She was beside herself with grief.", example_es: "Estaba fuera de sí de dolor." },
             { en: "Have a soft spot for", es: "Tener debilidad por", ipa: "/hæv ə sɒft spɒt fɔːr/", example: "I have a soft spot for old romantic movies.", example_es: "Tengo debilidad por las viejas películas románticas." },
             { en: "Be in two minds", es: "Estar indeciso", ipa: "/biː ɪn tuː maɪndz/", example: "I'm in two minds about whether to go or not.", example_es: "Estoy indeciso sobre si ir o no." },
-            { en: "Have a whale of a time", es: "Pasárselo en grande", ipa: "/hæv ə weɪl ɒv ə taɪm/", example: "We had a whale of a time at the party.", example_es: "Nos lo pasamos en grande en la fiesta." }
+            { en: "Have a whale of a time", es: "Pasárselo en grande", ipa: "/hæv ə weɪl ɒv ə taɪm/", example: "We had a whale of a time at the party.", example_es: "Nos lo pasamos en grande en la fiesta." },
+            { en: "Be on top of the world", es: "Estar en la cima del mundo", ipa: "/bi ɒn tɒp ɒv ðə wɜːrld/", example: "She was on top of the world after winning the competition.", example_es: "Estaba en la cima del mundo después de ganar la competición." }
         ]
     },
     {
@@ -411,7 +419,8 @@ const learningModules = [
             { en: "Up and running", es: "En funcionamiento", ipa: "/ʌp ænd ˈrʌnɪŋ/", example: "The new system is finally up and running.", example_es: "El nuevo sistema finalmente está en funcionamiento." },
             { en: "Win-win situation", es: "Situación en la que todos ganan", ipa: "/wɪn wɪn ˌsɪtʃuˈeɪʃn/", example: "It's a win-win situation for everyone involved.", example_es: "Es una situación en la que todos ganan." },
             { en: "Zero in on", es: "Centrarse en", ipa: "/ˈzɪəroʊ ɪn ɒn/", example: "We need to zero in on the main problem.", example_es: "Necesitamos centrarnos en el problema principal." },
-            { en: "Be a cut above", es: "Ser superior a", ipa: "/biː ə kʌt əˈbʌv/", example: "Her performance was a cut above the rest.", example_es: "Su actuación fue superior a la del resto." }
+            { en: "Be a cut above", es: "Ser superior a", ipa: "/biː ə kʌt əˈbʌv/", example: "Her performance was a cut above the rest.", example_es: "Su actuación fue superior a la del resto." },
+            { en: "Be on the same page", es: "Estar de acuerdo", ipa: "/bi ɒn ðə seɪm peɪdʒ/", example: "We need to be on the same page before we proceed.", example_es: "Necesitamos estar de acuerdo antes de continuar." }
         ]
     },
     {
@@ -457,7 +466,8 @@ const learningModules = [
             { en: "Save time", es: "Ahorrar tiempo", ipa: "/seɪv taɪm/", example: "Taking the shortcut will save us time.", example_es: "Tomar el atajo nos ahorrará tiempo." },
             { en: "Take your time", es: "Tómate tu tiempo", ipa: "/teɪk jɔːr taɪm/", example: "Don't rush, take your time.", example_es: "No te apresures, tómate tu tiempo." },
             { en: "Time is money", es: "El tiempo es oro", ipa: "/taɪm ɪz ˈmʌni/", example: "In business, time is money.", example_es: "En los negocios, el tiempo es oro." },
-            { en: "Time flies", es: "El tiempo vuela", ipa: "/taɪm flaɪz/", example: "Time flies when you're having fun.", example_es: "El tiempo vuela cuando te diviertes." }
+            { en: "Time flies", es: "El tiempo vuela", ipa: "/taɪm flaɪz/", example: "Time flies when you're having fun.", example_es: "El tiempo vuela cuando te diviertes." },
+            { en: "Once in a lifetime", es: "Una vez en la vida", ipa: "/wʌns ɪn ə ˈlaɪftaɪm/", example: "This is a once in a lifetime opportunity.", example_es: "Esta es una oportunidad única en la vida." }
         ]
     },
     {
@@ -503,7 +513,8 @@ const learningModules = [
             { en: "The early bird catches the worm", es: "Al que madruga, Dios le ayuda", ipa: "/ði ˈɜːrli bɜːrd ˈkætʃɪz ðə wɜːrm/", example: "Get there early, the early bird catches the worm.", example_es: "Llega temprano, al que madruga, Dios le ayuda." },
             { en: "The lion's share", es: "La mayor parte", ipa: "/ðə ˈlaɪənz ʃer/", example: "He got the lion's share of the inheritance.", example_es: "Él obtuvo la mayor parte de la herencia." },
             { en: "Wild goose chase", es: "Búsqueda inútil", ipa: "/waɪld ɡuːs tʃeɪs/", example: "We went on a wild goose chase looking for that rare book.", example_es: "Fuimos en una búsqueda inútil buscando ese libro raro." },
-            { en: "Wolf in sheep's clothing", es: "Lobo con piel de cordero", ipa: "/wʊlf ɪn ʃiːps ˈkloʊðɪŋ/", example: "Be careful, he's a wolf in sheep's clothing.", example_es: "Ten cuidado, es un lobo con piel de cordero." }
+            { en: "Wolf in sheep's clothing", es: "Lobo con piel de cordero", ipa: "/wʊlf ɪn ʃiːps ˈkloʊðɪŋ/", example: "Be careful, he's a wolf in sheep's clothing.", example_es: "Ten cuidado, es un lobo con piel de cordero." },
+            { en: "To be a busy bee", es: "Ser una persona muy ocupada", ipa: "/tuː bi ə ˈbɪzi biː/", example: "To be a busy bee.", example_es: "Ser una persona muy ocupada." }
         ]
     },
     // Idioms Quiz Module
@@ -831,7 +842,8 @@ const learningModules = [
             { sentence: "Should you _ any problems, contact us immediately.", options: ["encounter", "encountered", "to encounter", "are encountering"], correct: "encounter", explanation: "Forma invertida y más formal del primer condicional." },
             { sentence: "If I _ rich, I would buy a mansion.", options: ["am", "was", "were", "be"], correct: "were", explanation: "Segundo condicional para una situación hipotética irreal." },
             { sentence: "They _ if they had known about the party.", options: ["would come", "will come", "came", "would have come"], correct: "would have come", explanation: "Tercer condicional para una situación hipotética en el pasado." },
-            { sentence: "As long as you _ your best, that's all that matters.", options: ["do", "did", "will do", "are doing"], correct: "do", explanation: "'As long as' se usa con el presente simple para establecer una condición." }
+            { sentence: "As long as you _ your best, that's all that matters.", options: ["do", "did", "will do", "are doing"], correct: "do", explanation: "'As long as' se usa con el presente simple para establecer una condición." },
+            { sentence: "If I _ a bird, I would fly.", options: ["am", "was", "were", "be"], correct: "were", explanation: "Segundo condicional para una situación hipotética irreal." }
         ]
     },
     {
