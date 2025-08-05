@@ -24,7 +24,26 @@ const learningModules = [
             { en: "Structure", es: "Estructura", ipa: "/ˈstrʌktʃər/", example: "The structure of the building is very complex.", example_es: "La estructura del edificio es muy compleja." },
             { en: "Theory", es: "Teoría", ipa: "/ˈθɪəri/", example: "This is just a theory, it hasn't been proven.", example_es: "Esto es solo una teoría, no ha sido probada." },
             { en: "Variable", es: "Variable", ipa: "/ˈveəriəbl/", example: "There are too many variables to consider.", example_es: "Hay demasiadas variables a considerar." },
-            { en: "Trend", es: "Tendencia", ipa: "/trend/", example: "There is a growing trend towards online shopping.", example_es: "Hay una tendencia creciente hacia las compras en línea." }
+            { en: "Trend", es: "Tendencia", ipa: "/trend/", example: "There is a growing trend towards online shopping.", example_es: "Hay una tendencia creciente hacia las compras en línea." },
+            { en: "Access", es: "Acceso", ipa: "/ˈækses/", example: "You need a password to access the system.", example_es: "Necesitas una contraseña para acceder al sistema." },
+            { en: "Achieve", es: "Lograr", ipa: "/əˈtʃiːv/", example: "She worked hard to achieve her goals.", example_es: "Ella trabajó duro para lograr sus metas." },
+            { en: "Acquire", es: "Adquirir", ipa: "/əˈkwaɪər/", example: "The company acquired a new subsidiary.", example_es: "La empresa adquirió una nueva subsidiaria." },
+            { en: "Adapt", es: "Adaptar", ipa: "/əˈdæpt/", example: "It's important to adapt to new situations.", example_es: "Es importante adaptarse a nuevas situaciones." },
+            { en: "Adjust", es: "Ajustar", ipa: "/əˈdʒʌst/", example: "You need to adjust the settings.", example_es: "Necesitas ajustar la configuración." },
+            { en: "Administer", es: "Administrar", ipa: "/ədˈmɪnɪstər/", example: "He administers the daily operations of the office.", example_es: "Él administra las operaciones diarias de la oficina." },
+            { en: "Affect", es: "Afectar", ipa: "/əˈfekt/", example: "The new policy will affect everyone.", example_es: "La nueva política afectará a todos." },
+            { en: "Allocate", es: "Asignar", ipa: "/ˈæləkeɪt/", example: "We need to allocate resources efficiently.", example_es: "Necesitamos asignar los recursos de manera eficiente." },
+            { en: "Alter", es: "Alterar", ipa: "/ˈɔːltər/", example: "The design was altered to fit the new requirements.", example_es: "El diseño fue alterado para ajustarse a los nuevos requisitos." },
+            { en: "Apparent", es: "Aparente / Evidente", ipa: "/əˈpærənt/", example: "It was apparent that he was tired.", example_es: "Era evidente que estaba cansado." },
+            { en: "Approach", es: "Enfoque / Abordar", ipa: "/əˈproʊtʃ/", example: "We need a new approach to this problem.", example_es: "Necesitamos un nuevo enfoque para este problema." },
+            { en: "Area", es: "Área", ipa: "/ˈeəriə/", example: "This is a restricted area.", example_es: "Esta es un área restringida." },
+            { en: "Aspect", es: "Aspecto", ipa: "/ˈæspekt/", example: "Consider every aspect of the situation.", example_es: "Considera cada aspecto de la situación." },
+            { en: "Assess", es: "Evaluar", ipa: "/əˈses/", example: "We need to assess the damage.", example_es: "Necesitamos evaluar el daño." },
+            { en: "Assist", es: "Ayudar / Asistir", ipa: "/əˈsɪst/", example: "Can I assist you with anything?", example_es: "¿Puedo ayudarte en algo?" },
+            { en: "Assume", es: "Asumir", ipa: "/əˈsuːm/", example: "Don't assume anything.", example_es: "No asumas nada." },
+            { en: "Authority", es: "Autoridad", ipa: "/əˈθɔːrəti/", example: "He has the authority to make decisions.", example_es: "Él tiene la autoridad para tomar decisiones." },
+            { en: "Available", es: "Disponible", ipa: "/əˈveɪləbl/", example: "The information is available online.", example_es: "La información está disponible en línea." },
+            { en: "Aware", es: "Consciente", ipa: "/əˈweər/", example: "Are you aware of the risks?", example_es: "¿Eres consciente de los riesgos?" }
         ]
     },
     {
@@ -51,7 +70,26 @@ const learningModules = [
             { en: "Contamination", es: "Contaminación", ipa: "/kənˌtæmɪˈneɪʃn/", example: "The contamination of the river was a disaster.", example_es: "La contaminación del río fue un desastre." },
             { en: "Erosion", es: "Erosión", ipa: "/ɪˈroʊʒn/", example: "Soil erosion is a serious problem for farmers.", example_es: "La erosión del suelo es un problema grave para los agricultores." },
             { en: "Greenhouse effect", es: "Efecto invernadero", ipa: "/ˈɡriːnhaʊs ɪˌfekt/", example: "The greenhouse effect traps heat in the atmosphere.", example_es: "El efecto invernadero atrapa el calor en la atmósfera." },
-            { en: "Preservation", es: "Preservación", ipa: "/ˌprezərˈveɪʃn/", example: "The preservation of ancient forests is vital.", example_es: "La preservación de los bosques antiguos es vital." }
+            { en: "Preservation", es: "Preservación", ipa: "/ˌprezərˈveɪʃn/", example: "The preservation of ancient forests is vital.", example_es: "La preservación de los bosques antiguos es vital." },
+            { en: "Atmosphere", es: "Atmósfera", ipa: "/ˈætməsfɪər/", example: "The Earth's atmosphere protects us from harmful radiation.", example_es: "La atmósfera de la Tierra nos protege de la radiación dañina." },
+            { en: "Climate", es: "Clima", ipa: "/ˈklaɪmət/", example: "The climate in this region is changing rapidly.", example_es: "El clima en esta región está cambiando rápidamente." },
+            { en: "Desertification", es: "Desertificación", ipa: "/dɪˌzɜːrtɪfɪˈkeɪʃn/", example: "Desertification is a serious problem in many dry areas.", example_es: "La desertificación es un problema grave en muchas zonas secas." },
+            { en: "Drought", es: "Sequía", ipa: "/draʊt/", example: "The country is experiencing a severe drought.", example_es: "El país está experimentando una sequía severa." },
+            { en: "Ecology", es: "Ecología", ipa: "/ɪˈkɒlədʒi/", example: "Ecology is the study of how living things interact with their environment.", example_es: "La ecología es el estudio de cómo los seres vivos interactúan con su medio ambiente." },
+            { en: "Endangered", es: "En peligro de extinción", ipa: "/ɪnˈdeɪndʒərd/", example: "Many species are endangered due to habitat loss.", example_es: "Muchas especies están en peligro de extinción debido a la pérdida de hábitat." },
+            { en: "Extinction", es: "Extinción", ipa: "/ɪkˈstɪŋkʃn/", example: "The extinction of dinosaurs occurred millions of years ago.", example_es: "La extinción de los dinosaurios ocurrió hace millones de años." },
+            { en: "Glacier", es: "Glaciar", ipa: "/ˈɡleɪʃər/", example: "Glaciers are melting at an alarming rate.", example_es: "Los glaciares se están derritiendo a un ritmo alarmante." },
+            { en: "Landfill", es: "Vertedero", ipa: "/ˈlændfɪl/", example: "Most of our waste goes to landfill sites.", example_es: "La mayor parte de nuestros residuos va a los vertederos." },
+            { en: "Ozone layer", es: "Capa de ozono", ipa: "/ˈoʊzoʊn ˈleɪər/", example: "The ozone layer protects us from ultraviolet radiation.", example_es: "La capa de ozono nos protege de la radiación ultravioleta." },
+            { en: "Pollutant", es: "Contaminante", ipa: "/pəˈluːtənt/", example: "Factories release many pollutants into the air.", example_es: "Las fábricas liberan muchos contaminantes al aire." },
+            { en: "Reforestation", es: "Reforestación", ipa: "/ˌriːfɒrɪˈsteɪʃn/", example: "Reforestation efforts are crucial to combat deforestation.", example_es: "Los esfuerzos de reforestación son cruciales para combatir la deforestación." },
+            { en: "Smog", es: "Niebla tóxica / Smog", ipa: "/smɒɡ/", example: "The city is often covered in smog.", example_es: "La ciudad a menudo está cubierta de smog." },
+            { en: "Solar power", es: "Energía solar", ipa: "/ˈsoʊlər ˈpaʊər/", example: "Many homes now use solar power to generate electricity.", example_es: "Muchas casas ahora usan energía solar para generar electricidad." },
+            { en: "Toxic", es: "Tóxico", ipa: "/ˈtɒksɪk/", example: "Toxic waste can harm the environment.", example_es: "Los residuos tóxicos pueden dañar el medio ambiente." },
+            { en: "Waste management", es: "Gestión de residuos", ipa: "/weɪst ˈmænɪdʒmənt/", example: "Proper waste management is essential for a clean city.", example_es: "Una gestión adecuada de los residuos es esencial para una ciudad limpia." },
+            { en: "Water scarcity", es: "Escasez de agua", ipa: "/ˈwɔːtər ˈskersəti/", example: "Water scarcity is a growing concern in many parts of the world.", example_es: "La escasez de agua es una preocupación creciente en muchas partes del mundo." },
+            { en: "Wildlife", es: "Vida silvestre", ipa: "/ˈwaɪldlaɪf/", example: "The national park is home to diverse wildlife.", example_es: "El parque nacional es hogar de una vida silvestre diversa." },
+            { en: "Zero waste", es: "Cero residuos", ipa: "/ˈzɪəroʊ weɪst/", example: "The goal of zero waste aims to eliminate all waste.", example_es: "El objetivo de cero residuos busca eliminar todos los residuos." }
         ]
     },
     {
@@ -78,7 +116,26 @@ const learningModules = [
             { en: "Virtual reality", es: "Realidad virtual", ipa: "/ˌvɜːrtʃuəl riˈæləti/", example: "Virtual reality games are becoming very popular.", example_es: "Los juegos de realidad virtual se están volviendo muy populares." },
             { en: "Biotechnology", es: "Biotecnología", ipa: "/ˌbaɪoʊtekˈnɒlədʒi/", example: "Biotechnology has led to new medical treatments.", example_es: "La biotecnología ha dado lugar a nuevos tratamientos médicos." },
             { en: "E-commerce", es: "Comercio electrónico", ipa: "/ˈiː kɒmɜːrs/", example: "E-commerce has changed the way people shop.", example_es: "El comercio electrónico ha cambiado la forma en que la gente compra." },
-            { en: "Cloud computing", es: "Computación en la nube", ipa: "/ˌklaʊd kəmˈpjuːtɪŋ/", example: "Many companies now use cloud computing for data storage.", example_es: "Muchas empresas ahora usan la computación en la nube para el almacenamiento de datos." }
+            { en: "Cloud computing", es: "Computación en la nube", ipa: "/ˌklaʊd kəmˈpjuːtɪŋ/", example: "Many companies now use cloud computing for data storage.", example_es: "Muchas empresas ahora usan la computación en la nube para el almacenamiento de datos." },
+            { en: "Big data", es: "Grandes datos", ipa: "/ˌbɪɡ ˈdeɪtə/", example: "Big data analytics is transforming industries.", example_es: "El análisis de grandes datos está transformando las industrias." },
+            { en: "Blockchain", es: "Cadena de bloques", ipa: "/ˈblɒktʃeɪn/", example: "Blockchain technology is behind cryptocurrencies.", example_es: "La tecnología blockchain está detrás de las criptomonedas." },
+            { en: "Coding", es: "Programación", ipa: "/ˈkoʊdɪŋ/", example: "Learning coding is essential for software development.", example_es: "Aprender programación es esencial para el desarrollo de software." },
+            { en: "Connectivity", es: "Conectividad", ipa: "/ˌkɒnekˈtɪvəti/", example: "High-speed connectivity is crucial for remote work.", example_es: "La conectividad de alta velocidad es crucial para el trabajo remoto." },
+            { en: "Data privacy", es: "Privacidad de datos", ipa: "/ˈdeɪtə ˈprɪvəsi/", example: "Data privacy is a major concern for online users.", example_es: "La privacidad de datos es una preocupación importante para los usuarios en línea." },
+            { en: "Digital transformation", es: "Transformación digital", ipa: "/ˌdɪdʒɪtl trænsfərˈmeɪʃn/", example: "Many companies are undergoing digital transformation.", example_es: "Muchas empresas están experimentando una transformación digital." },
+            { en: "Disruptive technology", es: "Tecnología disruptiva", ipa: "/dɪsˈrʌptɪv tekˈnɒlədʒi/", example: "Artificial intelligence is a disruptive technology.", example_es: "La inteligencia artificial es una tecnología disruptiva." },
+            { en: "Encryption", es: "Cifrado", ipa: "/ɪnˈkrɪpʃn/", example: "Encryption is used to protect sensitive information.", example_es: "El cifrado se utiliza para proteger la información sensible." },
+            { en: "Firmware", es: "Firmware", ipa: "/ˈfɜːrmweər/", example: "You might need to update the device's firmware.", example_es: "Es posible que necesites actualizar el firmware del dispositivo." },
+            { en: "Geolocation", es: "Geolocalización", ipa: "/ˌdʒiːoʊloʊˈkeɪʃn/", example: "Geolocation services are used in many mobile apps.", example_es: "Los servicios de geolocalización se utilizan en muchas aplicaciones móviles." },
+            { en: "Hacking", es: "Hacking", ipa: "/ˈhækɪŋ/", example: "The company was a victim of a major hacking attack.", example_es: "La empresa fue víctima de un importante ataque de hacking." },
+            { en: "Internet of Things (IoT)", es: "Internet de las cosas (IoT)", ipa: "/ˈɪntərnet ɒv θɪŋz/", example: "The Internet of Things connects everyday objects to the internet.", example_es: "El Internet de las cosas conecta objetos cotidianos a internet." },
+            { en: "Machine learning", es: "Aprendizaje automático", ipa: "/məˈʃiːn ˈlɜːrnɪŋ/", example: "Machine learning is a subset of artificial intelligence.", example_es: "El aprendizaje automático es un subconjunto de la inteligencia artificial." },
+            { en: "Open source", es: "Código abierto", ipa: "/ˌoʊpən ˈsɔːrs/", example: "Many developers contribute to open source projects.", example_es: "Muchos desarrolladores contribuyen a proyectos de código abierto." },
+            { en: "Platform", es: "Plataforma", ipa: "/ˈplætfɔːrm/", example: "The new software runs on multiple platforms.", example_es: "El nuevo software se ejecuta en múltiples plataformas." },
+            { en: "Robotics", es: "Robótica", ipa: "/roʊˈbɒtɪks/", example: "Robotics is an exciting field of engineering.", example_es: "La robótica es un campo emocionante de la ingeniería." },
+            { en: "Server", es: "Servidor", ipa: "/ˈsɜːrvər/", example: "The website is hosted on a powerful server.", example_es: "El sitio web está alojado en un potente servidor." },
+            { en: "Virtualization", es: "Virtualización", ipa: "/ˌvɜːrtʃuəlaɪˈzeɪʃn/", example: "Virtualization allows multiple operating systems to run on one machine.", example_es: "La virtualización permite que múltiples sistemas operativos se ejecuten en una máquina." },
+            { en: "Wearable technology", es: "Tecnología ponible", ipa: "/ˈweərəbl tekˈnɒlədʒi/", example: "Smartwatches are a popular form of wearable technology.", example_es: "Los relojes inteligentes son una forma popular de tecnología ponible." }
         ]
     },
     {
@@ -105,7 +162,26 @@ const learningModules = [
             { en: "Demand", es: "Demanda", ipa: "/dɪˈmænd/", example: "There is a high demand for these products.", example_es: "Hay una alta demanda de estos productos." },
             { en: "Supply", es: "Oferta", ipa: "/səˈplaɪ/", example: "The supply of raw materials is limited.", example_es: "La oferta de materias primas es limitada." },
             { en: "Inflation", es: "Inflación", ipa: "/ɪnˈfleɪʃn/", example: "Inflation is a major concern for the economy.", example_es: "La inflación es una gran preocupación para la economía." },
-            { en: "Deflation", es: "Deflación", ipa: "/diːˈfleɪʃn/", example: "Deflation can be a sign of a weak economy.", example_es: "La deflación puede ser una señal de una economía débil." }
+            { en: "Deflation", es: "Deflación", ipa: "/diːˈfleɪʃn/", example: "Deflation can be a sign of a weak economy.", example_es: "La deflación puede ser una señal de una economía débil." },
+            { en: "Capital", es: "Capital", ipa: "/ˈkæpɪtl/", example: "The company needs more capital to expand.", example_es: "La empresa necesita más capital para expandirse." },
+            { en: "Commerce", es: "Comercio", ipa: "/ˈkɒmɜːrs/", example: "International commerce is vital for global economy.", example_es: "El comercio internacional es vital para la economía global." },
+            { en: "Consumer behavior", es: "Comportamiento del consumidor", ipa: "/kənˈsuːmər bɪˈheɪvjər/", example: "Understanding consumer behavior is key to successful marketing.", example_es: "Comprender el comportamiento del consumidor es clave para un marketing exitoso." },
+            { en: "Corporation", es: "Corporación", ipa: "/ˌkɔːrpəˈreɪʃn/", example: "She works for a large multinational corporation.", example_es: "Ella trabaja para una gran corporación multinacional." },
+            { en: "Economy", es: "Economía", ipa: "/ɪˈkɒnəmi/", example: "The global economy is facing many challenges.", example_es: "La economía global se enfrenta a muchos desafíos." },
+            { en: "Export", es: "Exportar", ipa: "/ɪkˈspɔːrt/", example: "The country exports a lot of agricultural products.", example_es: "El país exporta muchos productos agrícolas." },
+            { en: "Finance", es: "Finanzas", ipa: "/faɪˈnæns/", example: "He works in the finance sector.", example_es: "Él trabaja en el sector financiero." },
+            { en: "Globalization", es: "Globalización", ipa: "/ˌɡloʊbəlaɪˈzeɪʃn/", example: "Globalization has led to increased interconnectedness.", example_es: "La globalización ha llevado a una mayor interconexión." },
+            { en: "Import", es: "Importar", ipa: "/ˈɪmpɔːrt/", example: "The country imports most of its oil.", example_es: "El país importa la mayor parte de su petróleo." },
+            { en: "Industry", es: "Industria", ipa: "/ˈɪndəstri/", example: "The automotive industry is undergoing major changes.", example_es: "La industria automotriz está experimentando grandes cambios." },
+            { en: "Innovation", es: "Innovación", ipa: "/ˌɪnəˈveɪʃn/", example: "Innovation is key to staying competitive.", example_es: "La innovación es clave para mantenerse competitivo." },
+            { en: "Management", es: "Gestión / Dirección", ipa: "/ˈmænɪdʒmənt/", example: "Good management is essential for a successful business.", example_es: "Una buena gestión es esencial para un negocio exitoso." },
+            { en: "Market share", es: "Cuota de mercado", ipa: "/ˈmɑːrkɪt ʃer/", example: "The company aims to increase its market share.", example_es: "La empresa tiene como objetivo aumentar su cuota de mercado." },
+            { en: "Productivity", es: "Productividad", ipa: "/ˌprɒdʌkˈtɪvəti/", example: "New technologies can increase productivity.", example_es: "Las nuevas tecnologías pueden aumentar la productividad." },
+            { en: "Recession", es: "Recesión", ipa: "/rɪˈseʃn/", example: "The country is heading into a recession.", example_es: "El país se dirige a una recesión." },
+            { en: "Regulation", es: "Regulación", ipa: "/ˌreɡjuˈleɪʃn/", example: "Government regulation can affect businesses.", example_es: "La regulación gubernamental puede afectar a las empresas." },
+            { en: "Shareholder", es: "Accionista", ipa: "/ˈʃerhoʊldər/", example: "Shareholders will vote on the proposal.", example_es: "Los accionistas votarán sobre la propuesta." },
+            { en: "Strategy", es: "Estrategia", ipa: "/ˈstrætədʒi/", example: "The company needs a new business strategy.", example_es: "La empresa necesita una nueva estrategia de negocio." },
+            { en: "Taxation", es: "Impuestos", ipa: "/tækˈseɪʃn/", example: "Taxation policies can influence economic growth.", example_es: "Las políticas fiscales pueden influir en el crecimiento económico." }
         ]
     },
     {
@@ -132,7 +208,26 @@ const learningModules = [
             { en: "Wash up", es: "Fregar los platos", ipa: "/wɒʃ ʌp/", example: "She's been washing up the dishes.", example_es: "Ha estado fregando los platos." },
             { en: "Hang out", es: "Tender (ropa)", ipa: "/hæŋ aʊt/", example: "He's been hanging out his clothes to dry.", example_es: "Ha estado tendiendo su ropa para que se seque." },
             { en: "Put away", es: "Guardar", ipa: "/pʊt əˈweɪ/", example: "I need to put away the shopping.", example_es: "Necesito guardar la compra." },
-            { en: "Switch off", es: "Apagar", ipa: "/swɪtʃ ɒf/", example: "She's been switching off the lights when she leaves a room.", example_es: "Ha estado apagando las luces cuando sale de una habitación." }
+            { en: "Switch off", es: "Apagar", ipa: "/swɪtʃ ɒf/", example: "She's been switching off the lights when she leaves a room.", example_es: "Ha estado apagando las luces cuando sale de una habitación." },
+            { en: "Do the dishes", es: "Fregar los platos", ipa: "/duː ðə ˈdɪʃɪz/", example: "It's your turn to do the dishes.", example_es: "Es tu turno de fregar los platos." },
+            { en: "Do the laundry", es: "Hacer la colada", ipa: "/duː ðə ˈlɔːndri/", example: "I need to do the laundry this weekend.", example_es: "Necesito hacer la colada este fin de semana." },
+            { en: "Make the bed", es: "Hacer la cama", ipa: "/meɪk ðə bed/", example: "Please make your bed before you leave.", example_es: "Por favor, haz tu cama antes de irte." },
+            { en: "Take out the trash", es: "Sacar la basura", ipa: "/teɪk aʊt ðə træʃ/", example: "Don't forget to take out the trash.", example_es: "No olvides sacar la basura." },
+            { en: "Vacuum the floor", es: "Aspirar el suelo", ipa: "/ˈvækjuːm ðə flɔːr/", example: "I vacuumed the floor this morning.", example_es: "Aspiré el suelo esta mañana." },
+            { en: "Mop the floor", es: "Fregar el suelo", ipa: "/mɒp ðə flɔːr/", example: "She mopped the kitchen floor.", example_es: "Ella fregó el suelo de la cocina." },
+            { en: "Dust the furniture", es: "Quitar el polvo a los muebles", ipa: "/dʌst ðə ˈfɜːrnɪtʃər/", example: "I need to dust the furniture.", example_es: "Necesito quitar el polvo a los muebles." },
+            { en: "Water the plants", es: "Regar las plantas", ipa: "/ˈwɔːtər ðə plænts/", example: "Remember to water the plants.", example_es: "Recuerda regar las plantas." },
+            { en: "Feed the pet", es: "Alimentar a la mascota", ipa: "/fiːd ðə pet/", example: "Have you fed the dog yet?", example_es: "¿Ya has alimentado al perro?" },
+            { en: "Go grocery shopping", es: "Ir a hacer la compra", ipa: "/ɡoʊ ˈɡroʊsəri ˈʃɒpɪŋ/", example: "I need to go grocery shopping after work.", example_es: "Necesito ir a hacer la compra después del trabajo." },
+            { en: "Cook dinner", es: "Cocinar la cena", ipa: "/kʊk ˈdɪnər/", example: "What are we cooking for dinner tonight?", example_es: "¿Qué vamos a cocinar para cenar esta noche?" },
+            { en: "Set the table", es: "Poner la mesa", ipa: "/set ðə ˈteɪbl/", example: "Can you help me set the table?", example_es: "¿Puedes ayudarme a poner la mesa?" },
+            { en: "Clear the table", es: "Quitar la mesa", ipa: "/klɪər ðə ˈteɪbl/", example: "After dinner, we need to clear the table.", example_es: "Después de cenar, necesitamos quitar la mesa." },
+            { en: "Load the dishwasher", es: "Cargar el lavavajillas", ipa: "/loʊd ðə ˈdɪʃwɒʃər/", example: "Please load the dishwasher.", example_es: "Por favor, carga el lavavajillas." },
+            { en: "Unload the dishwasher", es: "Vaciar el lavavajillas", ipa: "/ʌnˈloʊd ðə ˈdɪʃwɒʃər/", example: "I'll unload the dishwasher.", example_es: "Yo vaciaré el lavavajillas." },
+            { en: "Fold the clothes", es: "Doblar la ropa", ipa: "/foʊld ðə kloʊðz/", example: "Can you help me fold the clothes?", example_es: "¿Puedes ayudarme a doblar la ropa?" },
+            { en: "Put away the clothes", es: "Guardar la ropa", ipa: "/pʊt əˈweɪ ðə kloʊðz/", example: "I need to put away the clean clothes.", example_es: "Necesito guardar la ropa limpia." },
+            { en: "Iron the clothes", es: "Planchar la ropa", ipa: "/ˈaɪərn ðə kloʊðz/", example: "I have to iron my shirt for tomorrow.", example_es: "Tengo que planchar mi camisa para mañana." },
+            { en: "Sweep the floor", es: "Barrer el suelo", ipa: "/swiːp ðə flɔːr/", example: "Please sweep the kitchen floor.", example_es: "Por favor, barre el suelo de la cocina." }
         ]
     },
     {
@@ -159,7 +254,26 @@ const learningModules = [
             { en: "Smooth over", es: "Suavizar / Limar", ipa: "/smuːð ˈoʊvər/", example: "We need to smooth over the problems before we can launch the product.", example_es: "Necesitamos suavizar los problemas antes de poder lanzar el producto." },
             { en: "Get your head around", es: "Entender / Asimilar", ipa: "/ɡet jɔːr hed əˈraʊnd/", example: "She's been trying to get her head around the problem.", example_es: "Ha estado intentando asimilar el problema." },
             { en: "Get to grips with", es: "Dominar / Entender a fondo", ipa: "/ɡet tuː ɡrɪps wɪð/", example: "He's been trying to get to grips with the problem.", example_es: "Ha estado intentando dominar el problema." },
-            { en: "Hammer out", es: "Negociar / Acordar", ipa: "/ˈhæmər aʊt/", example: "We need to hammer out an agreement.", example_es: "Necesitamos negociar un acuerdo." }
+            { en: "Hammer out", es: "Negociar / Acordar", ipa: "/ˈhæmər aʊt/", example: "We need to hammer out an agreement.", example_es: "Necesitamos negociar un acuerdo." },
+            { en: "Address a problem", es: "Abordar un problema", ipa: "/əˈdres ə ˈprɒbləm/", example: "We need to address this problem immediately.", example_es: "Necesitamos abordar este problema de inmediato." },
+            { en: "Come up against", es: "Encontrarse con / Enfrentarse a", ipa: "/kʌm ʌp əˈɡenst/", example: "We came up against a lot of resistance.", example_es: "Nos encontramos con mucha resistencia." },
+            { en: "Deal with", es: "Lidiar con / Ocuparse de", ipa: "/diːl wɪð/", example: "How do you deal with stress?", example_es: "¿Cómo lidias con el estrés?" },
+            { en: "Face up to", es: "Afrontar / Enfrentarse a", ipa: "/feɪs ʌp tuː/", example: "You need to face up to your responsibilities.", example_es: "Necesitas afrontar tus responsabilidades." },
+            { en: "Get over", es: "Superar / Recuperarse de", ipa: "/ɡet ˈoʊvər/", example: "It took her a long time to get over the illness.", example_es: "Le tomó mucho tiempo recuperarse de la enfermedad." },
+            { en: "Look into", es: "Investigar / Examinar", ipa: "/lʊk ˈɪntuː/", example: "The police are looking into the matter.", example_es: "La policía está investigando el asunto." },
+            { en: "Make head or tail of", es: "Entender / Comprender", ipa: "/meɪk hed ɔːr teɪl ɒv/", example: "I can't make head or tail of these instructions.", example_es: "No puedo entender estas instrucciones." },
+            { en: "Patch up", es: "Remendar / Solucionar (un problema)", ipa: "/pætʃ ʌp/", example: "They managed to patch up their differences.", example_es: "Lograron solucionar sus diferencias." },
+            { en: "Resolve", es: "Resolver", ipa: "/rɪˈzɒlv/", example: "We need to resolve this conflict peacefully.", example_es: "Necesitamos resolver este conflicto pacíficamente." },
+            { en: "Sort out", es: "Solucionar / Organizar", ipa: "/sɔːrt aʊt/", example: "I need to sort out my finances.", example_es: "Necesito organizar mis finanzas." },
+            { en: "Tackle", es: "Abordar / Afrontar", ipa: "/ˈtækl/", example: "We need to tackle the problem of climate change.", example_es: "Necesitamos abordar el problema del cambio climático." },
+            { en: "Think through", es: "Pensar detenidamente", ipa: "/θɪŋk θruː/", example: "You need to think through your decision carefully.", example_es: "Necesitas pensar detenidamente tu decisión." },
+            { en: "Work out", es: "Resolver / Calcular", ipa: "/wɜːrk aʊt/", example: "We need to work out a solution.", example_es: "Necesitamos encontrar una solución." },
+            { en: "Brainstorm", es: "Lluvia de ideas", ipa: "/ˈbreɪnstɔːrm/", example: "Let's brainstorm some ideas for the new project.", example_es: "Hagamos una lluvia de ideas para el nuevo proyecto." },
+            { en: "Come to terms with", es: "Aceptar / Asimilar", ipa: "/kʌm tuː tɜːrmz wɪð/", example: "She's still coming to terms with her loss.", example_es: "Todavía está asimilando su pérdida." },
+            { en: "Find a way around", es: "Encontrar una forma de evitar", ipa: "/faɪnd ə weɪ əˈraʊnd/", example: "We need to find a way around this obstacle.", example_es: "Necesitamos encontrar una forma de evitar este obstáculo." },
+            { en: "Get to grips with", es: "Dominar / Entender a fondo", ipa: "/ɡet tuː ɡrɪps wɪð/", example: "He's trying to get to grips with the new software.", example_es: "Está intentando dominar el nuevo software." },
+            { en: "Pinpoint", es: "Identificar con precisión", ipa: "/ˈpɪnpɔɪnt/", example: "We need to pinpoint the cause of the problem.", example_es: "Necesitamos identificar con precisión la causa del problema." },
+            { en: "Troubleshoot", es: "Solucionar problemas", ipa: "/ˈtrʌblʃuːt/", example: "I need to troubleshoot the network connection.", example_es: "Necesito solucionar problemas con la conexión de red." }
         ]
     },
     {
@@ -186,7 +300,26 @@ const learningModules = [
             { en: "Kick off", es: "Quitarse (zapatos)", ipa: "/kɪk ɒf/", example: "She's been kicking off her shoes.", example_es: "Se ha estado quitando los zapatos." },
             { en: "Pull up", es: "Subir (ropa)", ipa: "/pʊl ʌp/", example: "He needs to pull up his socks.", example_es: "Necesita subirse los calcetines." },
             { en: "Slip out of", es: "Quitarse (ropa fácilmente)", ipa: "/slɪp aʊt ɒv/", example: "She's been slipping out of her wet clothes.", example_es: "Se ha estado quitando la ropa mojada fácilmente." },
-            { en: "Let out", es: "Ensanchar (traje)", ipa: "/let aʊt/", example: "He needs to have his suit let out.", example_es: "Necesita que le ensanchen el traje." }
+            { en: "Let out", es: "Ensanchar (traje)", ipa: "/let aʊt/", example: "He needs to have his suit let out.", example_es: "Necesita que le ensanchen el traje." },
+            { en: "Accessorize", es: "Complementar / Accesorizar", ipa: "/əkˈsesəraɪz/", example: "She loves to accessorize her outfits with scarves and jewelry.", example_es: "Le encanta complementar sus atuendos con bufandas y joyas." },
+            { en: "Button up", es: "Abrocharse (botones)", ipa: "/ˈbʌtn ʌp/", example: "Button up your coat, it's cold outside.", example_es: "Abróchate el abrigo, hace frío fuera." },
+            { en: "Change into", es: "Cambiarse a (ropa)", ipa: "/tʃeɪndʒ ˈɪntuː/", example: "I need to change into something more comfortable.", example_es: "Necesito cambiarme a algo más cómodo." },
+            { en: "Dress down", es: "Vestir informal", ipa: "/dres daʊn/", example: "It's a casual office, so you can dress down.", example_es: "Es una oficina informal, así que puedes vestir informal." },
+            { en: "Fasten up", es: "Abrochar / Sujetar", ipa: "/ˈfɑːsn ʌp/", example: "Fasten up your seatbelt before we start.", example_es: "Abróchate el cinturón antes de que empecemos." },
+            { en: "Get dressed", es: "Vestirse", ipa: "/ɡet drest/", example: "I need to get dressed for work.", example_es: "Necesito vestirme para el trabajo." },
+            { en: "Get undressed", es: "Desvestirse", ipa: "/ɡet ʌnˈdrest/", example: "He got undressed and went to bed.", example_es: "Se desvistió y se fue a la cama." },
+            { en: "Go with", es: "Combinar con", ipa: "/ɡoʊ wɪð/", example: "That shirt doesn't go with your trousers.", example_es: "Esa camisa no combina con tus pantalones." },
+            { en: "Hang up", es: "Colgar (ropa)", ipa: "/hæŋ ʌp/", example: "Please hang up your coat in the closet.", example_es: "Por favor, cuelga tu abrigo en el armario." },
+            { en: "Lace up", es: "Atarse (cordones)", ipa: "/leɪs ʌp/", example: "Lace up your boots before you go hiking.", example_es: "Átate las botas antes de ir de excursión." },
+            { en: "Match", es: "Hacer juego / Combinar", ipa: "/mætʃ/", example: "Her shoes match her bag perfectly.", example_es: "Sus zapatos combinan perfectamente con su bolso." },
+            { en: "Pull on", es: "Ponerse (rápidamente)", ipa: "/pʊl ɒn/", example: "She pulled on a sweater as it was getting cold.", example_es: "Se puso un suéter rápidamente porque estaba haciendo frío." },
+            { en: "Slip on", es: "Ponerse (fácilmente)", ipa: "/slɪp ɒn/", example: "He slipped on his shoes and left.", example_es: "Se puso los zapatos fácilmente y se fue." },
+            { en: "Take off", es: "Quitarse (ropa)", ipa: "/teɪk ɒf/", example: "Please take off your shoes before entering the house.", example_es: "Por favor, quítate los zapatos antes de entrar a la casa." },
+            { en: "Unbutton", es: "Desabrochar", ipa: "/ʌnˈbʌtn/", example: "He unbuttoned his shirt.", example_es: "Se desabrochó la camisa." },
+            { en: "Unzip", es: "Bajar la cremallera", ipa: "/ʌnˈzɪp/", example: "Unzip your jacket, it's warm in here.", example_es: "Baja la cremallera de tu chaqueta, hace calor aquí." },
+            { en: "Wear out", es: "Desgastar / Gastar (ropa)", ipa: "/weər aʊt/", example: "I've worn out my favorite jeans.", example_es: "He desgastado mis vaqueros favoritos." },
+            { en: "Zip down", es: "Bajar la cremallera", ipa: "/zɪp daʊn/", example: "Zip down your jacket if you're hot.", example_es: "Baja la cremallera de tu chaqueta si tienes calor." },
+            { en: "Zip up", es: "Subir la cremallera", ipa: "/zɪp ʌp/", example: "Zip up your jacket, it's cold.", example_es: "Sube la cremallera de tu chaqueta, hace frío." }
         ]
     },
     // Idioms Quiz Module
@@ -334,6 +467,139 @@ const learningModules = [
                 options: ["clumsy or awkward at dancing", "missing a foot", "wearing two left shoes", "a good dancer"],
                 correct: "clumsy or awkward at dancing",
                 explanation: "To have 'two left feet' means to be clumsy or awkward, especially when dancing."
+            },
+            {
+                sentence: "She always <span class=\"font-bold text-blue-500\">gets cold feet</span> before a big presentation.",
+                idiom: "gets cold feet",
+                options: ["becomes nervous or afraid", "feels cold in her feet", "gets sick", "runs away"],
+                correct: "becomes nervous or afraid",
+                explanation: "To 'get cold feet' means to become nervous or afraid to do something you had planned."
+            },
+            {
+                sentence: "I'm so hungry I could <span class=\"font-bold text-blue-500\">eat a horse</span>.",
+                idiom: "eat a horse",
+                options: ["eat a lot of food", "eat an animal", "feel sick", "go to sleep"],
+                correct: "eat a lot of food",
+                explanation: "To 'eat a horse' means to be extremely hungry."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">pulling my leg</span>, so I never know when he's serious.",
+                idiom: "pulling my leg",
+                options: ["joking with me", "hurting me", "helping me", "ignoring me"],
+                correct: "joking with me",
+                explanation: "To 'pull someone's leg' means to tease or joke with them."
+            },
+            {
+                sentence: "Don't worry, it's <span class=\"font-bold text-blue-500\">not rocket science</span>.",
+                idiom: "not rocket science",
+                options: ["not difficult to understand", "very complicated", "a scientific experiment", "a space mission"],
+                correct: "not difficult to understand",
+                explanation: "If something is 'not rocket science', it means it's not difficult to understand or do."
+            },
+            {
+                sentence: "She passed the exam <span class=\"font-bold text-blue-500\">with flying colors</span>.",
+                idiom: "with flying colors",
+                options: ["very easily and successfully", "with colorful flags", "with great difficulty", "with a lot of help"],
+                correct: "very easily and successfully",
+                explanation: "To pass 'with flying colors' means to pass very easily and successfully."
+            },
+            {
+                sentence: "He's been <span class=\"font-bold text-blue-500\">burning the midnight oil</span> to finish his project.",
+                idiom: "burning the midnight oil",
+                options: ["working late into the night", "wasting electricity", "setting things on fire", "sleeping soundly"],
+                correct: "working late into the night",
+                explanation: "To 'burn the midnight oil' means to work or study late into the night."
+            },
+            {
+                sentence: "I'm <span class=\"font-bold text-blue-500\">all ears</span>, tell me what happened.",
+                idiom: "all ears",
+                options: ["eager to listen", "having big ears", "ignoring you", "feeling tired"],
+                correct: "eager to listen",
+                explanation: "To be 'all ears' means to be eager to hear what someone has to say."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">on cloud nine</span> when he's with her.",
+                idiom: "on cloud nine",
+                options: ["extremely happy", "flying in an airplane", "feeling sad", "confused"],
+                correct: "extremely happy",
+                explanation: "To be 'on cloud nine' means to be extremely happy."
+            },
+            {
+                sentence: "She has a <span class=\"font-bold text-blue-500\">heart of gold</span>.",
+                idiom: "heart of gold",
+                options: ["a very kind and generous nature", "a valuable possession", "a strong heart", "a selfish attitude"],
+                correct: "a very kind and generous nature",
+                explanation: "To have a 'heart of gold' means to be very kind and generous."
+            },
+            {
+                sentence: "Don't <span class=\"font-bold text-blue-500\">jump to conclusions</span>.",
+                idiom: "jump to conclusions",
+                options: ["make a decision too quickly", "jump high", "think carefully", "avoid making decisions"],
+                correct: "make a decision too quickly",
+                explanation: "To 'jump to conclusions' means to make a decision or judgment too quickly without having all the facts."
+            },
+            {
+                sentence: "It's time to <span class=\"font-bold text-blue-500\">face the music</span>.",
+                idiom: "face the music",
+                options: ["accept the consequences", "listen to music", "avoid a problem", "sing a song"],
+                correct: "accept the consequences",
+                explanation: "To 'face the music' means to accept the unpleasant consequences of one's actions."
+            },
+            {
+                sentence: "He's a bit of a <span class=\"font-bold text-blue-500\">couch potato</span>.",
+                idiom: "couch potato",
+                options: ["a lazy person who watches a lot of TV", "a vegetable on the sofa", "an active person", "a good cook"],
+                correct: "a lazy person who watches a lot of TV",
+                explanation: "A 'couch potato' is a person who spends a lot of time sitting or lying on a couch, watching television."
+            },
+            {
+                sentence: "She's got a <span class=\"font-bold text-blue-500\">green thumb</span>.",
+                idiom: "green thumb",
+                options: ["a natural talent for gardening", "a green finger", "a bad habit", "a lucky charm"],
+                correct: "a natural talent for gardening",
+                explanation: "To have a 'green thumb' means to be good at gardening."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">in hot water</span>.",
+                idiom: "in hot water",
+                options: ["in trouble", "taking a bath", "feeling warm", "in a good situation"],
+                correct: "in trouble",
+                explanation: "To be 'in hot water' means to be in trouble."
+            },
+            {
+                sentence: "That's a <span class=\"font-bold text-blue-500\">drop in the ocean</span>.",
+                idiom: "drop in the ocean",
+                options: ["a very small amount compared to what is needed", "a drop of water", "a large quantity", "a significant contribution"],
+                correct: "a very small amount compared to what is needed",
+                explanation: "A 'drop in the ocean' means a very small amount compared with what is needed or expected."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">hitting the books</span> before an exam.",
+                idiom: "hitting the books",
+                options: ["studying hard", "hitting actual books", "playing a game", "reading casually"],
+                correct: "studying hard",
+                explanation: "To 'hit the books' means to study hard."
+            },
+            {
+                sentence: "She's got a <span class=\"font-bold text-blue-500\">sweet tooth</span>.",
+                idiom: "sweet tooth",
+                options: ["a strong liking for sweet foods", "a sweet taste in her mouth", "a healthy diet", "a dental problem"],
+                correct: "a strong liking for sweet foods",
+                explanation: "To have a 'sweet tooth' means to have a strong liking for sweet foods."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">on the ball</span>.",
+                idiom: "on the ball",
+                options: ["alert and competent", "playing soccer", "distracted", "making mistakes"],
+                correct: "alert and competent",
+                explanation: "To be 'on the ball' means to be alert, quick to understand, and competent."
+            },
+            {
+                sentence: "It's <span class=\"font-bold text-blue-500\">raining cats and dogs</span>.",
+                idiom: "raining cats and dogs",
+                options: ["raining very heavily", "raining animals", "raining lightly", "raining intermittently"],
+                correct: "raining very heavily",
+                explanation: "To 'rain cats and dogs' means to rain very heavily."
             }
         ]
     },
@@ -352,7 +618,35 @@ const learningModules = [
             { en: "A green thumb", es: "Tener mano para las plantas", ipa: "/ə ɡriːn θʌm/", example: "She's got a green thumb.", example_es: "Tiene mano para las plantas." },
             { en: "A sweet tooth", es: "Ser goloso", ipa: "/ə swiːt tuːθ/", example: "He's got a sweet tooth.", example_es: "Es goloso." },
             { en: "A sharp tongue", es: "Tener la lengua afilada", ipa: "/ə ʃɑːrp tʌŋ/", example: "She's got a sharp tongue.", example_es: "Tiene la lengua afilada." },
-            { en: "A big head", es: "Ser engreído / Creído", ipa: "/ə bɪɡ hed/", example: "He's got a big head.", example_es: "Es engreído." }
+            { en: "A big head", es: "Ser engreído / Creído", ipa: "/ə bɪɡ hed/", example: "He's got a big head.", example_es: "Es engreído." },
+            { en: "Bite your tongue", es: "Morderse la lengua", ipa: "/baɪt jɔːr tʌŋ/", example: "I had to bite my tongue to avoid saying something rude.", example_es: "Tuve que morderme la lengua para no decir algo grosero." },
+            { en: "Blow off steam", es: "Desahogarse", ipa: "/bloʊ ɒf stiːm/", example: "I like to go for a run to blow off steam.", example_es: "Me gusta salir a correr para desahogarme." },
+            { en: "Bury your head in the sand", es: "Esconder la cabeza bajo tierra", ipa: "/ˈberi jɔːr hed ɪn ðə sænd/", example: "You can't just bury your head in the sand and hope the problem goes away.", example_es: "No puedes simplemente esconder la cabeza bajo tierra y esperar que el problema desaparezca." },
+            { en: "Carry a torch for someone", es: "Estar enamorado de alguien (en secreto)", ipa: "/ˈkæri ə tɔːrtʃ fɔːr ˈsʌmwʌn/", example: "He still carries a torch for his ex-girlfriend.", example_es: "Todavía está enamorado de su ex-novia." },
+            { en: "Down in the dumps", es: "Deprimido / Triste", ipa: "/daʊn ɪn ðə dʌmps/", example: "She's been down in the dumps ever since her cat died.", example_es: "Ha estado deprimida desde que murió su gato." },
+            { en: "Get cold feet", es: "Echarse para atrás / Acobardarse", ipa: "/ɡet koʊld fiːt/", example: "He got cold feet before the wedding.", example_es: "Se acobardó antes de la boda." },
+            { en: "Get something off your chest", es: "Desahogarse / Quitarse un peso de encima", ipa: "/ɡet ˈsʌmθɪŋ ɒf jɔːr tʃest/", example: "I need to get something off my chest.", example_es: "Necesito desahogarme." },
+            { en: "Have a chip on your shoulder", es: "Estar resentido / Guardar rencor", ipa: "/hæv ə tʃɪp ɒn jɔːr ˈʃoʊldər/", example: "He has a chip on his shoulder about not getting promoted.", example_es: "Está resentido por no haber sido ascendido." },
+            { en: "Have a cow", es: "Enfadarse mucho", ipa: "/hæv ə kaʊ/", example: "Don't have a cow, it's just a small scratch.", example_es: "No te enfades tanto, es solo un pequeño rasguño." },
+            { en: "Have a long face", es: "Tener cara larga / Estar triste", ipa: "/hæv ə lɒŋ feɪs/", example: "Why do you have such a long face?", example_es: "¿Por qué tienes esa cara larga?" },
+            { en: "In a bad mood", es: "De mal humor", ipa: "/ɪn ə bæd muːd/", example: "He's been in a bad mood all day.", example_es: "Ha estado de mal humor todo el día." },
+            { en: "In high spirits", es: "De buen humor / Animado", ipa: "/ɪn haɪ ˈspɪrɪts/", example: "She's in high spirits today.", example_es: "Está de buen humor hoy." },
+            { en: "Keep a straight face", es: "Mantener la seriedad / No reírse", ipa: "/kiːp ə streɪt feɪs/", example: "It was hard to keep a straight face when he told that joke.", example_es: "Fue difícil mantener la seriedad cuando contó ese chiste." },
+            { en: "Lose your temper", es: "Perder los estribos / Enfadarse", ipa: "/luːz jɔːr ˈtempər/", example: "He lost his temper and started shouting.", example_es: "Perdió los estribos y empezó a gritar." },
+            { en: "Make your blood boil", es: "Hacerte hervir la sangre", ipa: "/meɪk jɔːr blʌd bɔɪl/", example: "His arrogance really makes my blood boil.", example_es: "Su arrogancia realmente me hace hervir la sangre." },
+            { en: "On edge", es: "Nervioso / Inquieto", ipa: "/ɒn edʒ/", example: "She's been on edge all day waiting for the results.", example_es: "Ha estado nerviosa todo el día esperando los resultados." },
+            { en: "Over the moon", es: "Loco de contento / Muy feliz", ipa: "/ˈoʊvər ðə muːn/", example: "She was over the moon when she got the job.", example_es: "Estaba loca de contento cuando consiguió el trabajo." },
+            { en: "Pull yourself together", es: "Serenarse / Calmarse", ipa: "/pʊl jɔːrˈself təˈɡeðər/", example: "Come on, pull yourself together!", example_es: "¡Vamos, serénate!" },
+            { en: "See red", es: "Ver todo rojo / Enfadarse mucho", ipa: "/siː red/", example: "When he insulted her, she just saw red.", example_es: "Cuando la insultó, ella simplemente vio todo rojo." },
+            { en: "Shake like a leaf", es: "Temblar como una hoja", ipa: "/ʃeɪk laɪk ə liːf/", example: "He was shaking like a leaf after the accident.", example_es: "Estaba temblando como una hoja después del accidente." },
+            { en: "Stab someone in the back", es: "Apuñalar por la espalda", ipa: "/stæb ˈsʌmwʌn ɪn ðə bæk/", example: "I can't believe he stabbed me in the back like that.", example_es: "No puedo creer que me apuñalara por la espalda de esa manera." },
+            { en: "Take something to heart", es: "Tomarse algo a pecho", ipa: "/teɪk ˈsʌmθɪŋ tuː hɑːrt/", example: "Don't take his criticism to heart.", example_es: "No te tomes sus críticas a pecho." },
+            { en: "Up in arms", es: "En pie de guerra / Indignado", ipa: "/ʌp ɪn ɑːrmz/", example: "The residents are up in arms about the new development.", example_es: "Los residentes están en pie de guerra por el nuevo desarrollo." },
+            { en: "Wear your heart on your sleeve", es: "Llevar el corazón en la mano", ipa: "/weər jɔːr hɑːrt ɒn jɔːr sliːv/", example: "She wears her heart on her sleeve, so you always know how she's feeling.", example_es: "Ella lleva el corazón en la mano, así que siempre sabes cómo se siente." },
+            { en: "Be beside yourself", es: "Estar fuera de sí", ipa: "/biː bɪˈsaɪd jɔːrˈself/", example: "She was beside herself with grief.", example_es: "Estaba fuera de sí de dolor." },
+            { en: "Have a soft spot for", es: "Tener debilidad por", ipa: "/hæv ə sɒft spɒt fɔːr/", example: "I have a soft spot for old romantic movies.", example_es: "Tengo debilidad por las viejas películas románticas." },
+            { en: "Be in two minds", es: "Estar indeciso", ipa: "/biː ɪn tuː maɪndz/", example: "I'm in two minds about whether to go or not.", example_es: "Estoy indeciso sobre si ir o no." },
+            { en: "Have a whale of a time", es: "Pasárselo en grande", ipa: "/hæv ə weɪl ɒv ə taɪm/", example: "We had a whale of a time at the party.", example_es: "Nos lo pasamos en grande en la fiesta." }
         ]
     },
     {
@@ -373,7 +667,32 @@ const learningModules = [
             { en: "Keep your eye on the ball", es: "Estar atento / No perder de vista el objetivo", ipa: "/kiːp jɔːr aɪ ɒn ðə bɔːl/", example: "She's got her eye on the ball.", example_es: "Está atenta." },
             { en: "Have your foot in the door", es: "Poner un pie en (una empresa/oportunidad)", ipa: "/hæv jɔːr fʊt ɪn ðə dɔːr/", example: "He's got his foot in the door.", example_es: "Ha puesto un pie en la empresa." },
             { en: "Have your hands full", es: "Estar muy ocupado", ipa: "/hæv jɔːr hændz fʊl/", example: "She's got her hands full with work.", example_es: "Está muy ocupada con el trabajo." },
-            { en: "Have your back against the wall", es: "Estar contra la espada y la pared", ipa: "/hæv jɔːr bæk əˈɡenst ðə wɔːl/", example: "He's got his back against the wall.", example_es: "Está contra la espada y la pared." }
+            { en: "Have your back against the wall", es: "Estar contra la espada y la pared", ipa: "/hæv jɔːr bæk əˈɡenst ðə wɔːl/", example: "He's got his back against the wall.", example_es: "Está contra la espada y la pared." },
+            { en: "Be a big fish in a small pond", es: "Ser un pez gordo en un estanque pequeño", ipa: "/biː ə bɪɡ fɪʃ ɪn ə smɔːl pɒnd/", example: "He was a big fish in a small pond in his hometown.", example_es: "Era un pez gordo en un estanque pequeño en su ciudad natal." },
+            { en: "Be a flash in the pan", es: "Ser flor de un día", ipa: "/biː ə flæʃ ɪn ðə pæn/", example: "His success was just a flash in the pan.", example_es: "Su éxito fue solo flor de un día." },
+            { en: "Be a long shot", es: "Ser poco probable", ipa: "/biː ə lɒŋ ʃɒt/", example: "It's a long shot, but it might work.", example_es: "Es poco probable, pero podría funcionar." },
+            { en: "Be a mixed blessing", es: "Ser un arma de doble filo", ipa: "/biː ə mɪkst ˈblesɪŋ/", example: "Working from home is a mixed blessing.", example_es: "Trabajar desde casa es un arma de doble filo." },
+            { en: "Be a stepping stone", es: "Ser un trampolín", ipa: "/biː ə ˈstepɪŋ stoʊn/", example: "This job is a stepping stone to a better career.", example_es: "Este trabajo es un trampolín para una mejor carrera." },
+            { en: "Be on the verge of", es: "Estar a punto de", ipa: "/biː ɒn ðə vɜːrdʒ ɒv/", example: "She's on the verge of tears.", example_es: "Está a punto de llorar." },
+            { en: "Break new ground", es: "Abrir nuevos caminos", ipa: "/breɪk nuː ɡraʊnd/", example: "The company is breaking new ground in renewable energy.", example_es: "La empresa está abriendo nuevos caminos en energía renovable." },
+            { en: "Come to fruition", es: "Hacerse realidad", ipa: "/kʌm tuː fruːˈɪʃn/", example: "His plans finally came to fruition.", example_es: "Sus planes finalmente se hicieron realidad." },
+            { en: "Get off on the right foot", es: "Empezar con buen pie", ipa: "/ɡet ɒf ɒn ðə raɪt fʊt/", example: "It's important to get off on the right foot with your new boss.", example_es: "Es importante empezar con buen pie con tu nuevo jefe." },
+            { en: "Go from strength to strength", es: "Ir de viento en popa", ipa: "/ɡoʊ frɒm streŋθ tuː streŋθ/", example: "The company has gone from strength to strength.", example_es: "La empresa ha ido de viento en popa." },
+            { en: "Go places", es: "Llegar lejos / Tener éxito", ipa: "/ɡoʊ ˈpleɪsɪz/", example: "She's very talented; she'll go places.", example_es: "Es muy talentosa; llegará lejos." },
+            { en: "Hit the ground running", es: "Empezar con fuerza", ipa: "/hɪt ðə ɡraʊnd ˈrʌnɪŋ/", example: "He hit the ground running in his new job.", example_es: "Empezó con fuerza en su nuevo trabajo." },
+            { en: "Make a go of it", es: "Tener éxito", ipa: "/meɪk ə ɡoʊ ɒv ɪt/", example: "They decided to make a go of their new business.", example_es: "Decidieron tener éxito con su nuevo negocio." },
+            { en: "Make a name for yourself", es: "Hacerse un nombre", ipa: "/meɪk ə neɪm fɔːr jɔːrˈself/", example: "He worked hard to make a name for himself in the industry.", example_es: "Trabajó duro para hacerse un nombre en la industria." },
+            { en: "Make ends meet", es: "Llegar a fin de mes", ipa: "/meɪk endz miːt/", example: "It's hard to make ends meet with a low salary.", example_es: "Es difícil llegar a fin de mes con un salario bajo." },
+            { en: "Pull strings", es: "Mover hilos", ipa: "/pʊl strɪŋz/", example: "He had to pull some strings to get that job.", example_es: "Tuvo que mover algunos hilos para conseguir ese trabajo." },
+            { en: "Rest on your laurels", es: "Dormirse en los laureles", ipa: "/rest ɒn jɔːr ˈlɔːrəlz/", example: "You can't rest on your laurels; you need to keep working.", example_es: "No puedes dormirte en los laureles; necesitas seguir trabajando." },
+            { en: "Shoot for the stars", es: "Apuntar alto", ipa: "/ʃuːt fɔːr ðə stɑːrz/", example: "Always shoot for the stars, even if you miss.", example_es: "Siempre apunta alto, incluso si fallas." },
+            { en: "Stand on your own two feet", es: "Valerse por sí mismo", ipa: "/stænd ɒn jɔːr oʊn tuː fiːt/", example: "It's time for him to stand on his own two feet.", example_es: "Es hora de que se valga por sí mismo." },
+            { en: "Take off", es: "Despegar (negocio)", ipa: "/teɪk ɒf/", example: "The business really took off after the advertising campaign.", example_es: "El negocio realmente despegó después de la campaña publicitaria." },
+            { en: "The sky's the limit", es: "El cielo es el límite", ipa: "/ðə skaɪz ðə ˈlɪmɪt/", example: "With your talent, the sky's the limit.", example_es: "Con tu talento, el cielo es el límite." },
+            { en: "Up and running", es: "En funcionamiento", ipa: "/ʌp ænd ˈrʌnɪŋ/", example: "The new system is finally up and running.", example_es: "El nuevo sistema finalmente está en funcionamiento." },
+            { en: "Win-win situation", es: "Situación en la que todos ganan", ipa: "/wɪn wɪn ˌsɪtʃuˈeɪʃn/", example: "It's a win-win situation for everyone involved.", example_es: "Es una situación en la que todos ganan." },
+            { en: "Zero in on", es: "Centrarse en", ipa: "/ˈzɪəroʊ ɪn ɒn/", example: "We need to zero in on the main problem.", example_es: "Necesitamos centrarnos en el problema principal." },
+            { en: "Be a cut above", es: "Ser superior a", ipa: "/biː ə kʌt əˈbʌv/", example: "Her performance was a cut above the rest.", example_es: "Su actuación fue superior a la del resto." }
         ]
     },
     {
@@ -400,7 +719,26 @@ const learningModules = [
             { en: "Ahead of its time", es: "Avanzado a su tiempo", ipa: "/əˈhed ɒv ɪts taɪm/", example: "Ahead of its time.", example_es: "Avanzado a su tiempo." },
             { en: "From time to time", es: "De vez en cuando", ipa: "/frɒm taɪm tuː taɪm/", example: "From time to time.", example_es: "De vez en cuando." },
             { en: "The big day", es: "El gran día", ipa: "/ðə bɪɡ deɪ/", example: "The big day.", example_es: "El gran día." },
-            { en: "In the long run", es: "A la larga / A la larga", ipa: "/ɪn ðə lɒŋ rʌn/", example: "In the long run.", example_es: "A la larga." }
+            { en: "In the long run", es: "A la larga / A la larga", ipa: "/ɪn ðə lɒŋ rʌn/", example: "In the long run.", example_es: "A la larga." },
+            { en: "A moment in time", es: "Un momento en el tiempo", ipa: "/ə ˈmoʊmənt ɪn taɪm/", example: "It was just a moment in time.", example_es: "Fue solo un momento en el tiempo." },
+            { en: "Against the clock", es: "Contra reloj", ipa: "/əˈɡenst ðə klɒk/", example: "We are working against the clock to finish the project.", example_es: "Estamos trabajando contra reloj para terminar el proyecto." },
+            { en: "At the eleventh hour", es: "En el último momento", ipa: "/æt ði ɪˈlevənθ ˈaʊər/", example: "He submitted his assignment at the eleventh hour.", example_es: "Entregó su tarea en el último momento." },
+            { en: "Beat the clock", es: "Ganar al reloj", ipa: "/biːt ðə klɒk/", example: "We managed to beat the clock and finish on time.", example_es: "Logramos ganar al reloj y terminar a tiempo." },
+            { en: "Behind the times", es: "Anticuado / Desfasado", ipa: "/bɪˈhaɪnd ðə taɪmz/", example: "His ideas are a bit behind the times.", example_es: "Sus ideas están un poco anticuadas." },
+            { en: "Big time", es: "A lo grande / Mucho", ipa: "/bɪɡ taɪm/", example: "He failed big time.", example_es: "Fracasó a lo grande." },
+            { en: "Call it a day", es: "Dar por terminado el día", ipa: "/kɔːl ɪt ə deɪ/", example: "Let's call it a day and go home.", example_es: "Demos por terminado el día y vayamos a casa." },
+            { en: "For the time being", es: "Por el momento", ipa: "/fɔːr ðə taɪm ˈbiːɪŋ/", example: "For the time being, we will continue as planned.", example_es: "Por el momento, continuaremos según lo planeado." },
+            { en: "From time to time", es: "De vez en cuando", ipa: "/frɒm taɪm tuː taɪm/", example: "I visit my grandparents from time to time.", example_es: "Visito a mis abuelos de vez en cuando." },
+            { en: "In the nick of time", es: "Justo a tiempo / En el último momento", ipa: "/ɪn ðə nɪk ɒv taɪm/", example: "He arrived in the nick of time to catch the train.", example_es: "Llegó justo a tiempo para coger el tren." },
+            { en: "Kill time", es: "Matar el tiempo", ipa: "/kɪl taɪm/", example: "We had to kill time while waiting for the flight.", example_es: "Tuvimos que matar el tiempo mientras esperábamos el vuelo." },
+            { en: "Make up for lost time", es: "Recuperar el tiempo perdido", ipa: "/meɪk ʌp fɔːr lɒst taɪm/", example: "He's working hard to make up for lost time.", example_es: "Está trabajando duro para recuperar el tiempo perdido." },
+            { en: "Once in a blue moon", es: "Muy de vez en cuando / Rara vez", ipa: "/wʌns ɪn ə bluː muːn/", example: "She only visits her family once in a blue moon.", example_es: "Ella solo visita a su familia muy de vez en cuando." },
+            { en: "Out of time", es: "Sin tiempo", ipa: "/aʊt ɒv taɪm/", example: "We are out of time, so we need to finish.", example_es: "Estamos sin tiempo, así que necesitamos terminar." },
+            { en: "Pass the time", es: "Pasar el tiempo", ipa: "/pɑːs ðə taɪm/", example: "We played cards to pass the time.", example_es: "Jugamos a las cartas para pasar el tiempo." },
+            { en: "Save time", es: "Ahorrar tiempo", ipa: "/seɪv taɪm/", example: "Taking the shortcut will save us time.", example_es: "Tomar el atajo nos ahorrará tiempo." },
+            { en: "Take your time", es: "Tómate tu tiempo", ipa: "/teɪk jɔːr taɪm/", example: "Don't rush, take your time.", example_es: "No te apresures, tómate tu tiempo." },
+            { en: "Time is money", es: "El tiempo es oro", ipa: "/taɪm ɪz ˈmʌni/", example: "In business, time is money.", example_es: "En los negocios, el tiempo es oro." },
+            { en: "Time flies", es: "El tiempo vuela", ipa: "/taɪm flaɪz/", example: "Time flies when you're having fun.", example_es: "El tiempo vuela cuando te diviertes." }
         ]
     },
     {
@@ -426,7 +764,27 @@ const learningModules = [
             { en: "To be a busy bee", es: "Ser una persona muy ocupada", ipa: "/tuː bi ə ˈbɪzi biː/", example: "To be a busy bee.", example_es: "Ser una persona muy ocupada." },
             { en: "To be a night owl", es: "Ser un ave nocturna", ipa: "/tuː bi ə naɪt aʊl/", example: "To be a night owl.", example_es: "Ser una ave nocturna." },
             { en: "To be a morning lark", es: "Ser una persona madrugadora", ipa: "/tuː bi ə ˈmɔːrnɪŋ lɑːrk/", example: "To be a morning lark.", example_es: "Ser una persona madrugadora." },
-            { en: "To be a social butterfly", es: "Ser una mariposa social", ipa: "/tuː bi ə ˈsoʊʃl ˈbʌtərflaɪ/", example: "To be a social butterfly.", example_es: "Ser una mariposa social." }
+            { en: "To be a social butterfly", es: "Ser una mariposa social", ipa: "/tuː bi ə ˈsoʊʃl ˈbʌtərflaɪ/", example: "To be a social butterfly.", example_es: "Ser una mariposa social." },
+            { en: "A leopard can't change its spots", es: "Genio y figura hasta la sepultura", ipa: "/ə ˈlepərd kænt tʃeɪndʒ ɪts spɒts/", example: "He'll never be on time, a leopard can't change its spots.", example_es: "Nunca llegará a tiempo, genio y figura hasta la sepultura." },
+            { en: "As stubborn as a mule", es: "Terco como una mula", ipa: "/æz ˈstʌbərn æz ə mjuːl/", example: "He's as stubborn as a mule, he'll never change his mind.", example_es: "Es terco como una mula, nunca cambiará de opinión." },
+            { en: "Barking up the wrong tree", es: "Ladrar al árbol equivocado", ipa: "/ˈbɑːrkɪŋ ʌp ðə rɒŋ triː/", example: "You're barking up the wrong tree if you think I did it.", example_es: "Estás ladrando al árbol equivocado si crees que lo hice yo." },
+            { en: "Birds of a feather flock together", es: "Dios los cría y ellos se juntan", ipa: "/bɜːrdz ɒv ə ˈfeðər flɒk təˈɡeðər/", example: "All the artists hang out together, birds of a feather flock together.", example_es: "Todos los artistas andan juntos, Dios los cría y ellos se juntan." },
+            { en: "Cry wolf", es: "Dar una falsa alarma", ipa: "/kraɪ wʊlf/", example: "He cried wolf so many times that no one believed him.", example_es: "Dio tantas falsas alarmas que nadie le creyó." },
+            { en: "Dark horse", es: "Caballo oscuro / Sorpresa", ipa: "/dɑːrk hɔːrs/", example: "She's a dark horse, no one expected her to win.", example_es: "Es una caballo oscuro, nadie esperaba que ganara." },
+            { en: "Eager beaver", es: "Persona muy trabajadora / Entusiasta", ipa: "/ˈiːɡər ˈbiːvər/", example: "He's an eager beaver, always the first to volunteer.", example_es: "Es una persona muy trabajadora, siempre el primero en ofrecerse." },
+            { en: "Get your ducks in a row", es: "Poner tus patos en fila / Organizarse", ipa: "/ɡet jɔːr dʌks ɪn ə roʊ/", example: "Before you start the project, you need to get your ducks in a row.", example_es: "Antes de empezar el proyecto, necesitas organizarte." },
+            { en: "Go to the dogs", es: "Irse a pique / Deteriorarse", ipa: "/ɡoʊ tuː ðə dɒɡz/", example: "The neighborhood has gone to the dogs.", example_es: "El barrio se ha ido a pique." },
+            { en: "Hold your horses", es: "Espera un momento / Cálmate", ipa: "/hoʊld jɔːr ˈhɔːrsɪz/", example: "Hold your horses, I'm not ready yet.", example_es: "Espera un momento, todavía no estoy listo." },
+            { en: "Let sleeping dogs lie", es: "No remover el pasado / Dejar las cosas como están", ipa: "/let ˈsliːpɪŋ dɒɡz laɪ/", example: "It's better to let sleeping dogs lie and not bring up the past.", example_es: "Es mejor no remover el pasado y dejar las cosas como están." },
+            { en: "Like a fish out of water", es: "Como pez fuera del agua", ipa: "/laɪk ə fɪʃ aʊt ɒv ˈwɔːtər/", example: "I felt like a fish out of water at the party.", example_es: "Me sentí como pez fuera del agua en la fiesta." },
+            { en: "Open a can of worms", es: "Abrir la caja de Pandora", ipa: "/ˈoʊpən ə kæn ɒv wɜːrmz/", example: "If you bring that up, you'll open a whole can of worms.", example_es: "Si sacas ese tema, abrirás la caja de Pandora." },
+            { en: "Raining cats and dogs", es: "Llover a cántaros", ipa: "/ˈreɪnɪŋ kæts ænd dɒɡz/", example: "It's raining cats and dogs, so I can't go out.", example_es: "Está lloviendo a cántaros, así que no puedo salir." },
+            { en: "Straight from the horse's mouth", es: "De primera mano / De fuente fiable", ipa: "/streɪt frɒm ðə ˈhɔːrsɪz maʊθ/", example: "I heard it straight from the horse's mouth.", example_es: "Lo escuché de primera mano." },
+            { en: "Take the bull by the horns", es: "Tomar el toro por los cuernos", ipa: "/teɪk ðə bʊl baɪ ðə hɔːrnz/", example: "You need to take the bull by the horns and deal with the problem.", example_es: "Necesitas tomar el toro por los cuernos y lidiar con el problema." },
+            { en: "The early bird catches the worm", es: "Al que madruga, Dios le ayuda", ipa: "/ði ˈɜːrli bɜːrd ˈkætʃɪz ðə wɜːrm/", example: "Get there early, the early bird catches the worm.", example_es: "Llega temprano, al que madruga, Dios le ayuda." },
+            { en: "The lion's share", es: "La mayor parte", ipa: "/ðə ˈlaɪənz ʃer/", example: "He got the lion's share of the inheritance.", example_es: "Él obtuvo la mayor parte de la herencia." },
+            { en: "Wild goose chase", es: "Búsqueda inútil", ipa: "/waɪld ɡuːs tʃeɪs/", example: "We went on a wild goose chase looking for that rare book.", example_es: "Fuimos en una búsqueda inútil buscando ese libro raro." },
+            { en: "Wolf in sheep's clothing", es: "Lobo con piel de cordero", ipa: "/wʊlf ɪn ʃiːps ˈkloʊðɪŋ/", example: "Be careful, he's a wolf in sheep's clothing.", example_es: "Ten cuidado, es un lobo con piel de cordero." }
         ]
     },
     // Advanced Grammar Quiz Module
@@ -454,7 +812,26 @@ const learningModules = [
             { sentence: "If he _ harder, he will succeed.", options: ["try", "tried", "tries", "will try"], correct: "tries", explanation: "Primer condicional para una posible situación futura." },
             { sentence: "Water turns to ice if the temperature _ below zero.", options: ["drop", "drops", "dropped", "will drop"], correct: "drops", explanation: "Condicional cero para un hecho científico." },
             { sentence: "If they had invited me, I _.", options: ["went", "would go", "will go", "would have gone"], correct: "would have gone", explanation: "Tercer condicional para una situación hipotética en el pasado." },
-            { sentence: "As long as you _ quiet, you can stay.", options: ["keep", "kept", "will keep", "are keeping"], correct: "keep", explanation: "'As long as' (siempre y cuando) se usa con el presente simple para establecer una condición." }
+            { sentence: "As long as you _ quiet, you can stay.", options: ["keep", "kept", "will keep", "are keeping"], correct: "keep", explanation: "'As long as' (siempre y cuando) se usa con el presente simple para establecer una condición." },
+            { sentence: "If I _ a millionaire, I would travel the world.", options: ["am", "was", "were", "be"], correct: "were", explanation: "Segundo condicional para una situación hipotética irreal en el presente. Se usa 'were' para todos los sujetos." },
+            { sentence: "Unless it _ tomorrow, we will go for a picnic.", options: ["rains", "rained", "will rain", "doesn't rain"], correct: "rains", explanation: "'Unless' significa 'si no'. Se usa con el presente simple para una condición futura." },
+            { sentence: "If she _ earlier, she wouldn't have missed the bus.", options: ["left", "had left", "leaves", "would leave"], correct: "had left", explanation: "Tercer condicional para una situación hipotética en el pasado." },
+            { sentence: "What _ if you won the lottery?", options: ["will you do", "would you do", "do you do", "did you do"], correct: "would you do", explanation: "Segundo condicional para una situación hipotética futura." },
+            { sentence: "If you _ water, it evaporates.", options: ["heat", "heated", "will heat", "would heat"], correct: "heat", explanation: "Condicional cero para hechos científicos o verdades generales." },
+            { sentence: "Had he _ the instructions, he wouldn't have made a mistake.", options: ["followed", "follows", "follow", "following"], correct: "followed", explanation: "Inversión del tercer condicional. 'Had + sujeto + participio pasado'." },
+            { sentence: "If I _ you, I would apologize.", options: ["am", "was", "were", "be"], correct: "were", explanation: "Segundo condicional para dar un consejo. Se usa 'were' para todos los sujetos." },
+            { sentence: "She _ if she knew the answer.", options: ["will tell you", "would tell you", "tells you", "told you"], correct: "would tell you", explanation: "Segundo condicional para una situación hipotética en el presente." },
+            { sentence: "If they _ harder, they will pass the exam.", options: ["study", "studied", "had studied", "would study"], correct: "study", explanation: "Primer condicional para una situación real o probable en el futuro." },
+            { sentence: "Provided that you _ your work, you can go home.", options: ["finish", "finished", "will finish", "are finishing"], correct: "finish", explanation: "'Provided that' se usa con el presente simple para una condición futura." },
+            { sentence: "If I _ more time, I would learn a new language.", options: ["have", "had", "will have", "would have"], correct: "had", explanation: "Segundo condicional para una situación hipotética en el presente." },
+            { sentence: "Unless you _ a valid passport, you cannot travel.", options: ["have", "don't have", "had", "will have"], correct: "have", explanation: "'Unless' significa 'si no'. Se usa con el presente simple." },
+            { sentence: "If he _ the truth, she would have forgiven him.", options: ["told", "had told", "tells", "would tell"], correct: "had told", explanation: "Tercer condicional para una situación hipotética en el pasado." },
+            { sentence: "What would you have done if you _ in that situation?", options: ["were", "had been", "are", "would be"], correct: "had been", explanation: "Tercer condicional para una situación hipotética en el pasado." },
+            { sentence: "If you _ the button, the machine starts.", options: ["press", "pressed", "will press", "would press"], correct: "press", explanation: "Condicional cero para una verdad general." },
+            { sentence: "Should you _ any problems, contact us immediately.", options: ["encounter", "encountered", "to encounter", "are encountering"], correct: "encounter", explanation: "Forma invertida y más formal del primer condicional." },
+            { sentence: "If I _ rich, I would buy a mansion.", options: ["am", "was", "were", "be"], correct: "were", explanation: "Segundo condicional para una situación hipotética irreal." },
+            { sentence: "They _ if they had known about the party.", options: ["would come", "will come", "came", "would have come"], correct: "would have come", explanation: "Tercer condicional para una situación hipotética en el pasado." },
+            { sentence: "As long as you _ your best, that's all that matters.", options: ["do", "did", "will do", "are doing"], correct: "do", explanation: "'As long as' se usa con el presente simple para establecer una condición." }
         ]
     },
     {
@@ -481,7 +858,26 @@ const learningModules = [
             { sentence: "Feeling _, she went to bed early.", options: ["tired", "tiring", "tire", "tires"], correct: "tired", explanation: "Una cláusula de participio presente al inicio de la oración para describir el estado del sujeto." },
             { sentence: "The problem, _ for hours, remained unsolved.", options: ["discussing", "discussed", "was discussed", "having discussed"], correct: "discussed", explanation: "Participio pasado para una cláusula pasiva reducida." },
             { sentence: "The _ child held his mother's hand.", options: ["frightening", "frightened", "frighten", "frightens"], correct: "frightened", explanation: "El participio pasado 'frightened' funciona como un adjetivo para describir el estado del niño." },
-            { sentence: "This is a very _ book.", options: ["entertained", "entertaining", "entertain", "entertainment"], correct: "entertaining", explanation: "El participio presente 'entertaining' funciona como un adjetivo para describir la cualidad del libro." }
+            { sentence: "This is a very _ book.", options: ["entertained", "entertaining", "entertain", "entertainment"], correct: "entertaining", explanation: "El participio presente 'entertaining' funciona como un adjetivo para describir la cualidad del libro." },
+            { sentence: "The _ news left everyone shocked.", options: ["shocking", "shocked", "shocks", "shock"], correct: "shocking", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "He was _ by the sudden noise.", options: ["startling", "startled", "startle", "startles"], correct: "startled", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ dog barked loudly.", options: ["annoying", "annoyed", "annoys", "annoy"], correct: "annoying", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "I felt very _ after the long flight.", options: ["tiring", "tired", "tires", "tire"], correct: "tired", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ movie kept us on the edge of our seats.", options: ["thrilling", "thrilled", "thrills", "thrill"], correct: "thrilling", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "She was _ to hear the good news.", options: ["pleasing", "pleased", "please", "pleases"], correct: "pleased", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ child wouldn't stop crying.", options: ["irritating", "irritated", "irritates", "irritate"], correct: "irritating", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "He was _ by the lack of progress.", options: ["frustrating", "frustrated", "frustrates", "frustrate"], correct: "frustrated", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ journey took all day.", options: ["exhausting", "exhausted", "exhausts", "exhaust"], correct: "exhausting", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "I was _ to find my keys.", options: ["relieving", "relieved", "relieves", "relieve"], correct: "relieved", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ results surprised everyone.", options: ["astonishing", "astonished", "astonishes", "astonish"], correct: "astonishing", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "She was _ by his rude behavior.", options: ["offending", "offended", "offends", "offend"], correct: "offended", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ lecture put everyone to sleep.", options: ["boring", "bored", "bores", "bore"], correct: "boring", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "He was _ with his new toy.", options: ["exciting", "excited", "excites", "excite"], correct: "excited", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ situation made them nervous.", options: ["worrying", "worried", "worries", "worry"], correct: "worrying", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "I was _ to see him again.", options: ["surprising", "surprised", "surprises", "surprise"], correct: "surprised", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ news made her cry.", options: ["depressing", "depressed", "depresses", "depress"], correct: "depressing", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "He was _ by the beautiful scenery.", options: ["captivating", "captivated", "captivates", "captivate"], correct: "captivated", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
+            { sentence: "The _ story made me laugh.", options: ["amusing", "amused", "amuses", "amuse"], correct: "amusing", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." }
         ]
     },
     {
@@ -508,7 +904,26 @@ const learningModules = [
             { sentence: "If only we _ sooner.", options: ["left", "had left", "leave", "would leave"], correct: "had left", explanation: "Se usa 'If only + pasado perfecto' para expresar arrepentimiento por algo que no sucedió en el pasado." },
             { sentence: "The law requires that all drivers _ insurance.", options: ["have", "has", "had", "are having"], correct: "have", explanation: "El subjuntivo se usa después de verbos que indican un requisito, como 'require'." },
             { sentence: "I wish it _ Friday today.", options: ["is", "was", "were", "be"], correct: "were", explanation: "Se usa 'wish + pasado simple' para un deseo sobre el presente. 'Were' es la forma subjuntiva correcta." },
-            { sentence: "The teacher suggested that the student _ the chapter again.", options: ["reads", "read", "to read", "reading"], correct: "read", explanation: "Después de 'suggest that...', se usa el subjuntivo (forma base del verbo)." }
+            { sentence: "The teacher suggested that the student _ the chapter again.", options: ["reads", "read", "to read", "reading"], correct: "read", explanation: "Después de 'suggest that...', se usa el subjuntivo (forma base del verbo)." },
+            { sentence: "It is vital that he _ aware of the risks.", options: ["is", "be", "was", "are"], correct: "be", explanation: "Después de 'It is vital that...', se usa el subjuntivo (la forma base del verbo)." },
+            { sentence: "I wish I _ able to help you.", options: ["am", "was", "were", "be"], correct: "were", explanation: "Para expresar un deseo sobre una situación presente que es irreal, se usa 'wish + pasado simple'. Se prefiere 'were' para todos los sujetos." },
+            { sentence: "The committee recommended that the proposal _ approved.", options: ["is", "be", "was", "are"], correct: "be", explanation: "Después de verbos de recomendación como 'recommend', se usa el subjuntivo (la forma base del verbo)." },
+            { sentence: "If only I _ more patient.", options: ["am", "was", "were", "be"], correct: "were", explanation: "Para expresar un deseo sobre una situación presente que es irreal, se usa 'If only + pasado simple'. Se prefiere 'were' para todos los sujetos." },
+            { sentence: "He behaves as if he _ the boss.", options: ["is", "was", "were", "be"], correct: "were", explanation: "Después de 'as if' para describir una situación hipotética o irreal en el presente, se usa el pasado simple. Se prefiere 'were' para todos los sujetos." },
+            { sentence: "It is important that she _ her responsibilities.", options: ["understands", "understand", "understood", "is understanding"], correct: "understand", explanation: "Después de 'It is important that...', se usa el subjuntivo (la forma base del verbo)." },
+            { sentence: "They insisted that he _ the truth.", options: ["tells", "tell", "told", "to tell"], correct: "tell", explanation: "Después de verbos de sugerencia o demanda como 'insist', se usa el subjuntivo (la forma base del verbo)." },
+            { sentence: "I wish it _ not raining.", options: ["is", "was", "were", "be"], correct: "were", explanation: "Para expresar un deseo sobre una situación presente que es irreal, se usa 'wish + pasado simple'. Se prefiere 'were' para todos los sujetos." },
+            { sentence: "If only he _ here now.", options: ["is", "was", "were", "be"], correct: "were", explanation: "Para expresar un deseo sobre una situación presente que es irreal, se usa 'If only + pasado simple'. Se prefiere 'were' para todos los sujetos." },
+            { sentence: "It is crucial that the information _ accurate.", options: ["is", "be", "was", "are"], correct: "be", explanation: "Después de 'It is crucial that...', se usa el subjuntivo (la forma base del verbo)." },
+            { sentence: "She acts as though she _ never wrong.", options: ["is", "was", "were", "be"], correct: "were", explanation: "Después de 'as though' para describir una situación hipotética o irreal en el presente, se usa el pasado simple. Se prefiere 'were' para todos los sujetos." },
+            { sentence: "I propose that we _ a break.", options: ["take", "takes", "took", "to take"], correct: "take", explanation: "El subjuntivo (la forma base del verbo) se usa después de verbos como 'propose'." },
+            { sentence: "They requested that the documents _ sent immediately.", options: ["are", "be", "were", "to be"], correct: "be", explanation: "Después de 'request that...', se usa el subjuntivo pasivo 'be + participio pasado'." },
+            { sentence: "I wish you _ listen to me.", options: ["will", "would", "can", "could"], correct: "would", explanation: "Se usa 'wish + would + infinitivo' para expresar un deseo de que alguien cambie su comportamiento." },
+            { sentence: "It's essential that he _ the contract carefully.", options: ["reads", "read", "reading", "to read"], correct: "read", explanation: "Después de 'It's essential that...', se usa el subjuntivo (la forma base del verbo)." },
+            { sentence: "If only I _ studied harder for the exam.", options: ["have", "had", "would have", "did"], correct: "had", explanation: "Se usa 'If only + pasado perfecto' para expresar arrepentimiento por algo que no sucedió en el pasado." },
+            { sentence: "The regulations require that all equipment _ inspected regularly.", options: ["is", "be", "was", "are"], correct: "be", explanation: "El subjuntivo pasivo 'be + participio pasado' se usa después de verbos que indican un requisito, como 'require'." },
+            { sentence: "I wish today _ my birthday.", options: ["is", "was", "were", "be"], correct: "were", explanation: "Se usa 'wish + pasado simple' para un deseo sobre el presente. 'Were' es la forma subjuntiva correcta." },
+            { sentence: "The manager suggested that she _ a different approach.", options: ["tries", "try", "tried", "to try"], correct: "try", explanation: "Después de 'suggest that...', se usa el subjuntivo (forma base del verbo)." }
         ]
     },
     {
@@ -535,7 +950,26 @@ const learningModules = [
             { sentence: "Never in my life _ such a beautiful sight.", options: ["I have seen", "have I seen", "I saw", "did I see"], correct: "have I seen", explanation: "Con 'Never in my life' al inicio, se invierte el sujeto y el verbo auxiliar." },
             { sentence: "Only then _ the truth come out.", options: ["did", "does", "will", "can"], correct: "did", explanation: "Con 'Only then' al inicio, se invierte el sujeto y el verbo auxiliar." },
             { sentence: "Had I known, _ I would have helped.", options: ["I would have helped", "would I have helped", "I helped", "did I help"], correct: "I would have helped", explanation: "En oraciones condicionales sin 'if', se invierte el sujeto y el verbo auxiliar." },
-            { sentence: "Should you need anything, _ me know.", options: ["let", "you let", "do you let", "you do let"], correct: "let", explanation: "En oraciones condicionales sin 'if', se invierte el sujeto y el verbo auxiliar." }
+            { sentence: "Should you need anything, _ me know.", options: ["let", "you let", "do you let", "you do let"], correct: "let", explanation: "En oraciones condicionales sin 'if', se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "Not only _ talented, but he is also very humble.", options: ["he is", "is he", "he was", "was he"], correct: "is he", explanation: "Con 'Not only' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "So beautiful _ the scenery that I couldn't stop taking pictures.", options: ["was", "is", "has been", "had been"], correct: "was", explanation: "Con 'So + adjective/adverb' al inicio, se invierte el sujeto y el verbo." },
+            { sentence: "Under no circumstances _ you leave the building.", options: ["should", "will", "can", "do"], correct: "should", explanation: "Con 'Under no circumstances' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "Rarely _ such a complex problem.", options: ["I have encountered", "have I encountered", "I encountered", "did I encounter"], correct: "have I encountered", explanation: "Con 'Rarely' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "Little _ about the consequences of his actions.", options: ["did he think", "he thought", "thought he", "he did think"], correct: "did he think", explanation: "Con 'Little' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "No sooner had _ than the alarm went off.", options: ["they arrived", "they arrive", "arrived they", "did they arrive"], correct: "they arrived", explanation: "Con 'No sooner had' al inicio, se usa la inversión del sujeto y el verbo auxiliar." },
+            { sentence: "Hardly had _ when the phone rang.", options: ["I finished", "I finish", "finished I", "did I finish"], correct: "I finished", explanation: "Con 'Hardly had' al inicio, se usa la inversión del sujeto y el verbo auxiliar." },
+            { sentence: "Only when _ the truth did she understand.", options: ["she heard", "did she hear", "heard she", "she did hear"], correct: "she heard", explanation: "Con 'Only when' al inicio, la inversión ocurre en la segunda cláusula." },
+            { sentence: "Never again _ I make the same mistake.", options: ["will", "do", "can", "should"], correct: "will", explanation: "Con 'Never again' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "On no account _ you open that door.", options: ["should", "must", "will", "can"], correct: "should", explanation: "Con 'On no account' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "In no way _ I agree with his decision.", options: ["do", "did", "will", "can"], correct: "do", explanation: "Con 'In no way' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "At no time _ he apologize for his behavior.", options: ["did", "does", "will", "can"], correct: "did", explanation: "Con 'At no time' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "So quickly _ he run that no one could catch him.", options: ["did", "does", "will", "can"], correct: "did", explanation: "Con 'So + adjective/adverb' al inicio, se invierte el sujeto y el verbo." },
+            { sentence: "Such _ the demand that they had to increase production.", options: ["was", "is", "has been", "had been"], correct: "was", explanation: "Con 'Such' al inicio, se invierte el sujeto y el verbo." },
+            { sentence: "Not a sound _ from the abandoned house.", options: ["came", "did come", "comes", "will come"], correct: "came", explanation: "Con 'Not a sound' al inicio, se invierte el sujeto y el verbo." },
+            { sentence: "Never in my wildest dreams _ I have imagined this.", options: ["could", "can", "will", "do"], correct: "could", explanation: "Con 'Never in my wildest dreams' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "Only then _ the true extent of the damage become clear.", options: ["did", "does", "will", "can"], correct: "did", explanation: "Con 'Only then' al inicio, se invierte el sujeto y el verbo auxiliar." },
+            { sentence: "Were I to _ again, I would choose a different path.", options: ["live", "lived", "living", "to live"], correct: "live", explanation: "Inversión del segundo condicional sin 'if'." },
+            { sentence: "Had I _ his advice, I would have succeeded.", options: ["followed", "follow", "following", "to follow"], correct: "followed", explanation: "Inversión del tercer condicional sin 'if'." }
         ]
     },
     // Phrasal Verbs Completion Module
@@ -574,7 +1008,15 @@ const learningModules = [
             { sentence: "She needs to put ______ her clothes after washing them.", correct: "away", explanation: "El phrasal verb 'put away' significa guardar algo en su lugar.", tip: "Complete the phrasal verb." },
             { sentence: "He needs to throw ______ his old shoes.", correct: "away", explanation: "El phrasal verb 'throw away' o 'throw out' significa desechar algo.", tip: "Complete the phrasal verb." },
             { sentence: "I need to tidy ______ my room before my parents arrive.", correct: "up", explanation: "El phrasal verb 'tidy up' significa ordenar o arreglar.", tip: "Complete the phrasal verb." },
-            { sentence: "She needs to switch ______ the lights when she leaves the room.", correct: "off", explanation: "El phrasal verb 'switch off' significa apagar un aparato eléctrico.", tip: "Complete the phrasal verb." }
+            { sentence: "She needs to switch ______ the lights when she leaves the room.", correct: "off", explanation: "El phrasal verb 'switch off' significa apagar un aparato eléctrico.", tip: "Complete the phrasal verb." },
+            { sentence: "I need to get ______ with my work.", correct: "on", explanation: "El phrasal verb 'get on with' significa continuar o progresar con algo.", tip: "Complete the phrasal verb." },
+            { sentence: "He needs to catch ______ on his studies.", correct: "up", explanation: "El phrasal verb 'catch up on' significa ponerse al día con algo.", tip: "Complete the phrasal verb." },
+            { sentence: "She needs to look ______ the new student.", correct: "after", explanation: "El phrasal verb 'look after' significa cuidar de alguien.", tip: "Complete the phrasal verb." },
+            { sentence: "They decided to give ______ smoking.", correct: "up", explanation: "El phrasal verb 'give up' significa dejar un hábito.", tip: "Complete the phrasal verb." },
+            { sentence: "He needs to put ______ with her bad temper.", correct: "up", explanation: "El phrasal verb 'put up with' significa tolerar.", tip: "Complete the phrasal verb." },
+            { sentence: "She needs to take ______ her shoes before entering the house.", correct: "off", explanation: "El phrasal verb 'take off' significa quitarse la ropa o los zapatos.", tip: "Complete the phrasal verb." },
+            { sentence: "I need to turn ______ the volume, it's too loud.", correct: "down", explanation: "El phrasal verb 'turn down' significa bajar el volumen o rechazar una oferta.", tip: "Complete the phrasal verb." },
+            { sentence: "He needs to call ______ his appointment.", correct: "off", explanation: "El phrasal verb 'call off' significa cancelar.", tip: "Complete the phrasal verb." }
         ]
     },
     {
@@ -701,6 +1143,120 @@ const learningModules = [
                 correct: "used to go",
                 explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit.",
                 tip: "Complete with '- / get / be' + used to' + go."
+            },
+            {
+                sentence: "I ______ a lot of sweets when I was a child.",
+                correct: "used to eat",
+                explanation: "The correct answer is 'used to eat'. 'Used to' + base form of the verb expresses a past habit.",
+                tip: "Complete with '- / get / be' + used to' + eat."
+            },
+            {
+                sentence: "She ______ very shy, but now she's very outgoing.",
+                correct: "used to be",
+                explanation: "The correct answer is 'used to be'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
+                tip: "Complete with '- / get / be' + used to' + be."
+            },
+            {
+                sentence: "He ______ in a big city, but now he prefers the countryside.",
+                correct: "used to live",
+                explanation: "The correct answer is 'used to live'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
+                tip: "Complete with '- / get / be' + used to' + live."
+            },
+            {
+                sentence: "Did you ______ play outside when you were young?",
+                correct: "use to",
+                explanation: "The correct answer is 'use to'. In questions, 'did' is used with 'use to' + base form of the verb.",
+                tip: "Complete with '- / get / be' + used to' + play."
+            },
+            {
+                sentence: "I ______ getting up early for work now.",
+                correct: "am used to",
+                explanation: "The correct answer is 'am used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
+                tip: "Complete with '- / get / be' + used to' + get up."
+            },
+            {
+                sentence: "She ______ long hair, but she cut it short last year.",
+                correct: "used to have",
+                explanation: "The correct answer is 'used to have'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
+                tip: "Complete with '- / get / be' + used to' + have."
+            },
+            {
+                sentence: "It took me a while, but I ______ the new system.",
+                correct: "got used to",
+                explanation: "The correct answer is 'got used to'. 'Get used to' expresses the process of becoming accustomed to something.",
+                tip: "Complete with '- / get / be' + used to' + the new system."
+            },
+            {
+                sentence: "They ______ go on holiday every summer.",
+                correct: "used to",
+                explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit.",
+                tip: "Complete with '- / get / be' + used to' + go."
+            },
+            {
+                sentence: "I ______ driving on the left side of the road now.",
+                correct: "am used to",
+                explanation: "The correct answer is 'am used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
+                tip: "Complete with '- / get / be' + used to' + drive."
+            },
+            {
+                sentence: "He ______ play the guitar, but he stopped years ago.",
+                correct: "used to",
+                explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit that no longer exists.",
+                tip: "Complete with '- / get / be' + used to' + play."
+            },
+            {
+                sentence: "She ______ living in a big city.",
+                correct: "is used to",
+                explanation: "The correct answer is 'is used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
+                tip: "Complete with '- / get / be' + used to' + live."
+            },
+            {
+                sentence: "You'll ______ the noise of the city after a while.",
+                correct: "get used to",
+                explanation: "The correct answer is 'get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
+                tip: "Complete with '- / get / be' + used to' + the noise."
+            },
+            {
+                sentence: "I ______ like broccoli, but now I love it.",
+                correct: "didn't use to",
+                explanation: "The correct answer is 'didn't use to'. The negative form of 'used to' is 'didn't use to' + base form of the verb.",
+                tip: "Complete with '- / get / be' + used to' + like."
+            },
+            {
+                sentence: "They ______ work long hours when they started their business.",
+                correct: "used to",
+                explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit.",
+                tip: "Complete with '- / get / be' + used to' + work."
+            },
+            {
+                sentence: "She ______ wearing glasses, but now she wears contact lenses.",
+                correct: "used to",
+                explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past state that no longer exists.",
+                tip: "Complete with '- / get / be' + used to' + wear."
+            },
+            {
+                sentence: "He ______ eating spicy food, so he can handle the heat.",
+                correct: "is used to",
+                explanation: "The correct answer is 'is used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
+                tip: "Complete with '- / get / be' + used to' + eat."
+            },
+            {
+                sentence: "I ______ living alone, but it was strange at first.",
+                correct: "got used to",
+                explanation: "The correct answer is 'got used to'. 'Get used to' expresses the process of becoming accustomed to something.",
+                tip: "Complete with '- / get / be' + used to' + live."
+            },
+            {
+                sentence: "Did you ______ travel a lot for work?",
+                correct: "use to",
+                explanation: "The correct answer is 'use to'. In questions, 'did' is used with 'use to' + base form of the verb.",
+                tip: "Complete with '- / get / be' + used to' + travel."
+            },
+            {
+                sentence: "She ______ playing the piano every day.",
+                correct: "is used to",
+                explanation: "The correct answer is 'is used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar.",
+                tip: "Complete with '- / get / be' + used to' + play."
             }
         ]
     }
