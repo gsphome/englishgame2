@@ -149,7 +149,7 @@ const game = {
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
         menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[22rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-2 mx-auto" style="max-width: 715px;">`; // Wrapper for scroll with border and custom width
-        menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto w-fit">`;
+        menuHtml += `<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto w-fit">`;
 
         learningModules.forEach((module, index) => {
             const colorClass = colors[index % colors.length];
@@ -157,11 +157,11 @@ const game = {
             const description = module.description || ''; // Placeholder description
 
             menuHtml += `
-                <button class="${colorClass} text-white font-semibold w-16 h-16 py-2 px-1 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800 md:w-32 md:h-32 md:py-4 md:px-2" data-module-id="${module.id}">
-                    <h2 class="text-xs mb-0 font-bold md:text-lg md:mb-1">
+                <button class="${colorClass} text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800 md:w-32 md:h-32 md:py-4 md:px-2" data-module-id="${module.id}">
+                    <h2 class="text-[0.6rem] mb-0 font-bold md:text-lg md:mb-1">
                         <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name}</span>
                     </h2>
-                    <p class="text-xxs opacity-90 md:text-xs" id="module-description-${module.id}">
+                    <p class="text-[0.5rem] opacity-90 md:text-xs" id="module-description-${module.id}">
             `;
         });
         menuHtml += `</div>`;
