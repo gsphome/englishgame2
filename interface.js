@@ -18,7 +18,8 @@ const MESSAGES = {
         confirmLogout: "Confirmar Cierre de Sesión",
         confirmLogoutMessage: "¿Estás seguro de que quieres cerrar sesión?",
         flashcardSummaryMessage: "¡Felicidades! Has estudiado {count} tarjetas.",
-        usernamePlaceholder: "Ingresa tu nombre"
+        usernamePlaceholder: "Ingresa tu nombre",
+        randomMode: "Modo Aleatorio"
     },
     en: {
         loginTitle: "Welcome",
@@ -36,7 +37,8 @@ const MESSAGES = {
         confirmLogout: "Confirm Logout",
         confirmLogoutMessage: "Are you sure you want to logout?",
         flashcardSummaryMessage: "Congratulations! You have studied {count} cards.",
-        usernamePlaceholder: "Enter your name"
+        usernamePlaceholder: "Enter your name",
+        randomMode: "Random Mode"
     },
 
     get(key) {

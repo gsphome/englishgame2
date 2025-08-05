@@ -596,7 +596,7 @@ const learningModules = [
             },
             {
                 sentence: "Don't worry, it is easy to learn this grammar. You ______  in no time!",
-                correct: "will get used to",
+                correct: "will get used to it",
                 explanation: "The correct answer is 'will get used to'. 'Get used to' expresses the process of becoming accustomed to something.",
                 tip: "Complete with '- / get / be' + used to' + it."
             },
