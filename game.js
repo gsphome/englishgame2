@@ -101,7 +101,7 @@ const game = {
         header.innerHTML = `
             <div class="container mx-auto flex justify-between items-center p-4">
                 <div></div>
-                <div id="global-score" class="text-lg">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
+                <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
                 <div class="flex items-center">
                     <div class="font-bold text-xl mr-4">${user.username}</div>
                     <button id="hamburger-btn" class="text-2xl">&#9776;</button>
@@ -157,11 +157,11 @@ const game = {
             const description = module.description || ''; // Placeholder description
 
             menuHtml += `
-                <button class="${colorClass} text-white font-semibold w-40 h-40 py-4 px-2 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800" data-module-id="${module.id}">
-                    <h2 class="text-xl mb-2 font-bold">
+                <button class="${colorClass} text-white font-semibold w-16 h-16 py-2 px-1 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800 md:w-32 md:h-32 md:py-4 md:px-2" data-module-id="${module.id}">
+                    <h2 class="text-xs mb-0 font-bold md:text-lg md:mb-1">
                         <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name}</span>
                     </h2>
-                    <p class="text-xs opacity-90" id="module-description-${module.id}">
+                    <p class="text-xxs opacity-90 md:text-xs" id="module-description-${module.id}">
             `;
         });
         menuHtml += `</div>`;
@@ -354,27 +354,27 @@ const game = {
                         <div class="card h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
                             <div class="card-inner">
                                 <div class="card-face card-face-front">
-                                    <p class="text-3xl" id="flashcard-front-text">${cardData.en}</p>
+                                    <p class="text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
                                 </div>
                                 <div class="card-face card-face-back">
                                     <div>
-                                        <p class="text-3xl font-bold" id="flashcard-back-text">${cardData.es}</p>
-                                        <p class="text-xl text-gray-500" id="flashcard-ipa">${cardData.ipa}</p>
-                                        <p class="mt-4 italic" id="flashcard-example">"${cardData.example}"</p>
+                                        <p class="text-base font-bold md:text-xl" id="flashcard-back-text">${cardData.es}</p>
+                                        <p class="text-sm text-gray-500 md:text-lg" id="flashcard-ipa">${cardData.ipa}</p>
+                                        <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example">"${cardData.example}"</p>
                                         <p class="text-gray-500 italic" id="flashcard-example-es">"${cardData.example_es}"</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-between mt-4">
-                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">
                                 ${MESSAGES.get('prevButton')}
                             </button>
-                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4">
                                 ${MESSAGES.get('nextButton')}
                             </button>
                         </div>
-                         <button id="back-to-menu-flashcard-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                         <button id="back-to-menu-flashcard-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                     </div>
                 `;
 
@@ -441,7 +441,7 @@ const game = {
                 <div id="flashcard-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                     <h1 id="flashcard-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
                     <p id="flashcard-summary-message" class="text-xl mb-4">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
-                    <button id="flashcard-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                    <button id="flashcard-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                 </div>
             `;
         } else {
@@ -505,19 +505,19 @@ const game = {
                         <div class="text-center text-gray-600 mb-4" id="quiz-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
                         <div class="text-center text-gray-600 mb-4" id="quiz-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
-                            <p class="text-2xl mb-6" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
+                            <p class="text-base mb-6 md:text-xl" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="quiz-tip">Tip: ${questionData.tip}</p>` : ''}
                             <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
                             <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
                         <div class="flex justify-between mt-4">
-                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
+                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4">${MESSAGES.get('undoButton')}</button>
                             <div>
-                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
-                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">${MESSAGES.get('prevButton')}</button>
+                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4">${MESSAGES.get('nextButton')}</button>
                             </div>
                         </div>
-                         <button id="back-to-menu-quiz-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                         <button id="back-to-menu-quiz-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                     </div>
                 `;
 
@@ -645,7 +645,7 @@ const game = {
                         <h1 id="quiz-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
                         <p id="quiz-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
                         <p id="quiz-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
-                        <button id="quiz-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                        <button id="quiz-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                      </div>
                 `;
             } else {
@@ -701,18 +701,18 @@ const game = {
                         <div class="text-center text-gray-600 mb-4" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
                         <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
-                            <p class="text-2xl mb-6" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
+                            <p class="text-base mb-6 md:text-xl" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
                             <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
                         <div class="flex justify-between mt-4">
-                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('undoButton')}</button>
+                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4">${MESSAGES.get('undoButton')}</button>
                             <div>
-                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">${MESSAGES.get('prevButton')}</button>
-                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">${MESSAGES.get('nextButton')}</button>
+                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">${MESSAGES.get('prevButton')}</button>
+                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4">${MESSAGES.get('nextButton')}</button>
                             </div>
                         </div>
-                        <button id="back-to-menu-completion-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                        <button id="back-to-menu-completion-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                     </div>
                 `;
 
@@ -828,7 +828,7 @@ const game = {
                         <h1 id="completion-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
                         <p id="completion-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
                         <p id="completion-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
-                        <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                        <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                      </div>
                 `;
             } else {
