@@ -1,5 +1,6 @@
 const game = {
     modal: null,
+    menuScrollPosition: 0,
     yesButton: null,
     noButton: null,
     messageElement: null,
@@ -132,7 +133,7 @@ const game = {
 
             const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-            menuHtml += `<div class="max-h-[22rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-2 mx-auto" style="max-width: 715px;">`; // Wrapper for scroll with border and custom width
+            menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[22rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-2 mx-auto" style="max-width: 715px;">`; // Wrapper for scroll with border and custom width
             menuHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto w-fit">`;
 
             learningModules.forEach((module, index) => {
@@ -154,8 +155,19 @@ const game = {
             appContainer.innerHTML = menuHtml;
             appContainer.classList.add('main-menu-active');
 
+            // Restore scroll position
+            const scrollWrapper = document.getElementById('main-menu-scroll-wrapper');
+            if (scrollWrapper) {
+                scrollWrapper.scrollTop = this.menuScrollPosition;
+            }
+
             document.querySelectorAll('[data-module-id]').forEach(button => {
                 button.addEventListener('click', () => {
+                    // Save scroll position before navigating away
+                    const currentScrollWrapper = document.getElementById('main-menu-scroll-wrapper');
+                    if (currentScrollWrapper) {
+                        this.menuScrollPosition = currentScrollWrapper.scrollTop;
+                    }
                     const moduleId = button.dataset.moduleId;
                     this.startModule(moduleId);
                 });
@@ -173,6 +185,11 @@ const game = {
                     moduleDescriptionElement.textContent = module.description || '';
                 }
             });
+            // Restore scroll position if menu is re-rendered without full re-creation
+            const scrollWrapper = document.getElementById('main-menu-scroll-wrapper');
+            if (scrollWrapper) {
+                scrollWrapper.scrollTop = this.menuScrollPosition;
+            }
         }
     },
 
