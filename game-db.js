@@ -1078,6 +1078,447 @@ const learningModules = [
             { sentence: "Had I _ his advice, I would have succeeded.", options: ["followed", "follow", "following", "to follow"], correct: "followed", explanation: "Inversión del tercer condicional sin 'if'." }
         ]
     },
+    {
+        id: 'quiz-advanced-collocations-idioms-c2',
+        name: 'Advanced Collocations',
+        gameMode: 'quiz',
+        data: [
+            {
+                sentence: "It's important to <span class=\"font-bold text-blue-500\">bear in mind</span> that not all information online is reliable.",
+                idiom: "bear in mind",
+                options: ["remember", "forget", "ignore", "understand"],
+                correct: "remember",
+                explanation: "To 'bear in mind' means to remember or consider something."
+            },
+            {
+                sentence: "The new policy will <span class=\"font-bold text-blue-500\">have a profound impact</span> on the economy.",
+                idiom: "have a profound impact",
+                options: ["have a small effect", "have a significant effect", "have no effect", "have a negative effect"],
+                correct: "have a significant effect",
+                explanation: "To 'have a profound impact' means to have a very great or intense effect."
+            },
+            {
+                sentence: "She managed to <span class=\"font-bold text-blue-500\">strike a balance</span> between her career and family life.",
+                idiom: "strike a balance",
+                options: ["find a compromise", "create conflict", "lose control", "make a choice"],
+                correct: "find a compromise",
+                explanation: "To 'strike a balance' means to find a satisfactory compromise between two extremes."
+            },
+            {
+                sentence: "The company decided to <span class=\"font-bold text-blue-500\">take a calculated risk</span> with the new product launch.",
+                idiom: "take a calculated risk",
+                options: ["take a dangerous risk", "take a risk after careful consideration", "avoid risk", "take a foolish risk"],
+                correct: "take a risk after careful consideration",
+                explanation: "To 'take a calculated risk' means to take a risk after considering the possible negative consequences."
+            },
+            {
+                sentence: "His arguments <span class=\"font-bold text-blue-500\">hold water</span>, despite initial skepticism.",
+                idiom: "hold water",
+                options: ["are illogical", "are valid and sound", "are weak", "are confusing"],
+                correct: "are valid and sound",
+                explanation: "If an argument or statement 'holds water', it is valid and sound."
+            },
+            {
+                sentence: "The new evidence <span class=\"font-bold text-blue-500\">sheds light on</span> the mysterious disappearance.",
+                idiom: "sheds light on",
+                options: ["darkens", "confuses", "clarifies", "hides"],
+                correct: "clarifies",
+                explanation: "To 'shed light on' something means to help to explain it."
+            },
+            {
+                sentence: "We need to <span class=\"font-bold text-blue-500\">iron out the kinks</span> before the system goes live.",
+                idiom: "iron out the kinks",
+                options: ["create problems", "solve minor problems", "ignore issues", "complicate things"],
+                correct: "solve minor problems",
+                explanation: "To 'iron out the kinks' means to resolve minor problems or difficulties."
+            },
+            {
+                sentence: "The decision was made <span class=\"font-bold text-blue-500\">at the eleventh hour</span>.",
+                idiom: "at the eleventh hour",
+                options: ["very early", "at the last possible moment", "on time", "without warning"],
+                correct: "at the last possible moment",
+                explanation: "To do something 'at the eleventh hour' means to do it at the last possible moment."
+            },
+            {
+                sentence: "He tends to <span class=\"font-bold text-blue-500\">jump the gun</span> and make decisions too quickly.",
+                idiom: "jump the gun",
+                options: ["act prematurely", "act slowly", "act carefully", "act decisively"],
+                correct: "act prematurely",
+                explanation: "To 'jump the gun' means to act too soon or before the proper time."
+            },
+            {
+                sentence: "The new manager is determined to <span class=\"font-bold text-blue-500\">turn over a new leaf</span> and improve team morale.",
+                idiom: "turn over a new leaf",
+                options: ["continue old habits", "make a fresh start", "change jobs", "read a new book"],
+                correct: "make a fresh start",
+                explanation: "To 'turn over a new leaf' means to make a fresh start and change your behavior for the better."
+            },
+            {
+                sentence: "The company is <span class=\"font-bold text-blue-500\">on the cusp of</span> a major breakthrough.",
+                idiom: "on the cusp of",
+                options: ["far from", "at the beginning of", "at the end of", "in the middle of"],
+                correct: "at the beginning of",
+                explanation: "To be 'on the cusp of' something means to be at the point when something is about to happen."
+            },
+            {
+                sentence: "His explanation didn't <span class=\"font-bold text-blue-500\">ring true</span> to me.",
+                idiom: "ring true",
+                options: ["seem false", "seem honest or truthful", "sound loud", "sound confusing"],
+                correct: "seem honest or truthful",
+                explanation: "If something 'rings true', it seems to be true or genuine."
+            },
+            {
+                sentence: "She has a tendency to <span class=\"font-bold text-blue-500\">make a mountain out of a molehill</span>.",
+                idiom: "make a mountain out of a molehill",
+                options: ["exaggerate a minor problem", "solve a big problem", "ignore a problem", "create a problem"],
+                correct: "exaggerate a minor problem",
+                explanation: "To 'make a mountain out of a molehill' means to exaggerate the importance of a small problem."
+            },
+            {
+                sentence: "The project was a success, <span class=\"font-bold text-blue-500\">by and large</span>.",
+                idiom: "by and large",
+                options: ["completely", "mostly", "partially", "rarely"],
+                correct: "mostly",
+                explanation: "'By and large' means generally or mostly."
+            },
+            {
+                sentence: "He decided to <span class=\"font-bold text-blue-500\">take the plunge</span> and start his own business.",
+                idiom: "take the plunge",
+                options: ["hesitate", "make a bold decision", "swim", "avoid a decision"],
+                correct: "make a bold decision",
+                explanation: "To 'take the plunge' means to decide to do something important or difficult that you have been thinking about doing for a long time."
+            },
+            {
+                sentence: "The new regulations will <span class=\"font-bold text-blue-500\">level the playing field</span> for all competitors.",
+                idiom: "level the playing field",
+                options: ["create an unfair advantage", "make competition fair", "make things more difficult", "reduce competition"],
+                correct: "make competition fair",
+                explanation: "To 'level the playing field' means to make a situation fair for everyone."
+            },
+            {
+                sentence: "She's always been able to <span class=\"font-bold text-blue-500\">read between the lines</span>.",
+                idiom: "read between the lines",
+                options: ["read quickly", "understand implied meanings", "read aloud", "read superficially"],
+                correct: "understand implied meanings",
+                explanation: "To 'read between the lines' means to understand the real meaning of something, even if it is not stated directly."
+            },
+            {
+                sentence: "The company is trying to <span class=\"font-bold text-blue-500\">get its act together</span> after a series of setbacks.",
+                idiom: "get its act together",
+                options: ["become disorganized", "become more organized and effective", "give up", "blame others"],
+                correct: "become more organized and effective",
+                explanation: "To 'get your act together' means to organize yourself and your affairs so that you can achieve something."
+            },
+            {
+                sentence: "His comments were <span class=\"font-bold text-blue-500\">a breath of fresh air</span>.",
+                idiom: "a breath of fresh air",
+                options: ["something new and refreshing", "something old and boring", "something confusing", "something negative"],
+                correct: "something new and refreshing",
+                explanation: "A 'breath of fresh air' is something new and refreshing that makes a situation better."
+            },
+            {
+                sentence: "We need to <span class=\"font-bold text-blue-500\">nip it in the bud</span> before it becomes a bigger problem.",
+                idiom: "nip it in the bud",
+                options: ["allow it to grow", "deal with it at an early stage", "ignore it", "make it worse"],
+                correct: "deal with it at an early stage",
+                explanation: "To 'nip something in the bud' means to stop a problem at an early stage before it gets worse."
+            }
+        ]
+    },
+    {
+        id: 'quiz-formal-vocabulary-nuance-c2',
+        name: 'Formal Vocabulary & Nuance',
+        gameMode: 'quiz',
+        data: [
+            {
+                sentence: "The committee decided to <span class=\"font-bold text-blue-500\">ameliorate</span> the working conditions.",
+                idiom: "ameliorate",
+                options: ["worsen", "improve", "maintain", "ignore"],
+                correct: "improve",
+                explanation: "To 'ameliorate' means to make something better or more tolerable."
+            },
+            {
+                sentence: "The report provides a <span class=\"font-bold text-blue-500\">comprehensive</span> analysis of the data.",
+                idiom: "comprehensive",
+                options: ["partial", "limited", "thorough and complete", "confusing"],
+                correct: "thorough and complete",
+                explanation: "'Comprehensive' means including or dealing with all or nearly all elements or aspects of something."
+            },
+            {
+                sentence: "The new policy will <span class=\"font-bold text-blue-500\">endeavor</span> to address the issue of inequality.",
+                idiom: "endeavor",
+                options: ["fail", "try hard", "avoid", "ignore"],
+                correct: "try hard",
+                explanation: "To 'endeavor' means to try hard to do or achieve something."
+            },
+            {
+                sentence: "The evidence presented was <span class=\"font-bold text-blue-500\">unequivocal</span>.",
+                idiom: "unequivocal",
+                options: ["ambiguous", "clear and unambiguous", "doubtful", "misleading"],
+                correct: "clear and unambiguous",
+                explanation: "'Unequivocal' means leaving no doubt; unambiguous."
+            },
+            {
+                sentence: "The government's actions could <span class=\"font-bold text-blue-500\">exacerbate</span> the economic crisis.",
+                idiom: "exacerbate",
+                options: ["alleviate", "worsen", "solve", "prevent"],
+                correct: "worsen",
+                explanation: "To 'exacerbate' means to make a problem, bad situation, or negative feeling worse."
+            },
+            {
+                sentence: "The study aims to <span class=\"font-bold text-blue-500\">elucidate</span> the complex relationship between the two variables.",
+                idiom: "elucidate",
+                options: ["obscure", "clarify", "complicate", "question"],
+                correct: "clarify",
+                explanation: "To 'elucidate' means to make something clear; explain."
+            },
+            {
+                sentence: "The committee reached a <span class=\"font-bold text-blue-500\">consensus</span> on the proposed changes.",
+                idiom: "consensus",
+                options: ["disagreement", "general agreement", "debate", "compromise"],
+                correct: "general agreement",
+                explanation: "A 'consensus' is a general agreement."
+            },
+            {
+                sentence: "The new technology will <span class=\"font-bold text-blue-500\">facilitate</span> communication between departments.",
+                idiom: "facilitate",
+                options: ["hinder", "make easier", "complicate", "prevent"],
+                correct: "make easier",
+                explanation: "To 'facilitate' means to make an action or process easy or easier."
+            },
+            {
+                sentence: "The research findings were <span class=\"font-bold text-blue-500\">substantiated</span> by empirical data.",
+                idiom: "substantiated",
+                options: ["disproved", "supported with evidence", "ignored", "questioned"],
+                correct: "supported with evidence",
+                explanation: "To 'substantiate' means to provide evidence to support or prove the truth of something."
+            },
+            {
+                sentence: "The speaker's arguments were <span class=\"font-bold text-blue-500\">cogent</span> and well-reasoned.",
+                idiom: "cogent",
+                options: ["unconvincing", "clear, logical, and convincing", "confusing", "emotional"],
+                correct: "clear, logical, and convincing",
+                explanation: "'Cogent' means (of an argument or case) clear, logical, and convincing."
+            },
+            {
+                sentence: "The company aims to <span class=\"font-bold text-blue-500\">mitigate</span> the risks associated with the investment.",
+                idiom: "mitigate",
+                options: ["increase", "make less severe", "ignore", "create"],
+                correct: "make less severe",
+                explanation: "To 'mitigate' means to make something less severe, serious, or painful."
+            },
+            {
+                sentence: "The report highlighted the <span class=\"font-bold text-blue-500\">pervasive</span> influence of social media.",
+                idiom: "pervasive",
+                options: ["limited", "widespread", "uncommon", "hidden"],
+                correct: "widespread",
+                explanation: "'Pervasive' means (especially of an unwelcome influence or physical effect) spreading widely throughout an area or a group of people."
+            },
+            {
+                sentence: "The committee decided to <span class=\"font-bold text-blue-500\">promulgate</span> the new regulations.",
+                idiom: "promulgate",
+                options: ["hide", "make known by proclamation", "cancel", "delay"],
+                correct: "make known by proclamation",
+                explanation: "To 'promulgate' means to promote or make widely known (an idea or cause)."
+            },
+            {
+                sentence: "The artist's work is characterized by its <span class=\"font-bold text-blue-500\">ephemeral</span> beauty.",
+                idiom: "ephemeral",
+                options: ["lasting", "short-lived", "eternal", "ugly"],
+                correct: "short-lived",
+                explanation: "'Ephemeral' means lasting for a very short time."
+            },
+            {
+                sentence: "The new evidence will <span class=\"font-bold text-blue-500\">corroborate</span> the witness's testimony.",
+                idiom: "corroborate",
+                options: ["contradict", "confirm or give support to", "ignore", "question"],
+                correct: "confirm or give support to",
+                explanation: "To 'corroborate' means to confirm or give support to (a statement, theory, or finding)."
+            },
+            {
+                sentence: "The government's policy was met with <span class=\"font-bold text-blue-500\">widespread opprobrium</span>.",
+                idiom: "widespread opprobrium",
+                options: ["general approval", "strong criticism or condemnation", "indifference", "support"],
+                correct: "strong criticism or condemnation",
+                explanation: "'Opprobrium' means harsh criticism or censure."
+            },
+            {
+                sentence: "The scientist's theory was based on <span class=\"font-bold text-blue-500\">conjecture</span> rather than fact.",
+                idiom: "conjecture",
+                options: ["proven fact", "opinion or conclusion formed on the basis of incomplete information", "evidence", "experiment"],
+                correct: "opinion or conclusion formed on the basis of incomplete information",
+                explanation: "'Conjecture' means an opinion or conclusion formed on the basis of incomplete information."
+            },
+            {
+                sentence: "The company decided to <span class=\"font-bold text-blue-500\">delineate</span> its new strategy.",
+                idiom: "delineate",
+                options: ["obscure", "describe or portray precisely", "complicate", "ignore"],
+                correct: "describe or portray precisely",
+                explanation: "To 'delineate' means to describe or portray (something) precisely."
+            },
+            {
+                sentence: "The new law will have <span class=\"font-bold text-blue-500\">far-reaching implications</span>.",
+                idiom: "far-reaching implications",
+                options: ["limited consequences", "extensive consequences", "no consequences", "positive consequences"],
+                correct: "extensive consequences",
+                explanation: "'Far-reaching implications' means having important and widely applicable effects or consequences."
+            },
+            {
+                sentence: "The committee's decision was met with <span class=\"font-bold text-blue-500\">unanimous approval</span>.",
+                idiom: "unanimous approval",
+                options: ["disagreement", "complete agreement", "partial agreement", "indifference"],
+                correct: "complete agreement",
+                explanation: "'Unanimous approval' means (of two or more people) fully in agreement."
+            }
+        ]
+    },
+    {
+        id: 'quiz-advanced-grammatical-structures-c2',
+        name: 'Advanced Grammatical Structures',
+        gameMode: 'quiz',
+        data: [
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Seldom do we see</span> such dedication in young athletes.",
+                idiom: "Seldom do we see",
+                options: ["We seldom see", "Do we seldom see", "Seldom we see", "Seldom we do see"],
+                correct: "Seldom do we see",
+                explanation: "Inversion with 'seldom' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Had I known</span> about the party, I would have attended.",
+                idiom: "Had I known",
+                options: ["If I knew", "If I had known", "I had known", "Knowing"],
+                correct: "If I had known",
+                explanation: "This is an inverted conditional sentence, equivalent to 'If I had known'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Not only did he finish</span> the race, but he also won it.",
+                idiom: "Not only did he finish",
+                options: ["He not only finished", "Not only he finished", "Did he not only finish", "He finished not only"],
+                correct: "Not only did he finish",
+                explanation: "Inversion with 'not only' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">No sooner had she arrived</span> than the phone rang.",
+                idiom: "No sooner had she arrived",
+                options: ["She had no sooner arrived", "No sooner she arrived", "Had she no sooner arrived", "She arrived no sooner"],
+                correct: "No sooner had she arrived",
+                explanation: "Inversion with 'no sooner... than' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Little did he know</span> the challenges that lay ahead.",
+                idiom: "Little did he know",
+                options: ["He little knew", "Little he knew", "Did he little know", "He did little know"],
+                correct: "Little did he know",
+                explanation: "Inversion with 'little' (meaning 'not much') requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Only when the sun set</span> did they decide to leave.",
+                idiom: "Only when the sun set",
+                options: ["They decided to leave only when the sun set", "Only when the sun set they decided to leave", "Did they decide to leave only when the sun set", "Only when the sun did set"],
+                correct: "Only when the sun set",
+                explanation: "Inversion with 'only when' occurs in the main clause, not the 'only' clause."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Such was the impact</span> of the speech that everyone was moved.",
+                idiom: "Such was the impact",
+                options: ["The impact was such", "Such the impact was", "Was such the impact", "The impact such was"],
+                correct: "Such was the impact",
+                explanation: "Inversion with 'such' emphasizes the degree of something."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Under no circumstances should you open</span> that door.",
+                idiom: "Under no circumstances should you open",
+                options: ["You should open under no circumstances", "Under no circumstances you should open", "Should you open under no circumstances", "You should not open under any circumstances"],
+                correct: "Under no circumstances should you open",
+                explanation: "Inversion with negative expressions like 'under no circumstances' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Rarely have I seen</span> such a beautiful painting.",
+                idiom: "Rarely have I seen",
+                options: ["I have rarely seen", "Rarely I have seen", "Have I rarely seen", "I rarely have seen"],
+                correct: "Rarely have I seen",
+                explanation: "Inversion with 'rarely' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">No sooner had he finished</span> his work than he went home.",
+                idiom: "No sooner had he finished",
+                options: ["He had no sooner finished", "No sooner he finished", "Had he no sooner finished", "He finished no sooner"],
+                correct: "No sooner had he finished",
+                explanation: "Inversion with 'no sooner... than' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Hardly had she left</span> when it started to rain.",
+                idiom: "Hardly had she left",
+                options: ["She had hardly left", "Hardly she left", "Had she hardly left", "She left hardly"],
+                correct: "Hardly had she left",
+                explanation: "Inversion with 'hardly... when' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">So successful was the project</span> that it was expanded globally.",
+                idiom: "So successful was the project",
+                options: ["The project was so successful", "So successful the project was", "Was the project so successful", "The project so successful was"],
+                correct: "So successful was the project",
+                explanation: "Inversion with 'so + adjective/adverb' emphasizes the degree of something."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Never before has technology advanced</span> so rapidly.",
+                idiom: "Never before has technology advanced",
+                options: ["Technology has never before advanced", "Never before technology has advanced", "Has technology never before advanced", "Technology never before has advanced"],
+                correct: "Never before has technology advanced",
+                explanation: "Inversion with 'never before' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">On no account are you to disclose</span> this information.",
+                idiom: "On no account are you to disclose",
+                options: ["You are on no account to disclose", "On no account you are to disclose", "Are you on no account to disclose", "You are not to disclose on any account"],
+                correct: "On no account are you to disclose",
+                explanation: "Inversion with 'on no account' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Were I to win</span> the lottery, I would travel the world.",
+                idiom: "Were I to win",
+                options: ["If I won", "If I were to win", "I were to win", "Winning"],
+                correct: "If I were to win",
+                explanation: "This is an inverted conditional sentence, equivalent to 'If I were to win'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Only by working together can we achieve</span> our goals.",
+                idiom: "Only by working together can we achieve",
+                options: ["We can achieve our goals only by working together", "Only by working together we can achieve", "Can we achieve our goals only by working together", "We can only achieve by working together"],
+                correct: "Only by working together can we achieve",
+                explanation: "Inversion with 'only by' occurs in the main clause."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Not until all the guests had left</span> did she finally relax.",
+                idiom: "Not until all the guests had left",
+                options: ["She finally relaxed not until all the guests had left", "Not until all the guests had left she finally relaxed", "Did she finally relax not until all the guests had left", "She did finally relax not until all the guests had left"],
+                correct: "Not until all the guests had left",
+                explanation: "Inversion with 'not until' occurs in the main clause."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">So quickly did he run</span> that he broke the world record.",
+                idiom: "So quickly did he run",
+                options: ["He ran so quickly", "So quickly he ran", "Did he run so quickly", "He did run so quickly"],
+                correct: "So quickly did he run",
+                explanation: "Inversion with 'so + adverb' emphasizes the degree of something."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Should you require</span> any further assistance, please do not hesitate to ask.",
+                idiom: "Should you require",
+                options: ["If you require", "If you should require", "You should require", "Requiring"],
+                correct: "If you require",
+                explanation: "This is an inverted conditional sentence, equivalent to 'If you require'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">In no way is he responsible</span> for the accident.",
+                idiom: "In no way is he responsible",
+                options: ["He is in no way responsible", "In no way he is responsible", "Is he in no way responsible", "He is not responsible in any way"],
+                correct: "In no way is he responsible",
+                explanation: "Inversion with 'in no way' requires the auxiliary verb before the subject."
+            }
+        ]
+    },
     // Phrasal Verbs Completion Module
     {
         id: 'completion-phrasal-verbs',
@@ -1438,446 +1879,5 @@ const learningModules = [
             { word: "on the one hand... on the other hand", category: "contrast" }
         ],
         categories: ["addition", "equation", "conclusion", "contrast"]
-    },
-    {
-        id: 'quiz-advanced-collocations-idioms-c2',
-        name: 'Advanced Collocations',
-        gameMode: 'quiz',
-        data: [
-            {
-                sentence: "It's important to <span class=\"font-bold text-blue-500\">bear in mind</span> that not all information online is reliable.",
-                idiom: "bear in mind",
-                options: ["remember", "forget", "ignore", "understand"],
-                correct: "remember",
-                explanation: "To 'bear in mind' means to remember or consider something."
-            },
-            {
-                sentence: "The new policy will <span class=\"font-bold text-blue-500\">have a profound impact</span> on the economy.",
-                idiom: "have a profound impact",
-                options: ["have a small effect", "have a significant effect", "have no effect", "have a negative effect"],
-                correct: "have a significant effect",
-                explanation: "To 'have a profound impact' means to have a very great or intense effect."
-            },
-            {
-                sentence: "She managed to <span class=\"font-bold text-blue-500\">strike a balance</span> between her career and family life.",
-                idiom: "strike a balance",
-                options: ["find a compromise", "create conflict", "lose control", "make a choice"],
-                correct: "find a compromise",
-                explanation: "To 'strike a balance' means to find a satisfactory compromise between two extremes."
-            },
-            {
-                sentence: "The company decided to <span class=\"font-bold text-blue-500\">take a calculated risk</span> with the new product launch.",
-                idiom: "take a calculated risk",
-                options: ["take a dangerous risk", "take a risk after careful consideration", "avoid risk", "take a foolish risk"],
-                correct: "take a risk after careful consideration",
-                explanation: "To 'take a calculated risk' means to take a risk after considering the possible negative consequences."
-            },
-            {
-                sentence: "His arguments <span class=\"font-bold text-blue-500\">hold water</span>, despite initial skepticism.",
-                idiom: "hold water",
-                options: ["are illogical", "are valid and sound", "are weak", "are confusing"],
-                correct: "are valid and sound",
-                explanation: "If an argument or statement 'holds water', it is valid and sound."
-            },
-            {
-                sentence: "The new evidence <span class=\"font-bold text-blue-500\">sheds light on</span> the mysterious disappearance.",
-                idiom: "sheds light on",
-                options: ["darkens", "confuses", "clarifies", "hides"],
-                correct: "clarifies",
-                explanation: "To 'shed light on' something means to help to explain it."
-            },
-            {
-                sentence: "We need to <span class=\"font-bold text-blue-500\">iron out the kinks</span> before the system goes live.",
-                idiom: "iron out the kinks",
-                options: ["create problems", "solve minor problems", "ignore issues", "complicate things"],
-                correct: "solve minor problems",
-                explanation: "To 'iron out the kinks' means to resolve minor problems or difficulties."
-            },
-            {
-                sentence: "The decision was made <span class=\"font-bold text-blue-500\">at the eleventh hour</span>.",
-                idiom: "at the eleventh hour",
-                options: ["very early", "at the last possible moment", "on time", "without warning"],
-                correct: "at the last possible moment",
-                explanation: "To do something 'at the eleventh hour' means to do it at the last possible moment."
-            },
-            {
-                sentence: "He tends to <span class=\"font-bold text-blue-500\">jump the gun</span> and make decisions too quickly.",
-                idiom: "jump the gun",
-                options: ["act prematurely", "act slowly", "act carefully", "act decisively"],
-                correct: "act prematurely",
-                explanation: "To 'jump the gun' means to act too soon or before the proper time."
-            },
-            {
-                sentence: "The new manager is determined to <span class=\"font-bold text-blue-500\">turn over a new leaf</span> and improve team morale.",
-                idiom: "turn over a new leaf",
-                options: ["continue old habits", "make a fresh start", "change jobs", "read a new book"],
-                correct: "make a fresh start",
-                explanation: "To 'turn over a new leaf' means to make a fresh start and change your behavior for the better."
-            },
-            {
-                sentence: "The company is <span class=\"font-bold text-blue-500\">on the cusp of</span> a major breakthrough.",
-                idiom: "on the cusp of",
-                options: ["far from", "at the beginning of", "at the end of", "in the middle of"],
-                correct: "at the beginning of",
-                explanation: "To be 'on the cusp of' something means to be at the point when something is about to happen."
-            },
-            {
-                sentence: "His explanation didn't <span class=\"font-bold text-blue-500\">ring true</span> to me.",
-                idiom: "ring true",
-                options: ["seem false", "seem honest or truthful", "sound loud", "sound confusing"],
-                correct: "seem honest or truthful",
-                explanation: "If something 'rings true', it seems to be true or genuine."
-            },
-            {
-                sentence: "She has a tendency to <span class=\"font-bold text-blue-500\">make a mountain out of a molehill</span>.",
-                idiom: "make a mountain out of a molehill",
-                options: ["exaggerate a minor problem", "solve a big problem", "ignore a problem", "create a problem"],
-                correct: "exaggerate a minor problem",
-                explanation: "To 'make a mountain out of a molehill' means to exaggerate the importance of a small problem."
-            },
-            {
-                sentence: "The project was a success, <span class=\"font-bold text-blue-500\">by and large</span>.",
-                idiom: "by and large",
-                options: ["completely", "mostly", "partially", "rarely"],
-                correct: "mostly",
-                explanation: "'By and large' means generally or mostly."
-            },
-            {
-                sentence: "He decided to <span class=\"font-bold text-blue-500\">take the plunge</span> and start his own business.",
-                idiom: "take the plunge",
-                options: ["hesitate", "make a bold decision", "swim", "avoid a decision"],
-                correct: "make a bold decision",
-                explanation: "To 'take the plunge' means to decide to do something important or difficult that you have been thinking about doing for a long time."
-            },
-            {
-                sentence: "The new regulations will <span class=\"font-bold text-blue-500\">level the playing field</span> for all competitors.",
-                idiom: "level the playing field",
-                options: ["create an unfair advantage", "make competition fair", "make things more difficult", "reduce competition"],
-                correct: "make competition fair",
-                explanation: "To 'level the playing field' means to make a situation fair for everyone."
-            },
-            {
-                sentence: "She's always been able to <span class=\"font-bold text-blue-500\">read between the lines</span>.",
-                idiom: "read between the lines",
-                options: ["read quickly", "understand implied meanings", "read aloud", "read superficially"],
-                correct: "understand implied meanings",
-                explanation: "To 'read between the lines' means to understand the real meaning of something, even if it is not stated directly."
-            },
-            {
-                sentence: "The company is trying to <span class=\"font-bold text-blue-500\">get its act together</span> after a series of setbacks.",
-                idiom: "get its act together",
-                options: ["become disorganized", "become more organized and effective", "give up", "blame others"],
-                correct: "become more organized and effective",
-                explanation: "To 'get your act together' means to organize yourself and your affairs so that you can achieve something."
-            },
-            {
-                sentence: "His comments were <span class=\"font-bold text-blue-500\">a breath of fresh air</span>.",
-                idiom: "a breath of fresh air",
-                options: ["something new and refreshing", "something old and boring", "something confusing", "something negative"],
-                correct: "something new and refreshing",
-                explanation: "A 'breath of fresh air' is something new and refreshing that makes a situation better."
-            },
-            {
-                sentence: "We need to <span class=\"font-bold text-blue-500\">nip it in the bud</span> before it becomes a bigger problem.",
-                idiom: "nip it in the bud",
-                options: ["allow it to grow", "deal with it at an early stage", "ignore it", "make it worse"],
-                correct: "deal with it at an early stage",
-                explanation: "To 'nip something in the bud' means to stop a problem at an early stage before it gets worse."
-            }
-        ]
-    },
-    {
-        id: 'quiz-formal-vocabulary-nuance-c2',
-        name: 'Quiz: Formal Vocabulary & Nuance (C2)',
-        gameMode: 'quiz',
-        data: [
-            {
-                sentence: "The committee decided to <span class=\"font-bold text-blue-500\">ameliorate</span> the working conditions.",
-                idiom: "ameliorate",
-                options: ["worsen", "improve", "maintain", "ignore"],
-                correct: "improve",
-                explanation: "To 'ameliorate' means to make something better or more tolerable."
-            },
-            {
-                sentence: "The report provides a <span class=\"font-bold text-blue-500\">comprehensive</span> analysis of the data.",
-                idiom: "comprehensive",
-                options: ["partial", "limited", "thorough and complete", "confusing"],
-                correct: "thorough and complete",
-                explanation: "'Comprehensive' means including or dealing with all or nearly all elements or aspects of something."
-            },
-            {
-                sentence: "The new policy will <span class=\"font-bold text-blue-500\">endeavor</span> to address the issue of inequality.",
-                idiom: "endeavor",
-                options: ["fail", "try hard", "avoid", "ignore"],
-                correct: "try hard",
-                explanation: "To 'endeavor' means to try hard to do or achieve something."
-            },
-            {
-                sentence: "The evidence presented was <span class=\"font-bold text-blue-500\">unequivocal</span>.",
-                idiom: "unequivocal",
-                options: ["ambiguous", "clear and unambiguous", "doubtful", "misleading"],
-                correct: "clear and unambiguous",
-                explanation: "'Unequivocal' means leaving no doubt; unambiguous."
-            },
-            {
-                sentence: "The government's actions could <span class=\"font-bold text-blue-500\">exacerbate</span> the economic crisis.",
-                idiom: "exacerbate",
-                options: ["alleviate", "worsen", "solve", "prevent"],
-                correct: "worsen",
-                explanation: "To 'exacerbate' means to make a problem, bad situation, or negative feeling worse."
-            },
-            {
-                sentence: "The study aims to <span class=\"font-bold text-blue-500\">elucidate</span> the complex relationship between the two variables.",
-                idiom: "elucidate",
-                options: ["obscure", "clarify", "complicate", "question"],
-                correct: "clarify",
-                explanation: "To 'elucidate' means to make something clear; explain."
-            },
-            {
-                sentence: "The committee reached a <span class=\"font-bold text-blue-500\">consensus</span> on the proposed changes.",
-                idiom: "consensus",
-                options: ["disagreement", "general agreement", "debate", "compromise"],
-                correct: "general agreement",
-                explanation: "A 'consensus' is a general agreement."
-            },
-            {
-                sentence: "The new technology will <span class=\"font-bold text-blue-500\">facilitate</span> communication between departments.",
-                idiom: "facilitate",
-                options: ["hinder", "make easier", "complicate", "prevent"],
-                correct: "make easier",
-                explanation: "To 'facilitate' means to make an action or process easy or easier."
-            },
-            {
-                sentence: "The research findings were <span class=\"font-bold text-blue-500\">substantiated</span> by empirical data.",
-                idiom: "substantiated",
-                options: ["disproved", "supported with evidence", "ignored", "questioned"],
-                correct: "supported with evidence",
-                explanation: "To 'substantiate' means to provide evidence to support or prove the truth of something."
-            },
-            {
-                sentence: "The speaker's arguments were <span class=\"font-bold text-blue-500\">cogent</span> and well-reasoned.",
-                idiom: "cogent",
-                options: ["unconvincing", "clear, logical, and convincing", "confusing", "emotional"],
-                correct: "clear, logical, and convincing",
-                explanation: "'Cogent' means (of an argument or case) clear, logical, and convincing."
-            },
-            {
-                sentence: "The company aims to <span class=\"font-bold text-blue-500\">mitigate</span> the risks associated with the investment.",
-                idiom: "mitigate",
-                options: ["increase", "make less severe", "ignore", "create"],
-                correct: "make less severe",
-                explanation: "To 'mitigate' means to make something less severe, serious, or painful."
-            },
-            {
-                sentence: "The report highlighted the <span class=\"font-bold text-blue-500\">pervasive</span> influence of social media.",
-                idiom: "pervasive",
-                options: ["limited", "widespread", "uncommon", "hidden"],
-                correct: "widespread",
-                explanation: "'Pervasive' means (especially of an unwelcome influence or physical effect) spreading widely throughout an area or a group of people."
-            },
-            {
-                sentence: "The committee decided to <span class=\"font-bold text-blue-500\">promulgate</span> the new regulations.",
-                idiom: "promulgate",
-                options: ["hide", "make known by proclamation", "cancel", "delay"],
-                correct: "make known by proclamation",
-                explanation: "To 'promulgate' means to promote or make widely known (an idea or cause)."
-            },
-            {
-                sentence: "The artist's work is characterized by its <span class=\"font-bold text-blue-500\">ephemeral</span> beauty.",
-                idiom: "ephemeral",
-                options: ["lasting", "short-lived", "eternal", "ugly"],
-                correct: "short-lived",
-                explanation: "'Ephemeral' means lasting for a very short time."
-            },
-            {
-                sentence: "The new evidence will <span class=\"font-bold text-blue-500\">corroborate</span> the witness's testimony.",
-                idiom: "corroborate",
-                options: ["contradict", "confirm or give support to", "ignore", "question"],
-                correct: "confirm or give support to",
-                explanation: "To 'corroborate' means to confirm or give support to (a statement, theory, or finding)."
-            },
-            {
-                sentence: "The government's policy was met with <span class=\"font-bold text-blue-500\">widespread opprobrium</span>.",
-                idiom: "widespread opprobrium",
-                options: ["general approval", "strong criticism or condemnation", "indifference", "support"],
-                correct: "strong criticism or condemnation",
-                explanation: "'Opprobrium' means harsh criticism or censure."
-            },
-            {
-                sentence: "The scientist's theory was based on <span class=\"font-bold text-blue-500\">conjecture</span> rather than fact.",
-                idiom: "conjecture",
-                options: ["proven fact", "opinion or conclusion formed on the basis of incomplete information", "evidence", "experiment"],
-                correct: "opinion or conclusion formed on the basis of incomplete information",
-                explanation: "'Conjecture' means an opinion or conclusion formed on the basis of incomplete information."
-            },
-            {
-                sentence: "The company decided to <span class=\"font-bold text-blue-500\">delineate</span> its new strategy.",
-                idiom: "delineate",
-                options: ["obscure", "describe or portray precisely", "complicate", "ignore"],
-                correct: "describe or portray precisely",
-                explanation: "To 'delineate' means to describe or portray (something) precisely."
-            },
-            {
-                sentence: "The new law will have <span class=\"font-bold text-blue-500\">far-reaching implications</span>.",
-                idiom: "far-reaching implications",
-                options: ["limited consequences", "extensive consequences", "no consequences", "positive consequences"],
-                correct: "extensive consequences",
-                explanation: "'Far-reaching implications' means having important and widely applicable effects or consequences."
-            },
-            {
-                sentence: "The committee's decision was met with <span class=\"font-bold text-blue-500\">unanimous approval</span>.",
-                idiom: "unanimous approval",
-                options: ["disagreement", "complete agreement", "partial agreement", "indifference"],
-                correct: "complete agreement",
-                explanation: "'Unanimous approval' means (of two or more people) fully in agreement."
-            }
-        ]
-    },
-    {
-        id: 'quiz-advanced-grammatical-structures-c2',
-        name: 'Advanced Grammatical Structures',
-        gameMode: 'quiz',
-        data: [
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Seldom do we see</span> such dedication in young athletes.",
-                idiom: "Seldom do we see",
-                options: ["We seldom see", "Do we seldom see", "Seldom we see", "Seldom we do see"],
-                correct: "Seldom do we see",
-                explanation: "Inversion with 'seldom' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Had I known</span> about the party, I would have attended.",
-                idiom: "Had I known",
-                options: ["If I knew", "If I had known", "I had known", "Knowing"],
-                correct: "If I had known",
-                explanation: "This is an inverted conditional sentence, equivalent to 'If I had known'."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Not only did he finish</span> the race, but he also won it.",
-                idiom: "Not only did he finish",
-                options: ["He not only finished", "Not only he finished", "Did he not only finish", "He finished not only"],
-                correct: "Not only did he finish",
-                explanation: "Inversion with 'not only' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">No sooner had she arrived</span> than the phone rang.",
-                idiom: "No sooner had she arrived",
-                options: ["She had no sooner arrived", "No sooner she arrived", "Had she no sooner arrived", "She arrived no sooner"],
-                correct: "No sooner had she arrived",
-                explanation: "Inversion with 'no sooner... than' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Little did he know</span> the challenges that lay ahead.",
-                idiom: "Little did he know",
-                options: ["He little knew", "Little he knew", "Did he little know", "He did little know"],
-                correct: "Little did he know",
-                explanation: "Inversion with 'little' (meaning 'not much') requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Only when the sun set</span> did they decide to leave.",
-                idiom: "Only when the sun set",
-                options: ["They decided to leave only when the sun set", "Only when the sun set they decided to leave", "Did they decide to leave only when the sun set", "Only when the sun did set"],
-                correct: "Only when the sun set",
-                explanation: "Inversion with 'only when' occurs in the main clause, not the 'only' clause."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Such was the impact</span> of the speech that everyone was moved.",
-                idiom: "Such was the impact",
-                options: ["The impact was such", "Such the impact was", "Was such the impact", "The impact such was"],
-                correct: "Such was the impact",
-                explanation: "Inversion with 'such' emphasizes the degree of something."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Under no circumstances should you open</span> that door.",
-                idiom: "Under no circumstances should you open",
-                options: ["You should open under no circumstances", "Under no circumstances you should open", "Should you open under no circumstances", "You should not open under any circumstances"],
-                correct: "Under no circumstances should you open",
-                explanation: "Inversion with negative expressions like 'under no circumstances' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Rarely have I seen</span> such a beautiful painting.",
-                idiom: "Rarely have I seen",
-                options: ["I have rarely seen", "Rarely I have seen", "Have I rarely seen", "I rarely have seen"],
-                correct: "Rarely have I seen",
-                explanation: "Inversion with 'rarely' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">No sooner had he finished</span> his work than he went home.",
-                idiom: "No sooner had he finished",
-                options: ["He had no sooner finished", "No sooner he finished", "Had he no sooner finished", "He finished no sooner"],
-                correct: "No sooner had he finished",
-                explanation: "Inversion with 'no sooner... than' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Hardly had she left</span> when it started to rain.",
-                idiom: "Hardly had she left",
-                options: ["She had hardly left", "Hardly she left", "Had she hardly left", "She left hardly"],
-                correct: "Hardly had she left",
-                explanation: "Inversion with 'hardly... when' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">So successful was the project</span> that it was expanded globally.",
-                idiom: "So successful was the project",
-                options: ["The project was so successful", "So successful the project was", "Was the project so successful", "The project so successful was"],
-                correct: "So successful was the project",
-                explanation: "Inversion with 'so + adjective/adverb' emphasizes the degree of something."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Never before has technology advanced</span> so rapidly.",
-                idiom: "Never before has technology advanced",
-                options: ["Technology has never before advanced", "Never before technology has advanced", "Has technology never before advanced", "Technology never before has advanced"],
-                correct: "Never before has technology advanced",
-                explanation: "Inversion with 'never before' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">On no account are you to disclose</span> this information.",
-                idiom: "On no account are you to disclose",
-                options: ["You are on no account to disclose", "On no account you are to disclose", "Are you on no account to disclose", "You are not to disclose on any account"],
-                correct: "On no account are you to disclose",
-                explanation: "Inversion with 'on no account' requires the auxiliary verb before the subject."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Were I to win</span> the lottery, I would travel the world.",
-                idiom: "Were I to win",
-                options: ["If I won", "If I were to win", "I were to win", "Winning"],
-                correct: "If I were to win",
-                explanation: "This is an inverted conditional sentence, equivalent to 'If I were to win'."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Only by working together can we achieve</span> our goals.",
-                idiom: "Only by working together can we achieve",
-                options: ["We can achieve our goals only by working together", "Only by working together we can achieve", "Can we achieve our goals only by working together", "We can only achieve by working together"],
-                correct: "Only by working together can we achieve",
-                explanation: "Inversion with 'only by' occurs in the main clause."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Not until all the guests had left</span> did she finally relax.",
-                idiom: "Not until all the guests had left",
-                options: ["She finally relaxed not until all the guests had left", "Not until all the guests had left she finally relaxed", "Did she finally relax not until all the guests had left", "She did finally relax not until all the guests had left"],
-                correct: "Not until all the guests had left",
-                explanation: "Inversion with 'not until' occurs in the main clause."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">So quickly did he run</span> that he broke the world record.",
-                idiom: "So quickly did he run",
-                options: ["He ran so quickly", "So quickly he ran", "Did he run so quickly", "He did run so quickly"],
-                correct: "So quickly did he run",
-                explanation: "Inversion with 'so + adverb' emphasizes the degree of something."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">Should you require</span> any further assistance, please do not hesitate to ask.",
-                idiom: "Should you require",
-                options: ["If you require", "If you should require", "You should require", "Requiring"],
-                correct: "If you require",
-                explanation: "This is an inverted conditional sentence, equivalent to 'If you require'."
-            },
-            {
-                sentence: "<span class=\"font-bold text-blue-500\">In no way is he responsible</span> for the accident.",
-                idiom: "In no way is he responsible",
-                options: ["He is in no way responsible", "In no way he is responsible", "Is he in no way responsible", "He is not responsible in any way"],
-                correct: "In no way is he responsible",
-                explanation: "Inversion with 'in no way' requires the auxiliary verb before the subject."
-            }
-        ]
     }
 ];
