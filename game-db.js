@@ -1810,7 +1810,7 @@ const learningModules = [
     },
     {
         id: 'completion-advanced-phrasal-verbs-c2',
-        name: 'Completion: Advanced Phrasal Verbs (C2)',
+        name: 'Advanced Phrasal Verbs',
         gameMode: 'completion',
         data: [
             { sentence: "After weeks of deliberation, they finally decided to go ______ with the plan.", correct: "ahead", explanation: "To 'go ahead with' means to proceed with something.", tip: "Complete the phrasal verb." },
@@ -1857,7 +1857,7 @@ const learningModules = [
     },
     {
         id: 'completion-complex-prepositions-conjunctions-c2',
-        name: 'Completion: Complex Prepositions & Conjunctions (C2)',
+        name: 'Complex Prepositions',
         gameMode: 'completion',
         data: [
             { sentence: "He succeeded ______ dint of hard work and perseverance.", correct: "by", explanation: "'By dint of' means as a result of; because of.", tip: "Complete the complex preposition." },
