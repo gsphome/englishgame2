@@ -1282,7 +1282,7 @@ const learningModules = [
     },
     {
         id: 'sorting-connector-words',
-        name: 'Sorting: Connector Words',
+        name: 'Connector Words',
         gameMode: 'sorting',
         data: [
             { word: "and", category: "addition" },
