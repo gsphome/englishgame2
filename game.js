@@ -165,7 +165,7 @@ const game = {
                         <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name.replace('Flashcard: ', '').replace('Quiz: ', '').replace('Completion: ', '')}</span>
                     </h2>
                     <p class="text-[0.5rem] opacity-90 md:text-xs" id="module-description-${module.id}">
-                        <span class="text-xs">${module.gameMode === 'flashcard' ? '🧠' : module.gameMode === 'quiz' ? '❓' : '✍️'}</span>
+                        <span class="text-xs">${module.gameMode === 'flashcard' ? '🧠' : module.gameMode === 'quiz' ? '❓' : module.gameMode === 'sorting' ? '🧩' : '✍️'}</span>
             `;
         });
         menuHtml += `</div>`;
