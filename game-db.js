@@ -206,7 +206,7 @@ const learningModules = [
             { en: "Look for", es: "Buscar", ipa: "/lʊk fɔːr/", example: "She's been looking for her keys all morning.", example_es: "Ha estado buscando sus llaves toda la mañana." },
             { en: "Put off", es: "Posponer", ipa: "/pʊt ɒf/", example: "He's been putting off his homework until the last minute.", example_es: "Ha estado posponiendo sus deberes hasta el último minuto." },
             { en: "Take out", es: "Sacar / Quitar", ipa: "/teɪk aʊt/", example: "I need to take out the rubbish.", example_es: "Necesito sacar la basura." },
-                        { sentence: "He needs to throw _ his old shoes.", options: ["away", "out", "up", "on"], correct: "away", explanation: "El phrasal verb 'throw away' o 'throw out' significa desechar algo." },
+            { sentence: "He needs to throw _ his old shoes.", options: ["away", "out", "up", "on"], correct: "away", explanation: "El phrasal verb 'throw away' o 'throw out' significa desechar algo." },
             { en: "Tidy up", es: "Ordenar", ipa: "/ˈtaɪdi ʌp/", example: "He's been tidying up his desk.", example_es: "Ha estado ordenando su escritorio." },
             { en: "Wake up", es: "Despertarse", ipa: "/weɪk ʌp/", example: "I need to wake up early tomorrow.", example_es: "Necesito despertarme temprano mañana." },
             { en: "Wash up", es: "Fregar los platos", ipa: "/wɒʃ ʌp/", example: "She's been washing up the dishes.", example_es: "Ha estado fregando los platos." },
@@ -1279,5 +1279,22 @@ const learningModules = [
                 tip: "Complete with '- / get / be' + used to' + play."
             }
         ]
+    },
+    {
+        id: 'sorting-connector-words',
+        name: 'Sorting: Connector Words',
+        gameMode: 'sorting',
+        data: {
+            correctCategories: {
+                "addition": ["and", "along with", "also", "as well as", "besides", "furthermore", "in addition", "moreover", "too", "what's more", "additionally",
+                    "coupled with", "in conjunction with", "as an adjunct to", "beyond this", "concomitantly", "to elaborate further"],
+                "equation": ["equally", "correspondingly", "in the same way", "likewise", "similarly", "comparably", "identically", "analogously", "by the same token",
+                    "in like manner", "equally important", "in the same vein", "on a similar note"],
+                "conclusion": ["in conclusion", "thus", "therefore", "to conclude", "to summarise", "to sum up briefly", "we can conclude that", "in brief",
+                    "consequently", "as a result", "hence", "ergo", "in summary", "to recapitulate", "in essence", "ultimately"],
+                "contrast": ["however", "nevertheless", "nonetheless", "conversely", "on the contrary", "in contrast", "by contrast", "whereas", "while", "albeit", 
+                    "notwithstanding", "despite this", "in spite of this", "alternatively", "on the one hand... on the other hand"]
+            }
+        }
     }
 ];
