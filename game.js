@@ -1068,6 +1068,41 @@ const game = {
                     game.sorting.clearFeedback(); // Clear feedback on new move
                 }
             }
+        },
+
+        renderWords() {
+            const wordBank = document.getElementById('word-bank');
+            wordBank.innerHTML = ''; // Clear existing words
+            this.words.forEach(word => {
+                const wordElem = document.createElement('div');
+                wordElem.id = 'word-' + word.replace(/\s+/g, '-').toLowerCase();
+                wordElem.className = 'word bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-md cursor-grab m-2';
+                wordElem.setAttribute('draggable', true);
+                wordElem.textContent = word;
+                wordElem.dataset.word = word; // Store original word for easy lookup
+                wordElem.addEventListener('dragstart', (e) => this.drag(e));
+                wordBank.appendChild(wordElem);
+            });
+        },
+
+        renderCategories() {
+            const categoriesContainer = document.getElementById('categories-container');
+            categoriesContainer.innerHTML = ''; // Clear existing categories
+            this.categories.forEach(category => {
+                const categoryElem = document.createElement('div');
+                categoryElem.id = 'category-' + category;
+                categoryElem.className = 'category bg-white p-4 rounded-lg shadow-md min-h-[120px] border-2 border-blue-400 flex flex-col items-center';
+                categoryElem.innerHTML = `<h3 class="text-xl font-bold mb-2 capitalize">${category}</h3>`;
+                categoryElem.addEventListener('drop', (e) => this.drop(e));
+                categoryElem.addEventListener('dragover', (e) => this.allowDrop(e));
+                categoriesContainer.appendChild(categoryElem);
+            });
+        },
+
+        addEventListeners() {
+            document.getElementById('check-btn').addEventListener('click', () => this.checkAnswers());
+            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+            document.getElementById('back-to-menu-sorting-btn').addEventListener('click', () => game.renderMenu());
         }
     }
 };
