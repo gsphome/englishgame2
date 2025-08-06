@@ -62,3 +62,48 @@ body.hamburger-menu-open #menu-overlay {
     opacity: 0.5;
     pointer-events: auto;
 }
+
+/* Sorting Game Styles */
+.word {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px; /* full rounded */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: grab;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.word:hover {
+    transform: translateY(-2px);
+}
+
+.word.bg-green-500 {
+    background-color: #10B981; /* Tailwind green-500 */
+}
+
+.word.bg-red-500 {
+    background-color: #EF4444; /* Tailwind red-500 */
+}
+
+.category {
+    border: 2px dashed #9CA3AF; /* Tailwind gray-400 */
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #F9FAFB; /* Tailwind gray-50 */
+}
+
+.category h2 {
+    margin-bottom: 1rem;
+    color: #1F2937; /* Tailwind gray-900 */
+}
+
+#word-bank {
+    border: 2px solid #6B7280; /* Tailwind gray-500 */
+    background-color: #F3F4F6; /* Tailwind gray-100 */
+}

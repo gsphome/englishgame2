@@ -328,6 +328,15 @@ const game = {
                         e.preventDefault();
                         game.completion.prev();
                     }
+                } else if (this.currentView === 'sorting') { // If sorting is active
+                    if (e.key === 'Enter') {
+                        document.getElementById('check-btn').click();
+                    } else if (e.key === 'Backspace') {
+                        e.preventDefault();
+                        document.getElementById('undo-btn').click();
+                    } else if (e.key === 'Escape') {
+                        game.renderMenu();
+                    }
                 }
             }
         });
@@ -895,6 +904,8 @@ const game = {
                             if (inputElement && inputElement.disabled) {
                                 this.completion.next();
                             }
+                        } else if (this.currentView === 'sorting') {
+                            // No next/prev for sorting, but can add swipe for check/undo if needed
                         }
                     }
                 }
