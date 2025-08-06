@@ -940,6 +940,7 @@ const game = {
             this.originalWordPositions = {};
             this.sessionScore = { correct: 0, incorrect: 0 };
             this.history = [];
+            this.feedbackActive = false;
 
             // Group words by category
             const wordsByCategory = {};
@@ -1019,17 +1020,21 @@ const game = {
             const scoreDisplay = document.getElementById('score-display');
             let allCorrect = true;
 
-            this.moduleData.data.forEach(item => {
-                const wordElem = document.getElementById('word-' + item.word.replace(/\s+/g, '-').toLowerCase());
+            this.words.forEach(word => {
+                const wordElem = document.getElementById('word-' + word.replace(/\s+/g, '-').toLowerCase());
                 if (!wordElem) return; // Word might not be rendered yet or missing
 
                 const currentCategoryElement = wordElem.parentElement;
                 const currentCategoryId = currentCategoryElement ? currentCategoryElement.id.replace('category-', '') : 'word-bank';
 
+                // Find the correct category for the current word from the original module data
+                const originalWordData = this.moduleData.data.find(item => item.word === word);
+                const correctCategory = originalWordData ? originalWordData.category : null;
+
                 // Remove previous feedback classes
                 wordElem.classList.remove('bg-green-500', 'bg-red-500', 'text-white');
 
-                if (currentCategoryId === item.category) {
+                if (currentCategoryId === correctCategory) {
                     this.sessionScore.correct++;
                     wordElem.classList.add('bg-green-500', 'text-white');
                 } else {
@@ -1045,9 +1050,16 @@ const game = {
                 scoreDisplay.textContent += ` - ${MESSAGES.get('allCorrectMessage')}`;
                 auth.updateGlobalScore(this.sessionScore); // Update global score only on full completion
             }
+            this.feedbackActive = true;
         },
 
         undo() {
+            if (this.feedbackActive) {
+                this.clearFeedback();
+                this.feedbackActive = false;
+                return;
+            }
+
             if (this.history.length > 0) {
                 const lastAction = this.history.pop();
                 const wordElem = document.getElementById(lastAction.wordId);
