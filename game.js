@@ -935,12 +935,53 @@ const game = {
         init(module) {
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
-            this.words = this.shuffleArray(module.data.map(item => item.word)); // Shuffle words
             this.categories = module.categories;
             this.userAnswers = {};
             this.originalWordPositions = {};
             this.sessionScore = { correct: 0, incorrect: 0 };
             this.history = [];
+
+            // Group words by category
+            const wordsByCategory = {};
+            module.data.forEach(item => {
+                if (!wordsByCategory[item.category]) {
+                    wordsByCategory[item.category] = [];
+                }
+                wordsByCategory[item.category].push(item.word);
+            });
+
+            let selectedWords = [];
+            let allWords = [];
+
+            // Ensure at least one word from each category
+            this.categories.forEach(category => {
+                if (wordsByCategory[category] && wordsByCategory[category].length > 0) {
+                    const randomIndex = Math.floor(Math.random() * wordsByCategory[category].length);
+                    selectedWords.push(wordsByCategory[category][randomIndex]);
+                    // Remove the selected word to avoid duplicates
+                    wordsByCategory[category].splice(randomIndex, 1);
+                }
+            });
+
+            // Collect all remaining words
+            for (const category in wordsByCategory) {
+                allWords = allWords.concat(wordsByCategory[category]);
+            }
+
+            // Shuffle the remaining words
+            allWords = this.shuffleArray(allWords);
+
+            // Add remaining words up to 15, avoiding duplicates
+            let i = 0;
+            while (selectedWords.length < 15 && i < allWords.length) {
+                const wordToAdd = allWords[i];
+                if (!selectedWords.includes(wordToAdd)) {
+                    selectedWords.push(wordToAdd);
+                }
+                i++;
+            }
+
+            this.words = this.shuffleArray(selectedWords);
             this.render();
         },
 
