@@ -118,6 +118,7 @@ const game = {
         console.log('renderCurrentView called. Current view:', this.currentView);
         switch (this.currentView) {
             case 'menu':
+                document.body.classList.remove('module-active');
                 this.renderMenu();
                 break;
             case 'flashcard':
@@ -456,6 +457,7 @@ const game = {
 
     renderFlashcard(module) {
         this.currentView = 'flashcard';
+        document.body.classList.add('module-active');
         this.flashcard.init(module);
     },
 
@@ -694,11 +696,13 @@ const game = {
 
     renderQuiz(module) {
         this.currentView = 'quiz';
+        document.body.classList.add('module-active');
         this.quiz.init(module);
     },
 
     renderCompletion(module) {
         this.currentView = 'completion';
+        document.body.classList.add('module-active');
         this.completion.init(module);
     },
 
@@ -937,6 +941,7 @@ const game = {
         history: [], // To store actions for undo functionality
 
         init(module) {
+            document.body.classList.add('module-active');
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
             this.categories = module.categories;
