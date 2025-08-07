@@ -156,7 +156,7 @@ const game = {
         if (debugInfo) {
             debugInfo.textContent = `Width: ${window.innerWidth}px, Mobile: ${game.isMobile()}`; 
         }
-        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" style="max-width: 760px; max-height: ${game.isMobile() ? '600px' : '28rem'};">`; // Wrapper for scroll with border and custom width
+        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" style="max-width: ${game.isMobile() ? '755px' : '760px'}; max-height: ${game.isMobile() ? '600px' : '448px'};">`; // Wrapper for scroll with border and custom width
         menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
