@@ -366,7 +366,7 @@ const game = {
             if (!document.getElementById('flashcard-container')) { // Assuming a main container for flashcard view
                 this.appContainer.innerHTML = `
                     <div id="flashcard-container" class="max-w-2xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4" id="flashcard-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="flashcard-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
                         <div class="card h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
                             <div class="card-inner">
                                 <div class="card-face card-face-front">
@@ -467,7 +467,7 @@ const game = {
             appContainer.innerHTML = `
                 <div id="flashcard-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                     <h1 id="flashcard-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                    <p id="flashcard-summary-message" class="text-xl mb-4">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
+                    <p id="flashcard-summary-message" class="text-xl mb-4${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
                     <button id="flashcard-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                 </div>
             `;
@@ -529,8 +529,8 @@ const game = {
 
                 this.appContainer.innerHTML = `
                     <div id="quiz-container" class="max-w-4xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4" id="quiz-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                        <div class="text-center text-gray-600 mb-4" id="quiz-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="quiz-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="quiz-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <p class="text-base mb-6 md:text-xl" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="quiz-tip">Tip: ${questionData.tip}</p>` : ''}
@@ -670,8 +670,8 @@ const game = {
                 this.appContainer.innerHTML = `
                      <div id="quiz-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                         <h1 id="quiz-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                        <p id="quiz-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
-                        <p id="quiz-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
+                        <p id="quiz-summary-correct" class="text-xl mb-2${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                        <p id="quiz-summary-incorrect" class="text-xl mb-4${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
                         <button id="quiz-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                      </div>
                 `;
@@ -725,8 +725,8 @@ const game = {
             if (!document.getElementById('completion-container')) {
                 this.appContainer.innerHTML = `
                     <div id="completion-container" class="max-w-2xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                        <div class="text-center text-gray-600 mb-4" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <p class="text-base mb-6 md:text-xl" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
@@ -853,8 +853,8 @@ const game = {
                 this.appContainer.innerHTML = `
                      <div id="completion-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                         <h1 id="completion-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                        <p id="completion-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
-                        <p id="completion-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
+                        <p id="completion-summary-correct" class="text-xl mb-2${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                        <p id="completion-summary-incorrect" class="text-xl mb-4${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
                         <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                      </div>
                 `;
@@ -865,6 +865,10 @@ const game = {
                 document.getElementById('completion-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
             }
         }
+    },
+
+    isMobile() {
+        return window.innerWidth < 768; // Tailwind's 'md' breakpoint
     },
 
     addSwipeListeners() {
