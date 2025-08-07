@@ -9,3 +9,12 @@
         display: none !important;
     }
 }
+
+body.hamburger-menu-open #hamburger-menu {
+    transform: translateX(0);
+}
+
+body.hamburger-menu-open #menu-overlay {
+    opacity: 0.5;
+    pointer-events: auto;
+}
