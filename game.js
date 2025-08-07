@@ -367,7 +367,7 @@ const game = {
             // Check if the flashcard view is already rendered
             if (!document.getElementById('flashcard-container')) { // Assuming a main container for flashcard view
                 this.appContainer.innerHTML = `
-                    <div id="flashcard-container" class="max-w-2xl mx-auto">
+                    <div id="flashcard-container" class="max-w-4xl mx-auto">
                         <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="flashcard-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
                         <div class="card h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
                             <div class="card-inner">
