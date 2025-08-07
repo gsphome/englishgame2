@@ -152,11 +152,7 @@ const game = {
 
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-        const debugInfo = document.getElementById('debug-info');
-        if (debugInfo) {
-            debugInfo.textContent = `Width: ${window.innerWidth}px, Mobile: ${game.isMobile()}`; 
-        }
-        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" style="max-width: ${game.isMobile() ? '755px' : '760px'}; max-height: ${game.isMobile() ? '600px' : '448px'};">`; // Wrapper for scroll with border and custom width
+        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" style="max-width: ${game.isMobile() ? '750px' : '760px'}; max-height: ${game.isMobile() ? '600px' : '448px'};">`; // Wrapper for scroll with border and custom width
         menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
