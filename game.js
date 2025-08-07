@@ -151,8 +151,8 @@ const game = {
 
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-        menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[18rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" style="max-width: 600px;">`; // Wrapper for scroll with border and custom width
-        menuHtml += `<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto">`;
+        menuHtml += `<div id="main-menu-scroll-wrapper" class="max-h-[28rem] overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" style="max-width: 760px;">`; // Wrapper for scroll with border and custom width
+        menuHtml += `<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
             const colorClass = colors[index % colors.length];
