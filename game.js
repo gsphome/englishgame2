@@ -385,11 +385,13 @@ const game = {
         currentIndex: 0,
         moduleData: null,
         appContainer: null,
+        isTransitioning: false, // To prevent multiple clicks during transition
 
         init(module) {
             this.currentIndex = 0;
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
+            this.isTransitioning = false;
             this.render();
         },
 
@@ -453,46 +455,83 @@ const game = {
         },
 
         prev() {
-            if (this.currentIndex > 0) {
-                const card = this.appContainer.querySelector('.flashcard');
-                if (card) {
-                    card.classList.remove('card-active'); // Remove active class from current card
-                }
-                if (card && card.classList.contains('flipped')) {
+            if (this.isTransitioning || this.currentIndex <= 0) return;
+            this.isTransitioning = true;
+
+            const card = this.appContainer.querySelector('.flashcard');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (prevBtn) prevBtn.disabled = true;
+            if (nextBtn) nextBtn.disabled = true;
+
+            if (card) {
+                if (card.classList.contains('flipped')) {
                     card.classList.remove('flipped');
-                } else {
-                    card.classList.add('flash-effect');
-                    setTimeout(() => {
-                        card.classList.remove('flash-effect');
-                    }, 300); // Duration of the flash effect
                 }
-                this.currentIndex--;
-                this.render(); // render() will add card-active to the new card
+                card.classList.add('flash-effect');
             }
+
+            // After the flash effect (300ms), change the content
+            setTimeout(() => {
+                if (card) card.classList.remove('flash-effect');
+                this.currentIndex--;
+                this.render();
+            }, 300); // Duration of the flash effect
+
+            // After the total desired delay (1s), re-enable controls
+            setTimeout(() => {
+                const newPrevBtn = document.getElementById('prev-btn');
+                const newNextBtn = document.getElementById('next-btn');
+                if (newPrevBtn) newPrevBtn.disabled = false;
+                if (newNextBtn) newNextBtn.disabled = false;
+                this.isTransitioning = false;
+            }, 1000); // Total delay of 1 second
         },
 
         next() {
-            if (this.currentIndex < this.moduleData.data.length - 1) {
-                const card = this.appContainer.querySelector('.flashcard');
-                if (card) {
-                    card.classList.remove('card-active'); // Remove active class from current card
-                }
-                if (card && card.classList.contains('flipped')) {
-                    card.classList.remove('flipped');
-                } else {
-                    card.classList.add('flash-effect');
-                    setTimeout(() => {
-                        card.classList.remove('flash-effect');
-                    }, 300); // Duration of the flash effect
-                }
-                this.currentIndex++;
-                this.render(); // render() will add card-active to the new card
-            } else {
+            if (this.isTransitioning) return;
+
+            if (this.currentIndex >= this.moduleData.data.length - 1) {
                 game.showFlashcardSummary(this.moduleData.data.length);
+                return;
             }
+
+            this.isTransitioning = true;
+
+            const card = this.appContainer.querySelector('.flashcard');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (prevBtn) prevBtn.disabled = true;
+            if (nextBtn) nextBtn.disabled = true;
+
+            if (card) {
+                if (card.classList.contains('flipped')) {
+                    card.classList.remove('flipped');
+                }
+                card.classList.add('flash-effect');
+            }
+
+            // After the flash effect (300ms), change the content
+            setTimeout(() => {
+                if (card) card.classList.remove('flash-effect');
+                this.currentIndex++;
+                this.render();
+            }, 300); // Duration of the flash effect
+
+            // After the total desired delay (1s), re-enable controls
+            setTimeout(() => {
+                const newPrevBtn = document.getElementById('prev-btn');
+                const newNextBtn = document.getElementById('next-btn');
+                if (newPrevBtn) newPrevBtn.disabled = false;
+                if (newNextBtn) newNextBtn.disabled = false;
+                this.isTransitioning = false;
+            }, 1000); // Total delay of 1 second
         },
 
         flip() {
+            if (this.isTransitioning) return;
             const card = this.appContainer.querySelector('.flashcard');
             if (card) {
                 card.classList.toggle('flipped');
