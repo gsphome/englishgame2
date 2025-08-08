@@ -249,6 +249,16 @@ body.dark-mode .flashcard-back {
     margin: 0 0.5rem;
 }
 
+@keyframes flash-effect {
+    50% {
+        background-color: #a0d8f0; /* light blue */
+    }
+}
+
+.flashcard.flash-effect .flashcard-front {
+    animation: flash-effect 0.3s ease-in-out;
+}
+
 /* Score Display */
 #score-display {
     margin-top: 1rem;
@@ -1012,6 +1022,16 @@ body.dark-mode .flashcard-back {
 
 .flashcard-buttons button {
     margin: 0 0.5rem;
+}
+
+@keyframes flash-effect {
+    50% {
+        background-color: #a0d8f0; /* light blue */
+    }
+}
+
+.flashcard.flash-effect .flashcard-front {
+    animation: flash-effect 0.3s ease-in-out;
 }
 
 /* Score Display */
