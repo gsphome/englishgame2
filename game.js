@@ -24,12 +24,26 @@ const game = {
         this.messageElement = document.getElementById('confirmation-message');
 
         this.hamburgerMenu = document.getElementById('hamburger-menu');
+        console.log('hamburgerMenu:', this.hamburgerMenu);
         this.menuOverlay = document.getElementById('menu-overlay');
+        console.log('menuOverlay:', this.menuOverlay);
         this.closeMenuBtn = document.getElementById('close-menu-btn');
+        console.log('closeMenuBtn:', this.closeMenuBtn);
         this.menuLangToggleBtn = document.getElementById('menu-lang-toggle-btn');
+        console.log('menuLangToggleBtn:', this.menuLangToggleBtn);
         this.menuLogoutBtn = document.getElementById('menu-logout-btn');
+        console.log('menuLogoutBtn:', this.menuLogoutBtn);
         this.menuRandomModeBtn = document.getElementById('menu-random-mode-btn');
+        console.log('menuRandomModeBtn:', this.menuRandomModeBtn);
+        this.menuDarkModeToggleBtn = document.getElementById('menu-dark-mode-toggle-btn');
+        console.log('menuDarkModeToggleBtn:', this.menuDarkModeToggleBtn);
         this.randomMode = localStorage.getItem('randomMode') === 'true'; // Initialize from localStorage
+
+        // Dark Mode Initialization
+        const savedDarkMode = localStorage.getItem('darkMode');
+        if (savedDarkMode === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
 
         this.yesButton.addEventListener('click', () => {
             auth.logout();
@@ -62,6 +76,17 @@ const game = {
             localStorage.setItem('randomMode', this.randomMode);
             this.updateMenuText();
         });
+
+        if (this.menuDarkModeToggleBtn) {
+            this.menuDarkModeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+        }
 
         MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.renderCurrentView.bind(this));
