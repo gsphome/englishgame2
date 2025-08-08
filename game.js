@@ -472,21 +472,18 @@ const game = {
                 card.classList.add('flash-effect');
             }
 
-            // After the flash effect (300ms), change the content
             setTimeout(() => {
                 if (card) card.classList.remove('flash-effect');
                 this.currentIndex--;
                 this.render();
-            }, 300); // Duration of the flash effect
 
-            // After the total desired delay (1s), re-enable controls
-            setTimeout(() => {
+                // Re-enable buttons after rendering the new card
                 const newPrevBtn = document.getElementById('prev-btn');
                 const newNextBtn = document.getElementById('next-btn');
                 if (newPrevBtn) newPrevBtn.disabled = false;
                 if (newNextBtn) newNextBtn.disabled = false;
                 this.isTransitioning = false;
-            }, 1000); // Total delay of 1 second
+            }, 300); // Duration of the flash effect
         },
 
         next() {
@@ -513,21 +510,18 @@ const game = {
                 card.classList.add('flash-effect');
             }
 
-            // After the flash effect (300ms), change the content
             setTimeout(() => {
                 if (card) card.classList.remove('flash-effect');
                 this.currentIndex++;
                 this.render();
-            }, 300); // Duration of the flash effect
 
-            // After the total desired delay (1s), re-enable controls
-            setTimeout(() => {
+                // Re-enable buttons after rendering the new card
                 const newPrevBtn = document.getElementById('prev-btn');
                 const newNextBtn = document.getElementById('next-btn');
                 if (newPrevBtn) newPrevBtn.disabled = false;
                 if (newNextBtn) newNextBtn.disabled = false;
                 this.isTransitioning = false;
-            }, 1000); // Total delay of 1 second
+            }, 300); // Duration of the flash effect
         },
 
         flip() {
