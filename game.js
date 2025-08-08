@@ -299,10 +299,10 @@ const game = {
                     }
 
                     if (e.key === 'Enter') {
-                        const card = document.querySelector('.card');
+                        const card = document.querySelector('.flashcard');
                         if (card) {
-                            if (card.classList.contains('is-flipped')) {
-                                card.classList.remove('is-flipped'); // Unflip the card
+                            if (card.classList.contains('flipped')) {
+                                card.classList.remove('flipped'); // Unflip the card
                                 setTimeout(() => {
                                     if (game.flashcard.currentIndex === game.flashcard.moduleData.data.length - 1) {
                                         game.showFlashcardSummary(game.flashcard.moduleData.data.length);
@@ -403,12 +403,12 @@ const game = {
                 this.appContainer.innerHTML = `
                     <div id="flashcard-container" class="max-w-4xl mx-auto">
                         <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="flashcard-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                        <div class="card h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
-                            <div class="card-inner">
-                                <div class="card-face card-face-front">
+                        <div class="flashcard h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
                                     <p class="text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
                                 </div>
-                                <div class="card-face card-face-back">
+                                <div class="flashcard-back">
                                     <div>
                                         <p class="text-base font-bold md:text-xl" id="flashcard-back-text">${cardData.es}</p>
                                         <p class="text-sm text-gray-500 md:text-lg" id="flashcard-ipa">${cardData.ipa}</p>
@@ -446,7 +446,7 @@ const game = {
                 document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
             }
             // Add card-active class after rendering or updating
-            const card = this.appContainer.querySelector('.card');
+            const card = this.appContainer.querySelector('.flashcard');
             if (card) {
                 card.classList.add('card-active');
             }
@@ -454,12 +454,12 @@ const game = {
 
         prev() {
             if (this.currentIndex > 0) {
-                const card = this.appContainer.querySelector('.card');
+                const card = this.appContainer.querySelector('.flashcard');
                 if (card) {
                     card.classList.remove('card-active'); // Remove active class from current card
                 }
-                if (card && card.classList.contains('is-flipped')) {
-                    card.classList.remove('is-flipped');
+                if (card && card.classList.contains('flipped')) {
+                    card.classList.remove('flipped');
                 } else {
                     card.classList.add('flash-effect');
                     setTimeout(() => {
@@ -473,12 +473,12 @@ const game = {
 
         next() {
             if (this.currentIndex < this.moduleData.data.length - 1) {
-                const card = this.appContainer.querySelector('.card');
+                const card = this.appContainer.querySelector('.flashcard');
                 if (card) {
                     card.classList.remove('card-active'); // Remove active class from current card
                 }
-                if (card && card.classList.contains('is-flipped')) {
-                    card.classList.remove('is-flipped');
+                if (card && card.classList.contains('flipped')) {
+                    card.classList.remove('flipped');
                 } else {
                     card.classList.add('flash-effect');
                     setTimeout(() => {
@@ -493,9 +493,9 @@ const game = {
         },
 
         flip() {
-            const card = this.appContainer.querySelector('.card');
+            const card = this.appContainer.querySelector('.flashcard');
             if (card) {
-                card.classList.toggle('is-flipped');
+                card.classList.toggle('flipped');
             }
         }
     },
