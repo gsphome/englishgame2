@@ -187,9 +187,8 @@ const game = {
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
         menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" 
-                    style="max-width: ${game.isMobile() ? '300px' : '760px'}; max-height: ${game.isMobile() && game.isLandscape() ? '185px' : game.isMobile() ? '225px' : '440px'};">`;
-        const gridClasses = this.getMenuGridClasses();
-        menuHtml += `<div class="grid ${gridClasses} mx-auto">`;
+                    style="max-width: ${this.getMenuMaxWidth()}; max-height: ${game.isMobile() && game.isLandscape() ? '185px' : game.isMobile() ? '225px' : '440px'};">`;
+        menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
             const colorClass = colors[index % colors.length];
@@ -230,22 +229,17 @@ const game = {
         });
     },
 
-    getMenuGridClasses() {
+    getMenuMaxWidth() {
         const width = window.innerWidth;
-        // Vista para 5 columnas (pantallas grandes)
-        if (width >= 1024) {
-            return 'grid-cols-5 gap-5'; // Espaciado original, se ve bien con 5 columnas
+        if (game.isMobile()) {
+            return '300px'; // Ancho para móviles
         }
-        // Vista para 4 columnas (pantallas medianas)
-        if (width >= 768) {
-            return 'grid-cols-4 gap-10'; // Aumentamos el gap para llenar mejor el espacio
+        // Si el ancho es para 4 columnas (entre 768px y 1024px)
+        if (width >= 768 && width < 1024) {
+            return '582px'; // Usamos el ancho calculado para 4 columnas
         }
-        // Vista para 3 columnas (pantallas pequeñas)
-        if (width >= 640) {
-            return 'grid-cols-3 gap-5';
-        }
-        // Vista base para 2 columnas (móviles)
-        return 'grid-cols-2 gap-5';
+        // Para 5 columnas (1024px en adelante) o cualquier otro caso
+        return '760px'; // Usamos el ancho original
     },
 
     startModule(moduleId) {
