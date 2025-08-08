@@ -66,3 +66,13 @@ body.hamburger-menu-open #menu-overlay {
     color: #1a202c; /* Tailwind's text-gray-800 */
     transform: rotateY(180deg);
 }
+
+.flash-effect .card-face-front {
+    animation: flashBlue 0.3s ease-in-out;
+}
+
+@keyframes flashBlue {
+    0% { background-color: #ffffff; }
+    50% { background-color: #e0f2f7; } /* Light blue */
+    100% { background-color: #ffffff; }
+}

@@ -426,6 +426,11 @@ const game = {
                 }
                 if (card && card.classList.contains('is-flipped')) {
                     card.classList.remove('is-flipped');
+                } else {
+                    card.classList.add('flash-effect');
+                    setTimeout(() => {
+                        card.classList.remove('flash-effect');
+                    }, 300); // Duration of the flash effect
                 }
                 this.currentIndex--;
                 this.render(); // render() will add card-active to the new card
@@ -440,6 +445,11 @@ const game = {
                 }
                 if (card && card.classList.contains('is-flipped')) {
                     card.classList.remove('is-flipped');
+                } else {
+                    card.classList.add('flash-effect');
+                    setTimeout(() => {
+                        card.classList.remove('flash-effect');
+                    }, 300); // Duration of the flash effect
                 }
                 this.currentIndex++;
                 this.render(); // render() will add card-active to the new card
