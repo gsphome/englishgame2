@@ -154,7 +154,10 @@ const game = {
     renderMenu() {
         this.currentView = 'menu';
         const appContainer = document.getElementById('app-container');
-        let menuHtml = `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
+        let menuHtml = '';
+        if (!game.isMobile() || !game.isLandscape()) {
+            menuHtml += `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
+        }
 
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
