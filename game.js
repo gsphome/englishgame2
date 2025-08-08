@@ -188,7 +188,8 @@ const game = {
 
         menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" 
                     style="max-width: ${game.isMobile() ? '300px' : '760px'}; max-height: ${game.isMobile() && game.isLandscape() ? '185px' : game.isMobile() ? '225px' : '440px'};">`;
-        menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
+        const gridClasses = this.getMenuGridClasses();
+        menuHtml += `<div class="grid ${gridClasses} mx-auto">`;
 
         learningModules.forEach((module, index) => {
             const colorClass = colors[index % colors.length];
@@ -227,6 +228,24 @@ const game = {
                 this.startModule(moduleId);
             });
         });
+    },
+
+    getMenuGridClasses() {
+        const width = window.innerWidth;
+        // Vista para 5 columnas (pantallas grandes)
+        if (width >= 1024) {
+            return 'grid-cols-5 gap-5'; // Espaciado original, se ve bien con 5 columnas
+        }
+        // Vista para 4 columnas (pantallas medianas)
+        if (width >= 768) {
+            return 'grid-cols-4 gap-10'; // Aumentamos el gap para llenar mejor el espacio
+        }
+        // Vista para 3 columnas (pantallas pequeñas)
+        if (width >= 640) {
+            return 'grid-cols-3 gap-5';
+        }
+        // Vista base para 2 columnas (móviles)
+        return 'grid-cols-2 gap-5';
     },
 
     startModule(moduleId) {
