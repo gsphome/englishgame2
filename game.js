@@ -85,6 +85,7 @@ const game = {
                 } else {
                     localStorage.setItem('darkMode', 'disabled');
                 }
+                this.updateMenuText(); // Update button text and icon
             });
         }
 
@@ -122,6 +123,10 @@ const game = {
         }
         if (this.menuRandomModeBtn) {
             this.menuRandomModeBtn.textContent = `${MESSAGES.get('randomMode')} ${this.randomMode ? '✅' : '❌'}`;
+        }
+        if (this.menuDarkModeToggleBtn) {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            this.menuDarkModeToggleBtn.innerHTML = isDarkMode ? `${MESSAGES.get('lightMode')} ☀️` : `${MESSAGES.get('darkMode')} 🌙`;
         }
     },
 

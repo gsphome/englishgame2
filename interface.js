@@ -22,7 +22,9 @@ const MESSAGES = {
         randomMode: "Modo Aleatorio",
         sortingGameTitle: "Juego de Clasificación de Palabras",
         checkButton: "Comprobar",
-        allCorrectMessage: "¡Todo correcto! ¡Bien hecho!"
+        allCorrectMessage: "¡Todo correcto! ¡Bien hecho!",
+        lightMode: "Modo Claro",
+        darkMode: "Modo Oscuro"
     },
     en: {
         loginTitle: "Welcome",
@@ -44,7 +46,9 @@ const MESSAGES = {
         randomMode: "Random Mode",
         sortingGameTitle: "Word Sorting Game",
         checkButton: "Check",
-        allCorrectMessage: "All correct! Well done!"
+        allCorrectMessage: "All correct! Well done!",
+        lightMode: "Light Mode",
+        darkMode: "Dark Mode"
     },
 
     get(key) {
