@@ -427,6 +427,7 @@ const game = {
                             <div class="flashcard-inner">
                                 <div class="flashcard-front">
                                     <p class="text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
+                                    <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa">${cardData.ipa}</p>
                                 </div>
                                 <div class="flashcard-back">
                                     <div>
@@ -457,6 +458,7 @@ const game = {
                 // Update existing text content
                 document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
                 document.getElementById('flashcard-front-text').textContent = cardData.en;
+                document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
                 document.getElementById('flashcard-back-text').textContent = cardData.es;
                 document.getElementById('flashcard-ipa').textContent = cardData.ipa;
                 document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
