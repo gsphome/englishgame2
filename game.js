@@ -284,7 +284,7 @@ const game = {
             } else if (document.body.classList.contains('hamburger-menu-open')) { // If hamburger menu is open
                 this.toggleHamburgerMenu(false); // Close hamburger menu on Escape
             } else { // Modal and hamburger menu are not open
-                if (e.key === 'Escape') {
+                if (e.key === 'Escape' && !game.isMobile()) {
                     if (document.getElementById('app-container').classList.contains('main-menu-active')) {
                         this.toggleModal(true); // Show logout modal
                     } else {
@@ -963,7 +963,7 @@ const game = {
     },
 
     isMobile() {
-        return window.innerWidth < 768; // Tailwind's 'md' breakpoint
+        return window.innerWidth < 768 || /Mobi/i.test(navigator.userAgent);
     },
 
     isLandscape() {
@@ -1034,6 +1034,7 @@ const game = {
         originalWordPositions: {}, // To track initial positions for Undo/Reset
         sessionScore: { correct: 0, incorrect: 0 },
         history: [], // To store actions for undo functionality
+        draggedElementId: null,
 
         init(module) {
             document.body.classList.add('module-active');
@@ -1195,12 +1196,14 @@ const game = {
         },
 
         drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
+            this.draggedElementId = ev.target.id;
         },
 
         drop(ev) {
             ev.preventDefault();
-            const wordId = ev.dataTransfer.getData("text");
+            const wordId = this.draggedElementId;
+            if (!wordId) return;
+
             const wordElem = document.getElementById(wordId);
             let target = ev.target;
 
@@ -1225,6 +1228,7 @@ const game = {
                     game.sorting.clearFeedback(); // Clear feedback on new move
                 }
             }
+            this.draggedElementId = null; // Reset the dragged element ID
         },
 
         renderWords() {
