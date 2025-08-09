@@ -61,7 +61,6 @@ const game = {
             const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
             MESSAGES.setLanguage(newLang);
             localStorage.setItem('appLang', newLang);
-            this.toggleHamburgerMenu(false); // Close menu after language change
             this.renderCurrentView(); // Re-render the current view to update text
             this.updateMenuText(); // Explicitly call to update menu buttons
         });
@@ -116,10 +115,11 @@ const game = {
 
     updateMenuText() {
         if (this.menuLangToggleBtn) {
-            this.menuLangToggleBtn.textContent = MESSAGES.getLanguage().toUpperCase();
+            const currentLang = MESSAGES.getLanguage();
+            this.menuLangToggleBtn.innerHTML = currentLang === 'en' ? 'Language 🇬🇧' : 'Lenguaje 🇪🇸';
         }
         if (this.menuLogoutBtn) {
-            this.menuLogoutBtn.textContent = MESSAGES.get('logoutButton');
+            this.menuLogoutBtn.innerHTML = `${MESSAGES.get('logoutButton')} 🚪`;
         }
         if (this.menuRandomModeBtn) {
             this.menuRandomModeBtn.textContent = `${MESSAGES.get('randomMode')} ${this.randomMode ? '✅' : '❌'}`;
