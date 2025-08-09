@@ -116,7 +116,7 @@ const game = {
     updateMenuText() {
         if (this.menuLangToggleBtn) {
             const currentLang = MESSAGES.getLanguage();
-            this.menuLangToggleBtn.innerHTML = currentLang === 'en' ? 'Language 🇬🇧' : 'Lenguaje 🇪🇸';
+            this.menuLangToggleBtn.innerHTML = currentLang === 'en' ? 'Lenguaje 🇪🇸' : 'Language 🇬🇧';
         }
         if (this.menuLogoutBtn) {
             this.menuLogoutBtn.innerHTML = `${MESSAGES.get('logoutButton')} 🚪`;
