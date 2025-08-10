@@ -125,6 +125,9 @@ const game = {
             const isDarkMode = document.body.classList.contains('dark-mode');
             this.menuDarkModeToggleBtn.innerHTML = isDarkMode ? `${MESSAGES.get('lightMode')} ☀️` : `${MESSAGES.get('darkMode')} 🌙`;
         }
+        if (this.menuRandomModeBtn) {
+            this.menuRandomModeBtn.innerHTML = `${MESSAGES.get('randomMode')} ${this.randomMode ? 'ON' : 'OFF'}`;
+        }
     },
 
     toggleHamburgerMenu(show) {
