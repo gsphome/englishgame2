@@ -188,7 +188,7 @@ input[type="password"] {
 .flashcard {
     width: 100%;
     max-width: 700px;
-    min-height: 250px; /* Adjust as needed */
+    min-height: 320px; /* Adjust as needed */
     position: relative;
     cursor: pointer;
 }
