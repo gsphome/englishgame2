@@ -138,6 +138,7 @@ const game = {
         const sessionScoreDisplay = document.getElementById('session-score-display');
         if (sessionScoreDisplay) {
             sessionScoreDisplay.innerHTML = `<span class="text-green-500">${correct}</span> / <span class="text-red-500">${incorrect}</span> (<span class="text-gray-600">${total}</span>)`;
+            sessionScoreDisplay.classList.remove('hidden');
         }
     },
 
@@ -146,9 +147,10 @@ const game = {
         const user = auth.getUser();
         header.innerHTML = `
             <div class="container mx-auto flex justify-around items-center p-4">
-                <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
-                <span class="text-base mx-2">|</span>
-                <div id="session-score-display" class="text-base"></div>
+                <div id="score-container" class="flex items-center">
+                    <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
+                    <div id="session-score-display" class="text-base ml-2 hidden"></div>
+                </div>
                 <div class="flex items-center">
                     <div class="font-bold text-xl mr-4">${user.username}</div>
                     <button id="hamburger-btn" class="text-2xl">&#9776;</button>
@@ -179,6 +181,10 @@ const game = {
 
     renderMenu() {
         this.currentView = 'menu';
+        const sessionScoreDisplay = document.getElementById('session-score-display');
+        if (sessionScoreDisplay) {
+            sessionScoreDisplay.classList.add('hidden');
+        }
         const appContainer = document.getElementById('app-container');
         let menuHtml = '';
         if (!game.isMobile() || !game.isLandscape()) {
@@ -459,8 +465,6 @@ const game = {
                 document.getElementById('flashcard-correct-btn').addEventListener('click', () => this.handleFlashcardAnswer(true));
                 document.getElementById('flashcard-incorrect-btn').addEventListener('click', () => this.handleFlashcardAnswer(false));
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
-            } else {
-                
             }
             // Update existing text content
             document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
@@ -676,9 +680,7 @@ const game = {
                     </div>
                 `;
 
-                } else {
-                
-            }
+                }
 
             document.getElementById('prev-btn').addEventListener('click', () => this.prev());
             document.getElementById('next-btn').addEventListener('click', () => this.next());
@@ -887,8 +889,6 @@ const game = {
                     inputElement.value = ''; // Clear the input field
                     inputElement.focus();
                 }, 0);
-            } else {
-                
             }
 
             document.getElementById('prev-btn').addEventListener('click', () => this.prev());
