@@ -476,7 +476,6 @@ const game = {
             document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
             document.getElementById('flashcard-back-en-text').textContent = cardData.en;
             document.getElementById('flashcard-back-text').textContent = cardData.es;
-            document.getElementById('flashcard-ipa').textContent = cardData.ipa;
             document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
             document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
 
