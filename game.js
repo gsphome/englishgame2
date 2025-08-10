@@ -444,10 +444,6 @@ const game = {
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-center space-x-4 mt-4">
-                            <button id="flashcard-correct-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('correct')}</button>
-                            <button id="flashcard-incorrect-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('incorrect')}</button>
-                        </div>
                         <div class="flex justify-between mt-4">
                             <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">
                                 ${MESSAGES.get('prevButton')}
@@ -462,8 +458,6 @@ const game = {
 
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
-                document.getElementById('flashcard-correct-btn').addEventListener('click', () => this.handleFlashcardAnswer(true));
-                document.getElementById('flashcard-incorrect-btn').addEventListener('click', () => this.handleFlashcardAnswer(false));
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
             }
             // Update existing text content
