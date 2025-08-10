@@ -134,12 +134,26 @@ const game = {
         document.body.classList.toggle('hamburger-menu-open', show);
     },
 
+    updateSessionScoreDisplay(correct, incorrect, total) {
+        const sessionCorrect = document.getElementById('session-correct');
+        const sessionIncorrect = document.getElementById('session-incorrect');
+        const sessionTotal = document.getElementById('session-total');
+
+        if (sessionCorrect) sessionCorrect.textContent = `${MESSAGES.get('correct')}: ${correct}`;
+        if (sessionIncorrect) sessionIncorrect.textContent = `${MESSAGES.get('incorrect')}: ${incorrect}`;
+        if (sessionTotal) sessionTotal.textContent = `Total: ${total}`;
+    },
+
     renderHeader() {
         const header = document.getElementById('main-header');
         const user = auth.getUser();
         header.innerHTML = `
             <div class="container mx-auto flex justify-between items-center p-4">
-                <div></div>
+                <div id="session-score-display" class="text-base flex flex-col items-start">
+                    <span id="session-correct" class="text-green-500"></span>
+                    <span id="session-incorrect" class="text-red-500"></span>
+                    <span id="session-total" class="text-gray-600"></span>
+                </div>
                 <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
                 <div class="flex items-center">
                     <div class="font-bold text-xl mr-4">${user.username}</div>
@@ -455,6 +469,8 @@ const game = {
             document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
             document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
 
+            game.updateSessionScoreDisplay(0, 0, this.moduleData.data.length);
+
             // Update button texts regardless of whether the container was just created or already existed
             document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
             document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
@@ -651,6 +667,7 @@ const game = {
 
             document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
             document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
             const quizTipElement = document.getElementById('quiz-tip');
             if (questionData.tip) {
@@ -710,6 +727,7 @@ const game = {
                 b.disabled = true;
                 b.classList.remove('hover:bg-gray-200');
             });
+            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
         },
 
         prev() {
@@ -720,6 +738,7 @@ const game = {
                 }
                 this.currentIndex--;
                 this.render();
+                game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
             }
         },
 
@@ -855,6 +874,7 @@ const game = {
 
             document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
             document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
 
@@ -901,6 +921,7 @@ const game = {
             }
             inputElement.disabled = true;
             this.updateScoreDisplay();
+            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
         },
 
         undo() {
@@ -913,6 +934,7 @@ const game = {
                 }
                 this.currentIndex = lastAction.index;
                 this.render();
+                game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
             }
         },
 
@@ -1117,6 +1139,7 @@ const game = {
             this.renderWords();
             this.renderCategories();
             this.addEventListeners();
+            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.words.length);
         },
 
         checkAnswers() {
@@ -1155,6 +1178,7 @@ const game = {
                 auth.updateGlobalScore(this.sessionScore); // Update global score only on full completion
             }
             this.feedbackActive = true;
+            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.words.length);
         },
 
         undo() {
