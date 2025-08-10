@@ -116,7 +116,7 @@ body {
 }
 
 /* Header */
-body:not(.module-active) #main-header {
+#main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -592,10 +592,7 @@ body.dark-mode .flashcard-back {
     }
 }
 
-/* Hide main-header when a module is active */
-body.module-active #main-header {
-    display: none;
-}
+
 #word-sorting-container {
     display: flex;
     flex-direction: column;
@@ -686,6 +683,12 @@ body.module-active #main-header {
     #words-to-sort {
         flex-direction: column;
         width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    body.module-active #main-header {
+        display: none;
     }
 }
 
