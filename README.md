@@ -10,7 +10,7 @@ This is a web-based application for learning languages, built with modern web te
 *   **Global Score:** Tracks the user's overall performance across all learning modules.
 *   **Keyboard Navigation:** Full control of the application using the keyboard.
 *   **Dynamic Content:** The application's content is generated dynamically from the `game-db.js` file.
-*   **Multiple Game Modes:** Includes flashcards, quizzes, and sentence completion exercises.
+*   **Multiple Game Modes:** Includes flashcards, quizzes, sentence completion, and sorting exercises.
 
 ## How to Add New Learning Modules
 
@@ -23,7 +23,7 @@ To add new content to the application, you need to modify the `game-db.js` file.
     {
         id: 'unique-id', // A unique identifier for the module
         name: 'Module Name', // The name to be displayed in the menu
-        gameMode: 'flashcard' | 'quiz' | 'completion', // The type of game
+        gameMode: 'flashcard' | 'quiz' | 'completion', | 'sorting', // The type of game
         data: [ /* ... content ... */ ] // An array of data for the module
     }
     ```
@@ -40,6 +40,22 @@ To add new content to the application, you need to modify the `game-db.js` file.
 
         ```javascript
         { sentence: "...", options: ["...", "..."], correct: "...", explanation: "..." }
+        ```
+
+    *   For `sorting` mode:
+
+        ```javascript
+        { word: "...", category: "..." }
+        ```
+        And the module object should also include a `categories` array:
+        ```javascript
+        {
+            id: 'unique-id',
+            name: 'Module Name',
+            gameMode: 'sorting',
+            data: [ /* ... content ... */ ],
+            categories: ["category1", "category2", "category3"]
+        }
         ```
 
 4.  **Save the File:** The new module will be automatically available in the application.
