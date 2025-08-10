@@ -1084,14 +1084,15 @@ const game = {
             document.body.classList.add('module-active');
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
-            this.categories = module.categories;
+            // Determine the categories that will actually be rendered
+            this.categories = game.shuffleArray([...module.categories]).slice(0, this.maxCategoriesToRender);
             this.userAnswers = {};
             this.originalWordPositions = {};
             this.sessionScore = { correct: 0, incorrect: 0 };
             this.history = [];
             this.feedbackActive = false;
 
-            // Group words by category
+            // Group words by category from the original module data
             const wordsByCategory = {};
             module.data.forEach(item => {
                 if (!wordsByCategory[item.category]) {
@@ -1101,37 +1102,55 @@ const game = {
             });
 
             let selectedWords = [];
-            let allWords = [];
+            let allWordsFromSelectedCategories = [];
 
-            // Ensure at least one word from each category
+            // Collect all words that belong to the *selected* categories
             this.categories.forEach(category => {
-                if (wordsByCategory[category] && wordsByCategory[category].length > 0) {
-                    const randomIndex = Math.floor(Math.random() * wordsByCategory[category].length);
-                    selectedWords.push(wordsByCategory[category][randomIndex]);
-                    // Remove the selected word to avoid duplicates
-                    wordsByCategory[category].splice(randomIndex, 1);
+                if (wordsByCategory[category]) {
+                    allWordsFromSelectedCategories = allWordsFromSelectedCategories.concat(wordsByCategory[category]);
                 }
             });
 
-            // Collect all remaining words
-            for (const category in wordsByCategory) {
-                allWords = allWords.concat(wordsByCategory[category]);
+            // Shuffle all words from the selected categories
+            allWordsFromSelectedCategories = game.shuffleArray(allWordsFromSelectedCategories);
+
+            // Select a subset of these words for the game
+            // Ensure at least one word from each *displayed* category if possible, then fill up to a total
+            const wordsPerCategory = {};
+            this.categories.forEach(category => wordsPerCategory[category] = []);
+
+            // Distribute words to ensure representation from each category
+            module.data.forEach(item => {
+                if (this.categories.includes(item.category)) {
+                    wordsPerCategory[item.category].push(item.word);
+                }
+            });
+
+            // Select one word from each category, if available
+            this.categories.forEach(category => {
+                if (wordsPerCategory[category].length > 0) {
+                    const word = wordsPerCategory[category].shift(); // Take one word
+                    selectedWords.push(word);
+                }
+            });
+
+            // Fill the rest up to 5 words from the remaining words in selected categories
+            let remainingWords = [];
+            for (const category in wordsPerCategory) {
+                remainingWords = remainingWords.concat(wordsPerCategory[category]);
             }
+            remainingWords = game.shuffleArray(remainingWords); // Shuffle remaining words
 
-            // Shuffle the remaining words
-            allWords = game.shuffleArray(allWords);
-
-            // Add remaining words up to 15, avoiding duplicates
             let i = 0;
-            while (selectedWords.length < 5 && i < allWords.length) {
-                const wordToAdd = allWords[i];
-                if (!selectedWords.includes(wordToAdd)) {
+            while (selectedWords.length < 5 && i < remainingWords.length) {
+                const wordToAdd = remainingWords[i];
+                if (!selectedWords.includes(wordToAdd)) { // Avoid duplicates
                     selectedWords.push(wordToAdd);
                 }
                 i++;
             }
 
-            this.words = game.shuffleArray(selectedWords);
+            this.words = game.shuffleArray(selectedWords); // Final shuffle of the words to be displayed
             this.render();
         },
 
@@ -1291,10 +1310,13 @@ const game = {
             });
         },
 
+        maxCategoriesToRender: 3, // Global variable to limit categories
         renderCategories() {
             const categoriesContainer = document.getElementById('categories-container');
             categoriesContainer.innerHTML = ''; // Clear existing categories
-            this.categories.forEach(category => {
+            // Shuffle categories and then take the first 'maxCategoriesToRender'
+            const categoriesToRender = game.shuffleArray([...this.categories]).slice(0, this.maxCategoriesToRender);
+            categoriesToRender.forEach(category => {
                 const categoryElem = document.createElement('div');
                 categoryElem.id = 'category-' + category;
                 categoryElem.className = 'category bg-white p-4 rounded-lg shadow-md min-h-[120px] border-2 border-blue-400 flex flex-col items-center';
