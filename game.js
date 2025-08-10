@@ -109,6 +109,8 @@ const game = {
         window.addEventListener('resize', () => {
             if (this.currentView === 'menu') {
                 this.renderMenu();
+            } else if (this.currentView === 'sorting') { // Add this condition
+                this.sorting.render(); // Re-render the sorting game
             }
         });
     },
