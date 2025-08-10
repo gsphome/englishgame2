@@ -784,8 +784,10 @@ const game = {
                 const lastAction = this.history.pop();
                 if (lastAction.correct) {
                     this.sessionScore.correct--;
+                    auth.updateGlobalScore({ correct: -1, incorrect: 0 });
                 } else {
                     this.sessionScore.incorrect--;
+                    auth.updateGlobalScore({ correct: 0, incorrect: -1 });
                 }
                 this.currentIndex = lastAction.index;
                 this.render();
@@ -951,8 +953,10 @@ const game = {
             if (lastAction) {
                 if (lastAction.isCorrect) {
                     this.sessionScore.correct--;
+                    auth.updateGlobalScore({ correct: -1, incorrect: 0 });
                 } else {
                     this.sessionScore.incorrect--;
+                    auth.updateGlobalScore({ correct: 0, incorrect: -1 });
                 }
                 this.currentIndex = lastAction.index;
                 this.render();
