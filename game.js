@@ -426,7 +426,7 @@ const game = {
             // Check if the flashcard view is already rendered
             if (!document.getElementById('flashcard-container')) { // Assuming a main container for flashcard view
                 this.appContainer.innerHTML = `
-                    <div id="flashcard-container" class="max-w-4xl mx-auto">
+                    <div id="flashcard-container" class="max-w-2xl mx-auto">
                         <div class="flashcard h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
                             <div class="flashcard-inner">
                                 <div class="flashcard-front">
@@ -652,7 +652,7 @@ const game = {
                 });
 
                 this.appContainer.innerHTML = `
-                    <div id="quiz-container" class="max-w-4xl mx-auto">
+                    <div id="quiz-container" class="max-w-2xl mx-auto">
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <p class="text-base mb-6 md:text-xl" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="quiz-tip">Tip: ${questionData.tip}</p>` : ''}
@@ -1126,7 +1126,7 @@ const game = {
         render() {
             this.appContainer.classList.remove('main-menu-active');
             this.appContainer.innerHTML = `
-            <div id="sorting-container" class="max-w-4xl mx-auto p-4">
+            <div id="sorting-container" class="max-w-2xl mx-auto p-4">
                 <h1 class="text-3xl font-bold text-center mb-6">${MESSAGES.get('sortingGameTitle')}</h1>
 
                 <div id="word-bank" class="bg-white p-4 rounded-lg shadow-md mb-6 min-h-[100px] border-2 border-gray-300 flex flex-wrap justify-center items-center" ondrop="game.sorting.drop(event)" ondragover="game.sorting.allowDrop(event)">
