@@ -395,7 +395,7 @@ const game = {
                     } else if (e.key === 'Backspace') {
                         e.preventDefault();
                         document.getElementById('undo-btn').click();
-                    } else if (e.key === 'Escape') {
+                    } else if (e.key === 'Escape' && !game.isMobile()) {
                         game.renderMenu();
                     }
                 }
