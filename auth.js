@@ -78,6 +78,7 @@ const auth = {
         this.user.globalScore.correct += sessionScore.correct;
         this.user.globalScore.incorrect += sessionScore.incorrect;
         localStorage.setItem('user', JSON.stringify(this.user));
+        game.renderHeader(); // Update the UI
     }
 };
 
