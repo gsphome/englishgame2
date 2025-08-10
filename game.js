@@ -400,12 +400,14 @@ const game = {
         moduleData: null,
         appContainer: null,
         isTransitioning: false, // To prevent multiple clicks during transition
+        sessionScore: { correct: 0, incorrect: 0 },
 
         init(module) {
             this.currentIndex = 0;
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
             this.isTransitioning = false;
+            this.sessionScore = { correct: 0, incorrect: 0 }; // Initialize session score
             this.render();
         },
 
@@ -435,6 +437,10 @@ const game = {
                                 </div>
                             </div>
                         </div>
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <button id="flashcard-correct-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('correct')}</button>
+                            <button id="flashcard-incorrect-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('incorrect')}</button>
+                        </div>
                         <div class="flex justify-between mt-4">
                             <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">
                                 ${MESSAGES.get('prevButton')}
@@ -449,6 +455,8 @@ const game = {
 
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
+                document.getElementById('flashcard-correct-btn').addEventListener('click', () => this.handleFlashcardAnswer(true));
+                document.getElementById('flashcard-incorrect-btn').addEventListener('click', () => this.handleFlashcardAnswer(false));
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
             } else {
                 
@@ -551,6 +559,23 @@ const game = {
             const card = this.appContainer.querySelector('.flashcard');
             if (card) {
                 card.classList.toggle('flipped');
+            }
+        },
+
+        handleFlashcardAnswer(isCorrect) {
+            if (isCorrect) {
+                this.sessionScore.correct++;
+                auth.updateGlobalScore({ correct: 1, incorrect: 0 });
+            } else {
+                this.sessionScore.incorrect++;
+                auth.updateGlobalScore({ correct: 0, incorrect: 1 });
+            }
+            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
+
+            if (this.currentIndex >= this.moduleData.data.length - 1) {
+                game.showFlashcardSummary(this.moduleData.data.length);
+            } else {
+                this.next();
             }
         }
     },
@@ -708,9 +733,11 @@ const game = {
 
             if (isCorrect) {
                 this.sessionScore.correct++;
+                auth.updateGlobalScore({ correct: 1, incorrect: 0 });
                 document.querySelector(`[data-option="${selectedOption}"]`).classList.add('bg-green-500', 'text-white');
             } else {
                 this.sessionScore.incorrect++;
+                auth.updateGlobalScore({ correct: 0, incorrect: 1 });
                 document.querySelector(`[data-option="${selectedOption}"]`).classList.add('bg-red-500', 'text-white');
                 document.querySelector(`[data-option="${questionData.correct}"]`).classList.add('bg-green-500', 'text-white');
             }
@@ -906,9 +933,11 @@ const game = {
 
             if (isCorrect) {
                 this.sessionScore.correct++;
+                auth.updateGlobalScore({ correct: 1, incorrect: 0 });
                 inputElement.classList.add('text-green-500');
             } else {
                 this.sessionScore.incorrect++;
+                auth.updateGlobalScore({ correct: 0, incorrect: 1 });
                 inputElement.classList.add('text-red-500');
                 document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct: ${questionData.correct}</p>`;
             }
@@ -1168,8 +1197,8 @@ const game = {
 
             if (allCorrect && this.sessionScore.correct === this.words.length) {
                 scoreDisplay.textContent += ` - ${MESSAGES.get('allCorrectMessage')}`;
-                auth.updateGlobalScore(this.sessionScore); // Update global score only on full completion
             }
+            auth.updateGlobalScore(this.sessionScore); // Update global score on every check
             this.feedbackActive = true;
             game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.words.length);
         },
