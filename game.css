@@ -58,7 +58,7 @@ body.dark-mode .hover\:bg-red-600:hover {
 }
 
 body.dark-mode .bg-green-500 {
-    background-color: #68d391;
+    background-color: #68d391 !important;
 }
 
 body.dark-mode .hover\:bg-green-600:hover {
@@ -442,7 +442,7 @@ body.dark-mode .flashcard-back {
 }
 
 .bg-red-500 {
-    background-color: #ef4444;
+    background-color: #ef4444 !important;
 }
 
 .hover\:bg-red-600:hover {
