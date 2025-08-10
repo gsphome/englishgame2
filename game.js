@@ -453,6 +453,7 @@ const game = {
 
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
+                document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
             } else {
                 console.log('Updating existing flashcard text content.');
                 // Update existing text content
@@ -463,10 +464,12 @@ const game = {
                 document.getElementById('flashcard-ipa').textContent = cardData.ipa;
                 document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
                 document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-                document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
             }
+            // Update button texts regardless of whether the container was just created or already existed
+            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
+
             // Add card-active class after rendering or updating
             const card = this.appContainer.querySelector('.flashcard');
             if (card) {
@@ -648,56 +651,53 @@ const game = {
                     </div>
                 `;
 
-                document.querySelectorAll('[data-option]').forEach(button => {
-                    button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
-                });
-                
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('undo-btn').addEventListener('click', () => this.undo());
             } else {
                 console.log('Updating existing quiz text content.');
-                document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
-                document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
-                document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
-                const quizTipElement = document.getElementById('quiz-tip');
-                if (questionData.tip) {
-                    if (quizTipElement) {
-                        quizTipElement.textContent = `Tip: ${questionData.tip}`;
-                        quizTipElement.classList.remove('hidden');
-                    } else {
-                        // If the element doesn't exist, create and insert it
-                        const feedbackContainer = document.getElementById('feedback-container');
-                        const newTipElement = document.createElement('p');
-                        newTipElement.id = 'quiz-tip';
-                        newTipElement.className = 'text-lg text-gray-500 mb-4';
-                        newTipElement.textContent = `Tip: ${questionData.tip}`;
-                        feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
-                    }
-                } else {
-                    if (quizTipElement) {
-                        quizTipElement.classList.add('hidden');
-                    }
-                }
-                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-                document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
-
-                // Update options
-                const optionsContainer = document.getElementById('options-container');
-                optionsContainer.innerHTML = '';
-                const optionLetters = ['A', 'B', 'C', 'D'];
-                optionsToRender.forEach((option, index) => {
-                    const button = document.createElement('button');
-                    button.className = "w-full text-left bg-white hover:bg-gray-200 text-gray-800 font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 flex items-center";
-                    button.dataset.option = option;
-                    button.innerHTML = `<span class="font-bold mr-4">${optionLetters[index]}</span><span>${option}</span>`;
-                    button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
-                    optionsContainer.appendChild(button);
-                });
-                document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
             }
+
+            document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+            document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+            document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
+            const quizTipElement = document.getElementById('quiz-tip');
+            if (questionData.tip) {
+                if (quizTipElement) {
+                    quizTipElement.textContent = `Tip: ${questionData.tip}`;
+                    quizTipElement.classList.remove('hidden');
+                } else {
+                    // If the element doesn't exist, create and insert it
+                    const feedbackContainer = document.getElementById('feedback-container');
+                    const newTipElement = document.createElement('p');
+                    newTipElement.id = 'quiz-tip';
+                    newTipElement.className = 'text-lg text-gray-500 mb-4';
+                    newTipElement.textContent = `Tip: ${questionData.tip}`;
+                    feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
+                }
+            } else {
+                if (quizTipElement) {
+                    quizTipElement.classList.add('hidden');
+                }
+            }
+            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
+
+            // Update options
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            const optionLetters = ['A', 'B', 'C', 'D'];
+            optionsToRender.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = "w-full text-left bg-white hover:bg-gray-200 text-gray-800 font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 flex items-center";
+                button.dataset.option = option;
+                button.innerHTML = `<span class="font-bold mr-4">${optionLetters[index]}</span><span>${option}</span>`;
+                button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
+                optionsContainer.appendChild(button);
+            });
+            document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
         },
 
         handleAnswer(selectedOption) {
@@ -856,21 +856,22 @@ const game = {
                 }, 0);
             } else {
                 console.log('Updating existing completion text content.');
-                document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
-                document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
-                document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
-                document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-                document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-                document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-                document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
-                document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
-
-                const inputElement = document.getElementById('completion-input');
-                inputElement.value = ''; // Clear the input field
-                inputElement.disabled = false; // Enable input field
-                inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove color classes
-                inputElement.focus();
             }
+
+            document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+            document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+            document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
+            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
+            document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
+
+            const inputElement = document.getElementById('completion-input');
+            inputElement.value = ''; // Clear the input field
+            inputElement.disabled = false; // Enable input field
+            inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove color classes
+            inputElement.focus();
 
             const completionTipElement = document.getElementById('completion-tip');
             if (questionData.tip) {
