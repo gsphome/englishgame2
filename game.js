@@ -415,66 +415,63 @@ const game = {
 
         render() {
             console.log('flashcard.render() called');
-            const cardData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
             // Check if the flashcard view is already rendered
             if (!document.getElementById('flashcard-container')) { // Assuming a main container for flashcard view
                 this.appContainer.innerHTML = `
                     <div id="flashcard-container" class="max-w-4xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="flashcard-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="flashcard-counter"></div>
                         <div class="flashcard h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
                             <div class="flashcard-inner">
                                 <div class="flashcard-front">
-                                    <p class="text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
-                                    <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa">${cardData.ipa}</p>
+                                    <p class="text-base md:text-xl" id="flashcard-front-text"></p>
+                                    <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa"></p>
                                 </div>
                                 <div class="flashcard-back">
                                     <div>
-                                        <p class="text-base font-bold md:text-xl" id="flashcard-back-text">${cardData.es}</p>
-                                        <p class="text-sm text-gray-500 md:text-lg" id="flashcard-ipa">${cardData.ipa}</p>
-                                        <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example">"${cardData.example}"</p>
-                                        <p class="text-gray-500 italic" id="flashcard-example-es">"${cardData.example_es}"</p>
+                                        <p class="text-base font-bold md:text-xl" id="flashcard-back-text"></p>
+                                        <p class="text-sm text-gray-500 md:text-lg" id="flashcard-ipa"></p>
+                                        <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example"></p>
+                                        <p class="text-gray-500 italic" id="flashcard-example-es"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-between mt-4">
-                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">
-                                ${MESSAGES.get('prevButton')}
-                            </button>
-                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4">
-                                ${MESSAGES.get('nextButton')}
-                            </button>
+                            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4"></button>
+                            <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4"></button>
                         </div>
-                         <button id="back-to-menu-flashcard-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                         <button id="back-to-menu-flashcard-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()"></button>
                     </div>
                 `;
 
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
-            } else {
-                console.log('Updating existing flashcard text content.');
-                // Update existing text content
-                document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
-                document.getElementById('flashcard-front-text').textContent = cardData.en;
-                document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
-                document.getElementById('flashcard-back-text').textContent = cardData.es;
-                document.getElementById('flashcard-ipa').textContent = cardData.ipa;
-                document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
-                document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
             }
-            // Update button texts regardless of whether the container was just created or already existed
-            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-            document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
+
+            this.updateTextContent();
 
             // Add card-active class after rendering or updating
             const card = this.appContainer.querySelector('.flashcard');
             if (card) {
                 card.classList.add('card-active');
             }
+        },
+
+        updateTextContent() {
+            const cardData = this.moduleData.data[this.currentIndex];
+            document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+            document.getElementById('flashcard-front-text').textContent = cardData.en;
+            document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
+            document.getElementById('flashcard-back-text').textContent = cardData.es;
+            document.getElementById('flashcard-ipa').textContent = cardData.ipa;
+            document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
+            document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
+            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
         },
 
         prev() {
@@ -632,32 +629,37 @@ const game = {
 
                 this.appContainer.innerHTML = `
                     <div id="quiz-container" class="max-w-4xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="quiz-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="quiz-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="quiz-counter"></div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="quiz-score"></div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
-                            <p class="text-base mb-6 md:text-xl" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
-                            ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="quiz-tip">Tip: ${questionData.tip}</p>` : ''}
-                            <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">${optionsHtml}</div>
+                            <p class="text-base mb-6 md:text-xl" id="quiz-question"></p>
+                            <p class="text-lg text-gray-500 mb-4" id="quiz-tip"></p>
+                            <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
                             <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
                         <div class="flex justify-between mt-4">
-                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4">${MESSAGES.get('undoButton')}</button>
+                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4"></button>
                             <div>
-                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">${MESSAGES.get('prevButton')}</button>
-                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4">${MESSAGES.get('nextButton')}</button>
+                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4"></button>
+                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4"></button>
                             </div>
                         </div>
-                         <button id="back-to-menu-quiz-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                         <button id="back-to-menu-quiz-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()"></button>
                     </div>
                 `;
 
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('undo-btn').addEventListener('click', () => this.undo());
-            } else {
-                console.log('Updating existing quiz text content.');
+                document.getElementById('back-to-menu-quiz-btn').addEventListener('click', () => game.renderMenu());
             }
 
+            this.updateTextContent(optionsToRender);
+            document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
+        },
+
+        updateTextContent(optionsToRender) {
+            const questionData = this.moduleData.data[this.currentIndex];
             document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
             document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
@@ -697,10 +699,7 @@ const game = {
                 button.addEventListener('click', (e) => this.handleAnswer(e.target.closest('[data-option]').dataset.option));
                 optionsContainer.appendChild(button);
             });
-            document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
         },
-
-        handleAnswer(selectedOption) {
             const questionData = this.moduleData.data[this.currentIndex];
             const isCorrect = selectedOption === questionData.correct;
             this.history.push({ correct: isCorrect, index: this.currentIndex });
@@ -827,37 +826,41 @@ const game = {
             if (!document.getElementById('completion-container')) {
                 this.appContainer.innerHTML = `
                     <div id="completion-container" class="max-w-2xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="completion-counter">${this.currentIndex + 1} / ${this.moduleData.data.length}</div>
-                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="completion-counter"></div>
+                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="completion-score"></div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
-                            <p class="text-base mb-6 md:text-xl" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
-                            ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
+                            <p class="text-base mb-6 md:text-xl" id="completion-question"></p>
+                            <p class="text-lg text-gray-500 mb-4" id="completion-tip"></p>
                             <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
                         <div class="flex justify-between mt-4">
-                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4">${MESSAGES.get('undoButton')}</button>
+                            <button id="undo-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4"></button>
                             <div>
-                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4">${MESSAGES.get('prevButton')}</button>
-                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4">${MESSAGES.get('nextButton')}</button>
+                                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l md:py-2 md:px-4"></button>
+                                <button id="next-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r md:py-2 md:px-4"></button>
                             </div>
                         </div>
-                        <button id="back-to-menu-completion-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
+                        <button id="back-to-menu-completion-btn" class="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:mt-4 md:py-2 md:px-4" onclick="game.renderMenu()"></button>
                     </div>
                 `;
 
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+                document.getElementById('back-to-menu-completion-btn').addEventListener('click', () => game.renderMenu());
 
                 const inputElement = document.getElementById('completion-input');
                 setTimeout(() => {
                     inputElement.value = ''; // Clear the input field
                     inputElement.focus();
                 }, 0);
-            } else {
-                console.log('Updating existing completion text content.');
             }
 
+            this.updateTextContent();
+        },
+
+        updateTextContent() {
+            const questionData = this.moduleData.data[this.currentIndex];
             document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
@@ -887,7 +890,8 @@ const game = {
                     newTipElement.textContent = `Tip: ${questionData.tip}`;
                     feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
                 }
-            } else {
+            }
+            else {
                 if (completionTipElement) {
                     completionTipElement.classList.add('hidden');
                 }
