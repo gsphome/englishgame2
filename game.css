@@ -263,6 +263,18 @@ input[type="password"] {
     transform: rotateY(180deg);
 }
 
+.flashcard-en-word {
+    font-size: 2.25rem; /* text-4xl for larger screens */
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .flashcard-en-word {
+        font-size: 1.75rem; /* text-3xl for smaller screens */
+    }
+}
+
 /* Dark Mode Flashcard Styles */
 body.dark-mode .flashcard-front {
     background-color: #4a5568;

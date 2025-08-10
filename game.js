@@ -439,13 +439,14 @@ const game = {
                         <div class="flashcard h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
                             <div class="flashcard-inner">
                                 <div class="flashcard-front">
-                                    <p class="text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
+                                    <p class="flashcard-en-word text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
                                     <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa">${cardData.ipa}</p>
                                 </div>
                                 <div class="flashcard-back">
                                     <div>
+                                        <p class="flashcard-en-word text-base md:text-xl" id="flashcard-back-en-text">${cardData.en}</p>
+                                        <p class="text-sm text-gray-500 md:text-lg" id="flashcard-back-ipa">${cardData.ipa}</p>
                                         <p class="text-base font-bold md:text-xl" id="flashcard-back-text">${cardData.es}</p>
-                                        <p class="text-sm text-gray-500 md:text-lg" id="flashcard-ipa">${cardData.ipa}</p>
                                         <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example">"${cardData.example}"</p>
                                         <p class="text-gray-500 italic" id="flashcard-example-es">"${cardData.example_es}"</p>
                                     </div>
@@ -471,6 +472,7 @@ const game = {
             // Update existing text content
             document.getElementById('flashcard-front-text').textContent = cardData.en;
             document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
+            document.getElementById('flashcard-back-en-text').textContent = cardData.en;
             document.getElementById('flashcard-back-text').textContent = cardData.es;
             document.getElementById('flashcard-ipa').textContent = cardData.ipa;
             document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
