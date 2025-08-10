@@ -653,7 +653,6 @@ const game = {
 
                 this.appContainer.innerHTML = `
                     <div id="quiz-container" class="max-w-4xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="quiz-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <p class="text-base mb-6 md:text-xl" id="quiz-question">${questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="quiz-tip">Tip: ${questionData.tip}</p>` : ''}
@@ -677,7 +676,6 @@ const game = {
             document.getElementById('next-btn').addEventListener('click', () => this.next());
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
 
-            document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
             game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
             document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
             const quizTipElement = document.getElementById('quiz-tip');
@@ -852,7 +850,6 @@ const game = {
             if (!document.getElementById('completion-container')) {
                 this.appContainer.innerHTML = `
                     <div id="completion-container" class="max-w-2xl mx-auto">
-                        <div class="text-center text-gray-600 mb-4${game.isMobile() ? ' mobile-hidden' : ''}" id="completion-score">${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</div>
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <p class="text-base mb-6 md:text-xl" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
@@ -884,7 +881,6 @@ const game = {
             document.getElementById('next-btn').addEventListener('click', () => this.next());
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
 
-            document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
             game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
             document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
