@@ -188,7 +188,8 @@ input[type="password"] {
 .flashcard {
     width: 100%;
     max-width: 700px;
-    min-height: 320px; /* Adjust as needed */
+    min-height: 320px;
+    /* Adjust as needed */
     position: relative;
     cursor: pointer;
 }
@@ -281,7 +282,8 @@ body.dark-mode .flashcard-back {
 
 @keyframes flash-effect {
     50% {
-        background-color: #a0d8f0; /* light blue */
+        background-color: #a0d8f0;
+        /* light blue */
     }
 }
 
@@ -434,7 +436,7 @@ body.dark-mode .flashcard-back {
     margin-bottom: 1.5rem;
 }
 
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+.space-x-4> :not([hidden])~ :not([hidden]) {
     margin-right: calc(1rem * var(--tw-space-x-reverse));
     margin-left: calc(1rem * (1 - var(--tw-space-x-reverse)));
 }
@@ -531,7 +533,7 @@ body.dark-mode .flashcard-back {
     font-size: 1.5rem;
 }
 
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+.space-y-4> :not([hidden])~ :not([hidden]) {
     margin-top: calc(1rem * (1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
@@ -622,7 +624,8 @@ body.dark-mode .flashcard-back {
     margin: 5px 0;
     border-radius: 5px;
     cursor: grab;
-    width: calc(100% - 24px); /* Adjust for padding */
+    width: calc(100% - 24px);
+    /* Adjust for padding */
     text-align: center;
 }
 
@@ -688,7 +691,7 @@ body.dark-mode .flashcard-back {
     z-index: 1000;
 }
 
-#confirmation-modal > div {
+#confirmation-modal>div {
     max-width: 90%;
     width: 400px;
 }
@@ -917,10 +920,14 @@ body.dark-mode #hamburger-menu button:focus {
 
 /* Prevent text selection on draggable words for better UX on mobile */
 .word {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* Internet Explorer/Edge */
-  user-select: none;         /* Standard syntax */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Standard syntax */
 }
 
 /* Hamburger Menu Opened State */
@@ -940,7 +947,27 @@ body.hamburger-menu-open #menu-overlay {
 
 body.dark-mode #prev-btn,
 body.dark-mode #next-btn,
-body.dark-mode #undo-btn
-{
-    color: #1f2937; /* Revert to original light mode text-gray-800 color */
+body.dark-mode #undo-btn {
+    color: #1f2937;
+    /* Revert to original light mode text-gray-800 color */
+}
+
+#completion-input {
+    border: none !important;
+    /* Removes all borders, !important ensures override */
+    border-bottom: 2px solid #6b7280 !important;
+    /* Re-adds the bottom border, matching Tailwind's gray-400 */
+    background-color: transparent !important;
+    /* Ensures transparent background */
+    outline: none !important;
+    /* Removes focus outline */
+    width: 100px !important;
+    /* Set the width to 20px */
+    text-align: left !important;
+    /* Align text to the left */
+}
+
+#completion-input:focus {
+    border-bottom-color: #3b82f6 !important;
+    /* Changes bottom border color on focus, matching Tailwind's blue-500 */
 }

@@ -851,7 +851,7 @@ const game = {
                 this.appContainer.innerHTML = `
                     <div id="completion-container" class="max-w-2xl mx-auto">
                         <div class="bg-white p-8 rounded-lg shadow-md">
-                            <p class="text-base mb-6 md:text-xl" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />')}</p>
+                            <p class="text-base md:text-xl" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-left bg-transparent" autocomplete="off" />')}</p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
                             <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
@@ -882,7 +882,7 @@ const game = {
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
 
             game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
-            document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
+            document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-left w-[20px] bg-transparent" autocomplete="off" />');
             document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
 
             const inputElement = document.getElementById('completion-input');
