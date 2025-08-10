@@ -1629,3 +1629,10 @@ body.hamburger-menu-open #menu-overlay {
     opacity: 0.5;
     pointer-events: auto;
 }
+
+body.dark-mode #prev-btn,
+body.dark-mode #next-btn,
+body.dark-mode #undo-btn
+{
+    color: #1f2937; /* Revert to original light mode text-gray-800 color */
+}
