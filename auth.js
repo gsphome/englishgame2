@@ -2,11 +2,10 @@ const auth = {
     user: null,
 
     init() {
-        console.log('auth.init() called');
+        
         // Set initial language (e.g., from localStorage or default)
         const savedLang = localStorage.getItem('appLang');
-        console.log('MESSAGES object:', MESSAGES);
-        console.log('Type of MESSAGES.setLanguage:', typeof MESSAGES.setLanguage);
+        
         if (savedLang) {
             MESSAGES.setLanguage(savedLang);
         } else {
@@ -29,7 +28,7 @@ const auth = {
     },
 
     renderLogin() {
-        console.log('renderLogin() called');
+        
         const appContainer = document.getElementById('app-container');
         appContainer.innerHTML = `
             <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
@@ -38,7 +37,7 @@ const auth = {
                 <button id="login-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">${MESSAGES.get('loginButton')}</button>
             </div>
         `;
-        console.log('appContainer innerHTML after render:', appContainer.innerHTML);
+        
 
         document.getElementById('login-btn').addEventListener('click', () => {
             const username = document.getElementById('username-input').value.trim();

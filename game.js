@@ -24,19 +24,19 @@ const game = {
         this.messageElement = document.getElementById('confirmation-message');
 
         this.hamburgerMenu = document.getElementById('hamburger-menu');
-        console.log('hamburgerMenu:', this.hamburgerMenu);
+        
         this.menuOverlay = document.getElementById('menu-overlay');
-        console.log('menuOverlay:', this.menuOverlay);
+        
         this.closeMenuBtn = document.getElementById('close-menu-btn');
-        console.log('closeMenuBtn:', this.closeMenuBtn);
+        
         this.menuLangToggleBtn = document.getElementById('menu-lang-toggle-btn');
-        console.log('menuLangToggleBtn:', this.menuLangToggleBtn);
+        
         this.menuLogoutBtn = document.getElementById('menu-logout-btn');
-        console.log('menuLogoutBtn:', this.menuLogoutBtn);
+        
         this.menuRandomModeBtn = document.getElementById('menu-random-mode-btn');
-        console.log('menuRandomModeBtn:', this.menuRandomModeBtn);
+        
         this.menuDarkModeToggleBtn = document.getElementById('menu-dark-mode-toggle-btn');
-        console.log('menuDarkModeToggleBtn:', this.menuDarkModeToggleBtn);
+        
         this.randomMode = localStorage.getItem('randomMode') === 'true'; // Initialize from localStorage
 
         // Dark Mode Initialization
@@ -151,7 +151,7 @@ const game = {
     },
 
     renderCurrentView() {
-        console.log('renderCurrentView called. Current view:', this.currentView);
+        
         switch (this.currentView) {
             case 'menu':
                 document.body.classList.remove('module-active');
@@ -403,7 +403,7 @@ const game = {
         },
 
         render() {
-            console.log('flashcard.render() called');
+            
             const cardData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -444,7 +444,7 @@ const game = {
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
             } else {
-                console.log('Updating existing flashcard text content.');
+                
             }
             // Update existing text content
             document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
@@ -596,7 +596,7 @@ const game = {
         },
 
         render() {
-            console.log('quiz.render() called');
+            
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -642,7 +642,7 @@ const game = {
                 `;
 
                 } else {
-                console.log('Updating existing quiz text content.');
+                
             }
 
             document.getElementById('prev-btn').addEventListener('click', () => this.prev());
@@ -811,7 +811,7 @@ const game = {
         },
 
         render() {
-            console.log('completion.render() called');
+            
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -846,7 +846,7 @@ const game = {
                     inputElement.focus();
                 }, 0);
             } else {
-                console.log('Updating existing completion text content.');
+                
             }
 
             document.getElementById('prev-btn').addEventListener('click', () => this.prev());
