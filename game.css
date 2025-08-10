@@ -120,7 +120,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.1rem;
     background-color: #fff;
     border-bottom: 1px solid #e2e8f0;
 }
@@ -133,7 +133,7 @@ body {
 /* Main Content */
 #app-container {
     max-width: 800px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     background-color: #fff;
     padding: 2rem;
     border-radius: 8px;
