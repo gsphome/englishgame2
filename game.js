@@ -180,6 +180,7 @@ const game = {
     },
 
     renderMenu() {
+        document.body.classList.remove('module-active');
         this.currentView = 'menu';
         const sessionScoreDisplay = document.getElementById('session-score-display');
         if (sessionScoreDisplay) {
@@ -1127,7 +1128,6 @@ const game = {
             this.appContainer.classList.remove('main-menu-active');
             this.appContainer.innerHTML = `
             <div id="sorting-container" class="max-w-2xl mx-auto p-4">
-                <h1 class="text-3xl font-bold text-center mb-6">${MESSAGES.get('sortingGameTitle')}</h1>
 
                 <div id="word-bank" class="bg-white p-4 rounded-lg shadow-md mb-6 min-h-[100px] border-2 border-gray-300 flex flex-wrap justify-center items-center" ondrop="game.sorting.drop(event)" ondragover="game.sorting.allowDrop(event)">
                     <!-- Words will be rendered here -->

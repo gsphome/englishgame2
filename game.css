@@ -116,7 +116,7 @@ body {
 }
 
 /* Header */
-#main-header {
+body:not(.module-active) #main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -592,7 +592,10 @@ body.dark-mode .flashcard-back {
     }
 }
 
-/* Specific styles for sorting game */
+/* Hide main-header when a module is active */
+body.module-active #main-header {
+    display: none;
+}
 #word-sorting-container {
     display: flex;
     flex-direction: column;
@@ -685,6 +688,8 @@ body.dark-mode .flashcard-back {
         width: 200px;
     }
 }
+
+
 
 /* Confirmation Modal Specific Styles */
 #confirmation-modal {
