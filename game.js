@@ -454,18 +454,17 @@ const game = {
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
-            } else {
-                console.log('Updating existing flashcard text content.');
-                // Update existing text content
-                document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
-                document.getElementById('flashcard-front-text').textContent = cardData.en;
-                document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
-                document.getElementById('flashcard-back-text').textContent = cardData.es;
-                document.getElementById('flashcard-ipa').textContent = cardData.ipa;
-                document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
-                document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
             }
-            // Update button texts regardless of whether the container was just created or already existed
+
+            // Always update text content and re-attach listeners after innerHTML assignment
+            const cardData = this.moduleData.data[this.currentIndex];
+            document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+            document.getElementById('flashcard-front-text').textContent = cardData.en;
+            document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
+            document.getElementById('flashcard-back-text').textContent = cardData.es;
+            document.getElementById('flashcard-ipa').textContent = cardData.ipa;
+            document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
+            document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
             document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
             document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
             document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
@@ -654,10 +653,10 @@ const game = {
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('undo-btn').addEventListener('click', () => this.undo());
-            } else {
-                console.log('Updating existing quiz text content.');
+                document.getElementById('back-to-menu-quiz-btn').addEventListener('click', () => game.renderMenu());
             }
 
+            // Always update text content and re-attach listeners after innerHTML assignment
             document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
             document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
@@ -848,16 +847,16 @@ const game = {
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+                document.getElementById('back-to-menu-completion-btn').addEventListener('click', () => game.renderMenu());
 
                 const inputElement = document.getElementById('completion-input');
                 setTimeout(() => {
                     inputElement.value = ''; // Clear the input field
                     inputElement.focus();
                 }, 0);
-            } else {
-                console.log('Updating existing completion text content.');
             }
 
+            // Always update text content and re-attach listeners after innerHTML assignment
             document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
