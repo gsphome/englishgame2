@@ -158,25 +158,13 @@ const game = {
                 this.renderMenu();
                 break;
             case 'flashcard':
-                if (this.currentModule && this.flashcard.moduleData) {
-                    this.flashcard.render();
-                } else {
-                    this.renderFlashcard(this.currentModule);
-                }
+                this.renderFlashcard(this.currentModule);
                 break;
             case 'quiz':
-                if (this.currentModule && this.quiz.moduleData) {
-                    this.quiz.render();
-                } else {
-                    this.renderQuiz(this.currentModule);
-                }
+                this.renderQuiz(this.currentModule);
                 break;
             case 'completion':
-                if (this.currentModule && this.completion.moduleData) {
-                    this.completion.render();
-                } else {
-                    this.renderCompletion(this.currentModule);
-                }
+                this.renderCompletion(this.currentModule);
                 break;
         }
     },
@@ -249,6 +237,7 @@ const game = {
 
     startModule(moduleId) {
         const module = learningModules.find(m => m.id === moduleId);
+        this.currentModule = module;
         switch (module.gameMode) {
             case 'flashcard':
                 this.renderFlashcard(module);
@@ -456,15 +445,16 @@ const game = {
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
             } else {
                 console.log('Updating existing flashcard text content.');
-                // Update existing text content
-                document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
-                document.getElementById('flashcard-front-text').textContent = cardData.en;
-                document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
-                document.getElementById('flashcard-back-text').textContent = cardData.es;
-                document.getElementById('flashcard-ipa').textContent = cardData.ipa;
-                document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
-                document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
             }
+            // Update existing text content
+            document.getElementById('flashcard-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
+            document.getElementById('flashcard-front-text').textContent = cardData.en;
+            document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
+            document.getElementById('flashcard-back-text').textContent = cardData.es;
+            document.getElementById('flashcard-ipa').textContent = cardData.ipa;
+            document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
+            document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
+
             // Update button texts regardless of whether the container was just created or already existed
             document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
             document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
@@ -651,12 +641,13 @@ const game = {
                     </div>
                 `;
 
-                document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-                document.getElementById('next-btn').addEventListener('click', () => this.next());
-                document.getElementById('undo-btn').addEventListener('click', () => this.undo());
-            } else {
+                } else {
                 console.log('Updating existing quiz text content.');
             }
+
+            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+            document.getElementById('next-btn').addEventListener('click', () => this.next());
+            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
 
             document.getElementById('quiz-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('quiz-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
@@ -858,13 +849,13 @@ const game = {
                 console.log('Updating existing completion text content.');
             }
 
+            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+            document.getElementById('next-btn').addEventListener('click', () => this.next());
+            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
+
             document.getElementById('completion-counter').textContent = `${this.currentIndex + 1} / ${this.moduleData.data.length}`;
             document.getElementById('completion-score').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-center text-2xl" autocomplete="off" />');
-            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-            document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
             document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
 
             const inputElement = document.getElementById('completion-input');
