@@ -135,13 +135,10 @@ const game = {
     },
 
     updateSessionScoreDisplay(correct, incorrect, total) {
-        const sessionCorrect = document.getElementById('session-correct');
-        const sessionIncorrect = document.getElementById('session-incorrect');
-        const sessionTotal = document.getElementById('session-total');
-
-        if (sessionCorrect) sessionCorrect.textContent = `${MESSAGES.get('correct')}: ${correct}`;
-        if (sessionIncorrect) sessionIncorrect.textContent = `${MESSAGES.get('incorrect')}: ${incorrect}`;
-        if (sessionTotal) sessionTotal.textContent = `Total: ${total}`;
+        const sessionScoreDisplay = document.getElementById('session-score-display');
+        if (sessionScoreDisplay) {
+            sessionScoreDisplay.innerHTML = `<span class="text-green-500">${correct}</span> / <span class="text-red-500">${incorrect}</span> (<span class="text-gray-600">${total}</span>)`;
+        }
     },
 
     renderHeader() {
@@ -149,11 +146,7 @@ const game = {
         const user = auth.getUser();
         header.innerHTML = `
             <div class="container mx-auto flex justify-between items-center p-4">
-                <div id="session-score-display" class="text-base flex flex-col items-start">
-                    <span id="session-correct" class="text-green-500"></span>
-                    <span id="session-incorrect" class="text-red-500"></span>
-                    <span id="session-total" class="text-gray-600"></span>
-                </div>
+                <div id="session-score-display" class="text-base"></div>
                 <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
                 <div class="flex items-center">
                     <div class="font-bold text-xl mr-4">${user.username}</div>
