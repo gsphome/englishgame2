@@ -145,9 +145,10 @@ const game = {
         const header = document.getElementById('main-header');
         const user = auth.getUser();
         header.innerHTML = `
-            <div class="container mx-auto flex justify-between items-center p-4">
-                <div id="session-score-display" class="text-base"></div>
+            <div class="container mx-auto flex justify-around items-center p-4">
                 <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
+                <span class="text-base mx-2">|</span>
+                <div id="session-score-display" class="text-base"></div>
                 <div class="flex items-center">
                     <div class="font-bold text-xl mr-4">${user.username}</div>
                     <button id="hamburger-btn" class="text-2xl">&#9776;</button>
