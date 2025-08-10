@@ -6,7 +6,7 @@ const game = {
     messageElement: null,
     currentView: null, // To keep track of the current active view (e.g., 'menu', 'flashcard', 'quiz')
     currentModule: null, // To keep track of the current module data
-    randomMode: false, // New property for random mode
+    randomMode: true, // New property for random mode
     startX: 0,
     startY: 0,
 
@@ -37,7 +37,7 @@ const game = {
         
         this.menuDarkModeToggleBtn = document.getElementById('menu-dark-mode-toggle-btn');
         
-        this.randomMode = localStorage.getItem('randomMode') === 'true'; // Initialize from localStorage
+        this.randomMode = localStorage.getItem('randomMode') !== 'false'; // Initialize from localStorage, default to true
 
         // Dark Mode Initialization
         const savedDarkMode = localStorage.getItem('darkMode');
@@ -120,9 +120,6 @@ const game = {
         }
         if (this.menuLogoutBtn) {
             this.menuLogoutBtn.innerHTML = `${MESSAGES.get('logoutButton')} 🚪`;
-        }
-        if (this.menuRandomModeBtn) {
-            this.menuRandomModeBtn.textContent = `${MESSAGES.get('randomMode')} ${this.randomMode ? '✅' : '❌'}`;
         }
         if (this.menuDarkModeToggleBtn) {
             const isDarkMode = document.body.classList.contains('dark-mode');
@@ -416,11 +413,19 @@ const game = {
             this.appContainer = document.getElementById('app-container');
             this.isTransitioning = false;
             this.sessionScore = { correct: 0, incorrect: 0 }; // Initialize session score
+            if (game.randomMode && Array.isArray(this.moduleData.data)) {
+                this.moduleData.data = game.shuffleArray([...this.moduleData.data]);
+            }
             this.render();
         },
 
         render() {
-            
+            if (!this.moduleData || !Array.isArray(this.moduleData.data) || this.moduleData.data.length === 0) {
+                // Display an error message or return to the main menu
+                console.error("Flashcard module data is invalid or empty.");
+                game.renderMenu(); // Go back to the main menu
+                return;
+            }
             const cardData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -621,14 +626,18 @@ const game = {
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
 
-            if (game.randomMode) {
-                this.moduleData.data = this.shuffleArray(this.moduleData.data);
+            if (game.randomMode && Array.isArray(this.moduleData.data)) {
+                this.moduleData.data = game.shuffleArray([...this.moduleData.data]);
             }
             this.render();
         },
 
         render() {
-            
+            if (!this.moduleData || !Array.isArray(this.moduleData.data) || this.moduleData.data.length === 0) {
+                console.error("Quiz module data is invalid or empty.");
+                game.renderMenu();
+                return;
+            }
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -637,7 +646,7 @@ const game = {
 
             // Shuffle options if random mode is active
             if (game.randomMode) {
-                optionsToRender = this.shuffleArray(optionsToRender);
+                                                                                                                optionsToRender = game.shuffleArray(optionsToRender);
             }
 
             if (!document.getElementById('quiz-container')) {
@@ -805,14 +814,6 @@ const game = {
                 document.getElementById('quiz-summary-incorrect').textContent = `${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('quiz-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
             }
-        },
-
-        shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
         }
     },
 
@@ -840,11 +841,18 @@ const game = {
             this.sessionScore = { correct: 0, incorrect: 0 };
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
+            if (game.randomMode && Array.isArray(this.moduleData.data)) {
+                this.moduleData.data = game.shuffleArray([...this.moduleData.data]);
+            }
             this.render();
         },
 
         render() {
-            
+            if (!this.moduleData || !Array.isArray(this.moduleData.data) || this.moduleData.data.length === 0) {
+                console.error("Completion module data is invalid or empty.");
+                game.renderMenu();
+                return;
+            }
             const questionData = this.moduleData.data[this.currentIndex];
             this.appContainer.classList.remove('main-menu-active');
 
@@ -1108,7 +1116,7 @@ const game = {
             }
 
             // Shuffle the remaining words
-            allWords = this.shuffleArray(allWords);
+            allWords = game.shuffleArray(allWords);
 
             // Add remaining words up to 15, avoiding duplicates
             let i = 0;
@@ -1120,7 +1128,7 @@ const game = {
                 i++;
             }
 
-            this.words = this.shuffleArray(selectedWords);
+            this.words = game.shuffleArray(selectedWords);
             this.render();
         },
 
@@ -1299,6 +1307,14 @@ const game = {
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
             document.getElementById('back-to-menu-sorting-btn').addEventListener('click', () => game.renderMenu());
         }
+    },
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
     }
 };
 
