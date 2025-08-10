@@ -195,7 +195,7 @@ const game = {
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
         menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" 
-                    style="max-width: ${this.getMenuMaxWidth()}; max-height: ${game.isMobile() && game.isLandscape() ? '185px' : game.isMobile() ? '225px' : '440px'};">`;
+                    style="max-width: ${this.getMenuMaxWidth()}; max-height: ${game.isMobile() && game.isLandscape() ? '185px' : game.isMobile() ? '285px' : '440px'};">`;
         menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
@@ -1298,7 +1298,7 @@ const game = {
                 const categoryElem = document.createElement('div');
                 categoryElem.id = 'category-' + category;
                 categoryElem.className = 'category bg-white p-4 rounded-lg shadow-md min-h-[120px] border-2 border-blue-400 flex flex-col items-center';
-                categoryElem.innerHTML = `<h3 class="text-xl font-bold mb-2 capitalize">${category}</h3>`;
+                categoryElem.innerHTML = `<h3 class="text-l font-bold mb-2 capitalize">${category}</h3>`;
                 categoryElem.addEventListener('drop', (e) => this.drop(e));
                 categoryElem.addEventListener('dragover', (e) => this.allowDrop(e));
                 categoriesContainer.appendChild(categoryElem);
