@@ -1112,7 +1112,7 @@ const game = {
 
             // Add remaining words up to 15, avoiding duplicates
             let i = 0;
-            while (selectedWords.length < 15 && i < allWords.length) {
+            while (selectedWords.length < 5 && i < allWords.length) {
                 const wordToAdd = allWords[i];
                 if (!selectedWords.includes(wordToAdd)) {
                     selectedWords.push(wordToAdd);

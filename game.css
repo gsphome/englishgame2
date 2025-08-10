@@ -714,48 +714,46 @@ body.dark-mode .flashcard-back {
         font-size: 0.8rem;
         padding: 0.3rem 0.6rem;
     }
-}
 
-/* General button styling for consistency */
-button {
-    transition: all 0.2s ease-in-out;
-}
+    /* Smaller text for game content */
+    #flashcard-container p,
+    #quiz-container p,
+    #completion-container p,
+    #sorting-container .word,
+    #sorting-container .category-title,
+    #score-display {
+        font-size: 0.85rem; /* Slightly smaller for general text */
+    }
 
-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    /* Larger text for buttons within game modes */
+    #flashcard-container button,
+    #quiz-container button,
+    #completion-container button,
+    #sorting-container button {
+        font-size: 0.9rem; /* Slightly larger for button text */
+        padding: 0.4rem 0.8rem; /* Adjust padding to fit larger text */
+    }
 
-button:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
+    /* Specific adjustments for quiz/completion question text */
+    #quiz-question,
+    #completion-question {
+        font-size: 1rem; /* Keep question text readable */
+    }
 
-/* Specific styling for menu buttons */
-#hamburger-menu button {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 10px 15px;
-    border: none;
-    background: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
+    /* Specific adjustments for flashcard text */
+    #flashcard-front-text,
+    #flashcard-back-text {
+        font-size: 1rem;
+    }
 
-#hamburger-menu button:hover {
-    background-color: #555;
-}
+    #flashcard-front-ipa,
+    #flashcard-ipa,
+    #flashcard-example,
+    #flashcard-example-es {
+        font-size: 0.75rem;
+    }
 
-#hamburger-menu button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
-}
-
-/* Adjustments for mobile menu buttons */
-@media (max-width: 768px) {
+    /* Adjustments for mobile menu buttons */
     #hamburger-menu button {
         font-size: 0.9rem;
         padding: 8px 12px;
