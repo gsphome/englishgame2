@@ -1088,6 +1088,10 @@ const game = {
         sessionScore: { correct: 0, incorrect: 0 },
         history: [], // To store actions for undo functionality
         draggedElementId: null,
+        touchStartX: 0,
+        touchStartY: 0,
+        currentDraggedElement: null,
+        currentGhostElement: null,
 
         init(module) {
             this.moduleData = module;
@@ -1304,6 +1308,88 @@ const game = {
             this.draggedElementId = null; // Reset the dragged element ID
         },
 
+        getDropTarget(x, y) {
+            const wordBank = document.getElementById('word-bank');
+            const categories = document.querySelectorAll('.category');
+            const potentialTargets = [wordBank, ...Array.from(categories)];
+
+            for (const target of potentialTargets) {
+                const rect = target.getBoundingClientRect();
+                if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                    return target;
+                }
+            }
+            return null;
+        },
+
+        handleTouchStart(e, wordElem) {
+            if (game.isMobile()) {
+                e.preventDefault(); // Prevent scrolling
+                this.currentDraggedElement = wordElem;
+                this.touchStartX = e.touches[0].clientX;
+                this.touchStartY = e.touches[0].clientY;
+
+                // Create a ghost element for visual feedback
+                this.currentGhostElement = wordElem.cloneNode(true);
+                this.currentGhostElement.style.position = 'absolute';
+                this.currentGhostElement.style.width = wordElem.offsetWidth + 'px';
+                this.currentGhostElement.style.height = wordElem.offsetHeight + 'px';
+                this.currentGhostElement.style.pointerEvents = 'none'; // Make it non-interactive
+                this.currentGhostElement.style.opacity = '0.7';
+                this.currentGhostElement.style.zIndex = '1000';
+                this.currentGhostElement.style.left = wordElem.getBoundingClientRect().left + 'px';
+                this.currentGhostElement.style.top = wordElem.getBoundingClientRect().top + 'px';
+                document.body.appendChild(this.currentGhostElement);
+
+                // Hide the original element temporarily
+                wordElem.style.opacity = '0';
+
+                document.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+                document.addEventListener('touchend', this.handleTouchEnd.bind(this), { once: true });
+            }
+        },
+
+        handleTouchMove(e) {
+            if (this.currentGhostElement) {
+                e.preventDefault(); // Prevent scrolling
+                const touch = e.touches[0];
+                this.currentGhostElement.style.left = (touch.clientX - this.currentGhostElement.offsetWidth / 2) + 'px';
+                this.currentGhostElement.style.top = (touch.clientY - this.currentGhostElement.offsetHeight / 2) + 'px';
+            }
+        },
+
+        handleTouchEnd(e) {
+            if (this.currentGhostElement) {
+                const touch = e.changedTouches[0];
+                const dropTarget = this.getDropTarget(touch.clientX, touch.clientY);
+
+                if (dropTarget && (dropTarget.id.startsWith('category-') || dropTarget.id === 'word-bank')) {
+                    const oldParentId = this.currentDraggedElement.parentElement.id;
+                    const newParentId = dropTarget.id;
+
+                    if (oldParentId !== newParentId) {
+                        game.sorting.history.push({
+                            wordId: this.currentDraggedElement.id,
+                            from: oldParentId,
+                            to: newParentId
+                        });
+                        dropTarget.appendChild(this.currentDraggedElement);
+                        game.sorting.userAnswers[this.currentDraggedElement.dataset.word] = newParentId.replace('category-', '').replace('word-', '');
+                        game.sorting.clearFeedback();
+                    }
+                }
+
+                // Restore original element's visibility
+                this.currentDraggedElement.style.opacity = '1';
+
+                // Clean up ghost element and event listeners
+                document.body.removeChild(this.currentGhostElement);
+                this.currentGhostElement = null;
+                this.currentDraggedElement = null;
+                document.removeEventListener('touchmove', this.handleTouchMove.bind(this));
+            }
+        },
+
         renderWords() {
             const wordBank = document.getElementById('word-bank');
             wordBank.innerHTML = ''; // Clear existing words
@@ -1315,6 +1401,7 @@ const game = {
                 wordElem.textContent = word;
                 wordElem.dataset.word = word; // Store original word for easy lookup
                 wordElem.addEventListener('dragstart', (e) => this.drag(e));
+                wordElem.addEventListener('touchstart', (e) => this.handleTouchStart(e, wordElem));
                 wordBank.appendChild(wordElem);
             });
         },
