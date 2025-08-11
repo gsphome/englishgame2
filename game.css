@@ -854,89 +854,7 @@ body.dark-mode #hamburger-menu button:focus {
     box-shadow: 0 0 0 2px rgba(226, 232, 240, 0.5);
 }
 
-/* Ensure the main header and app container adapt to dark mode */
-body.dark-mode #main-header,
-body.dark-mode #app-container {
-    background-color: #2d3748;
-    color: #e2e8f0;
-}
 
-/* Adjust flashcard background in dark mode */
-body.dark-mode .flashcard {
-    background-color: #4a5568;
-    border-color: #2d3748;
-}
-
-/* Adjust word item background in dark mode for sorting game */
-body.dark-mode .word-item {
-    background-color: #4a5568;
-    border-color: #2d3748;
-    color: #e2e8f0;
-}
-
-/* Adjust category container border in dark mode */
-body.dark-mode .category-container {
-    border-color: #4a5568;
-}
-
-/* Adjust confirmation modal background in dark mode */
-body.dark-mode #confirmation-modal .bg-white {
-    background-color: #2d3748;
-}
-
-/* Adjust confirmation modal button backgrounds in dark mode */
-body.dark-mode #confirmation-modal #confirm-yes {
-    background-color: #e53e3e;
-}
-
-body.dark-mode #confirmation-modal #confirm-no {
-    background-color: #4a5568;
-}
-
-body.dark-mode #confirmation-modal #confirm-no:hover {
-    background-color: #636b77;
-}
-
-/* Adjust input fields in dark mode */
-body.dark-mode input[type="text"],
-body.dark-mode input[type="password"] {
-    background-color: #4a5568;
-    border-color: #2d3748;
-    color: #e2e8f0;
-}
-
-/* Adjust button colors in dark mode */
-body.dark-mode button.primary {
-    background-color: #4299e1;
-}
-
-body.dark-mode button.primary:hover {
-    background-color: #3182ce;
-}
-
-body.dark-mode button.secondary {
-    background-color: #636b77;
-}
-
-body.dark-mode button.secondary:hover {
-    background-color: #4a5568;
-}
-
-/* Adjust specific menu button styles in dark mode */
-body.dark-mode #hamburger-menu button {
-    background-color: #4a5568;
-    color: #e2e8f0;
-}
-
-body.dark-mode #hamburger-menu button:hover {
-    background-color: #636b77;
-}
-
-body.dark-mode #hamburger-menu button:focus {
-    box-shadow: 0 0 0 2px rgba(226, 232, 240, 0.5);
-}
-
-/* Prevent text selection on draggable words for better UX on mobile */
 .word {
     -webkit-user-select: none;
     /* Safari */
@@ -992,4 +910,8 @@ body.dark-mode #undo-btn {
 
 #confirmation-modal {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .word {
+    color: #000000 !important; /* Force black text for sorting cards in dark mode */
 }

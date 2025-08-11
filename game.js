@@ -1310,7 +1310,7 @@ const game = {
             this.words.forEach(word => {
                 const wordElem = document.createElement('div');
                 wordElem.id = 'word-' + word.replace(/\s+/g, '-').toLowerCase();
-                wordElem.className = 'word bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-md cursor-grab m-2';
+                wordElem.className = 'word bg-gray-200 hover:bg-gray-300 text-gray-800 dark:text-black font-semibold py-2 px-4 rounded-lg shadow-md cursor-grab m-2';
                 wordElem.setAttribute('draggable', true);
                 wordElem.textContent = word;
                 wordElem.dataset.word = word; // Store original word for easy lookup
