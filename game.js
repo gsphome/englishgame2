@@ -170,6 +170,9 @@ const game = {
             case 'completion':
                 this.renderCompletion(this.currentModule);
                 break;
+            case 'sorting':
+                this.renderSorting(this.currentModule);
+                break;
         }
     },
 
@@ -258,7 +261,7 @@ const game = {
                 this.renderCompletion(module);
                 break;
             case 'sorting':
-                this.sorting.init(module);
+                this.renderSorting(module);
                 break;
         }
     },
@@ -389,8 +392,6 @@ const game = {
                     } else if (e.key === 'Backspace') {
                         e.preventDefault();
                         document.getElementById('undo-btn').click();
-                    } else if (e.key === 'Escape' && !game.isMobile()) {
-                        game.renderMenu();
                     }
                 }
             }
@@ -827,6 +828,12 @@ const game = {
         this.completion.init(module);
     },
 
+    renderSorting(module) {
+        this.currentView = 'sorting';
+        document.body.classList.add('module-active');
+        this.sorting.init(module);
+    },
+
     completion: {
         currentIndex: 0,
         sessionScore: { correct: 0, incorrect: 0 },
@@ -1076,7 +1083,6 @@ const game = {
         draggedElementId: null,
 
         init(module) {
-            document.body.classList.add('module-active');
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
             // Determine the categories that will actually be rendered
