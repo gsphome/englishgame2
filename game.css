@@ -989,3 +989,7 @@ body.dark-mode #undo-btn {
     border-bottom-color: #3b82f6 !important;
     /* Changes bottom border color on focus, matching Tailwind's blue-500 */
 }
+
+#confirmation-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}

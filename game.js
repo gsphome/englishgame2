@@ -22,21 +22,13 @@ const game = {
         this.yesButton = document.getElementById('confirm-yes');
         this.noButton = document.getElementById('confirm-no');
         this.messageElement = document.getElementById('confirmation-message');
-
         this.hamburgerMenu = document.getElementById('hamburger-menu');
-        
         this.menuOverlay = document.getElementById('menu-overlay');
-        
         this.closeMenuBtn = document.getElementById('close-menu-btn');
-        
         this.menuLangToggleBtn = document.getElementById('menu-lang-toggle-btn');
-        
         this.menuLogoutBtn = document.getElementById('menu-logout-btn');
-        
         this.menuRandomModeBtn = document.getElementById('menu-random-mode-btn');
-        
         this.menuDarkModeToggleBtn = document.getElementById('menu-dark-mode-toggle-btn');
-        
         this.randomMode = localStorage.getItem('randomMode') !== 'false'; // Initialize from localStorage, default to true
 
         // Dark Mode Initialization
@@ -163,7 +155,7 @@ const game = {
     },
 
     renderCurrentView() {
-        
+
         switch (this.currentView) {
             case 'menu':
                 document.body.classList.remove('module-active');
@@ -352,7 +344,7 @@ const game = {
                     const feedbackContainer = document.getElementById('feedback-container');
                     const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
 
-                                        if (e.key === 'Enter' && optionsDisabled) {
+                    if (e.key === 'Enter' && optionsDisabled) {
                         game.quiz.next();
                     } else if (e.key === 'Backspace') {
                         e.preventDefault();
@@ -652,7 +644,7 @@ const game = {
 
             // Shuffle options if random mode is active
             if (game.randomMode) {
-                                                                                                                optionsToRender = game.shuffleArray(optionsToRender);
+                optionsToRender = game.shuffleArray(optionsToRender);
             }
 
             if (!document.getElementById('quiz-container')) {
@@ -686,7 +678,7 @@ const game = {
                     </div>
                 `;
 
-                }
+            }
 
             document.getElementById('prev-btn').addEventListener('click', () => this.prev());
             document.getElementById('next-btn').addEventListener('click', () => this.next());
@@ -748,7 +740,7 @@ const game = {
                 document.querySelector(`[data-option="${selectedOption}"]`).classList.add('bg-red-500', 'text-white');
                 document.querySelector(`[data-option="${questionData.correct}"]`).classList.add('bg-green-500', 'text-white');
             }
-            
+
             document.getElementById('feedback-container').innerHTML = `<p class="text-lg">${questionData.explanation}</p>`;
             document.querySelectorAll('[data-option]').forEach(b => {
                 b.disabled = true;
@@ -1345,4 +1337,3 @@ const game = {
         return array;
     }
 };
-
