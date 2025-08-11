@@ -829,6 +829,13 @@ const game = {
     },
 
     renderSorting(module) {
+        // If we are already in sorting view and the container exists, just update text
+        if (this.currentView === 'sorting' && document.getElementById('sorting-container')) {
+            this.sorting.updateText();
+            // No need to re-init or re-add module-active class if already active
+            return;
+        }
+
         this.currentView = 'sorting';
         document.body.classList.add('module-active');
         this.sorting.init(module);
@@ -1152,10 +1159,11 @@ const game = {
             }
 
             this.words = game.shuffleArray(selectedWords); // Final shuffle of the words to be displayed
-            this.render();
+            this.renderInitialView();
+            this.updateDisplay(); // Call new updateDisplay after initial render
         },
 
-        render() {
+        renderInitialView() {
             this.appContainer.classList.remove('main-menu-active');
             this.appContainer.innerHTML = `
             <div id="sorting-container" class="max-w-2xl mx-auto p-4">
@@ -1332,6 +1340,34 @@ const game = {
             document.getElementById('check-btn').addEventListener('click', () => this.checkAnswers());
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
             document.getElementById('back-to-menu-sorting-btn').addEventListener('click', () => game.renderMenu());
+        },
+
+        updateDisplay() {
+            // Update button texts
+            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            document.getElementById('check-btn').textContent = MESSAGES.get('checkButton');
+            document.getElementById('back-to-menu-sorting-btn').textContent = MESSAGES.get('backToMenu');
+
+            // Update score display if visible
+            const scoreDisplay = document.getElementById('score-display');
+            if (scoreDisplay && scoreDisplay.textContent) {
+                // Re-render score based on current sessionScore
+                scoreDisplay.textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+                if (this.sessionScore.correct === this.words.length && this.words.length > 0) {
+                    scoreDisplay.textContent += ` - ${MESSAGES.get('allCorrectMessage')}`;
+                }
+            }
+
+            // Update category titles
+            this.categories.forEach(category => {
+                const categoryElem = document.getElementById('category-' + category);
+                if (categoryElem) {
+                    const h3 = categoryElem.querySelector('h3');
+                    if (h3) {
+                        h3.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                    }
+                }
+            });
         }
     },
 
