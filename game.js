@@ -102,7 +102,7 @@ const game = {
             if (this.currentView === 'menu') {
                 this.renderMenu();
             } else if (this.currentView === 'sorting') { // Add this condition
-                this.sorting.render(); // Re-render the sorting game
+                this.sorting.updateDisplay(); // Update display on resize
             }
         });
     },
@@ -856,6 +856,38 @@ const game = {
         this.sorting.init(module);
     },
 
+    // Inside sorting object
+    sorting: {
+        // ... existing code ...
+        updateDisplay() {
+            // Update button texts
+            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            document.getElementById('check-btn').textContent = MESSAGES.get('checkButton');
+            document.getElementById('back-to-menu-sorting-btn').textContent = MESSAGES.get('backToMenu');
+
+            // Update score display if visible
+            const scoreDisplay = document.getElementById('score-display');
+            if (scoreDisplay && scoreDisplay.textContent) {
+                // Re-render score based on current sessionScore
+                scoreDisplay.textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
+                if (this.sessionScore.correct === this.words.length && this.words.length > 0) {
+                    scoreDisplay.textContent += ` - ${MESSAGES.get('allCorrectMessage')}`;
+                }
+            }
+
+            // Update category titles
+            this.categories.forEach(category => {
+                const categoryElem = document.getElementById('category-' + category);
+                if (categoryElem) {
+                    const h3 = categoryElem.querySelector('h3');
+                    if (h3) {
+                        h3.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                    }
+                }
+            });
+        }
+    },
+
     completion: {
         currentIndex: 0,
         sessionScore: { correct: 0, incorrect: 0 },
@@ -1109,6 +1141,7 @@ const game = {
         currentGhostElement: null,
 
         init(module) {
+            console.log("Current module data:", this.moduleData);
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
             // Determine the categories that will actually be rendered
@@ -1179,7 +1212,7 @@ const game = {
 
             this.words = game.shuffleArray(selectedWords); // Final shuffle of the words to be displayed
             this.renderInitialView();
-            this.updateDisplay(); // Call new updateDisplay after initial render
+            this.render(); // Call the new render method after initial view is set up
         },
 
         renderInitialView() {
@@ -1391,6 +1424,7 @@ const game = {
                         dropTarget.appendChild(this.currentDraggedElement);
                         game.sorting.userAnswers[this.currentDraggedElement.dataset.word] = newParentId.replace('category-', '').replace('word-', '');
                         game.sorting.clearFeedback();
+                        this.render(); // Re-render to update positions
                     }
                 }
 
@@ -1442,6 +1476,24 @@ const game = {
             document.getElementById('check-btn').addEventListener('click', () => this.checkAnswers());
             document.getElementById('undo-btn').addEventListener('click', () => this.undo());
             document.getElementById('back-to-menu-sorting-btn').addEventListener('click', () => game.renderMenu());
+        },
+
+        render() {
+            // Move words to their current assigned containers
+            this.words.forEach(word => {
+                const wordId = 'word-' + word.replace(/\s+/g, '-').toLowerCase();
+                const wordElem = document.getElementById(wordId);
+                if (wordElem) {
+                    const currentCategory = this.userAnswers[word] || 'word-bank';
+                    const targetContainer = document.getElementById(currentCategory.startsWith('category-') ? currentCategory : 'word-bank');
+                    if (targetContainer) {
+                        targetContainer.appendChild(wordElem);
+                    } else {
+                        document.getElementById('word-bank').appendChild(wordElem); // Fallback
+                    }
+                }
+            });
+            this.updateDisplay(); // Update texts and scores after re-rendering words
         },
 
         updateDisplay() {
