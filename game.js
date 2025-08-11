@@ -464,13 +464,28 @@ const game = {
                 document.getElementById('next-btn').addEventListener('click', () => this.next());
                 document.getElementById('back-to-menu-flashcard-btn').addEventListener('click', () => game.renderMenu());
             }
-            // Update existing text content
-            document.getElementById('flashcard-front-text').textContent = cardData.en;
-            document.getElementById('flashcard-front-ipa').textContent = cardData.ipa;
-            document.getElementById('flashcard-back-en-text').textContent = cardData.en;
-            document.getElementById('flashcard-back-text').textContent = cardData.es;
-            document.getElementById('flashcard-example').textContent = `"${cardData.example}"`;
-            document.getElementById('flashcard-example-es').textContent = `"${cardData.example_es}"`;
+            // Update existing text content by re-rendering innerHTML of front and back
+            const flashcardFront = document.querySelector('.flashcard-front');
+            const flashcardBack = document.querySelector('.flashcard-back');
+
+            if (flashcardFront) {
+                flashcardFront.innerHTML = `
+                    <p class="flashcard-en-word text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
+                    <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa">${cardData.ipa}</p>
+                `;
+            }
+
+            if (flashcardBack) {
+                flashcardBack.innerHTML = `
+                    <div>
+                        <p class="flashcard-en-word text-base md:text-xl" id="flashcard-back-en-text">${cardData.en}</p>
+                        <p class="text-sm text-gray-500 md:text-lg" id="flashcard-back-ipa">${cardData.ipa}</p>
+                        <p class="text-base font-bold md:text-xl" id="flashcard-back-text">${cardData.es}</p>
+                        <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example">"${cardData.example}"</p>
+                        <p class="text-gray-500 italic" id="flashcard-example-es">"${cardData.example_es}"</p>
+                    </div>
+                `;
+            }
 
             game.updateSessionScoreDisplay(0, 0, this.moduleData.data.length);
 
