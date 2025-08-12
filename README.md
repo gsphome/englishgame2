@@ -88,5 +88,3 @@ To add new content to the application, you need to modify the `game-db.js` file.
             categories: ["category1", "category2", "category3"]
         }
         ```
-
-4.  **Save the File:** The new module will be automatically available in the application.
