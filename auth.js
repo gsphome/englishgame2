@@ -23,7 +23,7 @@ const auth = {
         if (!this.user) {
             this.renderLogin();
         } else {
-            game.init();
+            // game.init(); // Removed: game.init() is now called directly in game.js after DOMContentLoaded
         }
     },
 
@@ -62,7 +62,8 @@ const auth = {
             globalScore: { correct: 0, incorrect: 0 }
         };
         localStorage.setItem('user', JSON.stringify(this.user));
-        game.init();
+        // game.init(); // Removed: game.init() is now called directly in game.js after DOMContentLoaded
+        game.renderMenu(); // Render the menu after login
     },
 
     logout() {
@@ -78,8 +79,6 @@ const auth = {
         this.user.globalScore.correct += sessionScore.correct;
         this.user.globalScore.incorrect += sessionScore.incorrect;
         localStorage.setItem('user', JSON.stringify(this.user));
-        game.renderHeader(); // Update the UI
+        // game.renderHeader(); // Removed: Header rendering will be handled by game.js init or specific view renders
     }
 };
-
-document.addEventListener('DOMContentLoaded', () => auth.init());

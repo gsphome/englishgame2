@@ -80,12 +80,10 @@ const game = {
             });
         }
 
-        MESSAGES.addListener(this.renderHeader.bind(this));
+                MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
 
-        this.renderHeader();
-        this.updateMenuText(); // Call explicitly after rendering header
-        this.renderMenu();
+        // Initial render will be handled after user check
         MESSAGES.addListener(() => {
             if (!this.modal.classList.contains('hidden')) {
                 this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
@@ -102,8 +100,6 @@ const game = {
             }
         });
 
-        this.renderHeader();
-        this.renderMenu();
         this.addKeyboardListeners();
         this.addSwipeListeners();
 
@@ -114,6 +110,15 @@ const game = {
                 this.sorting.render(); // Re-render the sorting game
             }
         });
+
+        // Initial user check and rendering
+        auth.user = JSON.parse(localStorage.getItem('user')); // Initialize auth.user
+        if (!auth.user) {
+            auth.renderLogin();
+        } else {
+            this.renderHeader(); // Render header for logged-in user
+            this.renderMenu(); // Render main menu for logged-in user
+        }
     },
 
     updateMenuText() {
@@ -397,12 +402,7 @@ const game = {
                     }
 
                     if (e.key === 'Enter') {
-                        const inputElement = document.getElementById('completion-input');
-                        if (inputElement && !inputElement.disabled) {
-                            game.completion.handleAnswer();
-                        } else {
-                            game.completion.next();
-                        }
+                        game.completion.handleNextAction();
                     } else if (e.key === 'Backspace') {
                         const inputElement = document.getElementById('completion-input');
                         if (inputElement && document.activeElement === inputElement) {
@@ -1017,7 +1017,7 @@ const game = {
                 this.appContainer.innerHTML = `
                     <div id="completion-container" class="max-w-2xl mx-auto">
                         <div class="bg-white p-8 rounded-lg shadow-md">
-                            <p class="text-base md:text-xl" id="completion-question">${questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-left bg-transparent" autocomplete="off" />')}</p>
+                            <p class="text-base md:text-xl" id="completion-question"></p>
                             ${questionData.tip ? `<p class="text-lg text-gray-500 mb-4" id="completion-tip">Tip: ${questionData.tip}</p>` : ''}
                             <div id="feedback-container" class="mt-6" style="min-height: 5rem;"></div>
                         </div>
@@ -1033,25 +1033,21 @@ const game = {
                 `;
 
                 document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-                document.getElementById('next-btn').addEventListener('click', () => this.next());
+                document.getElementById('next-btn').addEventListener('click', () => this.handleNextAction());
                 document.getElementById('undo-btn').addEventListener('click', () => this.undo());
 
-                const inputElement = document.getElementById('completion-input');
-                setTimeout(() => {
-                    inputElement.value = ''; // Clear the input field
-                    inputElement.focus();
-                }, 0);
+                // const inputElement = document.getElementById('completion-input'); // Moved outside
+                // setTimeout(() => {
+                //     inputElement.value = ''; // Clear the input field
+                //     inputElement.focus();
+                // }, 0);
             }
 
-            document.getElementById('prev-btn').addEventListener('click', () => this.prev());
-            document.getElementById('next-btn').addEventListener('click', () => this.next());
-            document.getElementById('undo-btn').addEventListener('click', () => this.undo());
-
-            game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
+            // Update question and input field for every render
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-left w-[20px] bg-transparent" autocomplete="off" />');
             document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
 
-            const inputElement = document.getElementById('completion-input');
+            let inputElement = document.getElementById('completion-input');
             inputElement.value = ''; // Clear the input field
             inputElement.disabled = false; // Enable input field
             inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove color classes
@@ -1138,6 +1134,15 @@ const game = {
             }
         },
 
+        handleNextAction() {
+            const inputElement = document.getElementById('completion-input');
+            if (inputElement && !inputElement.disabled) {
+                this.handleAnswer();
+            } else {
+                this.next();
+            }
+        },
+
         showFinalScore() {
             auth.updateGlobalScore(this.sessionScore);
             game.renderHeader();
@@ -1164,7 +1169,7 @@ const game = {
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-left w-[20px] bg-transparent" autocomplete="off" />');
             document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
 
-            const inputElement = document.getElementById('completion-input');
+            let inputElement = document.getElementById('completion-input');
             inputElement.value = ''; // Clear the input field
             inputElement.disabled = false; // Enable input field
             inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove color classes
@@ -1681,3 +1686,7 @@ const game = {
         return array;
     }
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    game.init();
+});
