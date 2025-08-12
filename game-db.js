@@ -17,7 +17,6 @@ const learningModules = [
             { en: "Look for", es: "Buscar", ipa: "/lʊk fɔːr/", example: "She's been looking for her keys all morning.", example_es: "Ha estado buscando sus llaves toda la mañana." },
             { en: "Put off", es: "Posponer", ipa: "/pʊt ɒf/", example: "He's been putting off his homework until the last minute.", example_es: "Ha estado posponiendo sus deberes hasta el último minuto." },
             { en: "Take out", es: "Sacar / Quitar", ipa: "/teɪk aʊt/", example: "I need to take out the rubbish.", example_es: "Necesito sacar la basura." },
-            { sentence: "He needs to throw _ his old shoes.", options: ["away", "out", "up", "on"], correct: "away", explanation: "El phrasal verb 'throw away' o 'throw out' significa desechar algo." },
             { en: "Tidy up", es: "Ordenar", ipa: "/ˈtaɪdi ʌp/", example: "He's been tidying up his desk.", example_es: "Ha estado ordenando su escritorio." },
             { en: "Wake up", es: "Despertarse", ipa: "/weɪk ʌp/", example: "I need to wake up early tomorrow.", example_es: "Necesito despertarme temprano mañana." },
             { en: "Wash up", es: "Fregar los platos", ipa: "/wɒʃ ʌp/", example: "She's been washing up the dishes.", example_es: "Ha estado fregando los platos." },
@@ -112,12 +111,10 @@ const learningModules = [
             { en: "Grow out", es: "Dejar crecer (pelo)", ipa: "/ɡroʊ aʊt/", example: "He needs to grow out his hair.", example_es: "Necesita dejarse crecer el pelo." },
             { en: "Let out", es: "Ensanchar (ropa)", ipa: "/let aʊt/", example: "She's been letting out her dress.", example_es: "Ha estado ensanchando su vestido." },
             { en: "Take in", es: "Estrechar (ropa)", ipa: "/teɪk ɪn/", example: "He needs to take in his trousers.", example_es: "Necesita estrechar sus pantalones." },
-            { en: "Do up", es: "Peinarse / Arreglarse el pelo", ipa: "/duː ʌp/", example: "She's been doing up her hair.", example_es: "Se ha estado peinando." },
             { en: "Zip up", es: "Subir la cremallera", ipa: "/zɪp ʌp/", example: "He needs to zip up his jacket.", example_es: "Necesita subirse la cremallera de la chaqueta." },
             { en: "Kick off", es: "Quitarse (zapatos)", ipa: "/kɪk ɒf/", example: "She's been kicking off her shoes.", example_es: "Se ha estado quitando los zapatos." },
             { en: "Pull up", es: "Subir (ropa)", ipa: "/pʊl ʌp/", example: "He needs to pull up his socks.", example_es: "Necesita subirse los calcetines." },
             { en: "Slip out of", es: "Quitarse (ropa fácilmente)", ipa: "/slɪp aʊt ɒv/", example: "She's been slipping out of her wet clothes.", example_es: "Se ha estado quitando la ropa mojada fácilmente." },
-            { en: "Let out", es: "Ensanchar (traje)", ipa: "/let aʊt/", example: "He needs to have his suit let out.", example_es: "Necesita que le ensanchen el traje." },
             { en: "Accessorize", es: "Complementar / Accesorizar", ipa: "/əkˈsesəraɪz/", example: "She loves to accessorize her outfits with scarves and jewelry.", example_es: "Le encanta complementar sus atuendos con bufandas y joyas." },
             { en: "Button up", es: "Abrocharse (botones)", ipa: "/ˈbʌtn ʌp/", example: "Button up your coat, it's cold outside.", example_es: "Abróchate el abrigo, hace frío fuera." },
             { en: "Change into", es: "Cambiarse a (ropa)", ipa: "/tʃeɪndʒ ˈɪntuː/", example: "I need to change into something more comfortable.", example_es: "Necesito cambiarme a algo más cómodo." },
@@ -131,12 +128,12 @@ const learningModules = [
             { en: "Match", es: "Hacer juego / Combinar", ipa: "/mætʃ/", example: "Her shoes match her bag perfectly.", example_es: "Sus zapatos combinan perfectamente con su bolso." },
             { en: "Pull on", es: "Ponerse (rápidamente)", ipa: "/pʊl ɒn/", example: "She pulled on a sweater as it was getting cold.", example_es: "Se puso un suéter rápidamente porque estaba haciendo frío." },
             { en: "Slip on", es: "Ponerse (fácilmente)", ipa: "/slɪp ɒn/", example: "He slipped on his shoes and left.", example_es: "Se puso los zapatos fácilmente y se fue." },
-            { en: "Take off", es: "Quitarse (ropa)", ipa: "/teɪk ɒf/", example: "Please take off your shoes before entering the house.", example_es: "Por favor, quítate los zapatos antes de entrar a la casa." },
             { en: "Unbutton", es: "Desabrochar", ipa: "/ʌnˈbʌtn/", example: "He unbuttoned his shirt.", example_es: "Se desabrochó la camisa." },
             { en: "Unzip", es: "Bajar la cremallera", ipa: "/ʌnˈzɪp/", example: "Unzip your jacket, it's warm in here.", example_es: "Baja la cremallera de tu chaqueta, hace calor aquí." },
             { en: "Wear out", es: "Desgastar / Gastar (ropa)", ipa: "/weər aʊt/", example: "I've worn out my favorite jeans.", example_es: "He desgastado mis vaqueros favoritos." },
             { en: "Zip down", es: "Bajar la cremallera", ipa: "/zɪp daʊn/", example: "Zip down your jacket if you're hot.", example_es: "Baja la cremallera de tu chaqueta si tienes calor." },
-            { en: "Dress down", es: "Vestir informal", ipa: "/dres daʊn/", example: "It's a casual office, so you can dress down.", example_es: "Es una oficina informal, así que puedes vestir informal." }
+            { en: "Dress down", es: "Vestir informal", ipa: "/dres daʊn/", example: "It's a casual office, so you can dress down.", example_es: "Es una oficina informal, así que puedes vestir informal." },
+            { en: "Fling on", es: "Ponerse rápidamente", ipa: "/flɪŋ ɒn/", example: "She flung on a coat and ran out the door.", example_es: "Se puso un abrigo rápidamente y salió corriendo por la puerta." }
         ]
     },
     {
