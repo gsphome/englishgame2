@@ -1385,8 +1385,8 @@ const game = {
                 this.currentGhostElement.style.pointerEvents = 'none'; // Make it non-interactive
                 this.currentGhostElement.style.opacity = '0.7';
                 this.currentGhostElement.style.zIndex = '1000';
-                this.currentGhostElement.style.left = wordElem.getBoundingClientRect().left + 'px';
-                this.currentGhostElement.style.top = wordElem.getBoundingClientRect().top + 'px';
+                this.currentGhostElement.style.left = (wordElem.getBoundingClientRect().left + window.scrollX) + 'px';
+                this.currentGhostElement.style.top = (wordElem.getBoundingClientRect().top + window.scrollY) + 'px';
                 document.body.appendChild(this.currentGhostElement);
 
                 // Hide the original element temporarily
@@ -1401,8 +1401,8 @@ const game = {
             if (this.currentGhostElement) {
                 e.preventDefault(); // Prevent scrolling
                 const touch = e.touches[0];
-                this.currentGhostElement.style.left = (touch.clientX - this.currentGhostElement.offsetWidth / 2) + 'px';
-                this.currentGhostElement.style.top = (touch.clientY - this.currentGhostElement.offsetHeight / 2) + 'px';
+                this.currentGhostElement.style.left = (touch.clientX + window.scrollX - this.currentGhostElement.offsetWidth / 2) + 'px';
+                this.currentGhostElement.style.top = (touch.clientY + window.scrollY - this.currentGhostElement.offsetHeight / 2) + 'px';
             }
         },
 
