@@ -856,37 +856,7 @@ const game = {
         this.sorting.init(module);
     },
 
-    // Inside sorting object
-    sorting: {
-        // ... existing code ...
-        updateDisplay() {
-            // Update button texts
-            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-            document.getElementById('check-btn').textContent = MESSAGES.get('checkButton');
-            document.getElementById('back-to-menu-sorting-btn').textContent = MESSAGES.get('backToMenu');
-
-            // Update score display if visible
-            const scoreDisplay = document.getElementById('score-display');
-            if (scoreDisplay && scoreDisplay.textContent) {
-                // Re-render score based on current sessionScore
-                scoreDisplay.textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
-                if (this.sessionScore.correct === this.words.length && this.words.length > 0) {
-                    scoreDisplay.textContent += ` - ${MESSAGES.get('allCorrectMessage')}`;
-                }
-            }
-
-            // Update category titles
-            this.categories.forEach(category => {
-                const categoryElem = document.getElementById('category-' + category);
-                if (categoryElem) {
-                    const h3 = categoryElem.querySelector('h3');
-                    if (h3) {
-                        h3.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-                    }
-                }
-            });
-        }
-    },
+    
 
     completion: {
         currentIndex: 0,

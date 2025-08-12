@@ -1900,75 +1900,6 @@ const learningModules = [
         ]
     },
     {
-        id: 'sorting-nuance-vocabulary-c2',
-        name: 'Nuance in Vocabulary',
-        gameMode: 'sorting',
-        data: [
-            // Intensity
-            { word: "like", category: "intensity" },
-            { word: "enjoy", category: "intensity" },
-            { word: "love", category: "intensity" },
-            { word: "adore", category: "intensity" },
-            { word: "cherish", category: "intensity" },
-            { word: "detest", category: "intensity" },
-            { word: "loathe", category: "intensity" },
-            { word: "abhor", category: "intensity" },
-            { word: "despise", category: "intensity" },
-            { word: "dislike", category: "intensity" },
-            { word: "suggest", category: "intensity" },
-            { word: "propose", category: "intensity" },
-            { word: "advocate", category: "intensity" },
-            { word: "insist", category: "intensity" },
-            { word: "demand", category: "intensity" },
-
-            // Formality
-            { word: "ask", category: "formality" },
-            { word: "inquire", category: "formality" },
-            { word: "request", category: "formality" },
-            { word: "solicit", category: "formality" },
-            { word: "seek", category: "formality" },
-            { word: "tell", category: "formality" },
-            { word: "inform", category: "formality" },
-            { word: "notify", category: "formality" },
-            { word: "apprise", category: "formality" },
-            { word: "communicate", category: "formality" },
-            { word: "get", category: "formality" },
-            { word: "obtain", category: "formality" },
-            { word: "acquire", category: "formality" },
-            { word: "procure", category: "formality" },
-            { word: "secure", category: "formality" },
-
-            // Speed/Movement
-            { word: "walk", category: "speed_movement" },
-            { word: "stroll", category: "speed_movement" },
-            { word: "amble", category: "speed_movement" },
-            { word: "saunter", category: "speed_movement" },
-            { word: "dash", category: "speed_movement" },
-            { word: "sprint", category: "speed_movement" },
-            { word: "rush", category: "speed_movement" },
-            { word: "hurry", category: "speed_movement" },
-            { word: "trudge", category: "speed_movement" },
-            { word: "plod", category: "speed_movement" },
-            { word: "creep", category: "speed_movement" },
-            { word: "crawl", category: "speed_movement" },
-
-            // Perception
-            { word: "see", category: "perception" },
-            { word: "look", category: "perception" },
-            { word: "watch", category: "perception" },
-            { word: "observe", category: "perception" },
-            { word: "perceive", category: "perception" },
-            { word: "discern", category: "perception" },
-            { word: "glance", category: "perception" },
-            { word: "gaze", category: "perception" },
-            { word: "stare", category: "perception" },
-            { word: "peer", category: "perception" },
-            { word: "spot", category: "perception" },
-            { word: "notice", category: "perception" }
-        ],
-        categories: ["intensity", "formality", "speed_movement", "perception"]
-    },
-    {
         id: 'sorting-connector-words',
         name: 'Connector Words',
         gameMode: 'sorting',
@@ -2039,5 +1970,74 @@ const learningModules = [
             { word: "on the one hand... on the other hand", category: "contrast" }
         ],
         categories: ["addition", "equation", "conclusion", "contrast"]
+    },
+    {
+        id: 'sorting-nuance-vocabulary-c2',
+        name: 'Nuance in Vocabulary',
+        gameMode: 'sorting',
+        data: [
+            // Intensity
+            { word: "like", category: "intensity" },
+            { word: "enjoy", category: "intensity" },
+            { word: "love", category: "intensity" },
+            { word: "adore", category: "intensity" },
+            { word: "cherish", category: "intensity" },
+            { word: "detest", category: "intensity" },
+            { word: "loathe", category: "intensity" },
+            { word: "abhor", category: "intensity" },
+            { word: "despise", category: "intensity" },
+            { word: "dislike", category: "intensity" },
+            { word: "suggest", category: "intensity" },
+            { word: "propose", category: "intensity" },
+            { word: "advocate", category: "intensity" },
+            { word: "insist", category: "intensity" },
+            { word: "demand", category: "intensity" },
+
+            // Formality
+            { word: "ask", category: "formality" },
+            { word: "inquire", category: "formality" },
+            { word: "request", category: "formality" },
+            { word: "solicit", category: "formality" },
+            { word: "seek", category: "formality" },
+            { word: "tell", category: "formality" },
+            { word: "inform", category: "formality" },
+            { word: "notify", category: "formality" },
+            { word: "apprise", category: "formality" },
+            { word: "communicate", category: "formality" },
+            { word: "get", category: "formality" },
+            { word: "obtain", category: "formality" },
+            { word: "acquire", category: "formality" },
+            { word: "procure", category: "formality" },
+            { word: "secure", category: "formality" },
+
+            // Speed/Movement
+            { word: "walk", category: "speed_movement" },
+            { word: "stroll", category: "speed_movement" },
+            { word: "amble", category: "speed_movement" },
+            { word: "saunter", category: "speed_movement" },
+            { word: "dash", category: "speed_movement" },
+            { word: "sprint", category: "speed_movement" },
+            { word: "rush", category: "speed_movement" },
+            { word: "hurry", category: "speed_movement" },
+            { word: "trudge", category: "speed_movement" },
+            { word: "plod", category: "speed_movement" },
+            { word: "creep", category: "speed_movement" },
+            { word: "crawl", category: "speed_movement" },
+
+            // Perception
+            { word: "see", category: "perception" },
+            { word: "look", category: "perception" },
+            { word: "watch", category: "perception" },
+            { word: "observe", category: "perception" },
+            { word: "perceive", category: "perception" },
+            { word: "discern", category: "perception" },
+            { word: "glance", category: "perception" },
+            { word: "gaze", category: "perception" },
+            { word: "stare", category: "perception" },
+            { word: "peer", category: "perception" },
+            { word: "spot", category: "perception" },
+            { word: "notice", category: "perception" }
+        ],
+        categories: ["intensity", "formality", "speed_movement", "perception"]
     }
 ];
