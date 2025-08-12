@@ -53,7 +53,7 @@ const game = {
             const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
             MESSAGES.setLanguage(newLang);
             localStorage.setItem('appLang', newLang);
-            this.renderCurrentView(); // Re-render the current view to update text
+            // Removed this.renderCurrentView() as it causes module to advance
             this.updateMenuText(); // Explicitly call to update menu buttons
         });
 
@@ -81,7 +81,6 @@ const game = {
         }
 
         MESSAGES.addListener(this.renderHeader.bind(this));
-        MESSAGES.addListener(this.renderCurrentView.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
 
         this.renderHeader();
@@ -90,6 +89,16 @@ const game = {
         MESSAGES.addListener(() => {
             if (!this.modal.classList.contains('hidden')) {
                 this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
+            }
+            // Call a specific update function for the current view if it's not the menu
+            if (this.currentView === 'flashcard') {
+                this.flashcard.updateText();
+            } else if (this.currentView === 'quiz') {
+                this.quiz.updateText();
+            } else if (this.currentView === 'completion') {
+                this.completion.updateText();
+            } else if (this.currentView === 'sorting') {
+                this.sorting.updateText();
             }
         });
 
@@ -612,6 +621,37 @@ const game = {
             } else {
                 this.next();
             }
+        },
+
+        updateText() {
+            const cardData = this.moduleData.data[this.currentIndex];
+            const flashcardFront = document.querySelector('.flashcard-front');
+            const flashcardBack = document.querySelector('.flashcard-back');
+
+            if (flashcardFront) {
+                flashcardFront.innerHTML = `
+                    <p class="flashcard-en-word text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
+                    <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa">${cardData.ipa}</p>
+                    <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example">"${cardData.example}"</p>
+                `;
+            }
+
+            if (flashcardBack) {
+                flashcardBack.innerHTML = `
+                    <div>
+                        <p class="flashcard-en-word text-base md:text-xl" id="flashcard-back-en-text">${cardData.en}</p>
+                        <p class="text-sm text-gray-500 md:text-lg" id="flashcard-back-ipa">${cardData.ipa}</p>
+                        <p class="text-base font-bold md:text-xl" id="flashcard-back-text">${cardData.es}</p>
+                        <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example">"${cardData.example}"</p>
+                        <p class="text-gray-500 italic" id="flashcard-example-es">"${cardData.example_es}"</p>
+                    </div>
+                `;
+            }
+
+            // Update button texts
+            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            document.getElementById('back-to-menu-flashcard-btn').textContent = MESSAGES.get('backToMenu');
         }
     },
 
@@ -847,6 +887,72 @@ const game = {
                 document.getElementById('quiz-summary-incorrect').textContent = `${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('quiz-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
             }
+        },
+
+        updateText() {
+            const questionData = this.moduleData.data[this.currentIndex];
+            document.getElementById('quiz-question').innerHTML = questionData.sentence.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
+            const quizTipElement = document.getElementById('quiz-tip');
+            if (questionData.tip) {
+                if (quizTipElement) {
+                    quizTipElement.textContent = `Tip: ${questionData.tip}`;
+                    quizTipElement.classList.remove('hidden');
+                } else {
+                    const feedbackContainer = document.getElementById('feedback-container');
+                    const newTipElement = document.createElement('p');
+                    newTipElement.id = 'quiz-tip';
+                    newTipElement.className = 'text-lg text-gray-500 mb-4';
+                    newTipElement.textContent = `Tip: ${questionData.tip}`;
+                    feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
+                }
+            } else {
+                if (quizTipElement) {
+                    quizTipElement.classList.add('hidden');
+                }
+            }
+
+            // Update option texts
+            const optionsContainer = document.getElementById('options-container');
+            const optionButtons = optionsContainer.querySelectorAll('[data-option]');
+            const optionLetters = ['A', 'B', 'C', 'D'];
+            // Assuming optionsToRender is still available or can be re-derived if needed
+            // For now, let's assume the options are in the same order as they were rendered
+            optionButtons.forEach((button, index) => {
+                const optionTextSpan = button.querySelector('span:last-child');
+                if (optionTextSpan) {
+                    // This is a bit tricky without knowing the exact order of optionsToRender
+                    // For simplicity, we'll just update the letter, assuming the text content is static for the current question
+                    // A more robust solution would involve re-creating the buttons or mapping them to the shuffled options
+                    optionTextSpan.textContent = button.dataset.option; // Re-set the text content from data-option
+                }
+                const optionLetterSpan = button.querySelector('span:first-child');
+                if (optionLetterSpan) {
+                    optionLetterSpan.textContent = optionLetters[index];
+                }
+            });
+
+            // Update button texts
+            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            document.getElementById('back-to-menu-quiz-btn').textContent = MESSAGES.get('backToMenu');
+
+            // Update feedback container if it has content
+            const feedbackContainer = document.getElementById('feedback-container');
+            if (feedbackContainer.innerHTML !== '') {
+                // If there's feedback, re-render it based on the current language
+                // This assumes the feedback message is simple and can be re-generated
+                // For more complex feedback, we might need to store the feedback type
+                const isCorrect = this.history.length > 0 ? this.history[this.history.length - 1].correct : null;
+                if (isCorrect !== null) {
+                    const lastQuestionData = this.moduleData.data[this.history[this.history.length - 1].index];
+                    if (isCorrect) {
+                        feedbackContainer.innerHTML = `<p class="text-lg">${lastQuestionData.explanation}</p>`;
+                    } else {
+                        feedbackContainer.innerHTML = `<p class="text-lg">${lastQuestionData.explanation}</p>`;
+                    }
+                }
+            }
         }
     },
 
@@ -1050,6 +1156,56 @@ const game = {
                 document.getElementById('completion-summary-correct').textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct}`;
                 document.getElementById('completion-summary-incorrect').textContent = `${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 document.getElementById('completion-summary-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
+            }
+        },
+
+        updateText() {
+            const questionData = this.moduleData.data[this.currentIndex];
+            document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-left w-[20px] bg-transparent" autocomplete="off" />');
+            document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
+
+            const inputElement = document.getElementById('completion-input');
+            inputElement.value = ''; // Clear the input field
+            inputElement.disabled = false; // Enable input field
+            inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove color classes
+            inputElement.focus();
+
+            const completionTipElement = document.getElementById('completion-tip');
+            if (questionData.tip) {
+                if (completionTipElement) {
+                    completionTipElement.textContent = `Tip: ${questionData.tip}`;
+                    completionTipElement.classList.remove('hidden');
+                } else {
+                    const feedbackContainer = document.getElementById('feedback-container');
+                    const newTipElement = document.createElement('p');
+                    newTipElement.id = 'completion-tip';
+                    newTipElement.className = 'text-lg text-gray-500 mb-4';
+                    newTipElement.textContent = `Tip: ${questionData.tip}`;
+                    feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
+                }
+            } else {
+                if (completionTipElement) {
+                    completionTipElement.classList.add('hidden');
+                }
+            }
+
+            // Update button texts
+            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
+            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
+            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
+            document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
+
+            // If there was a previous answer, re-display it with the correct color
+            const lastAction = this.history[this.history.length - 1];
+            if (lastAction && lastAction.index === this.currentIndex) {
+                inputElement.value = lastAction.userAnswer; // Assuming userAnswer is stored in history
+                if (lastAction.isCorrect) {
+                    inputElement.classList.add('text-green-500');
+                } else {
+                    inputElement.classList.add('text-red-500');
+                    document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct: ${questionData.correct}</p>`;
+                }
+                inputElement.disabled = true;
             }
         }
     },
@@ -1485,10 +1641,10 @@ const game = {
                     }
                 }
             });
-            this.updateDisplay(); // Update texts and scores after re-rendering words
+            this.updateText(); // Update texts and scores after re-rendering words
         },
 
-        updateDisplay() {
+        updateText() {
             // Update button texts
             document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
             document.getElementById('check-btn').textContent = MESSAGES.get('checkButton');
