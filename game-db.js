@@ -1966,7 +1966,12 @@ const learningModules = [
             { word: "alternatively", category: "contrast" },
             { word: "on the one hand... on the other hand", category: "contrast" }
         ],
-        categories: ["addition", "equation", "conclusion", "contrast"]
+        categories: [
+            { category_id: "addition", category_show: "Addition" },
+            { category_id: "equation", category_show: "Equation" },
+            { category_id: "conclusion", category_show: "Conclusion" },
+            { category_id: "contrast", category_show: "Contrast" }
+        ]
     },
     {
         id: 'sorting-nuance-vocabulary-c2',
@@ -2035,6 +2040,11 @@ const learningModules = [
             { word: "spot", category: "perception" },
             { word: "notice", category: "perception" }
         ],
-        categories: ["intensity", "formality", "speed_movement", "perception"]
+        categories: [
+            { category_id: "intensity", category_show: "Intensity" },
+            { category_id: "formality", category_show: "Formality" },
+            { category_id: "speed_movement", category_show: "Speed/Movement" },
+            { category_id: "perception", category_show: "Perception" }
+        ]
     }
 ];

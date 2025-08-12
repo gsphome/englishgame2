@@ -1293,6 +1293,7 @@ const game = {
             this.moduleData = module;
             this.appContainer = document.getElementById('app-container');
             // Determine the categories that will actually be rendered
+            // this.categories now stores objects { category_id, category_show }
             this.categories = game.shuffleArray([...module.categories]).slice(0, this.maxCategoriesToRender);
             this.userAnswers = {};
             this.originalWordPositions = {};
@@ -1300,7 +1301,7 @@ const game = {
             this.history = [];
             this.feedbackActive = false;
 
-            // Group words by category from the original module data
+            // Group words by category_id from the original module data
             const wordsByCategory = {};
             module.data.forEach(item => {
                 if (!wordsByCategory[item.category]) {
@@ -1312,10 +1313,10 @@ const game = {
             let selectedWords = [];
             let allWordsFromSelectedCategories = [];
 
-            // Collect all words that belong to the *selected* categories
-            this.categories.forEach(category => {
-                if (wordsByCategory[category]) {
-                    allWordsFromSelectedCategories = allWordsFromSelectedCategories.concat(wordsByCategory[category]);
+            // Collect all words that belong to the *selected* categories (using category_id)
+            this.categories.forEach(categoryObj => {
+                if (wordsByCategory[categoryObj.category_id]) {
+                    allWordsFromSelectedCategories = allWordsFromSelectedCategories.concat(wordsByCategory[categoryObj.category_id]);
                 }
             });
 
@@ -1325,27 +1326,28 @@ const game = {
             // Select a subset of these words for the game
             // Ensure at least one word from each *displayed* category if possible, then fill up to a total
             const wordsPerCategory = {};
-            this.categories.forEach(category => wordsPerCategory[category] = []);
+            this.categories.forEach(categoryObj => wordsPerCategory[categoryObj.category_id] = []);
 
-            // Distribute words to ensure representation from each category
+            // Distribute words to ensure representation from each category (using category_id)
             module.data.forEach(item => {
-                if (this.categories.includes(item.category)) {
+                // Check if the item's category_id is among the selected categories
+                if (this.categories.some(cat => cat.category_id === item.category)) {
                     wordsPerCategory[item.category].push(item.word);
                 }
             });
 
-            // Select one word from each category, if available
-            this.categories.forEach(category => {
-                if (wordsPerCategory[category].length > 0) {
-                    const word = wordsPerCategory[category].shift(); // Take one word
+            // Select one word from each category, if available (using category_id)
+            this.categories.forEach(categoryObj => {
+                if (wordsPerCategory[categoryObj.category_id].length > 0) {
+                    const word = wordsPerCategory[categoryObj.category_id].shift(); // Take one word
                     selectedWords.push(word);
                 }
             });
 
             // Fill the rest up to 5 words from the remaining words in selected categories
             let remainingWords = [];
-            for (const category in wordsPerCategory) {
-                remainingWords = remainingWords.concat(wordsPerCategory[category]);
+            for (const categoryId in wordsPerCategory) { // Iterate over category_ids
+                remainingWords = remainingWords.concat(wordsPerCategory[categoryId]);
             }
             remainingWords = game.shuffleArray(remainingWords); // Shuffle remaining words
 
@@ -1609,11 +1611,11 @@ const game = {
             categoriesContainer.innerHTML = ''; // Clear existing categories
             // Shuffle categories and then take the first 'maxCategoriesToRender'
             const categoriesToRender = game.shuffleArray([...this.categories]).slice(0, this.maxCategoriesToRender);
-            categoriesToRender.forEach(category => {
+            categoriesToRender.forEach(categoryObj => { // Changed 'category' to 'categoryObj'
                 const categoryElem = document.createElement('div');
-                categoryElem.id = 'category-' + category;
+                categoryElem.id = 'category-' + categoryObj.category_id; // Use category_id for ID
                 categoryElem.className = 'category bg-white p-4 rounded-lg shadow-md min-h-[120px] border-2 border-blue-400 flex flex-col items-center';
-                categoryElem.innerHTML = `<h3 class="text-l font-bold mb-2 capitalize">${category}</h3>`;
+                categoryElem.innerHTML = `<h3 class="text-l font-bold mb-2 capitalize">${categoryObj.category_show}</h3>`; // Use category_show for display
                 categoryElem.addEventListener('drop', (e) => this.drop(e));
                 categoryElem.addEventListener('dragover', (e) => this.allowDrop(e));
                 categoriesContainer.appendChild(categoryElem);
@@ -1661,12 +1663,12 @@ const game = {
             }
 
             // Update category titles
-            this.categories.forEach(category => {
-                const categoryElem = document.getElementById('category-' + category);
+            this.categories.forEach(categoryObj => { // Changed 'category' to 'categoryObj'
+                const categoryElem = document.getElementById('category-' + categoryObj.category_id); // Use category_id for ID
                 if (categoryElem) {
                     const h3 = categoryElem.querySelector('h3');
                     if (h3) {
-                        h3.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                        h3.textContent = categoryObj.category_show; // Use category_show for display
                     }
                 }
             });
