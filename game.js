@@ -1090,11 +1090,12 @@ const game = {
                 this.sessionScore.correct++;
                 auth.updateGlobalScore({ correct: 1, incorrect: 0 });
                 inputElement.classList.add('text-green-500');
+                document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct Answer: <strong>${questionData.correct}</strong></p><p class="text-lg">${questionData.explanation}</p>`;
             } else {
                 this.sessionScore.incorrect++;
                 auth.updateGlobalScore({ correct: 0, incorrect: 1 });
                 inputElement.classList.add('text-red-500');
-                document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct: ${questionData.correct}</p>`;
+                document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct Answer: <strong>${questionData.correct}</strong></p><p class="text-lg">${questionData.explanation}</p>`;
             }
             inputElement.disabled = true;
             this.updateScoreDisplay();
