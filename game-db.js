@@ -136,7 +136,6 @@ const learningModules = [
             { en: "Unzip", es: "Bajar la cremallera", ipa: "/ʌnˈzɪp/", example: "Unzip your jacket, it's warm in here.", example_es: "Baja la cremallera de tu chaqueta, hace calor aquí." },
             { en: "Wear out", es: "Desgastar / Gastar (ropa)", ipa: "/weər aʊt/", example: "I've worn out my favorite jeans.", example_es: "He desgastado mis vaqueros favoritos." },
             { en: "Zip down", es: "Bajar la cremallera", ipa: "/zɪp daʊn/", example: "Zip down your jacket if you're hot.", example_es: "Baja la cremallera de tu chaqueta si tienes calor." },
-            { en: "Zip up", es: "Subir la cremallera", ipa: "/zɪp ʌp/", example: "Zip up your jacket, it's cold.", example_es: "Sube la cremallera de tu chaqueta, hace frío." },
             { en: "Dress down", es: "Vestir informal", ipa: "/dres daʊn/", example: "It's a casual office, so you can dress down.", example_es: "Es una oficina informal, así que puedes vestir informal." }
         ]
     },
@@ -301,7 +300,6 @@ const learningModules = [
             { en: "To be a guinea pig", es: "Ser un conejillo de indias", ipa: "/tuː bi ə ˈɡɪni pɪɡ/", example: "To be a guinea pig.", example_es: "Ser un conejillo de indias." },
             { en: "To be a copycat", es: "Ser un imitador", ipa: "/tuː bi ə ˈkɒpiˌkæt/", example: "To be a copycat.", example_es: "Ser un imitador." },
             { en: "To be a dark horse", es: "Ser un tapado / Sorpresa", ipa: "/tuː bi ə dɑːrk hɔːrs/", example: "To be a dark horse.", example_es: "Ser un tapado." },
-            { en: "To be a busy bee", es: "Ser una persona muy ocupada", ipa: "/tuː bi ə ˈbɪzi biː/", example: "To be a busy bee.", example_es: "Ser una persona muy ocupada." },
             { en: "To be a night owl", es: "Ser un ave nocturna", ipa: "/tuː bi ə naɪt aʊl/", example: "To be a night owl.", example_es: "Ser una ave nocturna." },
             { en: "To be a morning lark", es: "Ser una persona madrugadora", ipa: "/tuː bi ə ˈmɔːrnɪŋ lɑːrk/", example: "To be a morning lark.", example_es: "Ser una persona madrugadora." },
             { en: "To be a social butterfly", es: "Ser una mariposa social", ipa: "/tuː bi ə ˈsoʊʃl ˈbʌtərflaɪ/", example: "To be a social butterfly.", example_es: "Ser una mariposa social." },
