@@ -102,7 +102,7 @@ const game = {
             if (this.currentView === 'menu') {
                 this.renderMenu();
             } else if (this.currentView === 'sorting') { // Add this condition
-                this.sorting.updateDisplay(); // Update display on resize
+                this.sorting.render(); // Re-render the sorting game
             }
         });
     },
@@ -1422,7 +1422,7 @@ const game = {
                             to: newParentId
                         });
                         dropTarget.appendChild(this.currentDraggedElement);
-                        game.sorting.userAnswers[this.currentDraggedElement.dataset.word] = newParentId.replace('category-', '').replace('word-', '');
+                        game.sorting.userAnswers[this.currentDraggedElement.dataset.word] = newParentId;
                         game.sorting.clearFeedback();
                         this.render(); // Re-render to update positions
                     }
