@@ -82,6 +82,7 @@ const game = {
 
                 MESSAGES.addListener(this.renderHeader.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
+        this.updateMenuText(); // Call explicitly to set initial menu button text
 
         // Initial render will be handled after user check
         MESSAGES.addListener(() => {
@@ -113,10 +114,10 @@ const game = {
 
         // Initial user check and rendering
         auth.user = JSON.parse(localStorage.getItem('user')); // Initialize auth.user
+        this.renderHeader(); // Always render header
         if (!auth.user) {
             auth.renderLogin();
         } else {
-            this.renderHeader(); // Render header for logged-in user
             this.renderMenu(); // Render main menu for logged-in user
         }
     },
