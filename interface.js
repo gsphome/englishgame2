@@ -74,3 +74,37 @@ const MESSAGES = {
         this._listeners.push(listener);
     }
 };
+
+// About Modal Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const aboutBtn = document.getElementById('menu-about-btn');
+    const aboutModal = document.getElementById('about-modal');
+    const closeAboutModalBtn = document.getElementById('close-about-modal-btn');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+
+    if (aboutBtn && aboutModal && closeAboutModalBtn && menuOverlay && hamburgerMenu) {
+        aboutBtn.addEventListener('click', () => {
+            aboutModal.classList.remove('hidden');
+            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            menuOverlay.classList.add('opacity-50', 'pointer-events-auto');
+            // Close hamburger menu when About is clicked
+            hamburgerMenu.classList.remove('translate-x-0');
+            hamburgerMenu.classList.add('translate-x-full');
+        });
+
+        closeAboutModalBtn.addEventListener('click', () => {
+            aboutModal.classList.add('hidden');
+            menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            if (!aboutModal.classList.contains('hidden')) { // Only close about modal if it's open
+                aboutModal.classList.add('hidden');
+                menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+                menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+    }
+});
