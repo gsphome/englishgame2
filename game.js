@@ -154,19 +154,25 @@ const game = {
     renderHeader() {
         const header = document.getElementById('main-header');
         const user = auth.getUser();
+        const username = user ? user.username : ''; // Display empty if no user
+        const globalCorrect = user ? user.globalScore.correct : ''; // Display empty if no user
+        const globalIncorrect = user ? user.globalScore.incorrect : ''; // Display empty if no user
+
         header.innerHTML = `
             <div class="container mx-auto flex justify-around items-center p-4">
-                <div id="score-container" class="flex items-center">
-                    <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span></div>
+                <div id="score-container" class="flex items-center ${user ? '' : 'hidden'}">
+                    <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${globalCorrect}</span> / <span class="text-red-500">${globalIncorrect}</span></div>
                     <div id="session-score-display" class="text-base ml-2 hidden"></div>
                 </div>
                 <div class="flex items-center">
-                    <div class="font-bold text-xl mr-4">${user.username}</div>
-                    <button id="hamburger-btn" class="text-2xl">&#9776;</button>
+                    <div class="font-bold text-xl mr-4 ${user ? '' : 'hidden'}">${username}</div>
+                    ${user ? '<button id="hamburger-btn" class="text-2xl">&#9776;</button>' : ''}
                 </div>
             </div>
         `;
-        document.getElementById('hamburger-btn').addEventListener('click', () => this.toggleHamburgerMenu(true));
+        if (user) {
+            document.getElementById('hamburger-btn').addEventListener('click', () => this.toggleHamburgerMenu(true));
+        }
     },
 
     renderCurrentView() {
@@ -245,6 +251,11 @@ const game = {
 
         appContainer.innerHTML = menuHtml;
         appContainer.classList.add('main-menu-active');
+
+        // Show hamburger menu when main menu is rendered
+        if (this.hamburgerMenu) {
+            this.hamburgerMenu.classList.remove('hidden');
+        }
 
         // Restore scroll position
         const scrollWrapper = document.getElementById('main-menu-scroll-wrapper');

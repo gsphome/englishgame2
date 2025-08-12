@@ -62,12 +62,16 @@ const auth = {
             globalScore: { correct: 0, incorrect: 0 }
         };
         localStorage.setItem('user', JSON.stringify(this.user));
+        game.renderHeader(); // Update header with logged-in user info
         // game.init(); // Removed: game.init() is now called directly in game.js after DOMContentLoaded
         game.renderMenu(); // Render the menu after login
     },
 
     logout() {
         localStorage.removeItem('user');
+        if (game.hamburgerMenu) {
+            game.hamburgerMenu.classList.add('hidden'); // Hide hamburger menu on logout
+        }
         location.reload();
     },
 
