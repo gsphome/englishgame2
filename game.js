@@ -1077,6 +1077,11 @@ const game = {
         handleAnswer() {
             const inputElement = document.getElementById('completion-input');
             const userAnswer = inputElement.value.trim();
+
+            if (userAnswer === '') {
+                return; // Do nothing if the input is empty or just whitespace
+            }
+
             const questionData = this.moduleData.data[this.currentIndex];
             const isCorrect = userAnswer.toLowerCase() === questionData.correct.toLowerCase();
 
