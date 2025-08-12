@@ -25,8 +25,8 @@ const MESSAGES = {
         allCorrectMessage: "¡Todo correcto! ¡Bien hecho!",
         lightMode: "Modo Claro",
         darkMode: "Modo Oscuro",
-        footerWeb: "&copy; Genil Suarez - 2025 Advanced Learning App",
-        footerMobile: "&copy; Genil Suarez"
+        footerWeb: "&copy; Advanced Learning App",
+        footerMobile: ""
     },
     en: {
         loginTitle: "Welcome",
@@ -51,8 +51,8 @@ const MESSAGES = {
         allCorrectMessage: "All correct! Well done!",
         lightMode: "Light Mode",
         darkMode: "Dark Mode",
-        footerWeb: "&copy; Genil Suarez - 2025 Advanced Learning App",
-        footerMobile: "&copy; Genil Suarez"
+        footerWeb: "&copy; Advanced Learning App",
+        footerMobile: ""
     },
 
     get(key) {
@@ -101,6 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         menuOverlay.addEventListener('click', () => {
             if (!aboutModal.classList.contains('hidden')) { // Only close about modal if it's open
+                aboutModal.classList.add('hidden');
+                menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+                menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' && !aboutModal.classList.contains('hidden')) {
                 aboutModal.classList.add('hidden');
                 menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
                 menuOverlay.classList.add('opacity-0', 'pointer-events-none');
