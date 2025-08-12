@@ -1091,11 +1091,13 @@ const game = {
                 auth.updateGlobalScore({ correct: 1, incorrect: 0 });
                 inputElement.classList.add('text-green-500');
                 document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct Answer: <strong>${questionData.correct}</strong></p><p class="text-lg">${questionData.explanation}</p>`;
+                this.lastFeedback = { isCorrect: true, correct: questionData.correct, explanation: questionData.explanation, index: this.currentIndex, userAnswer: userAnswer };
             } else {
                 this.sessionScore.incorrect++;
                 auth.updateGlobalScore({ correct: 0, incorrect: 1 });
                 inputElement.classList.add('text-red-500');
                 document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct Answer: <strong>${questionData.correct}</strong></p><p class="text-lg">${questionData.explanation}</p>`;
+                this.lastFeedback = { isCorrect: false, correct: questionData.correct, explanation: questionData.explanation, index: this.currentIndex, userAnswer: userAnswer };
             }
             inputElement.disabled = true;
             this.updateScoreDisplay();
@@ -1173,51 +1175,26 @@ const game = {
 
         updateText() {
             const questionData = this.moduleData.data[this.currentIndex];
+            const currentInputValue = document.getElementById('completion-input') ? document.getElementById('completion-input').value : ''; // Save current value
             document.getElementById('completion-question').innerHTML = questionData.sentence.replace('______', '<input type="text" id="completion-input" class="border-b-2 border-gray-400 focus:border-blue-500 outline-none text-left w-[20px] bg-transparent" autocomplete="off" />');
-            document.getElementById('feedback-container').innerHTML = ''; // Clear feedback
-
-            let inputElement = document.getElementById('completion-input');
-            inputElement.value = ''; // Clear the input field
-            inputElement.disabled = false; // Enable input field
-            inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove color classes
+            let inputElement = document.getElementById('completion-input'); // Re-get the element after innerHTML update
+            inputElement.value = currentInputValue; // Restore saved value
             inputElement.focus();
 
-            const completionTipElement = document.getElementById('completion-tip');
-            if (questionData.tip) {
-                if (completionTipElement) {
-                    completionTipElement.textContent = `Tip: ${questionData.tip}`;
-                    completionTipElement.classList.remove('hidden');
-                } else {
-                    const feedbackContainer = document.getElementById('feedback-container');
-                    const newTipElement = document.createElement('p');
-                    newTipElement.id = 'completion-tip';
-                    newTipElement.className = 'text-lg text-gray-500 mb-4';
-                    newTipElement.textContent = `Tip: ${questionData.tip}`;
-                    feedbackContainer.parentNode.insertBefore(newTipElement, feedbackContainer);
-                }
-            } else {
-                if (completionTipElement) {
-                    completionTipElement.classList.add('hidden');
-                }
-            }
-
-            // Update button texts
-            document.getElementById('undo-btn').textContent = MESSAGES.get('undoButton');
-            document.getElementById('prev-btn').textContent = MESSAGES.get('prevButton');
-            document.getElementById('next-btn').textContent = MESSAGES.get('nextButton');
-            document.getElementById('back-to-menu-completion-btn').textContent = MESSAGES.get('backToMenu');
-
-            // If there was a previous answer, re-display it with the correct color
-            const lastAction = this.history[this.history.length - 1];
-            if (lastAction && lastAction.index === this.currentIndex) {
-                inputElement.value = lastAction.userAnswer; // Assuming userAnswer is stored in history
-                if (lastAction.isCorrect) {
+            // Restore feedback if available for the current question
+            if (this.lastFeedback && this.lastFeedback.index === this.currentIndex) {
+                const feedbackHtml = `<p class="text-lg">Correct Answer: <strong>${this.lastFeedback.correct}</strong></p><p class="text-lg">${this.lastFeedback.explanation}</p>`;
+                document.getElementById('feedback-container').innerHTML = feedbackHtml;
+                inputElement.disabled = true; // Keep disabled
+                if (this.lastFeedback.isCorrect) {
                     inputElement.classList.add('text-green-500');
                 } else {
                     inputElement.classList.add('text-red-500');
-                    document.getElementById('feedback-container').innerHTML = `<p class="text-lg">Correct: ${questionData.correct}</p>`;
                 }
-                inputElement.disabled = true;
+            } else {
+                document.getElementById('feedback-container').innerHTML = ''; // Clear feedback if no relevant feedback is stored
+                inputElement.disabled = false; // Enable if no feedback
+                inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove colors if no feedback
             }
         }
     },
