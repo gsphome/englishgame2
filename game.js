@@ -176,6 +176,22 @@ const game = {
         }
     },
 
+    updateFooterVisibility() {
+        const footer = document.getElementById('main-footer-copyright');
+        if (footer) {
+            if (this.currentView === 'menu') {
+                footer.style.display = 'block';
+                if (game.isMobile()) {
+                    footer.innerHTML = `<p>${MESSAGES.get('footerMobile')}</p>`;
+                } else {
+                    footer.innerHTML = `<p>${MESSAGES.get('footerWeb')}</p>`;
+                }
+            } else {
+                footer.style.display = 'none';
+            }
+        }
+    },
+
     renderMenu() {
         document.body.classList.remove('module-active');
         this.currentView = 'menu';
@@ -232,6 +248,7 @@ const game = {
                 this.startModule(moduleId);
             });
         });
+        this.updateFooterVisibility();
     },
 
     getMenuMaxWidth() {
@@ -472,6 +489,7 @@ const game = {
                 flashcardFront.innerHTML = `
                     <p class="flashcard-en-word text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
                     <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa">${cardData.ipa}</p>
+                    <p class="mt-1 italic text-sm md:mt-2" id="flashcard-example">"${cardData.example}"</p>
                 `;
             }
 
@@ -601,6 +619,7 @@ const game = {
         this.currentView = 'flashcard';
         document.body.classList.add('module-active');
         this.flashcard.init(module);
+        this.updateFooterVisibility();
     },
 
     showFlashcardSummary(totalCards) {
@@ -835,12 +854,14 @@ const game = {
         this.currentView = 'quiz';
         document.body.classList.add('module-active');
         this.quiz.init(module);
+        this.updateFooterVisibility();
     },
 
     renderCompletion(module) {
         this.currentView = 'completion';
         document.body.classList.add('module-active');
         this.completion.init(module);
+        this.updateFooterVisibility();
     },
 
     renderSorting(module) {
@@ -854,6 +875,7 @@ const game = {
         this.currentView = 'sorting';
         document.body.classList.add('module-active');
         this.sorting.init(module);
+        this.updateFooterVisibility();
     },
 
     

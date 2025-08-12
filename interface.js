@@ -24,7 +24,9 @@ const MESSAGES = {
         checkButton: "Comprobar",
         allCorrectMessage: "¡Todo correcto! ¡Bien hecho!",
         lightMode: "Modo Claro",
-        darkMode: "Modo Oscuro"
+        darkMode: "Modo Oscuro",
+        footerWeb: "&copy; Genil Suarez - 2025 Advanced Learning App",
+        footerMobile: "&copy; Genil Suarez"
     },
     en: {
         loginTitle: "Welcome",
@@ -48,7 +50,9 @@ const MESSAGES = {
         checkButton: "Check",
         allCorrectMessage: "All correct! Well done!",
         lightMode: "Light Mode",
-        darkMode: "Dark Mode"
+        darkMode: "Dark Mode",
+        footerWeb: "&copy; Genil Suarez - 2025 Advanced Learning App",
+        footerMobile: "&copy; Genil Suarez"
     },
 
     get(key) {
