@@ -324,7 +324,8 @@ const learningModules = [
             { en: "The lion's share", es: "La mayor parte", ipa: "/ðə ˈlaɪənz ʃer/", example: "He got the lion's share of the inheritance.", example_es: "Él obtuvo la mayor parte de la herencia." },
             { en: "Wild goose chase", es: "Búsqueda inútil", ipa: "/waɪld ɡuːs tʃeɪs/", example: "We went on a wild goose chase looking for that rare book.", example_es: "Fuimos en una búsqueda inútil buscando ese libro raro." },
             { en: "Wolf in sheep's clothing", es: "Lobo con piel de cordero", ipa: "/wʊlf ɪn ʃiːps ˈkloʊðɪŋ/", example: "Be careful, he's a wolf in sheep's clothing.", example_es: "Ten cuidado, es un lobo con piel de cordero." },
-            { en: "To be a busy bee", es: "Ser una persona muy ocupada", ipa: "/tuː bi ə ˈbɪzi biː/", example: "To be a busy bee.", example_es: "Ser una persona muy ocupada." }
+            { en: "To be a busy bee", es: "Ser una persona muy ocupada", ipa: "/tuː bi ə ˈbɪzi biː/", example: "To be a busy bee.", example_es: "Ser una persona muy ocupada." },
+            { en: "The world is your oyster", es: "El mundo es tuyo", ipa: "/ðə wɜːrld ɪz jɔːr ˈɔɪstər/", example: "With your skills, the world is your oyster.", example_es: "Con tus habilidades, el mundo es tuyo." }
         ]
     },
     {
@@ -520,84 +521,44 @@ const learningModules = [
         name: 'Flashcard: Academic',
         gameMode: 'flashcard',
         data: [
-            { en: "Abstract", es: "Abstracto", ipa: "/ˈæbstrækt/", example: "The concept of time is often considered abstract.", example_es: "El concepto de tiempo a menudo se considera abstracto." },
             { en: "Acknowledge", es: "Reconocer", ipa: "/əkˈnɒlɪdʒ/", example: "He acknowledged the importance of research.", example_es: "Reconoció la importancia de la investigación." },
             { en: "Allocate", es: "Asignar", ipa: "/ˈæləkeɪt/", example: "Resources were allocated to the most critical projects.", example_es: "Los recursos se asignaron a los proyectos más críticos." },
-            { en: "Analyze", es: "Analizar", ipa: "/ˈænəlaɪz/", example: "The data needs to be analyzed thoroughly.", example_es: "Los datos deben analizarse a fondo." },
             { en: "Apparent", es: "Aparente / Evidente", ipa: "/əˈpærənt/", example: "It was apparent that the results were significant.", example_es: "Era evidente que los resultados eran significativos." },
-            { en: "Approach", es: "Enfoque / Abordar", ipa: "/əˈproʊtʃ/", example: "A new approach was proposed to solve the problem.", example_es: "Se propuso un nuevo enfoque para resolver el problema." },
             { en: "Assess", es: "Evaluar", ipa: "/əˈses/", example: "The committee will assess the impact of the changes.", example_es: "El comité evaluará el impacto de los cambios." },
-            { en: "Assume", es: "Asumir", ipa: "/əˈsuːm/", example: "We cannot assume that the hypothesis is correct.", example_es: "No podemos asumir que la hipótesis es correcta." },
-            { en: "Attribute", es: "Atribuir", ipa: "/ˈætrɪbjuːt/", example: "The success was attributed to teamwork.", example_es: "El éxito se atribuyó al trabajo en equipo." },
             { en: "Bias", es: "Sesgo", ipa: "/ˈbaɪəs/", example: "The study showed a clear bias towards certain groups.", example_es: "El estudio mostró un claro sesgo hacia ciertos grupos." },
-            { en: "Capacity", es: "Capacidad", ipa: "/kəˈpæsəti/", example: "The university has a limited capacity for new students.", example_es: "La universidad tiene una capacidad limitada para nuevos estudiantes." },
-            { en: "Challenge", es: "Desafío", ipa: "/ˈtʃælɪndʒ/", example: "The research presented a significant challenge.", example_es: "La investigación presentó un desafío significativo." },
             { en: "Cite", es: "Citar", ipa: "/saɪt/", example: "Please cite your sources correctly.", example_es: "Por favor, cite sus fuentes correctamente." },
             { en: "Comprehend", es: "Comprender", ipa: "/ˌkɒmprɪˈhend/", example: "It is difficult to comprehend the complexity of the issue.", example_es: "Es difícil comprender la complejidad del problema." },
-            { en: "Conclude", es: "Concluir", ipa: "/kənˈkluːd/", example: "The report concluded that further investigation was needed.", example_es: "El informe concluyó que se necesitaba una investigación adicional." },
-            { en: "Conform", es: "Conformar / Ajustarse", ipa: "/kənˈfɔːrm/", example: "The results conform to the expected pattern.", example_es: "Los resultados se ajustan al patrón esperado." },
-            { en: "Constitute", es: "Constituir", ipa: "/ˈkɒnstɪtjuːt/", example: "These elements constitute the core of the theory.", example_es: "Estos elementos constituyen el núcleo de la teoría." },
             { en: "Context", es: "Contexto", ipa: "/ˈkɒntekst/", example: "Understanding the historical context is crucial.", example_es: "Comprender el contexto histórico es crucial." },
             { en: "Contradict", es: "Contradecir", ipa: "/ˌkɒntrəˈdɪkt/", example: "His findings contradict previous research.", example_es: "Sus hallazgos contradicen investigaciones anteriores." },
-            { en: "Correlate", es: "Correlacionar", ipa: "/ˈkɒrəleɪt/", example: "The two variables correlate strongly.", example_es: "Las dos variables se correlacionan fuertemente." },
-            { en: "Critique", es: "Crítica / Criticar", ipa: "/krɪˈtiːk/", example: "The article offers a critique of modern society.", example_es: "El artículo ofrece una crítica de la sociedad moderna." },
             { en: "Deduce", es: "Deducir", ipa: "/dɪˈdjuːs/", example: "From the evidence, we can deduce his guilt.", example_es: "De la evidencia, podemos deducir su culpabilidad." },
-            { en: "Demonstrate", es: "Demostrar", ipa: "/ˈdemənstreɪt/", example: "The experiment demonstrated the theory's validity.", example_es: "El experimento demostró la validez de la teoría." },
-            { en: "Derive", es: "Derivar", ipa: "/dɪˈraɪv/", example: "The word 'democracy' is derived from Greek.", example_es: "La palabra 'democracia' se deriva del griego." },
             { en: "Discern", es: "Discernir", ipa: "/dɪˈsɜːrn/", example: "It was difficult to discern the truth from the lies.", example_es: "Fue difícil discernir la verdad de las mentiras." },
-            { en: "Discrepancy", es: "Discrepancia", ipa: "/dɪˈskrepənsi/", example: "There was a discrepancy between the two accounts.", example_es: "Hubo una discrepancia entre los dos relatos." },
             { en: "Disseminate", es: "Diseminar / Difundir", ipa: "/dɪˈsemɪneɪt/", example: "The organization aims to disseminate knowledge.", example_es: "La organización tiene como objetivo difundir el conocimiento." },
-            { en: "Distinguish", es: "Distinguir", ipa: "/dɪˈstɪŋɡwɪʃ/", example: "It's important to distinguish between fact and opinion.", example_es: "Es importante distinguir entre hechos y opiniones." },
-            { en: "Elaborate", es: "Elaborar / Detallar", ipa: "/ɪˈlæbəreɪt/", example: "Could you elaborate on your previous point?", example_es: "¿Podrías elaborar sobre tu punto anterior?" },
-            { en: "Emphasize", es: "Enfatizar", ipa: "/ˈemfəsaɪz/", example: "The report emphasized the need for reform.", example_es: "El informe enfatizó la necesidad de reforma." },
-            { en: "Empirical", es: "Empírico", ipa: "/ɪmˈpɪrɪkl/", example: "The study relied on empirical evidence.", example_es: "El estudio se basó en evidencia empírica." },
             { en: "Enhance", es: "Mejorar", ipa: "/ɪnˈhɑːns/", example: "Technology can enhance learning experiences.", example_es: "La tecnología puede mejorar las experiencias de aprendizaje." },
             { en: "Equate", es: "Equiparar", ipa: "/ɪˈkweɪt/", example: "You cannot equate wealth with happiness.", example_es: "No se puede equiparar la riqueza con la felicidad." },
             { en: "Erode", es: "Erosionar", ipa: "/ɪˈroʊd/", example: "Trust in institutions can easily erode.", example_es: "La confianza en las instituciones puede erosionarse fácilmente." },
-            { en: "Evident", es: "Evidente", ipa: "/ˈevɪdənt/", example: "It was evident that the strategy was failing.", example_es: "Era evidente que la estrategia estaba fallando." },
             { en: "Exacerbate", es: "Exacerbar / Empeorar", ipa: "/ɪɡˈzæsərbeɪt/", example: "Lack of sleep can exacerbate stress.", example_es: "La falta de sueño puede exacerbar el estrés." },
             { en: "Examine", es: "Examinar", ipa: "/ɪɡˈzæmɪn/", example: "The committee will examine the proposals carefully.", example_es: "El comité examinará las propuestas cuidadosamente." },
-            { en: "Exhibit", es: "Exhibir / Mostrar", ipa: "/ɪɡˈzɪbɪt/", example: "The patient exhibited symptoms of a rare disease.", example_es: "El paciente exhibió síntomas de una enfermedad rara." },
-            { en: "Facilitate", es: "Facilitar", ipa: "/fəˈsɪlɪteɪt/", example: "Technology can facilitate communication.", example_es: "La tecnología puede facilitar la comunicación." },
-            { en: "Formulate", es: "Formular", ipa: "/ˈfɔːrmjuleɪt/", example: "He formulated a new theory based on his observations.", example_es: "Formuló una nueva teoría basada en sus observaciones." },
             { en: "Highlight", es: "Destacar", ipa: "/ˈhaɪlaɪt/", example: "The report highlights the main findings.", example_es: "El informe destaca los principales hallazgos." },
-            { en: "Hypothesize", es: "Hipótesis / Hipotetizar", ipa: "/haɪˈpɒθəsaɪz/", example: "Scientists hypothesize about the origins of the universe.", example_es: "Los científicos hipotetizan sobre los orígenes del universo." },
             { en: "Implicate", es: "Implicar", ipa: "/ˈɪmplɪkeɪt/", example: "The evidence implicated him in the crime.", example_es: "La evidencia lo implicó en el crimen." },
             { en: "Imply", es: "Implicar / Dar a entender", ipa: "/ɪmˈplaɪ/", example: "His silence implied agreement.", example_es: "Su silencio implicaba acuerdo." },
             { en: "Infer", es: "Inferir", ipa: "/ɪnˈfɜːr/", example: "From her tone, I inferred that she was angry.", example_es: "Por su tono, inferí que estaba enojada." },
-            { en: "Integrate", es: "Integrar", ipa: "/ˈɪntɪɡreɪt/", example: "The new system integrates all previous functions.", example_es: "El nuevo sistema integra todas las funciones anteriores." },
-            { en: "Interpret", es: "Interpretar", ipa: "/ɪnˈtɜːrprɪt/", example: "It is important to interpret the data correctly.", example_es: "Es importante interpretar los datos correctamente." },
             { en: "Justify", es: "Justificar", ipa: "/ˈdʒʌstɪfaɪ/", example: "You need to justify your conclusions with evidence.", example_es: "Necesitas justificar tus conclusiones con evidencia." },
-            { en: "Legislate", es: "Legislar", ipa: "/ˈledʒɪsleɪt/", example: "The government will legislate new environmental protection laws.", example_es: "El gobierno legislará nuevas leyes de protección ambiental." },
             { en: "Maintain", es: "Mantener", ipa: "/meɪnˈteɪn/", example: "He maintained his innocence throughout the trial.", example_es: "Mantuvo su inocencia durante todo el juicio." },
-            { en: "Methodology", es: "Metodología", ipa: "/ˌmeθəˈdɒlədʒi/", example: "The research methodology was rigorously designed.", example_es: "La metodología de investigación fue diseñada rigurosamente." },
-            { en: "Obtain", es: "Obtener", ipa: "/əbˈteɪn/", example: "We need to obtain more information before making a decision.", example_es: "Necesitamos obtener más información antes de tomar una decisión." },
-            { en: "Perceive", es: "Percibir", ipa: "/pərˈsiːv/", example: "How do you perceive the current economic situation?", example_es: "¿Cómo percibes la situación económica actual?" },
-            { en: "Plausible", es: "Plausible", ipa: "/ˈplɔːzəbl/", example: "His explanation seemed plausible at first.", example_es: "Su explicación parecía plausible al principio." },
             { en: "Precede", es: "Preceder", ipa: "/prɪˈsiːd/", example: "The introduction precedes the main body of the essay.", example_es: "La introducción precede al cuerpo principal del ensayo." },
             { en: "Presume", es: "Presumir", ipa: "/prɪˈzuːm/", example: "We can presume that the experiment will be successful.", example_es: "Podemos presumir que el experimento será exitoso." },
-            { en: "Primary", es: "Primario", ipa: "/ˈpraɪməri/", example: "The primary goal of the project is to reduce costs.", example_es: "El objetivo principal del proyecto es reducir costos." },
-            { en: "Principle", es: "Principio", ipa: "/ˈprɪnsəpl/", example: "The research is based on sound scientific principles.", example_es: "La investigación se basa en principios científicos sólidos." },
             { en: "Proceed", es: "Proceder", ipa: "/prəˈsiːd/", example: "We can now proceed with the next stage of the plan.", example_es: "Ahora podemos proceder con la siguiente etapa del plan." },
-            { en: "Propose", es: "Proponer", ipa: "/prəˈpoʊz/", example: "He proposed a new solution to the problem.", example_es: "Propuso una nueva solución al problema." },
-            { en: "Quantify", es: "Cuantificar", ipa: "/ˈkwɒntɪfaɪ/", example: "It is difficult to quantify the emotional impact.", example_es: "Es difícil cuantificar el impacto emocional." },
             { en: "Reinforce", es: "Reforzar", ipa: "/ˌriːɪnˈfɔːrs/", example: "The new evidence reinforces his argument.", example_es: "La nueva evidencia refuerza su argumento." },
-            { en: "Relevant", es: "Relevante", ipa: "/ˈreləvənt/", example: "Please provide all relevant documents.", example_es: "Por favor, proporcione todos los documentos relevantes." },
             { en: "Reside", es: "Residir", ipa: "/rɪˈzaɪd/", example: "The problem resides in the lack of funding.", example_es: "El problema reside en la falta de financiación." },
             { en: "Resolve", es: "Resolver", ipa: "/rɪˈzɒlv/", example: "We need to resolve this issue quickly.", example_es: "Necesitamos resolver este problema rápidamente." },
             { en: "Retain", es: "Retener", ipa: "/rɪˈteɪn/", example: "The company managed to retain its best employees.", example_es: "La empresa logró retener a sus mejores empleados." },
             { en: "Scrutinize", es: "Escudriñar / Examinar", ipa: "/ˈskruːtɪnaɪz/", example: "The committee will scrutinize the financial records.", example_es: "El comité escudriñará los registros financieros." },
             { en: "Signify", es: "Significar", ipa: "/ˈsɪɡnɪfaɪ/", example: "His silence may signify agreement.", example_es: "Su silencio puede significar acuerdo." },
-            { en: "Specify", es: "Especificar", ipa: "/ˈspesɪfaɪ/", example: "Please specify the exact requirements.", example_es: "Por favor, especifique los requisitos exactos." },
-            { en: "Subsequent", es: "Posterior / Subsiguiente", ipa: "/ˈsʌbsɪkwənt/", example: "Subsequent events proved him wrong.", example_es: "Eventos posteriores le dieron la razón." },
             { en: "Substantiate", es: "Fundamentar / Corroborar", ipa: "/səbˈstænʃieɪt/", example: "You need to substantiate your claims with evidence.", example_es: "Necesitas fundamentar tus afirmaciones con evidencia." },
             { en: "Suffice", es: "Ser suficiente", ipa: "/səˈfaɪs/", example: "A brief explanation will suffice.", example_es: "Una breve explicación será suficiente." },
             { en: "Synthesize", es: "Sintetizar", ipa: "/ˈsɪnθəsaɪz/", example: "The research aims to synthesize existing theories.", example_es: "La investigación tiene como objetivo sintetizar teorías existentes." },
             { en: "Undertake", es: "Emprender / Acometer", ipa: "/ˌʌndərˈteɪk/", example: "The company undertook a major restructuring.", example_es: "La empresa acometió una importante reestructuración." },
             { en: "Validate", es: "Validar", ipa: "/ˈvælɪdeɪt/", example: "The results validate the initial hypothesis.", example_es: "Los resultados validan la hipótesis inicial." },
-            { en: "Vary", es: "Variar", ipa: "/ˈveəri/", example: "The results may vary depending on the conditions.", example_es: "Los resultados pueden variar según las condiciones." },
             { en: "Verify", es: "Verificar", ipa: "/ˈverɪfaɪ/", example: "Please verify the information before publishing.", example_es: "Por favor, verifique la información antes de publicar." },
-            { en: "Viable", es: "Viable", ipa: "/ˈvaɪəbl/", example: "The proposed solution is not economically viable.", example_es: "La solución propuesta no es económicamente viable." },
             { en: "Whereas", es: "Mientras que", ipa: "/ˌweərˈæz/", example: "Some people prefer city life, whereas others prefer the countryside.", example_es: "Algunas personas prefieren la vida en la ciudad, mientras que otras prefieren el campo." },
             { en: "Whereby", es: "Por medio del cual", ipa: "/ˌweərˈbaɪ/", example: "They established a system whereby students can access resources online.", example_es: "Establecieron un sistema por medio del cual los estudiantes pueden acceder a recursos en línea." }
         ]
@@ -642,13 +603,6 @@ const learningModules = [
                 options: ["stop working for the day", "make a phone call", "start a new day", "go for a walk"],
                 correct: "stop working for the day",
                 explanation: "To 'call it a day' means to stop working on something for the rest of the day."
-            },
-            {
-                sentence: "He has a <span class=\"font-bold text-blue-500\">chip on his shoulder</span> about not getting promoted.",
-                idiom: "chip on his shoulder",
-                options: ["holding a grudge", "feeling happy", "carrying something heavy", "having a small injury"],
-                correct: "holding a grudge",
-                explanation: "To have a 'chip on your shoulder' means to be resentful or hold a grudge about something."
             },
             {
                 sentence: "She accidentally <span class=\"font-bold text-blue-500\">spilled the beans</span> about the surprise party.",
@@ -728,13 +682,6 @@ const learningModules = [
                 explanation: "To have a 'screw loose' means to be slightly crazy or eccentric."
             },
             {
-                sentence: "My grandmother has a <span class=\"font-bold text-blue-500\">heart of gold</span>.",
-                idiom: "heart of gold",
-                options: ["very kind and generous", "a valuable possession", "a strong heart", "a selfish person"],
-                correct: "very kind and generous",
-                explanation: "To have a 'heart of gold' means to be very kind and generous."
-            },
-            {
                 sentence: "Their argument was just a <span class=\"font-bold text-blue-500\">storm in a teacup</span>.",
                 idiom: "storm in a teacup",
                 options: ["a lot of fuss about something unimportant", "a serious problem", "a sudden weather change", "a small drink"],
@@ -805,13 +752,6 @@ const learningModules = [
                 explanation: "To be 'on cloud nine' means to be extremely happy."
             },
             {
-                sentence: "She has a <span class=\"font-bold text-blue-500\">heart of gold</span>.",
-                idiom: "heart of gold",
-                options: ["a very kind and generous nature", "a valuable possession", "a strong heart", "a selfish attitude"],
-                correct: "a very kind and generous nature",
-                explanation: "To have a 'heart of gold' means to be very kind and generous."
-            },
-            {
                 sentence: "Don't <span class=\"font-bold text-blue-500\">jump to conclusions</span>.",
                 idiom: "jump to conclusions",
                 options: ["make a decision too quickly", "jump high", "think carefully", "avoid making decisions"],
@@ -875,20 +815,6 @@ const learningModules = [
                 explanation: "To be 'on the ball' means to be alert, quick to understand, and competent."
             },
             {
-                sentence: "It's <span class=\"font-bold text-blue-500\">raining cats and dogs</span>.",
-                idiom: "raining cats and dogs",
-                options: ["raining very heavily", "raining animals", "raining lightly", "raining intermittently"],
-                correct: "raining very heavily",
-                explanation: "To 'rain cats and dogs' means to rain very heavily."
-            },
-            {
-                sentence: "He's always <span class=\"font-bold text-blue-500\">on the ball</span>.",
-                idiom: "on the ball",
-                options: ["alert and competent", "playing soccer", "distracted", "making mistakes"],
-                correct: "alert and competent",
-                explanation: "To be 'on the ball' means to be alert, quick to understand, and competent."
-            },
-            {
                 sentence: "He's always <span class=\"font-bold text-blue-500\">on the fence</span> about making decisions.",
                 idiom: "on the fence",
                 options: ["undecided", "enthusiastic", "clumsy", "confident"],
@@ -901,48 +827,13 @@ const learningModules = [
                 options: ["accept the invitation", "postpone to a later date", "decline politely", "ask for more details"],
                 correct: "postpone to a later date",
                 explanation: "To 'take a rain check' means to decline an offer or invitation but suggest that it could be accepted at a later time."
-            },
-            {
-                sentence: "Don't <span class=\"font-bold text-blue-500\">rock the boat</span>, everything is going smoothly.",
-                idiom: "rock the boat",
-                options: ["cause problems", "make progress", "stay calm", "enjoy the situation"],
-                correct: "cause problems",
-                explanation: "To 'rock the boat' means to do or say something that causes problems for a group of people."
-            },
-            {
-                sentence: "He's got a <span class=\"font-bold text-blue-500\">short fuse</span>, so be careful what you say.",
-                idiom: "short fuse",
-                options: ["quick temper", "long patience", "good memory", "bad hearing"],
-                correct: "quick temper",
-                explanation: "To have a 'short fuse' means to have a quick temper and get angry easily."
-            },
+            },  
             {
                 sentence: "She's always <span class=\"font-bold text-blue-500\">playing devil's advocate</span> in discussions.",
                 idiom: "playing devil's advocate",
                 options: ["supporting an idea", "arguing against an idea for the sake of argument", "agreeing with everyone", "avoiding conflict"],
                 correct: "arguing against an idea for the sake of argument",
                 explanation: "To 'play devil's advocate' means to argue against an idea or plan that a lot of people support, in order to make people think about the issue in a different way."
-            },
-            {
-                sentence: "It's time to <span class=\"font-bold text-blue-500\">bite the bullet</span> and deal with the difficult situation.",
-                idiom: "bite the bullet",
-                options: ["avoid a problem", "face a difficult situation with courage", "give up easily", "complain loudly"],
-                correct: "face a difficult situation with courage",
-                explanation: "To 'bite the bullet' means to endure a difficult or unpleasant situation."
-            },
-            {
-                sentence: "He's always <span class=\"font-bold text-blue-500\">in the same boat</span> as me when it comes to finances.",
-                idiom: "in the same boat",
-                options: ["in a similar difficult situation", "on a vacation", "having a lot of money", "feeling happy"],
-                correct: "in a similar difficult situation",
-                explanation: "To be 'in the same boat' means to be in the same difficult situation as someone else."
-            },
-            {
-                sentence: "She decided to <span class=\"font-bold text-blue-500\">let bygones be bygones</span> and forgive him.",
-                idiom: "let bygones be bygones",
-                options: ["remember past mistakes", "forget past quarrels", "argue more", "seek revenge"],
-                correct: "forget past quarrels",
-                explanation: "To 'let bygones be bygones' means to forget about past disagreements and move on."
             },
             {
                 sentence: "He's always <span class=\"font-bold text-blue-500\">on the tip of my tongue</span>, but I can't remember his name.",
@@ -1098,6 +989,7 @@ const learningModules = [
             { sentence: "If only I _ studied harder for the exam.", options: ["have", "had", "would have", "did"], correct: "had", explanation: "Se usa 'If only + pasado perfecto' para expresar arrepentimiento por algo que no sucedió en el pasado." },
             { sentence: "The regulations require that all equipment _ inspected regularly.", options: ["is", "be", "was", "are"], correct: "be", explanation: "El subjuntivo pasivo 'be + participio pasado' se usa después de verbos que indican un requisito, como 'require'." },
             { sentence: "I wish today _ my birthday.", options: ["is", "was", "were", "be"], correct: "were", explanation: "Se usa 'wish + pasado simple' para un deseo sobre el presente. 'Were' es la forma subjuntiva correcta." },
+            { sentence: "He requested that a doctor _ present during the procedure.", options: ["is", "be", "was", "were"], correct: "be", explanation: "The subjunctive mood is used after verbs like 'request' to express a wish, suggestion, or command.", tip: "Remember to use the base form of the verb after 'request that'." },
             { sentence: "The manager suggested that she _ a different approach.", options: ["tries", "try", "tried", "to try"], correct: "try", explanation: "Después de 'suggest that...', se usa el subjuntivo (forma base del verbo)." }
         ]
     },
@@ -1144,6 +1036,7 @@ const learningModules = [
             { sentence: "Never in my wildest dreams _ I have imagined this.", options: ["could", "can", "will", "do"], correct: "could", explanation: "Con 'Never in my wildest dreams' al inicio, se invierte el sujeto y el verbo auxiliar." },
             { sentence: "Only then _ the true extent of the damage become clear.", options: ["did", "does", "will", "can"], correct: "did", explanation: "Con 'Only then' al inicio, se invierte el sujeto y el verbo auxiliar." },
             { sentence: "Were I to _ again, I would choose a different path.", options: ["live", "lived", "living", "to live"], correct: "live", explanation: "Inversión del segundo condicional sin 'if'." },
+            { sentence: "Only in this way _ solve the problem.", options: ["we can", "can we", "we do", "do we"], correct: "can we", explanation: "Cuando una frase comienza con 'Only in this way', se invierte el sujeto y el verbo auxiliar ('can we' en lugar de 'we can')." },
             { sentence: "Had I _ his advice, I would have succeeded.", options: ["followed", "follow", "following", "to follow"], correct: "followed", explanation: "Inversión del tercer condicional sin 'if'." }
         ]
     },
@@ -1172,13 +1065,6 @@ const learningModules = [
                 options: ["find a compromise", "create conflict", "lose control", "make a choice"],
                 correct: "find a compromise",
                 explanation: "To 'strike a balance' means to find a satisfactory compromise between two extremes."
-            },
-            {
-                sentence: "The company decided to <span class=\"font-bold text-blue-500\">take a calculated risk</span> with the new product launch.",
-                idiom: "take a calculated risk",
-                options: ["take a dangerous risk", "take a risk after careful consideration", "avoid risk", "take a foolish risk"],
-                correct: "take a risk after careful consideration",
-                explanation: "To 'take a calculated risk' means to take a risk after considering the possible negative consequences."
             },
             {
                 sentence: "His arguments <span class=\"font-bold text-blue-500\">hold water</span>, despite initial skepticism.",
@@ -1314,13 +1200,6 @@ const learningModules = [
                 explanation: "To 'get cold feet' means to become nervous or afraid to do something you had planned."
             },
             {
-                sentence: "The new policy will <span class=\"font-bold text-blue-500\">pave the way</span> for future developments.",
-                idiom: "pave the way",
-                options: ["obstruct progress", "make something possible", "create obstacles", "delay implementation"],
-                correct: "make something possible",
-                explanation: "To 'pave the way' means to create the conditions for something to happen or be done."
-            },
-            {
                 sentence: "She managed to <span class=\"font-bold text-blue-500\">keep a low profile</span> during the scandal.",
                 idiom: "keep a low profile",
                 options: ["attract attention", "avoid public notice", "seek publicity", "make a statement"],
@@ -1342,20 +1221,6 @@ const learningModules = [
                 explanation: "To be 'at a crossroads' means to be at a point where a crucial decision must be made."
             },
             {
-                sentence: "We need to <span class=\"font-bold text-blue-500\">get our act together</span> to meet the deadline.",
-                idiom: "get our act together",
-                options: ["become disorganized", "become more organized and effective", "give up", "blame others"],
-                correct: "become more organized and effective",
-                explanation: "To 'get your act together' means to organize yourself and your affairs so that you can achieve something."
-            },
-            {
-                sentence: "The new evidence <span class=\"font-bold text-blue-500\">sheds light on</span> the mysterious disappearance.",
-                idiom: "sheds light on",
-                options: ["darkens", "confuses", "clarifies", "hides"],
-                correct: "clarifies",
-                explanation: "To 'shed light on' something means to help to explain it."
-            },
-            {
                 sentence: "It's important to <span class=\"font-bold text-blue-500\">keep your ear to the ground</span> for new opportunities.",
                 idiom: "keep your ear to the ground",
                 options: ["ignore rumors", "stay informed about current trends", "listen to music", "avoid communication"],
@@ -1375,13 +1240,6 @@ const learningModules = [
                 options: ["avoid the problem", "deal with a difficult situation directly", "make a situation worse", "ask for help"],
                 correct: "deal with a difficult situation directly",
                 explanation: "To 'take the bull by the horns' means to deal with a difficult situation directly and bravely."
-            },
-            {
-                sentence: "Her success is a <span class=\"font-bold text-blue-500\">testament to</span> her hard work.",
-                idiom: "testament to",
-                options: ["a contradiction of", "proof of", "a criticism of", "an exception to"],
-                correct: "proof of",
-                explanation: "A 'testament to' means something that serves as a sign and evidence of a specified fact, event, or quality."
             },
             {
                 sentence: "We need to <span class=\"font-bold text-blue-500\">iron out the kinks</span> before the system goes live.",
@@ -1426,13 +1284,6 @@ const learningModules = [
                 explanation: "A 'mixed bag' refers to a collection of various things, some good and some bad."
             },
             {
-                sentence: "It's a <span class=\"font-bold text-blue-500\">fine line</span> between confidence and arrogance.",
-                idiom: "fine line",
-                options: ["a clear distinction", "a subtle difference", "a wide gap", "a strong connection"],
-                correct: "a subtle difference",
-                explanation: "A 'fine line' means a very subtle distinction or difference."
-            },
-            {
                 sentence: "The company needs to <span class=\"font-bold text-blue-500\">get its house in order</span> before expanding.",
                 idiom: "get its house in order",
                 options: ["expand rapidly", "organize its affairs", "build a new office", "hire more staff"],
@@ -1454,13 +1305,6 @@ const learningModules = [
                 explanation: "To be 'on the ball' means to be alert, quick to understand, and competent."
             },
             {
-                sentence: "The new policy will <span class=\"font-bold text-blue-500\">pave the way</span> for future innovations.",
-                idiom: "pave the way",
-                options: ["obstruct progress", "make something possible", "create obstacles", "delay implementation"],
-                correct: "make something possible",
-                explanation: "To 'pave the way' means to create the conditions for something to happen or be done."
-            },
-            {
                 sentence: "It's time to <span class=\"font-bold text-blue-500\">clear the air</span> and discuss our differences openly.",
                 idiom: "clear the air",
                 options: ["make things worse", "resolve misunderstandings", "create confusion", "avoid confrontation"],
@@ -1473,27 +1317,6 @@ const learningModules = [
                 options: ["hesitate", "make a bold decision", "swim", "avoid a decision"],
                 correct: "make a bold decision",
                 explanation: "To 'take the plunge' means to decide to do something important or difficult that you have been thinking about doing for a long time."
-            },
-            {
-                sentence: "The project was a <span class=\"font-bold text-blue-500\">baptism of fire</span> for the new manager.",
-                idiom: "baptism of fire",
-                options: ["an easy start", "a difficult first experience", "a celebratory event", "a peaceful period"],
-                correct: "a difficult first experience",
-                explanation: "A 'baptism of fire' is a difficult or unpleasant first experience of something."
-            },
-            {
-                sentence: "She has a knack for <span class=\"font-bold text-blue-500\">reading between the lines</span>.",
-                idiom: "reading between the lines",
-                options: ["reading quickly", "understanding implied meanings", "read aloud", "reading superficially"],
-                correct: "understanding implied meanings",
-                explanation: "To 'read between the lines' means to understand the real meaning of something, even if it is not stated directly."
-            },
-            {
-                sentence: "His comments were <span class=\"font-bold text-blue-500\">a breath of fresh air</span>.",
-                idiom: "a breath of fresh air",
-                options: ["something new and refreshing", "something old and boring", "something confusing", "something negative"],
-                correct: "something new and refreshing",
-                explanation: "A 'breath of fresh air' is something new and refreshing that makes a situation better."
             },
             {
                 sentence: "We need to <span class=\"font-bold text-blue-500\">nip it in the bud</span> before it becomes a bigger problem.",
@@ -1935,6 +1758,146 @@ const learningModules = [
                 options: ["He is in no way responsible", "In no way he is responsible", "Is he in no way responsible", "He is not responsible in any way"],
                 correct: "In no way is he responsible",
                 explanation: "Inversion with 'in no way' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Nowhere else will you find</span> such a diverse collection of art.",
+                idiom: "Nowhere else will you find",
+                options: ["You will find nowhere else", "Nowhere else you will find", "Will you find nowhere else", "Nowhere else will you find"],
+                correct: "Nowhere else will you find",
+                explanation: "Inversion with 'Nowhere else' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">At no time was the president</span> aware of the secret plan.",
+                idiom: "At no time was the president",
+                options: ["The president was at no time", "At no time the president was", "Was the president at no time", "At no time was the president"],
+                correct: "At no time was the president",
+                explanation: "Inversion with 'At no time' requires the auxiliary verb before the subject."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Were she to accept</span> the offer, she would have to relocate.",
+                idiom: "Were she to accept",
+                options: ["If she accepted", "If she were to accept", "She were to accept", "If she would accept"],
+                correct: "If she were to accept",
+                explanation: "This is an inverted conditional, equivalent to 'If she were to accept'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">It was his arrogance that</span> I found so irritating.",
+                idiom: "It was his arrogance that",
+                options: ["His arrogance was what", "That his arrogance was", "It was his arrogance what", "It was his arrogance that"],
+                correct: "It was his arrogance that",
+                explanation: "This is a cleft sentence used for emphasis, starting with 'It was... that...'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">What I need is</span> a long holiday, not more work.",
+                idiom: "What I need is",
+                options: ["I need is", "What I need it is", "That I need is", "What I need is"],
+                correct: "What I need is",
+                explanation: "This is a 'wh-' cleft sentence used to emphasize the object of the need."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Having been warned</span> about the storm, they stayed indoors.",
+                idiom: "Having been warned",
+                options: ["Warning", "They were warned", "Having been warned", "After they warned"],
+                correct: "Having been warned",
+                explanation: "A perfect participle clause ('Having been' + past participle) is used to show that one action happened before another."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Exhausted from the journey,</span> he went straight to bed.",
+                idiom: "Exhausted from the journey,",
+                options: ["Because he exhausted", "Exhausted from the journey,", "He was exhausted so", "Exhausting from the journey,"],
+                correct: "Exhausted from the journey,",
+                explanation: "A past participle clause at the beginning of a sentence can explain the reason for the main action."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">It is imperative that the matter be</span> investigated immediately.",
+                idiom: "It is imperative that the matter be",
+                options: ["the matter is", "the matter to be", "the matter be", "the matter being"],
+                correct: "the matter be",
+                explanation: "The subjunctive 'be' is used after expressions like 'It is imperative that...'"
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">The harder you study,</span> the more you will learn.",
+                idiom: "The harder you study,",
+                options: ["Harder you study,", "The harder you study,", "As harder you study,", "If you study harder,"],
+                correct: "The harder you study,",
+                explanation: "This is a double comparative structure: 'The + comparative, the + comparative'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">A great writer he was,</span> but a difficult person to know.",
+                idiom: "A great writer he was,",
+                options: ["He was a great writer,", "A great writer was he,", "A great writer he was,", "He was a writer great,"],
+                correct: "A great writer he was,",
+                explanation: "This is an example of fronting, where a part of the sentence is moved to the front for emphasis."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Not for a moment did I think</span> I would get the job.",
+                idiom: "Not for a moment did I think",
+                options: ["I did not think for a moment", "Not for a moment I thought", "Not for a moment did I think", "I thought not for a moment"],
+                correct: "Not for a moment did I think",
+                explanation: "Inversion is used after the negative expression 'Not for a moment'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Only after his speech did I understand</span> the full situation.",
+                idiom: "Only after his speech did I understand",
+                options: ["I understood only after his speech", "Only after his speech I understood", "Only after his speech did I understand", "I did understand only after his speech"],
+                correct: "Only after his speech did I understand",
+                explanation: "When a sentence starts with 'Only after', the main clause is inverted."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Should the situation worsen,</span> we have a contingency plan.",
+                idiom: "Should the situation worsen,",
+                options: ["If the situation should worsen,", "If the situation worsens,", "If the situation will worsen,", "The situation should worsen,"],
+                correct: "If the situation should worsen,",
+                explanation: "This inverted conditional is a more formal way of saying 'If the situation should worsen'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Built in the 16th century,</span> the castle is a major tourist attraction.",
+                idiom: "Built in the 16th century,",
+                options: ["It was built in the 16th century,", "Building in the 16th century,", "Built in the 16th century,", "Having built in the 16th century,"],
+                correct: "Built in the 16th century,",
+                explanation: "A past participle clause is used to give more information about the noun 'the castle'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">The board proposed that the new policy be</span> implemented next year.",
+                idiom: "The board proposed that the new policy be",
+                options: ["the new policy is", "the new policy to be", "the new policy be", "the new policy was"],
+                correct: "the new policy be",
+                explanation: "The subjunctive 'be' is used after verbs of suggestion like 'propose'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">The sooner we leave,</span> the earlier we will arrive.",
+                idiom: "The sooner we leave,",
+                options: ["Sooner we leave,", "The sooner we leave,", "As soon as we leave,", "If we leave sooner,"],
+                correct: "The sooner we leave,",
+                explanation: "This is a double comparative structure: 'The + comparative, the + comparative'."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Into the room walked</span> the mysterious stranger.",
+                idiom: "Into the room walked",
+                options: ["The mysterious stranger walked into the room", "Into the room the mysterious stranger walked", "Walked into the room the mysterious stranger", "Into the room walked"],
+                correct: "Into the room walked",
+                explanation: "This is an example of fronting a prepositional phrase for dramatic effect, followed by inversion."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">Not a single mistake did she make</span> in the entire performance.",
+                idiom: "Not a single mistake did she make",
+                options: ["She did not make a single mistake", "Not a single mistake she made", "A single mistake she did not make", "Not a single mistake did she make"],
+                correct: "Not a single mistake did she make",
+                explanation: "Inversion is used after the negative expression 'Not a single...'"
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">The problem is thought to be</span> more complex than initially assumed.",
+                idiom: "The problem is thought to be",
+                options: ["People think the problem is", "The problem is thought to be", "It is thought the problem to be", "The problem, it is thought, is"],
+                correct: "The problem is thought to be",
+                explanation: "This is a common complex passive structure used in formal or academic writing."
+            },
+            {
+                sentence: "<span class=\"font-bold text-blue-500\">On no condition are you to</span> leave this room.",
+                idiom: "On no condition are you to",
+                options: ["You are on no condition to", "On no condition you are to", "Are you on no condition to", "On no condition are you to"],
+                correct: "On no condition are you to",
+                explanation: "Inversion with the negative expression 'On no condition' requires the auxiliary verb before the subject."
             }
         ]
     },
