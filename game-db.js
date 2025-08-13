@@ -2299,10 +2299,6 @@ const learningModules = [
             { word: "too", category: "addition" },
             { word: "what's more", category: "addition" },
             { word: "additionally", category: "addition" },
-            { word: "coupled with", category: "addition" },
-            { word: "in conjunction with", category: "addition" },
-            { word: "beyond this", category: "addition" },
-            { word: "concomitantly", category: "addition" },
 
             { word: "correspondingly", category: "equation" },
             { word: "in the same way", category: "equation" },
@@ -2320,15 +2316,11 @@ const learningModules = [
             { word: "therefore", category: "conclusion" },
             { word: "to conclude", category: "conclusion" },
             { word: "to summarise", category: "conclusion" },
-            { word: "we can conclude that", category: "conclusion" },
             { word: "in brief", category: "conclusion" },
             { word: "consequently", category: "conclusion" },
             { word: "as a result", category: "conclusion" },
             { word: "hence", category: "conclusion" },
-            { word: "ergo", category: "conclusion" },
             { word: "in summary", category: "conclusion" },
-            { word: "to recapitulate", category: "conclusion" },
-            { word: "in essence", category: "conclusion" },
 
             { word: "however", category: "contrast" },
             { word: "nevertheless", category: "contrast" },
@@ -2337,17 +2329,39 @@ const learningModules = [
             { word: "on the contrary", category: "contrast" },
             { word: "whereas", category: "contrast" },
             { word: "while", category: "contrast" },
-            { word: "notwithstanding", category: "contrast" },
             { word: "despite this", category: "contrast" },
             { word: "in spite of this", category: "contrast" },
             { word: "alternatively", category: "contrast" },
-            { word: "on the one hand... on the other hand", category: "contrast" }
+
+            { word: "above all", category: "emphasis" },
+            { word: "especially", category: "emphasis" },
+            { word: "in particular", category: "emphasis" },
+            { word: "notably", category: "emphasis" },
+            { word: "specifically", category: "emphasis" },
+            { word: "more importantly", category: "emphasis" },
+            { word: "indeed", category: "emphasis" },
+            { word: "absolutely", category: "emphasis" },
+            { word: "positively", category: "emphasis" },
+            { word: "unquestionably", category: "emphasis" },
+
+            { word: "as a matter of fact", category: "specifying" },
+            { word: "in fact", category: "specifying" },
+            { word: "actually", category: "specifying" },
+            { word: "to be precise", category: "specifying" },
+            { word: "namely", category: "specifying" },
+            { word: "for instance", category: "specifying" },
+            { word: "for example", category: "specifying" },
+            { word: "such as", category: "specifying" },
+            { word: "that is", category: "specifying" },
+            { word: "in other words", category: "specifying" }
         ],
         categories: [
             { category_id: "addition", category_show: "Addition" },
             { category_id: "equation", category_show: "Equation" },
             { category_id: "conclusion", category_show: "Conclusion" },
-            { category_id: "contrast", category_show: "Contrast" }
+            { category_id: "contrast", category_show: "Contrast" },
+            { category_id: "emphasis", category_show: "Emphasis" },
+            { category_id: "specifying", category_show: "Specifying" }
         ]
     },
     {
@@ -2360,13 +2374,10 @@ const learningModules = [
             { word: "enjoy", category: "intensity" },
             { word: "love", category: "intensity" },
             { word: "adore", category: "intensity" },
-            { word: "cherish", category: "intensity" },
             { word: "detest", category: "intensity" },
             { word: "loathe", category: "intensity" },
-            { word: "despise", category: "intensity" },
             { word: "suggest", category: "intensity" },
             { word: "propose", category: "intensity" },
-            { word: "advocate", category: "intensity" },
             { word: "insist", category: "intensity" },
             { word: "demand", category: "intensity" },
 
@@ -2374,20 +2385,16 @@ const learningModules = [
             { word: "ask", category: "formality" },
             { word: "inquire", category: "formality" },
             { word: "request", category: "formality" },
-            { word: "solicit", category: "formality" },
             { word: "seek", category: "formality" },
             { word: "tell", category: "formality" },
             { word: "notify", category: "formality" },
-            { word: "apprise", category: "formality" },
             { word: "get", category: "formality" },
             { word: "obtain", category: "formality" },
             { word: "acquire", category: "formality" },
-            { word: "procure", category: "formality" },
             { word: "secure", category: "formality" },
 
             // Speed/Movement
             { word: "stroll", category: "speed_movement" },
-            { word: "saunter", category: "speed_movement" },
             { word: "dash", category: "speed_movement" },
             { word: "sprint", category: "speed_movement" },
             { word: "rush", category: "speed_movement" },
@@ -2396,6 +2403,7 @@ const learningModules = [
             { word: "plod", category: "speed_movement" },
             { word: "creep", category: "speed_movement" },
             { word: "crawl", category: "speed_movement" },
+            { word: "dart", category: "speed_movement" },
 
             // Perception
             { word: "look", category: "perception" },
@@ -2404,20 +2412,42 @@ const learningModules = [
             { word: "perceive", category: "perception" },
             { word: "glance", category: "perception" },
             { word: "gaze", category: "perception" },
-            { word: "peer", category: "perception" },
             { word: "spot", category: "perception" },
             { word: "notice", category: "perception" },
-            { word: "promulgate", category: "formality" },
-            { word: "dart", category: "speed_movement" },
-            { word: "bound", category: "speed_movement" },
             { word: "behold", category: "perception" },
-            { word: "scrutinize", category: "perception" }
+            { word: "scrutinize", category: "perception" },
+
+            // Certainty
+            { word: "know", category: "certainty" },
+            { word: "believe", category: "certainty" },
+            { word: "assume", category: "certainty" },
+            { word: "guess", category: "certainty" },
+            { word: "suspect", category: "certainty" },
+            { word: "doubt", category: "certainty" },
+            { word: "affirm", category: "certainty" },
+            { word: "assert", category: "certainty" },
+            { word: "contend", category: "certainty" },
+            { word: "speculate", category: "certainty" },
+
+            // Sound/Speech
+            { word: "whisper", category: "sound_speech" },
+            { word: "murmur", category: "sound_speech" },
+            { word: "mumble", category: "sound_speech" },
+            { word: "shout", category: "sound_speech" },
+            { word: "yell", category: "sound_speech" },
+            { word: "bellow", category: "sound_speech" },
+            { word: "state", category: "sound_speech" },
+            { word: "declare", category: "sound_speech" },
+            { word: "articulate", category: "sound_speech" },
+            { word: "proclaim", category: "sound_speech" }
         ],
         categories: [
             { category_id: "intensity", category_show: "Intensity" },
             { category_id: "formality", category_show: "Formality" },
             { category_id: "speed_movement", category_show: "Speed/Movement" },
-            { category_id: "perception", category_show: "Perception" }
+            { category_id: "perception", category_show: "Perception" },
+            { category_id: "certainty", category_show: "Certainty" },
+            { category_id: "sound_speech", category_show: "Sound/Speech" }
         ]
     }
 ];
