@@ -1422,10 +1422,8 @@ const game = {
                 }
             });
 
-            scoreDisplay.textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
-
             if (allCorrect && this.sessionScore.correct === this.words.length) {
-                scoreDisplay.textContent += ` - ${MESSAGES.get('allCorrectMessage')}`;
+                scoreDisplay.textContent = `${MESSAGES.get('allCorrectMessage')}`;
             }
             auth.updateGlobalScore(this.sessionScore); // Update global score on every check
             this.feedbackActive = true;
@@ -1655,9 +1653,10 @@ const game = {
             const scoreDisplay = document.getElementById('score-display');
             if (scoreDisplay && scoreDisplay.textContent) {
                 // Re-render score based on current sessionScore
-                scoreDisplay.textContent = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
                 if (this.sessionScore.correct === this.words.length && this.words.length > 0) {
-                    scoreDisplay.textContent += ` - ${MESSAGES.get('allCorrectMessage')}`;
+                    scoreDisplay.textContent = `${MESSAGES.get('allCorrectMessage')}`;
+                } else {
+                    scoreDisplay.textContent = '';
                 }
             }
 
