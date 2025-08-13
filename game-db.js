@@ -42,7 +42,8 @@ const learningModules = [
             { en: "Put away the clothes", es: "Guardar la ropa", ipa: "/pʊt əˈweɪ ðə kloʊðz/", example: "I need to put away the clean clothes.", example_es: "Necesito guardar la ropa limpia." },
             { en: "Iron the clothes", es: "Planchar la ropa", ipa: "/ˈaɪərn ðə kloʊðz/", example: "I have to iron my shirt for tomorrow.", example_es: "Tengo que planchar mi camisa para mañana." },
             { en: "Sweep the floor", es: "Barrer el suelo", ipa: "/swiːp ðə flɔːr/", example: "Please sweep the kitchen floor.", example_es: "Por favor, barre el suelo de la cocina." },
-            { en: "Mow the lawn", es: "Cortar el césped", ipa: "/moʊ ðə lɔːn/", example: "It's your turn to mow the lawn.", example_es: "Es tu turno de cortar el césped." }
+            { en: "Mow the lawn", es: "Cortar el césped", ipa: "/moʊ ðə lɔːn/", example: "It's your turn to mow the lawn.", example_es: "Es tu turno de cortar el césped." },
+            { en: "Do the gardening", es: "Hacer jardinería", ipa: "/duː ðə ˈɡɑːrdnɪŋ/", example: "My grandmother loves to do the gardening on weekends.", example_es: "A mi abuela le encanta hacer jardinería los fines de semana." }
         ]
     },
     {
@@ -133,7 +134,10 @@ const learningModules = [
             { en: "Wear out", es: "Desgastar / Gastar (ropa)", ipa: "/weər aʊt/", example: "I've worn out my favorite jeans.", example_es: "He desgastado mis vaqueros favoritos." },
             { en: "Zip down", es: "Bajar la cremallera", ipa: "/zɪp daʊn/", example: "Zip down your jacket if you're hot.", example_es: "Baja la cremallera de tu chaqueta si tienes calor." },
             { en: "Dress down", es: "Vestir informal", ipa: "/dres daʊn/", example: "It's a casual office, so you can dress down.", example_es: "Es una oficina informal, así que puedes vestir informal." },
-            { en: "Fling on", es: "Ponerse rápidamente", ipa: "/flɪŋ ɒn/", example: "She flung on a coat and ran out the door.", example_es: "Se puso un abrigo rápidamente y salió corriendo por la puerta." }
+            { en: "Fling on", es: "Ponerse rápidamente", ipa: "/flɪŋ ɒn/", example: "She flung on a coat and ran out the door.", example_es: "Se puso un abrigo rápidamente y salió corriendo por la puerta." },
+            { en: "Get dressed up", es: "Arreglarse/Vestirse de gala", ipa: "/ɡet drest ʌp/", example: "We're getting dressed up for the party tonight.", example_es: "Nos estamos arreglando para la fiesta de esta noche." },
+            { en: "Put on weight", es: "Engordar", ipa: "/pʊt ɒn weɪt/", example: "I've put on a lot of weight since I stopped exercising.", example_es: "He engordado mucho desde que dejé de hacer ejercicio." },
+            { en: "Take off weight", es: "Adelgazar", ipa: "/teɪk ɒf weɪt/", example: "She's trying to take off weight for her wedding.", example_es: "Está intentando adelgazar para su boda." }
         ]
     },
     {
@@ -883,6 +887,76 @@ const learningModules = [
                 options: ["alert and competent", "playing soccer", "distracted", "making mistakes"],
                 correct: "alert and competent",
                 explanation: "To be 'on the ball' means to be alert, quick to understand, and competent."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">on the fence</span> about making decisions.",
+                idiom: "on the fence",
+                options: ["undecided", "enthusiastic", "clumsy", "confident"],
+                correct: "undecided",
+                explanation: "To be 'on the fence' means to be undecided or neutral about something."
+            },
+            {
+                sentence: "She decided to <span class=\"font-bold text-blue-500\">take a rain check</span> on our dinner invitation.",
+                idiom: "take a rain check",
+                options: ["accept the invitation", "postpone to a later date", "decline politely", "ask for more details"],
+                correct: "postpone to a later date",
+                explanation: "To 'take a rain check' means to decline an offer or invitation but suggest that it could be accepted at a later time."
+            },
+            {
+                sentence: "Don't <span class=\"font-bold text-blue-500\">rock the boat</span>, everything is going smoothly.",
+                idiom: "rock the boat",
+                options: ["cause problems", "make progress", "stay calm", "enjoy the situation"],
+                correct: "cause problems",
+                explanation: "To 'rock the boat' means to do or say something that causes problems for a group of people."
+            },
+            {
+                sentence: "He's got a <span class=\"font-bold text-blue-500\">short fuse</span>, so be careful what you say.",
+                idiom: "short fuse",
+                options: ["quick temper", "long patience", "good memory", "bad hearing"],
+                correct: "quick temper",
+                explanation: "To have a 'short fuse' means to have a quick temper and get angry easily."
+            },
+            {
+                sentence: "She's always <span class=\"font-bold text-blue-500\">playing devil's advocate</span> in discussions.",
+                idiom: "playing devil's advocate",
+                options: ["supporting an idea", "arguing against an idea for the sake of argument", "agreeing with everyone", "avoiding conflict"],
+                correct: "arguing against an idea for the sake of argument",
+                explanation: "To 'play devil's advocate' means to argue against an idea or plan that a lot of people support, in order to make people think about the issue in a different way."
+            },
+            {
+                sentence: "It's time to <span class=\"font-bold text-blue-500\">bite the bullet</span> and deal with the difficult situation.",
+                idiom: "bite the bullet",
+                options: ["avoid a problem", "face a difficult situation with courage", "give up easily", "complain loudly"],
+                correct: "face a difficult situation with courage",
+                explanation: "To 'bite the bullet' means to endure a difficult or unpleasant situation."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">in the same boat</span> as me when it comes to finances.",
+                idiom: "in the same boat",
+                options: ["in a similar difficult situation", "on a vacation", "having a lot of money", "feeling happy"],
+                correct: "in a similar difficult situation",
+                explanation: "To be 'in the same boat' means to be in the same difficult situation as someone else."
+            },
+            {
+                sentence: "She decided to <span class=\"font-bold text-blue-500\">let bygones be bygones</span> and forgive him.",
+                idiom: "let bygones be bygones",
+                options: ["remember past mistakes", "forget past quarrels", "argue more", "seek revenge"],
+                correct: "forget past quarrels",
+                explanation: "To 'let bygones be bygones' means to forget about past disagreements and move on."
+            },
+            {
+                sentence: "He's always <span class=\"font-bold text-blue-500\">on the tip of my tongue</span>, but I can't remember his name.",
+                idiom: "on the tip of my tongue",
+                options: ["easy to remember", "about to be said or remembered", "difficult to pronounce", "a secret"],
+                correct: "about to be said or remembered",
+                explanation: "If something is 'on the tip of your tongue', you are sure that you know it but you cannot remember it."
+            },
+            {
+                sentence: "The new project is a <span class=\"font-bold text-blue-500\">hot potato</span> for the company.",
+                idiom: "hot potato",
+                options: ["an easy task", "a controversial or difficult issue", "a popular idea", "a delicious meal"],
+                correct: "a controversial or difficult issue",
+                explanation: "A 'hot potato' is a controversial or difficult issue that is awkward to deal with."
             }
         ]
     },
@@ -977,7 +1051,8 @@ const learningModules = [
             { sentence: "I was _ to see him again.", options: ["surprising", "surprised", "surprises", "surprise"], correct: "surprised", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
             { sentence: "The _ news made her cry.", options: ["depressing", "depressed", "depresses", "depress"], correct: "depressing", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
             { sentence: "He was _ by the beautiful scenery.", options: ["captivating", "captivated", "captivates", "captivate"], correct: "captivated", explanation: "El participio pasado (-ed) describe un sentimiento o emoción." },
-            { sentence: "The _ story made me laugh.", options: ["amusing", "amused", "amuses", "amuse"], correct: "amusing", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." }
+            { sentence: "The _ story made me laugh.", options: ["amusing", "amused", "amuses", "amuse"], correct: "amusing", explanation: "El participio presente (-ing) describe la cualidad de algo que causa un sentimiento." },
+            { sentence: "The _ child was playing in the park.", options: ["laughing", "laughed", "laughs", "laugh"], correct: "laughing", explanation: "El participio presente (-ing) describe una acción en curso." }
         ]
     },
     {
@@ -1216,6 +1291,216 @@ const learningModules = [
                 options: ["allow it to grow", "deal with it at an early stage", "ignore it", "make it worse"],
                 correct: "deal with it at an early stage",
                 explanation: "To 'nip something in the bud' means to stop a problem at an early stage before it gets worse."
+            },
+            {
+                sentence: "The company decided to <span class=\"font-bold text-blue-500\">turn a blind eye</span> to the minor infractions.",
+                idiom: "turn a blind eye",
+                options: ["ignore deliberately", "pay close attention", "punish severely", "report immediately"],
+                correct: "ignore deliberately",
+                explanation: "To 'turn a blind eye' means to deliberately ignore something that you know is wrong."
+            },
+            {
+                sentence: "It's time to <span class=\"font-bold text-blue-500\">clear the air</span> and discuss our differences openly.",
+                idiom: "clear the air",
+                options: ["make things worse", "resolve misunderstandings", "create confusion", "avoid confrontation"],
+                correct: "resolve misunderstandings",
+                explanation: "To 'clear the air' means to resolve misunderstandings or disagreements."
+            },
+            {
+                sentence: "He always <span class=\"font-bold text-blue-500\">gets cold feet</span> before a big presentation.",
+                idiom: "gets cold feet",
+                options: ["becomes nervous or afraid", "feels cold in his feet", "gets sick", "runs away"],
+                correct: "becomes nervous or afraid",
+                explanation: "To 'get cold feet' means to become nervous or afraid to do something you had planned."
+            },
+            {
+                sentence: "The new policy will <span class=\"font-bold text-blue-500\">pave the way</span> for future developments.",
+                idiom: "pave the way",
+                options: ["obstruct progress", "make something possible", "create obstacles", "delay implementation"],
+                correct: "make something possible",
+                explanation: "To 'pave the way' means to create the conditions for something to happen or be done."
+            },
+            {
+                sentence: "She managed to <span class=\"font-bold text-blue-500\">keep a low profile</span> during the scandal.",
+                idiom: "keep a low profile",
+                options: ["attract attention", "avoid public notice", "seek publicity", "make a statement"],
+                correct: "avoid public notice",
+                explanation: "To 'keep a low profile' means to avoid attracting attention to yourself."
+            },
+            {
+                sentence: "His comments <span class=\"font-bold text-blue-500\">hit a raw nerve</span> with many people.",
+                idiom: "hit a raw nerve",
+                options: ["made them happy", "touched a sensitive point", "made them laugh", "left them indifferent"],
+                correct: "touched a sensitive point",
+                explanation: "To 'hit a raw nerve' means to touch on a sensitive subject that makes someone feel upset or angry."
+            },
+            {
+                sentence: "The company is <span class=\"font-bold text-blue-500\">at a crossroads</span> regarding its future strategy.",
+                idiom: "at a crossroads",
+                options: ["making rapid progress", "facing an important decision", "experiencing stagnation", "following a clear path"],
+                correct: "facing an important decision",
+                explanation: "To be 'at a crossroads' means to be at a point where a crucial decision must be made."
+            },
+            {
+                sentence: "We need to <span class=\"font-bold text-blue-500\">get our act together</span> to meet the deadline.",
+                idiom: "get our act together",
+                options: ["become disorganized", "become more organized and effective", "give up", "blame others"],
+                correct: "become more organized and effective",
+                explanation: "To 'get your act together' means to organize yourself and your affairs so that you can achieve something."
+            },
+            {
+                sentence: "The new evidence <span class=\"font-bold text-blue-500\">sheds light on</span> the mysterious disappearance.",
+                idiom: "sheds light on",
+                options: ["darkens", "confuses", "clarifies", "hides"],
+                correct: "clarifies",
+                explanation: "To 'shed light on' something means to help to explain it."
+            },
+            {
+                sentence: "It's important to <span class=\"font-bold text-blue-500\">keep your ear to the ground</span> for new opportunities.",
+                idiom: "keep your ear to the ground",
+                options: ["ignore rumors", "stay informed about current trends", "listen to music", "avoid communication"],
+                correct: "stay informed about current trends",
+                explanation: "To 'keep your ear to the ground' means to pay attention to rumors or what people are saying so that you can find out about new developments."
+            },
+            {
+                sentence: "The project was a <span class=\"font-bold text-blue-500\">baptism of fire</span> for the new manager.",
+                idiom: "baptism of fire",
+                options: ["an easy start", "a difficult first experience", "a celebratory event", "a peaceful period"],
+                correct: "a difficult first experience",
+                explanation: "A 'baptism of fire' is a difficult or unpleasant first experience of something."
+            },
+            {
+                sentence: "He decided to <span class=\"font-bold text-blue-500\">take the bull by the horns</span> and confront the problem.",
+                idiom: "take the bull by the horns",
+                options: ["avoid the problem", "deal with a difficult situation directly", "make a situation worse", "ask for help"],
+                correct: "deal with a difficult situation directly",
+                explanation: "To 'take the bull by the horns' means to deal with a difficult situation directly and bravely."
+            },
+            {
+                sentence: "Her success is a <span class=\"font-bold text-blue-500\">testament to</span> her hard work.",
+                idiom: "testament to",
+                options: ["a contradiction of", "proof of", "a criticism of", "an exception to"],
+                correct: "proof of",
+                explanation: "A 'testament to' means something that serves as a sign and evidence of a specified fact, event, or quality."
+            },
+            {
+                sentence: "We need to <span class=\"font-bold text-blue-500\">iron out the kinks</span> before the system goes live.",
+                idiom: "iron out the kinks",
+                options: ["create problems", "solve minor problems", "ignore issues", "complicate things"],
+                correct: "solve minor problems",
+                explanation: "To 'iron out the kinks' means to resolve minor problems or difficulties."
+            },
+            {
+                sentence: "The new regulations will <span class=\"font-bold text-blue-500\">level the playing field</span> for all competitors.",
+                idiom: "level the playing field",
+                options: ["create an unfair advantage", "make competition fair", "make things more difficult", "reduce competition"],
+                correct: "make competition fair",
+                explanation: "To 'level the playing field' means to make a situation fair for everyone."
+            },
+            {
+                sentence: "He always <span class=\"font-bold text-blue-500\">calls a spade a spade</span>, even if it's unpopular.",
+                idiom: "calls a spade a spade",
+                options: ["speaks indirectly", "speaks frankly and directly", "uses metaphors", "avoids difficult topics"],
+                correct: "speaks frankly and directly",
+                explanation: "To 'call a spade a spade' means to speak frankly and directly, even if it is impolite or unpleasant."
+            },
+            {
+                sentence: "The company is trying to <span class=\"font-bold text-blue-500\">rein in spending</span> after a period of rapid growth.",
+                idiom: "rein in spending",
+                options: ["increase spending", "control or limit spending", "ignore spending", "encourage spending"],
+                correct: "control or limit spending",
+                explanation: "To 'rein in' means to control or limit something."
+            },
+            {
+                sentence: "She has a knack for <span class=\"font-bold text-blue-500\">reading between the lines</span>.",
+                idiom: "reading between the lines",
+                options: ["reading quickly", "understanding implied meanings", "read aloud", "reading superficially"],
+                correct: "understanding implied meanings",
+                explanation: "To 'read between the lines' means to understand the real meaning of something, even if it is not stated directly."
+            },
+            {
+                sentence: "His proposal was met with <span class=\"font-bold text-blue-500\">a mixed bag</span> of reactions.",
+                idiom: "a mixed bag",
+                options: ["uniform approval", "a variety of different things", "complete rejection", "total confusion"],
+                correct: "a variety of different things",
+                explanation: "A 'mixed bag' refers to a collection of various things, some good and some bad."
+            },
+            {
+                sentence: "It's a <span class=\"font-bold text-blue-500\">fine line</span> between confidence and arrogance.",
+                idiom: "fine line",
+                options: ["a clear distinction", "a subtle difference", "a wide gap", "a strong connection"],
+                correct: "a subtle difference",
+                explanation: "A 'fine line' means a very subtle distinction or difference."
+            },
+            {
+                sentence: "The company needs to <span class=\"font-bold text-blue-500\">get its house in order</span> before expanding.",
+                idiom: "get its house in order",
+                options: ["expand rapidly", "organize its affairs", "build a new office", "hire more staff"],
+                correct: "organize its affairs",
+                explanation: "To 'get its house in order' means to organize one's affairs or business."
+            },
+            {
+                sentence: "His argument doesn't <span class=\"font-bold text-blue-500\">hold water</span>.",
+                idiom: "hold water",
+                options: ["is valid", "is illogical", "is interesting", "is confusing"],
+                correct: "is illogical",
+                explanation: "If an argument or statement doesn't 'hold water', it is not valid or sound."
+            },
+            {
+                sentence: "She's always <span class=\"font-bold text-blue-500\">on the ball</span> when it comes to planning events.",
+                idiom: "on the ball",
+                options: ["unprepared", "alert and competent", "distracted", "lazy"],
+                correct: "alert and competent",
+                explanation: "To be 'on the ball' means to be alert, quick to understand, and competent."
+            },
+            {
+                sentence: "The new policy will <span class=\"font-bold text-blue-500\">pave the way</span> for future innovations.",
+                idiom: "pave the way",
+                options: ["obstruct progress", "make something possible", "create obstacles", "delay implementation"],
+                correct: "make something possible",
+                explanation: "To 'pave the way' means to create the conditions for something to happen or be done."
+            },
+            {
+                sentence: "It's time to <span class=\"font-bold text-blue-500\">clear the air</span> and discuss our differences openly.",
+                idiom: "clear the air",
+                options: ["make things worse", "resolve misunderstandings", "create confusion", "avoid confrontation"],
+                correct: "resolve misunderstandings",
+                explanation: "To 'clear the air' means to resolve misunderstandings or disagreements."
+            },
+            {
+                sentence: "He decided to <span class=\"font-bold text-blue-500\">take the plunge</span> and start his own business.",
+                idiom: "take the plunge",
+                options: ["hesitate", "make a bold decision", "swim", "avoid a decision"],
+                correct: "make a bold decision",
+                explanation: "To 'take the plunge' means to decide to do something important or difficult that you have been thinking about doing for a long time."
+            },
+            {
+                sentence: "The project was a <span class=\"font-bold text-blue-500\">baptism of fire</span> for the new manager.",
+                idiom: "baptism of fire",
+                options: ["an easy start", "a difficult first experience", "a celebratory event", "a peaceful period"],
+                correct: "a difficult first experience",
+                explanation: "A 'baptism of fire' is a difficult or unpleasant first experience of something."
+            },
+            {
+                sentence: "She has a knack for <span class=\"font-bold text-blue-500\">reading between the lines</span>.",
+                idiom: "reading between the lines",
+                options: ["reading quickly", "understanding implied meanings", "read aloud", "reading superficially"],
+                correct: "understanding implied meanings",
+                explanation: "To 'read between the lines' means to understand the real meaning of something, even if it is not stated directly."
+            },
+            {
+                sentence: "His comments were <span class=\"font-bold text-blue-500\">a breath of fresh air</span>.",
+                idiom: "a breath of fresh air",
+                options: ["something new and refreshing", "something old and boring", "something confusing", "something negative"],
+                correct: "something new and refreshing",
+                explanation: "A 'breath of fresh air' is something new and refreshing that makes a situation better."
+            },
+            {
+                sentence: "We need to <span class=\"font-bold text-blue-500\">nip it in the bud</span> before it becomes a bigger problem.",
+                idiom: "nip it in the bud",
+                options: ["allow it to grow", "deal with it at an early stage", "ignore it", "make it worse"],
+                correct: "deal with it at an early stage",
+                explanation: "To 'nip something in the bud' means to stop a problem at an early stage before it gets worse."
             }
         ]
     },
@@ -1363,6 +1648,146 @@ const learningModules = [
                 options: ["disagreement", "complete agreement", "partial agreement", "indifference"],
                 correct: "complete agreement",
                 explanation: "'Unanimous approval' means (of two or more people) fully in agreement."
+            },
+            {
+                sentence: "The committee decided to <span class=\"font-bold text-blue-500\">convene</span> a meeting to discuss the new proposals.",
+                idiom: "convene",
+                options: ["cancel", "postpone", "call together", "attend"],
+                correct: "call together",
+                explanation: "To 'convene' means to call people together for a meeting."
+            },
+            {
+                sentence: "The report aims to <span class=\"font-bold text-blue-500\">delineate</span> the responsibilities of each department.",
+                idiom: "delineate",
+                options: ["obscure", "describe precisely", "complicate", "ignore"],
+                correct: "describe precisely",
+                explanation: "To 'delineate' means to describe or portray something precisely."
+            },
+            {
+                sentence: "The new evidence will <span class=\"font-bold text-blue-500\">corroborate</span> the witness's testimony.",
+                idiom: "corroborate",
+                options: ["contradict", "confirm or support", "ignore", "question"],
+                correct: "confirm or support",
+                explanation: "To 'corroborate' means to confirm or give support to a statement, theory, or finding."
+            },
+            {
+                sentence: "The government's policy was met with <span class=\"font-bold text-blue-500\">widespread opprobrium</span>.",
+                idiom: "widespread opprobrium",
+                options: ["general approval", "strong criticism", "indifference", "support"],
+                correct: "strong criticism",
+                explanation: "'Opprobrium' means harsh criticism or censure."
+            },
+            {
+                sentence: "The scientist's theory was based on <span class=\"font-bold text-blue-500\">conjecture</span> rather than fact.",
+                idiom: "conjecture",
+                options: ["proven fact", "opinion based on incomplete information", "evidence", "experiment"],
+                correct: "opinion based on incomplete information",
+                explanation: "'Conjecture' means an opinion or conclusion formed on the basis of incomplete information."
+            },
+            {
+                sentence: "The new law will have <span class=\"font-bold text-blue-500\">far-reaching implications</span>.",
+                idiom: "far-reaching implications",
+                options: ["limited consequences", "extensive consequences", "no consequences", "positive consequences"],
+                correct: "extensive consequences",
+                explanation: "'Far-reaching implications' means having important and widely applicable effects or consequences."
+            },
+            {
+                sentence: "The committee's decision was met with <span class=\"font-bold text-blue-500\">unanimous approval</span>.",
+                idiom: "unanimous approval",
+                options: ["disagreement", "complete agreement", "partial agreement", "indifference"],
+                correct: "complete agreement",
+                explanation: "'Unanimous approval' means (of two or more people) fully in agreement."
+            },
+            {
+                sentence: "The company aims to <span class=\"font-bold text-blue-500\">mitigate</span> the risks associated with the investment.",
+                idiom: "mitigate",
+                options: ["increase", "make less severe", "ignore", "create"],
+                correct: "make less severe",
+                explanation: "To 'mitigate' means to make something less severe, serious, or painful."
+            },
+            {
+                sentence: "The report highlighted the <span class=\"font-bold text-blue-500\">pervasive</span> influence of social media.",
+                idiom: "pervasive",
+                options: ["limited", "widespread", "uncommon", "hidden"],
+                correct: "widespread",
+                explanation: "'Pervasive' means (especially of an unwelcome influence or physical effect) spreading widely throughout an area or a group of people."
+            },
+            {
+                sentence: "The committee decided to <span class=\"font-bold text-blue-500\">promulgate</span> the new regulations.",
+                idiom: "promulgate",
+                options: ["hide", "make known by proclamation", "cancel", "delay"],
+                correct: "make known by proclamation",
+                explanation: "To 'promulgate' means to promote or make widely known (an idea or cause)."
+            },
+            {
+                sentence: "The artist's work is characterized by its <span class=\"font-bold text-blue-500\">ephemeral</span> beauty.",
+                idiom: "ephemeral",
+                options: ["lasting", "short-lived", "eternal", "ugly"],
+                correct: "short-lived",
+                explanation: "'Ephemeral' means lasting for a very short time."
+            },
+            {
+                sentence: "The committee decided to <span class=\"font-bold text-blue-500\">ameliorate</span> the working conditions.",
+                idiom: "ameliorate",
+                options: ["worsen", "improve", "maintain", "ignore"],
+                correct: "improve",
+                explanation: "To 'ameliorate' means to make something better or more tolerable."
+            },
+            {
+                sentence: "The report provides a <span class=\"font-bold text-blue-500\">comprehensive</span> analysis of the data.",
+                idiom: "comprehensive",
+                options: ["partial", "limited", "thorough and complete", "confusing"],
+                correct: "thorough and complete",
+                explanation: "'Comprehensive' means including or dealing with all or nearly all elements or aspects of something."
+            },
+            {
+                sentence: "The new policy will <span class=\"font-bold text-blue-500\">endeavor</span> to address the issue of inequality.",
+                idiom: "endeavor",
+                options: ["fail", "try hard", "avoid", "ignore"],
+                correct: "try hard",
+                explanation: "To 'endeavor' means to try hard to do or achieve something."
+            },
+            {
+                sentence: "The evidence presented was <span class=\"font-bold text-blue-500\">unequivocal</span>.",
+                idiom: "unequivocal",
+                options: ["ambiguous", "clear and unambiguous", "doubtful", "misleading"],
+                correct: "clear and unambiguous",
+                explanation: "'Unequivocal' means leaving no doubt; unambiguous."
+            },
+            {
+                sentence: "The government's actions could <span class=\"font-bold text-blue-500\">exacerbate</span> the economic crisis.",
+                idiom: "exacerbate",
+                options: ["alleviate", "worsen", "solve", "prevent"],
+                correct: "worsen",
+                explanation: "To 'exacerbate' means to make a problem, bad situation, or negative feeling worse."
+            },
+            {
+                sentence: "The study aims to <span class=\"font-bold text-blue-500\">elucidate</span> the complex relationship between the two variables.",
+                idiom: "elucidate",
+                options: ["obscure", "clarify", "complicate", "question"],
+                correct: "clarify",
+                explanation: "To 'elucidate' means to make something clear; explain."
+            },
+            {
+                sentence: "The committee reached a <span class=\"font-bold text-blue-500\">consensus</span> on the proposed changes.",
+                idiom: "consensus",
+                options: ["disagreement", "general agreement", "debate", "compromise"],
+                correct: "general agreement",
+                explanation: "A 'consensus' is a general agreement."
+            },
+            {
+                sentence: "The new technology will <span class=\"font-bold text-blue-500\">facilitate</span> communication between departments.",
+                idiom: "facilitate",
+                options: ["hinder", "make easier", "complicate", "prevent"],
+                correct: "make easier",
+                explanation: "To 'facilitate' means to make an action or process easy or easier."
+            },
+            {
+                sentence: "The research findings were <span class=\"font-bold text-blue-500\">substantiated</span> by empirical data.",
+                idiom: "substantiated",
+                options: ["disproved", "supported with evidence", "ignored", "questioned"],
+                correct: "supported with evidence",
+                explanation: "To 'substantiate' means to provide evidence to support or prove the truth of something."
             }
         ]
     },
@@ -1919,7 +2344,6 @@ const learningModules = [
             { word: "concomitantly", category: "addition" },
             { word: "to elaborate further", category: "addition" },
 
-            { word: "equally", category: "equation" },
             { word: "correspondingly", category: "equation" },
             { word: "in the same way", category: "equation" },
             { word: "likewise", category: "equation" },
@@ -2038,7 +2462,13 @@ const learningModules = [
             { word: "stare", category: "perception" },
             { word: "peer", category: "perception" },
             { word: "spot", category: "perception" },
-            { word: "notice", category: "perception" }
+            { word: "notice", category: "perception" },
+            { word: "incense", category: "intensity" },
+            { word: "promulgate", category: "formality" },
+            { word: "dart", category: "speed_movement" },
+            { word: "bound", category: "speed_movement" },
+            { word: "behold", category: "perception" },
+            { word: "scrutinize", category: "perception" }
         ],
         categories: [
             { category_id: "intensity", category_show: "Intensity" },
