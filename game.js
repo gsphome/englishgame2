@@ -1014,6 +1014,10 @@ const game = {
                 this.moduleData.data = game.shuffleArray([...this.moduleData.data]);
             }
             this.render();
+            const sessionScoreDisplay = document.getElementById('session-score-display');
+            if (sessionScoreDisplay) {
+                sessionScoreDisplay.classList.remove('hidden');
+            }
         },
 
         render() {
@@ -1131,12 +1135,7 @@ const game = {
             }
         },
 
-        updateScoreDisplay() {
-            const scoreDisplay = this.appContainer.querySelector('.text-center.text-gray-600.mb-4:last-of-type');
-            if (scoreDisplay) {
-                scoreDisplay.innerHTML = `${MESSAGES.get('correct')}: ${this.sessionScore.correct} / ${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}`;
-            }
-        },
+        
 
         prev() {
             if (this.currentIndex > 0) {
