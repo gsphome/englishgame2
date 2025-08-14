@@ -975,3 +975,15 @@ body.dark-mode .word {
         display: none;
     }
 }
+
+body.dark-mode #about-modal .text-gray-700 {
+    color: #e2e8f0;
+}
+
+#about-modal {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #about-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
