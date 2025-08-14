@@ -275,22 +275,38 @@ const game = {
         return '760px'; // Usamos el ancho original
     },
 
-    startModule(moduleId) {
-        const module = learningModules.find(m => m.id === moduleId);
-        this.currentModule = module;
-        switch (module.gameMode) {
-            case 'flashcard':
-                this.renderFlashcard(module);
-                break;
-            case 'quiz':
-                this.renderQuiz(module);
-                break;
-            case 'completion':
-                this.renderCompletion(module);
-                break;
-            case 'sorting':
-                this.renderSorting(module);
-                break;
+    async startModule(moduleId) {
+        const moduleMeta = learningModules.find(m => m.id === moduleId);
+        if (!moduleMeta) return;
+
+        try {
+            const response = await fetch(moduleMeta.dataPath);
+            const fetchedData = await response.json();
+
+            let moduleWithData;
+            if (Array.isArray(fetchedData)) {
+                moduleWithData = { ...moduleMeta, data: fetchedData };
+            } else {
+                moduleWithData = { ...moduleMeta, ...fetchedData };
+            }
+
+            this.currentModule = moduleWithData;
+            switch (moduleWithData.gameMode) {
+                case 'flashcard':
+                    this.renderFlashcard(moduleWithData);
+                    break;
+                case 'quiz':
+                    this.renderQuiz(moduleWithData);
+                    break;
+                case 'completion':
+                    this.renderCompletion(moduleWithData);
+                    break;
+                case 'sorting':
+                    this.renderSorting(moduleWithData);
+                    break;
+            }
+        } catch (error) {
+            console.error('Failed to load module data:', error);
         }
     },
 
