@@ -50,8 +50,7 @@ body.dark-mode .hover\:bg-blue-600:hover {
 }
 
 body.dark-mode .bg-red-500 {
-    background-color: #fc8181;
-}
+    background-color: #fc8181;}
 
 body.dark-mode .hover\:bg-red-600:hover {
     background-color: #e53e3e;
@@ -82,7 +81,7 @@ body.dark-mode .hover\:bg-yellow-600:hover {
 }
 
 body.dark-mode .bg-gray-600 {
-    background-color: #4a5568;
+    background-color: #4b5563;
 }
 
 body.dark-mode .border-gray-500 {
@@ -90,7 +89,7 @@ body.dark-mode .border-gray-500 {
 }
 
 body.dark-mode .hover\:bg-gray-700:hover {
-    background-color: #2d3748;
+    background-color: #374151;
 }
 
 body.dark-mode #confirmation-modal .bg-white {
@@ -332,7 +331,7 @@ body.dark-mode .flashcard-back {
 }
 
 .mb-4 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .py-2 {
@@ -986,4 +985,18 @@ body.dark-mode #about-modal .text-gray-700 {
 
 body.dark-mode #about-modal {
     background-color: rgba(0, 0, 0, 0.5);
+}
+/* About Modal Dark Mode Adaptation */
+.about-modal-content {
+    background-color: #f9fafb; /* Tailwind gray-50 */
+    color: #1f2937; /* Tailwind gray-900 */
+}
+
+body.dark-mode .about-modal-content {
+    background-color: #1f2937; /* Tailwind gray-900 */
+    color: #f9fafb; /* Tailwind gray-50 */
+}
+
+body.dark-mode .about-modal-content h2 {
+    color: #f9fafb; /* Tailwind gray-50 */
 }
