@@ -177,25 +177,21 @@ const game = {
     },
 
     renderHeader() {
-        const header = document.getElementById('main-header');
         const user = auth.getUser();
-
-        header.innerHTML = `
-            <div class="container mx-auto flex justify-between items-center p-4">
-                <div id="score-container" class="flex items-center ${user ? '' : 'hidden'}">
-                    <div id="global-score" class="text-base"></div>
-                    <div id="session-score-display" class="text-base ml-2 hidden"></div>
-                </div>
-                <div class="flex items-center">
-                    <div id="username-display" class="font-bold text-xl mr-4 ${user ? '' : 'hidden'}"></div>
-                    ${user ? '<button id="hamburger-btn" class="text-2xl">&#9776;</button>' : ''}
-                </div>
-            </div>
-        `;
+        const scoreContainer = document.getElementById('score-container');
+        const usernameDisplay = document.getElementById('username-display');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
 
         if (user) {
-            document.getElementById('hamburger-btn').addEventListener('click', () => this.toggleHamburgerMenu(true));
+            scoreContainer.classList.remove('hidden');
+            usernameDisplay.classList.remove('hidden');
+            hamburgerBtn.classList.remove('hidden'); // Ensure hamburger button is visible if user is logged in
+            hamburgerBtn.addEventListener('click', () => this.toggleHamburgerMenu(true));
             this.updateHeaderText();
+        } else {
+            scoreContainer.classList.add('hidden');
+            usernameDisplay.classList.add('hidden');
+            hamburgerBtn.classList.add('hidden'); // Hide hamburger button if no user
         }
     },
 
@@ -223,10 +219,14 @@ const game = {
 
     updateFooterVisibility() {
         const footer = document.getElementById('main-footer-copyright');
-        if (footer) {
+        const footerWebText = document.getElementById('footer-web-text');
+        const footerMobileText = document.getElementById('footer-mobile-text');
+
+        if (footer && footerWebText && footerMobileText) {
             if (this.currentView === 'menu') {
                 footer.style.display = 'block';
-                footer.innerHTML = `<p><span class="footer-web">${MESSAGES.get('footerWeb')}</span><span class="footer-mobile">${MESSAGES.get('footerMobile')}</span></p>`;
+                footerWebText.textContent = MESSAGES.get('footerWeb');
+                footerMobileText.textContent = MESSAGES.get('footerMobile');
             } else {
                 footer.style.display = 'none';
             }
