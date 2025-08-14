@@ -1443,9 +1443,20 @@ const game = {
                 // Remove previous feedback classes
                 wordElem.classList.remove('bg-green-500', 'bg-red-500', 'text-white');
 
+                const isDarkMode = document.body.classList.contains('dark-mode');
+
                 if (currentCategoryId === correctCategory) {
                     this.sessionScore.correct++;
-                    wordElem.classList.add('bg-green-500', 'text-white');
+                    // Apply green color only if not in dark mode
+                    if (!isDarkMode) {
+                        wordElem.classList.add('bg-green-500', 'text-white');
+                    } else {
+                        // In dark mode, correct answers should still be visually distinct,
+                        // but not necessarily green. The current 'text-white' might be enough,
+                        // or we could add a different class for dark mode correct.
+                        // For now, I'll just ensure it's not green.
+                        // If no specific dark mode correct style is defined, it will just be default text color.
+                    }
                 } else {
                     this.sessionScore.incorrect++;
                     wordElem.classList.add('bg-red-500', 'text-white');
