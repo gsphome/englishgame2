@@ -51,21 +51,24 @@ const auth = {
         `;
         
 
-        document.getElementById('login-btn').addEventListener('click', () => {
-            const username = document.getElementById('username-input').value.trim();
+        const loginBtn = document.getElementById('login-btn');
+        const usernameInput = document.getElementById('username-input');
+
+        loginBtn.addEventListener('click', () => {
+            const username = usernameInput.value.trim();
             if (username) {
                 this.login(username);
             }
         });
 
-        document.getElementById('username-input').addEventListener('keydown', (e) => {
+        usernameInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
-                document.getElementById('login-btn').click();
+                loginBtn.click();
             }
         });
 
         // Set focus on the username input field
-        document.getElementById('username-input').focus();
+        usernameInput.focus();
     },
 
     login(username) {

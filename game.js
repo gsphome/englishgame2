@@ -80,7 +80,7 @@ const game = {
             });
         }
 
-                MESSAGES.addListener(this.renderHeader.bind(this));
+                MESSAGES.addListener(this.updateHeaderText.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
         this.updateMenuText(); // Call explicitly to set initial menu button text
 
@@ -143,27 +143,41 @@ const game = {
         }
     },
 
+    updateHeaderText() {
+        const user = auth.getUser();
+        if (!user) return;
+
+        const globalScoreEl = document.getElementById('global-score');
+        if (globalScoreEl) {
+            globalScoreEl.innerHTML = `${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span>`;
+        }
+
+        const usernameDisplayEl = document.getElementById('username-display');
+        if (usernameDisplayEl) {
+            usernameDisplayEl.textContent = user.username;
+        }
+    },
+
     renderHeader() {
         const header = document.getElementById('main-header');
         const user = auth.getUser();
-        const username = user ? user.username : ''; // Display empty if no user
-        const globalCorrect = user ? user.globalScore.correct : ''; // Display empty if no user
-        const globalIncorrect = user ? user.globalScore.incorrect : ''; // Display empty if no user
 
         header.innerHTML = `
             <div class="container mx-auto flex justify-around items-center p-4">
                 <div id="score-container" class="flex items-center ${user ? '' : 'hidden'}">
-                    <div id="global-score" class="text-base">${MESSAGES.get('globalScore')}: <span class="text-green-500">${globalCorrect}</span> / <span class="text-red-500">${globalIncorrect}</span></div>
+                    <div id="global-score" class="text-base"></div>
                     <div id="session-score-display" class="text-base ml-2 hidden"></div>
                 </div>
                 <div class="flex items-center">
-                    <div class="font-bold text-xl mr-4 ${user ? '' : 'hidden'}">${username}</div>
+                    <div id="username-display" class="font-bold text-xl mr-4 ${user ? '' : 'hidden'}"></div>
                     ${user ? '<button id="hamburger-btn" class="text-2xl">&#9776;</button>' : ''}
                 </div>
             </div>
         `;
+
         if (user) {
             document.getElementById('hamburger-btn').addEventListener('click', () => this.toggleHamburgerMenu(true));
+            this.updateHeaderText();
         }
     },
 
