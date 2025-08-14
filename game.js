@@ -226,9 +226,9 @@ const game = {
         let menuHtml = '';
         menuHtml += `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
 
-        const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
+        const colors = ['bg-indigo-600', 'bg-purple-600', 'bg-pink-600', 'bg-teal-600', 'bg-cyan-600', 'bg-emerald-600'];
 
-        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto">`;
+        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto bg-gray-50 rounded-xl p-[5px] mx-auto max-w-4xl border-2 border-gray-300">`;
         menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
@@ -237,7 +237,7 @@ const game = {
             const description = module.description || ''; // Placeholder description
 
             menuHtml += `
-                <button class="${colorClass} text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-lg transition duration-300 flex flex-col items-center justify-center text-center border-2 border-blue-800 md:w-32 md:h-32 md:py-4 md:px-2" data-module-id="${module.id}">
+                <button class="${colorClass} text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 hover:scale-110 flex flex-col items-center justify-center text-center md:w-32 md:h-32 md:py-4 md:px-2" data-module-id="${module.id}">
                     <h2 class="text-[0.6rem] mb-0 font-bold md:text-lg md:mb-1">
                         <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name.replace('Flashcard: ', '').replace('Quiz: ', '').replace('Completion: ', '')}</span>
                     </h2>
