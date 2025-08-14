@@ -104,14 +104,6 @@ const game = {
         this.addKeyboardListeners();
         this.addSwipeListeners();
 
-        window.addEventListener('resize', () => {
-            if (this.currentView === 'menu') {
-                this.renderMenu();
-            } else if (this.currentView === 'sorting') { // Add this condition
-                this.sorting.render(); // Re-render the sorting game
-            }
-        });
-
         // Initial user check and rendering
         auth.user = JSON.parse(localStorage.getItem('user')); // Initialize auth.user
         this.renderHeader(); // Always render header
@@ -202,11 +194,7 @@ const game = {
         if (footer) {
             if (this.currentView === 'menu') {
                 footer.style.display = 'block';
-                if (game.isMobile()) {
-                    footer.innerHTML = `<p>${MESSAGES.get('footerMobile')}</p>`;
-                } else {
-                    footer.innerHTML = `<p>${MESSAGES.get('footerWeb')}</p>`;
-                }
+                footer.innerHTML = `<p><span class="footer-web">${MESSAGES.get('footerWeb')}</span><span class="footer-mobile">${MESSAGES.get('footerMobile')}</span></p>`;
             } else {
                 footer.style.display = 'none';
             }
@@ -222,14 +210,11 @@ const game = {
         }
         const appContainer = document.getElementById('app-container');
         let menuHtml = '';
-        if (!game.isMobile() || !game.isLandscape()) {
-            menuHtml += `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
-        }
+        menuHtml += `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
 
         const colors = ['bg-blue-500', 'bg-teal-500', 'bg-purple-500', 'bg-red-500', 'bg-orange-500', 'bg-yellow-600'];
 
-        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto" 
-                    style="max-width: ${this.getMenuMaxWidth()}; max-height: ${game.isMobile() && game.isLandscape() ? '185px' : game.isMobile() ? '285px' : '440px'};">`;
+        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto border-2 border-blue-800 rounded-xl p-[5px] mx-auto">`;
         menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
@@ -333,7 +318,7 @@ const game = {
             } else if (document.body.classList.contains('hamburger-menu-open')) { // If hamburger menu is open
                 this.toggleHamburgerMenu(false); // Close hamburger menu on Escape
             } else { // Modal and hamburger menu are not open
-                if (e.key === 'Escape' && !game.isMobile()) {
+                if (e.key === 'Escape') {
                     if (document.getElementById('app-container').classList.contains('main-menu-active')) {
                         this.toggleModal(true); // Show logout modal
                     } else {
@@ -682,7 +667,7 @@ const game = {
             appContainer.innerHTML = `
                 <div id="flashcard-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                     <h1 id="flashcard-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                    <p id="flashcard-summary-message" class="text-xl mb-4${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
+                    <p id="flashcard-summary-message" class="text-xl mb-4">${MESSAGES.get('flashcardSummaryMessage').replace('{count}', totalCards)}</p>
                     <button id="flashcard-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                 </div>
             `;
@@ -888,8 +873,8 @@ const game = {
                 this.appContainer.innerHTML = `
                      <div id="quiz-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                         <h1 id="quiz-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                        <p id="quiz-summary-correct" class="text-xl mb-2${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
-                        <p id="quiz-summary-incorrect" class="text-xl mb-4${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
+                        <p id="quiz-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                        <p id="quiz-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
                         <button id="quiz-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                      </div>
                 `;
@@ -1170,8 +1155,8 @@ const game = {
                 this.appContainer.innerHTML = `
                      <div id="completion-summary-container" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
                         <h1 id="completion-summary-title" class="text-2xl font-bold mb-4">${MESSAGES.get('sessionScore')}</h1>
-                        <p id="completion-summary-correct" class="text-xl mb-2${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
-                        <p id="completion-summary-incorrect" class="text-xl mb-4${game.isMobile() ? ' mobile-hidden' : ''}">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
+                        <p id="completion-summary-correct" class="text-xl mb-2">${MESSAGES.get('correct')}: ${this.sessionScore.correct}</p>
+                        <p id="completion-summary-incorrect" class="text-xl mb-4">${MESSAGES.get('incorrect')}: ${this.sessionScore.incorrect}</p>
                         <button id="completion-summary-back-to-menu-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg md:py-2 md:px-4" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
                      </div>
                 `;
@@ -1207,14 +1192,6 @@ const game = {
                 inputElement.classList.remove('text-green-500', 'text-red-500'); // Remove colors if no feedback
             }
         }
-    },
-
-    isMobile() {
-        return window.innerWidth < 768 || /Mobi/i.test(navigator.userAgent);
-    },
-
-    isLandscape() {
-        return window.innerWidth > window.innerHeight;
     },
 
     addSwipeListeners() {
@@ -1518,7 +1495,7 @@ const game = {
         },
 
         handleTouchStart(e, wordElem) {
-            if (game.isMobile()) {
+            if (e.touches) { // Check if it's a touch event
                 e.preventDefault(); // Prevent scrolling
                 this.currentDraggedElement = wordElem;
                 this.touchStartX = e.touches[0].clientX;
