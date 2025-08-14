@@ -138,7 +138,17 @@ const game = {
     updateSessionScoreDisplay(correct, incorrect, total) {
         const sessionScoreDisplay = document.getElementById('session-score-display');
         if (sessionScoreDisplay) {
-            sessionScoreDisplay.innerHTML = `<span class="text-green-500">${correct}</span> / <span class="text-red-500">${incorrect}</span> (<span class="text-gray-600">${total}</span>)`;
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const correctColor = isDarkMode ? 'text-green-400' : 'text-green-700';
+            const incorrectColor = isDarkMode ? 'text-red-400' : 'text-red-700';
+            const totalColor = isDarkMode ? 'text-gray-300' : 'text-gray-600';
+
+            sessionScoreDisplay.innerHTML = `
+                <span class="text-sm font-semibold">Session:</span>
+                <span class="ml-1 ${correctColor} font-bold">✅ ${correct}</span>
+                <span class="ml-1 ${incorrectColor} font-bold">❌ ${incorrect}</span>
+                <span class="ml-1 ${totalColor} font-bold">Total: ${total}</span>
+            `;
             sessionScoreDisplay.classList.remove('hidden');
         }
     },
@@ -147,14 +157,22 @@ const game = {
         const user = auth.getUser();
         if (!user) return;
 
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        const correctColor = isDarkMode ? 'text-green-400' : 'text-green-700';
+        const incorrectColor = isDarkMode ? 'text-red-400' : 'text-red-700';
+
         const globalScoreEl = document.getElementById('global-score');
         if (globalScoreEl) {
-            globalScoreEl.innerHTML = `${MESSAGES.get('globalScore')}: <span class="text-green-500">${user.globalScore.correct}</span> / <span class="text-red-500">${user.globalScore.incorrect}</span>`;
+            globalScoreEl.innerHTML = `
+                <span class="text-sm font-semibold">${MESSAGES.get('globalScore')}:</span>
+                <span class="ml-1 ${correctColor} font-bold">✅ ${user.globalScore.correct}</span>
+                <span class="ml-1 ${incorrectColor} font-bold">❌ ${user.globalScore.incorrect}</span>
+            `;
         }
 
         const usernameDisplayEl = document.getElementById('username-display');
         if (usernameDisplayEl) {
-            usernameDisplayEl.textContent = user.username;
+            usernameDisplayEl.innerHTML = `<span class="text-lg font-bold">👤 ${user.username}</span>`;
         }
     },
 
@@ -163,7 +181,7 @@ const game = {
         const user = auth.getUser();
 
         header.innerHTML = `
-            <div class="container mx-auto flex justify-around items-center p-4">
+            <div class="container mx-auto flex justify-between items-center p-4">
                 <div id="score-container" class="flex items-center ${user ? '' : 'hidden'}">
                     <div id="global-score" class="text-base"></div>
                     <div id="session-score-display" class="text-base ml-2 hidden"></div>
