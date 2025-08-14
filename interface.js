@@ -4,6 +4,8 @@ const MESSAGES = {
 
     es: {
         loginTitle: "Bienvenido",
+        welcomeTitle: "¡Empieza tu Viaje en Inglés!",
+        welcomeSubtitle: "Practica, aprende y domina el inglés con ejercicios divertidos.",
         loginButton: "Iniciar Sesión",
         logoutButton: "Cerrar Sesión",
         globalScore: "Puntaje Global",
@@ -30,6 +32,8 @@ const MESSAGES = {
     },
     en: {
         loginTitle: "Welcome",
+        welcomeTitle: "Start Your English Journey!",
+        welcomeSubtitle: "Practice, learn, and master English with fun exercises.",
         loginButton: "Login",
         logoutButton: "Logout",
         globalScore: "Global Score",
