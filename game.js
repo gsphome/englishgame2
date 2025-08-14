@@ -241,32 +241,38 @@ const game = {
             sessionScoreDisplay.classList.add('hidden');
         }
         const appContainer = document.getElementById('app-container');
-        let menuHtml = '';
-        menuHtml += `<h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8">${MESSAGES.get('mainMenu')}</h1>`;
 
+        // Get the template content
+        const template = document.getElementById('main-menu-template');
+        const menuContent = template.content.cloneNode(true);
+
+        // Set the main menu title
+        menuContent.getElementById('main-menu-title').textContent = MESSAGES.get('mainMenu');
+
+        const moduleButtonsContainer = menuContent.getElementById('module-buttons-container');
         const colors = ['bg-indigo-600', 'bg-purple-600', 'bg-pink-600', 'bg-teal-600', 'bg-cyan-600', 'bg-emerald-600'];
-
-        menuHtml += `<div id="main-menu-scroll-wrapper" class="overflow-y-auto bg-gray-50 rounded-xl p-[5px] mx-auto max-w-4xl border-2 border-gray-300">`;
-        menuHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">`;
 
         learningModules.forEach((module, index) => {
             const colorClass = colors[index % colors.length];
             const icon = module.icon || '📚'; // Placeholder icon
             const description = module.description || ''; // Placeholder description
 
-            menuHtml += `
-                <button class="${colorClass} text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 hover:scale-110 flex flex-col items-center justify-center text-center md:w-32 md:h-32 md:py-4 md:px-2" data-module-id="${module.id}">
-                    <h2 class="text-[0.6rem] mb-0 font-bold md:text-lg md:mb-1">
-                        <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name.replace('Flashcard: ', '').replace('Quiz: ', '').replace('Completion: ', '')}</span>
-                    </h2>
-                    <p class="text-[0.5rem] opacity-90 md:text-xs" id="module-description-${module.id}">
-                        <span class="text-xs">${module.gameMode === 'flashcard' ? '🧠' : module.gameMode === 'quiz' ? '❓' : module.gameMode === 'sorting' ? '🧩' : '✍️'}</span>
+            const button = document.createElement('button');
+            button.className = `${colorClass} text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 hover:scale-110 flex flex-col items-center justify-center text-center md:w-32 md:h-32 md:py-4 md:px-2`;
+            button.dataset.moduleId = module.id;
+            button.innerHTML = `
+                <h2 class="text-[0.6rem] mb-0 font-bold md:text-lg md:mb-1">
+                    <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name.replace('Flashcard: ', '').replace('Quiz: ', '').replace('Completion: ', '')}</span>
+                </h2>
+                <p class="text-[0.5rem] opacity-90 md:text-xs" id="module-description-${module.id}">
+                    <span class="text-xs">${module.gameMode === 'flashcard' ? '🧠' : module.gameMode === 'quiz' ? '❓' : module.gameMode === 'sorting' ? '🧩' : '✍️'}</span>
+                </p>
             `;
+            moduleButtonsContainer.appendChild(button);
         });
-        menuHtml += `</div>`;
-        menuHtml += `</div>`; // Close wrapper for scroll
 
-        appContainer.innerHTML = menuHtml;
+        appContainer.innerHTML = ''; // Clear existing content
+        appContainer.appendChild(menuContent); // Append the new content
         appContainer.classList.add('main-menu-active');
 
         // Show hamburger menu when main menu is rendered
