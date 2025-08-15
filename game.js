@@ -581,10 +581,18 @@ const game = {
         const presentedWords = game.sorting.words; // Get the words actually presented in the game
         const wordsToExplain = moduleData.data.filter(item => presentedWords.includes(item.word));
 
+        // Create a map for category lookup
+        const categoryMap = new Map();
+        game.sorting.categories.forEach(cat => {
+            categoryMap.set(cat.category_id, cat.category_show);
+        });
+
         wordsToExplain.forEach(item => {
             const wordItem = document.createElement('div');
             wordItem.className = 'sorting-summary-item-grid py-2 border-b border-gray-200 items-center';
+            const categoryDisplayName = categoryMap.get(item.category) || 'N/A'; // Get display name, fallback to N/A
             wordItem.innerHTML = `
+                <span class="text-sm text-gray-500 font-medium">${categoryDisplayName}</span>
                 <span class="text-lg font-semibold">${item.word}</span>
                 <span class="text-base text-gray-700 italic">${item.translation_es}</span>
                 <button class="explanation-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-md text-sm justify-self-end">

@@ -1010,7 +1010,7 @@ body.hamburger-menu-open #menu-overlay {
 
 .sorting-summary-item-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr auto; /* English word, translation, button */
+    grid-template-columns: 0.5fr 1fr 1fr auto; /* Category, English word, translation, button */
     gap: 10px; /* Space between columns */
     align-items: center; /* Vertically align items in the middle */
 }
