@@ -99,6 +99,16 @@ const game = {
             });
         }
 
+        // Explanation Modal Listeners
+        this.explanationModal = document.getElementById('explanation-modal');
+        this.closeExplanationModalBtn = document.getElementById('close-explanation-modal-btn');
+
+        if (this.closeExplanationModalBtn) {
+            this.closeExplanationModalBtn.addEventListener('click', () => {
+                this.explanationModal.classList.add('hidden');
+            });
+        }
+
         MESSAGES.addListener(this.updateHeaderText.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
         this.updateMenuText(); // Call explicitly to set initial menu button text
@@ -148,6 +158,15 @@ const game = {
         } else {
             this.renderMenu(); // Render main menu for logged-in user
         }
+    },
+
+    showExplanationModal(wordData) {
+        const modal = this.explanationModal;
+        document.getElementById('explanation-word').textContent = wordData.word;
+        document.getElementById('explanation-translation').textContent = wordData.es;
+        document.getElementById('explanation-example-en').textContent = `"${wordData.example}"`;
+        document.getElementById('explanation-example-es').textContent = `"${wordData.example_es}"`;
+        modal.classList.remove('hidden');
     },
 
     updateMenuText() {
@@ -526,20 +545,54 @@ const game = {
                     }
                 }
             }
+
+            // Handle explanation modal
+            const explanationModal = document.getElementById('explanation-modal');
+            if (explanationModal && !explanationModal.classList.contains('hidden')) {
+                if (e.key === 'Enter' || e.key === 'Escape') {
+                    document.getElementById('close-explanation-modal-btn').click();
+                }
+            }
         });
     },
 
-    showSortingCompletionModal() {
+    showSortingCompletionModal(moduleData) {
         const modal = this.sortingCompletionModal;
         const title = document.getElementById('sorting-completion-title');
         const message = document.getElementById('sorting-completion-message');
         const replayBtn = document.getElementById('sorting-completion-replay-btn');
         const backToMenuBtn = document.getElementById('sorting-completion-back-to-menu-btn');
+        const wordsContainer = document.createElement('div');
+        wordsContainer.id = 'sorting-completion-words-container';
+        wordsContainer.className = 'mt-4 mb-4 text-left max-h-48 overflow-y-auto';
 
         title.textContent = MESSAGES.get('sortingCompletionTitle');
         message.textContent = MESSAGES.get('sortingCompletionMessage');
         replayBtn.textContent = MESSAGES.get('replayButton');
         backToMenuBtn.textContent = MESSAGES.get('backToMenu');
+
+        // Clear previous words if any
+        const existingWordsContainer = modal.querySelector('#sorting-completion-words-container');
+        if (existingWordsContainer) {
+            existingWordsContainer.remove();
+        }
+
+        // Add words to the modal
+        moduleData.data.forEach(item => {
+            const wordItem = document.createElement('div');
+            wordItem.className = 'flex justify-between items-center py-1 border-b border-gray-200';
+            wordItem.innerHTML = `
+                <span class="text-lg font-semibold">${item.word}</span>
+                <button class="explanation-btn text-blue-500 hover:text-blue-700 font-bold py-1 px-2 rounded-full text-sm">?</button>
+            `;
+            wordItem.querySelector('.explanation-btn').addEventListener('click', () => {
+                this.showExplanationModal(item);
+            });
+            wordsContainer.appendChild(wordItem);
+        });
+
+        // Insert words container before the buttons
+        modal.querySelector('.flex.justify-center.space-x-4').before(wordsContainer);
 
         modal.classList.remove('hidden');
     },
@@ -1532,7 +1585,7 @@ const game = {
             });
 
             if (allCorrect && this.sessionScore.correct === this.words.length) {
-                game.showSortingCompletionModal();
+                game.showSortingCompletionModal(this.moduleData);
             }
             auth.updateGlobalScore(this.sessionScore); // Update global score on every check
             this.feedbackActive = true;

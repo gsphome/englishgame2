@@ -248,6 +248,25 @@ body.dark-mode .sorting-completion-modal-content {
     color: #f9fafb; /* Tailwind gray-50 */
 }
 
+/* Explanation Modal Styles */
+#explanation-modal {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.explanation-modal-content {
+    background-color: #fff; /* Opaque white for light mode */
+    color: #1f2937; /* Tailwind gray-900 for text */
+}
+
+body.dark-mode #explanation-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .explanation-modal-content {
+    background-color: #1f2937; /* Tailwind gray-900 */
+    color: #f9fafb; /* Tailwind gray-50 */
+}
+
 /* Ensure about modal content is opaque in light mode */
 .about-modal-content {
     background-color: #fff; /* Opaque white for light mode */
