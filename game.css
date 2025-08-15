@@ -1014,3 +1014,14 @@ body.hamburger-menu-open #menu-overlay {
     gap: 10px; /* Space between columns */
     align-items: center; /* Vertically align items in the middle */
 }
+/* Override for dark mode italic text in sorting summary */
+body.dark-mode .sorting-summary-item-grid span.text-gray-700.italic {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .sorting-summary-item-grid span.text-gray-500.font-medium {
+    color: #e2e8f0 !important;
+}
+body.dark-mode .text-gray-600 {
+    color: #e2e8f0 !important; /* Change to white for dark mode */
+}
