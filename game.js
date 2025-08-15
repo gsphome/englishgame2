@@ -1465,6 +1465,8 @@ const game = {
             this.sessionScore = { correct: 0, incorrect: 0 };
             this.history = [];
             this.feedbackActive = false;
+            this.wordFeedbackStatus = {}; // Initialize word feedback status
+            this.clearFeedback(); // Clear any previous feedback colors
 
             // Group words by category_id from the original module data
             const wordsByCategory = {};
@@ -1580,18 +1582,11 @@ const game = {
 
                 if (currentCategoryId === correctCategory) {
                     this.sessionScore.correct++;
-                    // Apply green color only if not in dark mode
-                    if (!isDarkMode) {
-                        wordElem.classList.add('bg-green-500', 'text-white');
-                    } else {
-                        // In dark mode, correct answers should still be visually distinct,
-                        // but not necessarily green. The current 'text-white' might be enough,
-                        // or we could add a different class for dark mode correct.
-                        // For now, I'll just ensure it's not green.
-                        // If no specific dark mode correct style is defined, it will just be default text color.
-                    }
+                    this.wordFeedbackStatus[word] = true; // Store as correct
+                    wordElem.classList.add('bg-green-500', 'text-white');
                 } else {
                     this.sessionScore.incorrect++;
+                    this.wordFeedbackStatus[word] = false; // Store as incorrect
                     wordElem.classList.add('bg-red-500', 'text-white');
                     allCorrect = false;
                 }
@@ -1811,6 +1806,20 @@ const game = {
                         targetContainer.appendChild(wordElem);
                     } else {
                         document.getElementById('word-bank').appendChild(wordElem); // Fallback
+                    }
+
+                    // Re-apply colors if feedback is active
+                    if (this.feedbackActive) {
+                        wordElem.classList.remove('bg-green-500', 'bg-red-500', 'text-white'); // Clear existing colors first
+                        const isCorrect = this.wordFeedbackStatus[word];
+                        if (isCorrect === true) {
+                            const isDarkMode = document.body.classList.contains('dark-mode');
+                            if (!isDarkMode) {
+                                wordElem.classList.add('bg-green-500', 'text-white');
+                            }
+                        } else if (isCorrect === false) {
+                            wordElem.classList.add('bg-red-500', 'text-white');
+                        }
                     }
                 }
             });

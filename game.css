@@ -208,9 +208,7 @@ body.dark-mode #undo-btn {
     /* Revert to original light mode text-gray-800 color */
 }
 
-body.dark-mode .word {
-    color: #000000 !important; /* Force black text for sorting cards in dark mode */
-}
+
 
 body.dark-mode #about-modal .text-gray-700 {
     color: #e2e8f0;
