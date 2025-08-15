@@ -89,7 +89,8 @@ const game = {
             if (!this.modal.classList.contains('hidden')) {
                 this.messageElement.textContent = MESSAGES.get('confirmLogoutMessage');
             }
-            // Call a specific update function for the current view if it's not the menu
+
+            // Update current game view if active
             if (this.currentView === 'flashcard') {
                 this.flashcard.updateText();
             } else if (this.currentView === 'quiz') {
@@ -98,6 +99,22 @@ const game = {
                 this.completion.updateText();
             } else if (this.currentView === 'sorting') {
                 this.sorting.updateText();
+            }
+
+            // Re-render summary screens if active
+            const flashcardSummaryContainer = document.getElementById('flashcard-summary-container');
+            const quizSummaryContainer = document.getElementById('quiz-summary-container');
+            const completionSummaryContainer = document.getElementById('completion-summary-container');
+
+            if (flashcardSummaryContainer && !flashcardSummaryContainer.classList.contains('hidden')) {
+                // Re-render flashcard summary with current data
+                this.showFlashcardSummary(this.flashcard.moduleData.data.length); // Assuming moduleData is still available
+            } else if (quizSummaryContainer && !quizSummaryContainer.classList.contains('hidden')) {
+                // Re-render quiz summary with current data
+                this.quiz.showFinalScore(); // This function re-renders the summary
+            } else if (completionSummaryContainer && !completionSummaryContainer.classList.contains('hidden')) {
+                // Re-render completion summary with current data
+                this.completion.showFinalScore(); // This function re-renders the summary
             }
         });
 

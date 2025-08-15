@@ -28,7 +28,7 @@ const MESSAGES = {
         lightMode: "Modo Claro",
         darkMode: "Modo Oscuro",
         footerWeb: "Advanced Learning App",
-        footerMobile: ""
+        footerMobile: "App de Aprendizaje Avanzado"
     },
     en: {
         loginTitle: "Welcome",
@@ -56,7 +56,7 @@ const MESSAGES = {
         lightMode: "Light Mode",
         darkMode: "Dark Mode",
         footerWeb: "Advanced Learning App",
-        footerMobile: ""
+        footerMobile: "Advanced Learning App"
     },
 
     get(key) {
