@@ -1,12 +1,12 @@
 {
-  "name": "english2-learning-app",
+  "name": "english-learning-app",
   "version": "1.0.0",
-  "description": "A simple web application for learning English with flashcards, quizzes, and completion exercises.",
+  "description": "English learning web app with interactive exercises.",
   "main": "game.js",
   "scripts": {
     "start": "http-server . -o",
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "keywords": [
     "english",
@@ -15,10 +15,10 @@
     "quiz",
     "education"
   ],
-  "author": "Your Name",
+  "author": "Genil Suarez",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.0.0",
+    "eslint": "^9.33.0",
     "http-server": "^14.1.1"
   }
 }
