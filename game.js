@@ -564,7 +564,7 @@ const game = {
         const backToMenuBtn = document.getElementById('sorting-completion-back-to-menu-btn');
         const wordsContainer = document.createElement('div');
         wordsContainer.id = 'sorting-completion-words-container';
-        wordsContainer.className = 'mt-4 mb-4 text-left max-h-48 overflow-y-auto';
+        wordsContainer.className = 'mt-4 mb-4 text-left max-h-48 overflow-y-auto pr-4';
 
         title.textContent = MESSAGES.get('sortingCompletionTitle');
         message.textContent = MESSAGES.get('sortingCompletionMessage');
@@ -583,13 +583,11 @@ const game = {
 
         wordsToExplain.forEach(item => {
             const wordItem = document.createElement('div');
-            wordItem.className = 'flex justify-between items-center py-2 border-b border-gray-200';
+            wordItem.className = 'sorting-summary-item-grid py-2 border-b border-gray-200 items-center';
             wordItem.innerHTML = `
-                <div class="flex-grow">
-                    <span class="text-lg font-semibold">${item.word}</span>
-                    <span class="text-base text-gray-700 italic ml-2">${item.translation_es}</span>
-                </div>
-                <button class="explanation-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-md text-sm">
+                <span class="text-lg font-semibold">${item.word}</span>
+                <span class="text-base text-gray-700 italic">${item.translation_es}</span>
+                <button class="explanation-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-md text-sm justify-self-end">
                     &#x2139;
                 </button>
             `;

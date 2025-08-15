@@ -883,14 +883,14 @@ input[type="password"] {
     #quiz-container button,
     #completion-container button,
     #sorting-container button {
-        font-size: 0.9rem; /* Slightly larger for button text */
-        padding: 0.4rem 0.8rem; /* Adjust padding to fit larger text */
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
     }
 
     /* Specific adjustments for quiz/completion question text */
     #quiz-question,
     #completion-question {
-        font-size: 1rem; /* Keep question text readable */
+        font-size: 1rem;
     }
 
     /* Specific adjustments for flashcard text */
@@ -1006,4 +1006,11 @@ body.hamburger-menu-open #menu-overlay {
 
 #about-modal {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sorting-summary-item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto; /* English word, translation, button */
+    gap: 10px; /* Space between columns */
+    align-items: center; /* Vertically align items in the middle */
 }
