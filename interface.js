@@ -31,7 +31,7 @@ const MESSAGES = {
         footerMobile: "App de Aprendizaje Avanzado",
         sortingCompletionTitle: "¡Modo de Clasificación Completado!",
         sortingCompletionMessage: "¡Has clasificado todas las palabras correctamente!",
-        replayButton: "Jugar de Nuevo"
+        replayButton: "Ver Resumen"
     },
     en: {
         loginTitle: "Welcome",
@@ -62,7 +62,7 @@ const MESSAGES = {
         footerMobile: "Advanced Learning App",
         sortingCompletionTitle: "Sorting Mode Completed!",
         sortingCompletionMessage: "You have sorted all the words correctly!",
-        replayButton: "Replay"
+        replayButton: "View Summary"
     },
 
     get(key) {
