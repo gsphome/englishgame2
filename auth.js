@@ -98,6 +98,6 @@ const auth = {
         this.user.globalScore.correct += sessionScore.correct;
         this.user.globalScore.incorrect += sessionScore.incorrect;
         localStorage.setItem('user', JSON.stringify(this.user));
-        // game.renderHeader(); // Removed: Header rendering will be handled by game.js init or specific view renders
+        game.renderHeader();
     }
 };

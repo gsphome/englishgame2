@@ -1153,7 +1153,6 @@ const game = {
                 this.lastFeedback = { isCorrect: false, correct: questionData.correct, explanation: questionData.explanation, index: this.currentIndex, userAnswer: userAnswer };
             }
             inputElement.disabled = true;
-            this.updateScoreDisplay();
             game.updateSessionScoreDisplay(this.sessionScore.correct, this.sessionScore.incorrect, this.moduleData.data.length);
         },
 
