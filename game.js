@@ -1554,7 +1554,6 @@ const game = {
 
         checkAnswers() {
             this.sessionScore = { correct: 0, incorrect: 0 };
-            const scoreDisplay = document.getElementById('score-display');
             let allCorrect = true;
 
             this.words.forEach(word => {
