@@ -507,13 +507,13 @@ const game = {
             if (!document.getElementById('flashcard-container')) { // Assuming a main container for flashcard view
                 this.appContainer.innerHTML = `
                     <div id="flashcard-container" class="max-w-2xl mx-auto">
-                        <div class="flashcard h-64 w-full cursor-pointer" onclick="game.flashcard.flip()">
+                        <div class="flashcard h-64 w-full cursor-pointer shadow-lg rounded-xl" onclick="game.flashcard.flip()">
                             <div class="flashcard-inner">
-                                <div class="flashcard-front">
+                                <div class="flashcard-front bg-white">
                                     <p class="flashcard-en-word text-base md:text-xl" id="flashcard-front-text">${cardData.en}</p>
                                     <p class="text-sm text-gray-500 md:text-lg" id="flashcard-front-ipa">${cardData.ipa}</p>
                                 </div>
-                                <div class="flashcard-back">
+                                <div class="flashcard-back bg-blue-100">
                                     <div>
                                         <p class="flashcard-en-word text-base md:text-xl" id="flashcard-back-en-text">${cardData.en}</p>
                                         <p class="text-sm text-gray-500 md:text-lg" id="flashcard-back-ipa">${cardData.ipa}</p>
@@ -777,7 +777,7 @@ const game = {
                 const optionLetters = ['A', 'B', 'C', 'D'];
                 optionsToRender.forEach((option, index) => {
                     optionsHtml += `
-                        <button class="w-full text-left bg-white hover:bg-gray-200 text-gray-800 font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 flex items-center" data-option="${option}">
+                            <button class="w-full text-left bg-gray-50 hover:bg-gray-100 text-gray-800 font-semibold py-3 px-5 rounded-lg shadow-sm transition duration-300 flex items-center border border-gray-200" data-option="${option}">
                             <span class="font-bold mr-4">${optionLetters[index]}</span>
                             <span>${option}</span>
                         </button>
@@ -1632,7 +1632,7 @@ const game = {
             this.words.forEach(word => {
                 const wordElem = document.createElement('div');
                 wordElem.id = 'word-' + word.replace(/\s+/g, '-').toLowerCase();
-                wordElem.className = 'word bg-gray-200 hover:bg-gray-300 text-gray-800 dark:text-black font-semibold py-2 px-4 rounded-lg shadow-md cursor-grab m-2';
+                wordElem.className = 'word bg-gray-100 hover:bg-gray-200 text-gray-800 dark:text-black font-semibold py-2 px-4 rounded-lg shadow-sm cursor-grab m-2';
                 wordElem.setAttribute('draggable', true);
                 wordElem.textContent = word;
                 wordElem.dataset.word = word; // Store original word for easy lookup
@@ -1651,7 +1651,7 @@ const game = {
             categoriesToRender.forEach(categoryObj => { // Changed 'category' to 'categoryObj'
                 const categoryElem = document.createElement('div');
                 categoryElem.id = 'category-' + categoryObj.category_id; // Use category_id for ID
-                categoryElem.className = 'category bg-white p-4 rounded-lg shadow-md min-h-[120px] border-2 border-blue-400 flex flex-col items-center';
+                categoryElem.className = 'category bg-white p-4 rounded-lg shadow-md min-h-[120px] border-2 border-gray-300 flex flex-col items-center';
                 categoryElem.innerHTML = `<h3 class="text-l font-bold mb-2 capitalize">${categoryObj.category_show}</h3>`; // Use category_show for display
                 categoryElem.addEventListener('drop', (e) => this.drop(e));
                 categoryElem.addEventListener('dragover', (e) => this.allowDrop(e));
