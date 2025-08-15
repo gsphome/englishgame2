@@ -28,7 +28,10 @@ const MESSAGES = {
         lightMode: "Modo Claro",
         darkMode: "Modo Oscuro",
         footerWeb: "Advanced Learning App",
-        footerMobile: "App de Aprendizaje Avanzado"
+        footerMobile: "App de Aprendizaje Avanzado",
+        sortingCompletionTitle: "¡Modo de Clasificación Completado!",
+        sortingCompletionMessage: "¡Has clasificado todas las palabras correctamente!",
+        replayButton: "Jugar de Nuevo"
     },
     en: {
         loginTitle: "Welcome",
@@ -56,7 +59,10 @@ const MESSAGES = {
         lightMode: "Light Mode",
         darkMode: "Dark Mode",
         footerWeb: "Advanced Learning App",
-        footerMobile: "Advanced Learning App"
+        footerMobile: "Advanced Learning App",
+        sortingCompletionTitle: "Sorting Mode Completed!",
+        sortingCompletionMessage: "You have sorted all the words correctly!",
+        replayButton: "Replay"
     },
 
     get(key) {

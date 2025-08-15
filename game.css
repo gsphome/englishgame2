@@ -406,12 +406,7 @@ input[type="password"] {
     animation: flash-effect 0.3s ease-in-out;
 }
 
-/* Score Display */
-#score-display {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
+
 
 /* Utility Classes */
 .hidden {

@@ -80,7 +80,30 @@ const game = {
             });
         }
 
-                MESSAGES.addListener(this.updateHeaderText.bind(this));
+        // Sorting Completion Modal Listeners
+        this.sortingCompletionModal = document.getElementById('sorting-completion-modal');
+        this.sortingCompletionReplayBtn = document.getElementById('sorting-completion-replay-btn');
+        this.sortingCompletionBackToMenuBtn = document.getElementById('sorting-completion-back-to-menu-btn');
+
+        if (this.sortingCompletionReplayBtn) {
+            this.sortingCompletionReplayBtn.addEventListener('click', () => {
+                this.sortingCompletionModal.classList.add('hidden');
+                this.menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+                this.menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                this.renderSorting(this.currentModule); // Replay the current sorting module
+            });
+        }
+
+        if (this.sortingCompletionBackToMenuBtn) {
+            this.sortingCompletionBackToMenuBtn.addEventListener('click', () => {
+                this.sortingCompletionModal.classList.add('hidden');
+                this.menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+                this.menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                this.renderMenu(); // Go back to main menu
+            });
+        }
+
+        MESSAGES.addListener(this.updateHeaderText.bind(this));
         MESSAGES.addListener(this.updateMenuText.bind(this)); // New listener for menu text
         this.updateMenuText(); // Call explicitly to set initial menu button text
 
@@ -145,6 +168,15 @@ const game = {
         }
         if (this.menuRandomModeBtn) {
             this.menuRandomModeBtn.innerHTML = `${MESSAGES.get('randomMode')} ${this.randomMode ? 'ON' : 'OFF'}`;
+        }
+
+        // Update sorting completion modal text if visible
+        const sortingCompletionModal = document.getElementById('sorting-completion-modal');
+        if (sortingCompletionModal && !sortingCompletionModal.classList.contains('hidden')) {
+            document.getElementById('sorting-completion-title').textContent = MESSAGES.get('sortingCompletionTitle');
+            document.getElementById('sorting-completion-message').textContent = MESSAGES.get('sortingCompletionMessage');
+            document.getElementById('sorting-completion-replay-btn').textContent = MESSAGES.get('replayButton');
+            document.getElementById('sorting-completion-back-to-menu-btn').textContent = MESSAGES.get('backToMenu');
         }
     },
 
@@ -480,6 +512,16 @@ const game = {
                         game.completion.prev();
                     }
                 } else if (this.currentView === 'sorting') { // If sorting is active
+                    const sortingCompletionModal = document.getElementById('sorting-completion-modal');
+                    if (sortingCompletionModal && !sortingCompletionModal.classList.contains('hidden')) {
+                        if (e.key === 'Enter') {
+                            document.getElementById('sorting-completion-replay-btn').click();
+                        } else if (e.key === 'Escape') {
+                            document.getElementById('sorting-completion-back-to-menu-btn').click();
+                        }
+                        return; // Exit early if sorting completion modal is handled
+                    }
+
                     if (e.key === 'Enter') {
                         document.getElementById('check-btn').click();
                     } else if (e.key === 'Backspace') {
@@ -489,6 +531,23 @@ const game = {
                 }
             }
         });
+    },
+
+    showSortingCompletionModal() {
+        const modal = this.sortingCompletionModal;
+        const title = document.getElementById('sorting-completion-title');
+        const message = document.getElementById('sorting-completion-message');
+        const replayBtn = document.getElementById('sorting-completion-replay-btn');
+        const backToMenuBtn = document.getElementById('sorting-completion-back-to-menu-btn');
+
+        title.textContent = MESSAGES.get('sortingCompletionTitle');
+        message.textContent = MESSAGES.get('sortingCompletionMessage');
+        replayBtn.textContent = MESSAGES.get('replayButton');
+        backToMenuBtn.textContent = MESSAGES.get('backToMenu');
+
+        modal.classList.remove('hidden');
+        this.menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        this.menuOverlay.classList.add('opacity-50', 'pointer-events-auto');
     },
 
     flashcard: {
@@ -1429,7 +1488,6 @@ const game = {
                     </div>
                     <button id="back-to-menu-sorting-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="game.renderMenu()">${MESSAGES.get('backToMenu')}</button>
 
-                    <div id="score-display" class="text-center text-xl font-bold mt-6"></div>
                 </div>
             `;
 
@@ -1480,7 +1538,7 @@ const game = {
             });
 
             if (allCorrect && this.sessionScore.correct === this.words.length) {
-                scoreDisplay.textContent = `${MESSAGES.get('allCorrectMessage')}`;
+                game.showSortingCompletionModal();
             }
             auth.updateGlobalScore(this.sessionScore); // Update global score on every check
             this.feedbackActive = true;
@@ -1509,7 +1567,6 @@ const game = {
             document.querySelectorAll('.word').forEach(wordElem => {
                 wordElem.classList.remove('bg-green-500', 'bg-red-500', 'text-white');
             });
-            document.getElementById('score-display').textContent = '';
         },
 
         shuffleArray(array) {
@@ -1708,7 +1765,7 @@ const game = {
 
             // Update score display if visible
             const scoreDisplay = document.getElementById('score-display');
-            if (scoreDisplay && scoreDisplay.textContent) {
+            if (scoreDisplay) {
                 // Re-render score based on current sessionScore
                 if (this.sessionScore.correct === this.words.length && this.words.length > 0) {
                     scoreDisplay.textContent = `${MESSAGES.get('allCorrectMessage')}`;
