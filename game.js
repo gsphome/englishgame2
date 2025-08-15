@@ -583,10 +583,15 @@ const game = {
 
         wordsToExplain.forEach(item => {
             const wordItem = document.createElement('div');
-            wordItem.className = 'flex justify-between items-center py-1 border-b border-gray-200';
+            wordItem.className = 'flex justify-between items-center py-2 border-b border-gray-200';
             wordItem.innerHTML = `
-                <span class="text-lg font-semibold">${item.word}</span> <span class="text-gray-600 text-base">(${item.translation_es})</span>
-                <button class="explanation-btn text-blue-500 hover:text-blue-700 font-bold py-1 px-2 rounded-full text-sm">?</button>
+                <div class="flex-grow">
+                    <span class="text-lg font-semibold">${item.word}</span>
+                    <span class="text-base text-gray-700 italic ml-2">${item.translation_es}</span>
+                </div>
+                <button class="explanation-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-md text-sm">
+                    &#x2139;
+                </button>
             `;
             wordItem.querySelector('.explanation-btn').addEventListener('click', () => {
                 this.showExplanationModal(item);
