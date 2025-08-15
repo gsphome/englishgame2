@@ -163,7 +163,8 @@ const game = {
     showExplanationModal(wordData) {
         const modal = this.explanationModal;
         document.getElementById('explanation-word').textContent = wordData.word;
-        document.getElementById('explanation-translation').textContent = wordData.es;
+        document.getElementById('explanation-translation-label').textContent = MESSAGES.get('translationLabel') + ': ';
+        document.getElementById('explanation-word-translation').textContent = wordData.es;
         document.getElementById('explanation-example-en').textContent = `"${wordData.example}"`;
         document.getElementById('explanation-example-es').textContent = `"${wordData.example_es}"`;
         modal.classList.remove('hidden');
