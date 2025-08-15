@@ -116,6 +116,119 @@ body.dark-mode #menu-overlay {
     background-color: #000;
 }
 
+body.dark-mode .flashcard-front {
+    background-color: #4a5568;
+    border-color: #2d3748;
+    color: #e2e8f0;
+}
+
+body.dark-mode .flashcard-back {
+    background-color: #2d3748;
+    border-color: #1a202c;
+    color: #e2e8f0;
+}
+
+body.dark-mode #main-header,
+body.dark-mode #app-container {
+    background-color: #2d3748;
+    color: #e2e8f0;
+}
+
+body.dark-mode .flashcard {
+    background-color: #4a5568;
+    border-color: #2d3748;
+}
+
+body.dark-mode .word-item {
+    background-color: #4a5568;
+    border-color: #2d3748;
+    color: #e2e8f0;
+}
+
+body.dark-mode .category-container {
+    border-color: #4a5568;
+}
+
+body.dark-mode #confirmation-modal .bg-white {
+    background-color: #2d3748;
+}
+
+body.dark-mode #confirmation-modal #confirm-yes {
+    background-color: #e53e3e;
+}
+
+body.dark-mode #confirmation-modal #confirm-no {
+    background-color: #4a5568;
+}
+
+body.dark-mode #confirmation-modal #confirm-no:hover {
+    background-color: #636b77;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"] {
+    background-color: #4a5568;
+    border-color: #2d3748;
+    color: #e2e8f0;
+}
+
+body.dark-mode button.primary {
+    background-color: #4299e1;
+}
+
+body.dark-mode button.primary:hover {
+    background-color: #3182ce;
+}
+
+body.dark-mode button.secondary {
+    background-color: #636b77;
+}
+
+body.dark-mode button.secondary:hover {
+    background-color: #4a5568;
+}
+
+body.dark-mode #hamburger-menu button {
+    background-color: #4a5568;
+    color: #e2e8f0;
+}
+
+body.dark-mode #hamburger-menu button:hover {
+    background-color: #636b77;
+}
+
+body.dark-mode #hamburger-menu button:focus {
+    box-shadow: 0 0 0 2px rgba(226, 232, 240, 0.5);
+}
+
+body.dark-mode #prev-btn,
+body.dark-mode #next-btn,
+body.dark-mode #undo-btn {
+    color: #1f2937;
+    /* Revert to original light mode text-gray-800 color */
+}
+
+body.dark-mode .word {
+    color: #000000 !important; /* Force black text for sorting cards in dark mode */
+}
+
+body.dark-mode #about-modal .text-gray-700 {
+    color: #e2e8f0;
+}
+
+body.dark-mode #about-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .about-modal-content {
+    background-color: #1f2937; /* Tailwind gray-900 */
+    color: #f9fafb; /* Tailwind gray-50 */
+}
+
+body.dark-mode .about-modal-content h2 {
+    color: #f9fafb; /* Tailwind gray-50 */
+}
+
 /* Existing styles */
 
 body {
@@ -276,19 +389,6 @@ input[type="password"] {
     .flashcard-en-word {
         font-size: 1.75rem; /* text-3xl for smaller screens */
     }
-}
-
-/* Dark Mode Flashcard Styles */
-body.dark-mode .flashcard-front {
-    background-color: #4a5568;
-    border-color: #2d3748;
-    color: #e2e8f0;
-}
-
-body.dark-mode .flashcard-back {
-    background-color: #2d3748;
-    border-color: #1a202c;
-    color: #e2e8f0;
 }
 
 .flashcard-buttons button {
@@ -639,8 +739,7 @@ body.dark-mode .flashcard-back {
     margin: 5px 0;
     border-radius: 5px;
     cursor: grab;
-    width: calc(100% - 24px);
-    /* Adjust for padding */
+    width: calc(100% - 24px); /* Adjust for padding */
     text-align: center;
 }
 
@@ -775,98 +874,11 @@ body.dark-mode .flashcard-back {
     }
 }
 
-/* Ensure the main header and app container adapt to dark mode */
-body.dark-mode #main-header,
-body.dark-mode #app-container {
-    background-color: #2d3748;
-    color: #e2e8f0;
-}
-
-/* Adjust flashcard background in dark mode */
-body.dark-mode .flashcard {
-    background-color: #4a5568;
-    border-color: #2d3748;
-}
-
-/* Adjust word item background in dark mode for sorting game */
-body.dark-mode .word-item {
-    background-color: #4a5568;
-    border-color: #2d3748;
-    color: #e2e8f0;
-}
-
-/* Adjust category container border in dark mode */
-body.dark-mode .category-container {
-    border-color: #4a5568;
-}
-
-/* Adjust confirmation modal background in dark mode */
-body.dark-mode #confirmation-modal .bg-white {
-    background-color: #2d3748;
-}
-
-/* Adjust confirmation modal button backgrounds in dark mode */
-body.dark-mode #confirmation-modal #confirm-yes {
-    background-color: #e53e3e;
-}
-
-body.dark-mode #confirmation-modal #confirm-no {
-    background-color: #4a5568;
-}
-
-body.dark-mode #confirmation-modal #confirm-no:hover {
-    background-color: #636b77;
-}
-
-/* Adjust input fields in dark mode */
-body.dark-mode input[type="text"],
-body.dark-mode input[type="password"] {
-    background-color: #4a5568;
-    border-color: #2d3748;
-    color: #e2e8f0;
-}
-
-/* Adjust button colors in dark mode */
-body.dark-mode button.primary {
-    background-color: #4299e1;
-}
-
-body.dark-mode button.primary:hover {
-    background-color: #3182ce;
-}
-
-body.dark-mode button.secondary {
-    background-color: #636b77;
-}
-
-body.dark-mode button.secondary:hover {
-    background-color: #4a5568;
-}
-
-/* Adjust specific menu button styles in dark mode */
-body.dark-mode #hamburger-menu button {
-    background-color: #4a5568;
-    color: #e2e8f0;
-}
-
-body.dark-mode #hamburger-menu button:hover {
-    background-color: #636b77;
-}
-
-body.dark-mode #hamburger-menu button:focus {
-    box-shadow: 0 0 0 2px rgba(226, 232, 240, 0.5);
-}
-
-
 .word {
-    -webkit-user-select: none;
-    /* Safari */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Standard syntax */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard syntax */
 }
 
 /* Hamburger Menu Opened State */
@@ -884,39 +896,21 @@ body.hamburger-menu-open #menu-overlay {
     pointer-events: auto;
 }
 
-body.dark-mode #prev-btn,
-body.dark-mode #next-btn,
-body.dark-mode #undo-btn {
-    color: #1f2937;
-    /* Revert to original light mode text-gray-800 color */
-}
-
 #completion-input {
-    border: none !important;
-    /* Removes all borders, !important ensures override */
-    border-bottom: 2px solid #6b7280 !important;
-    /* Re-adds the bottom border, matching Tailwind's gray-400 */
-    background-color: transparent !important;
-    /* Ensures transparent background */
-    outline: none !important;
-    /* Removes focus outline */
-    width: 100px !important;
-    /* Set the width to 20px */
-    text-align: left !important;
-    /* Align text to the left */
+    border: none !important; /* Removes all borders, !important ensures override */
+    border-bottom: 2px solid #6b7280 !important; /* Re-adds the bottom border, matching Tailwind's gray-400 */
+    background-color: transparent !important; /* Ensures transparent background */
+    outline: none !important; /* Removes focus outline */
+    width: 100px !important; /* Set the width to 20px */
+    text-align: left !important; /* Align text to the left */
 }
 
 #completion-input:focus {
-    border-bottom-color: #3b82f6 !important;
-    /* Changes bottom border color on focus, matching Tailwind's blue-500 */
+    border-bottom-color: #3b82f6 !important; /* Changes bottom border color on focus, matching Tailwind's blue-500 */
 }
 
 #confirmation-modal {
     background-color: rgba(0, 0, 0, 0.5);
-}
-
-body.dark-mode .word {
-    color: #000000 !important; /* Force black text for sorting cards in dark mode */
 }
 
 /* Responsive Menu */
@@ -971,28 +965,6 @@ body.dark-mode .word {
     }
 }
 
-body.dark-mode #about-modal .text-gray-700 {
-    color: #e2e8f0;
-}
-
 #about-modal {
     background-color: rgba(0, 0, 0, 0.1);
-}
-
-body.dark-mode #about-modal {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-/* About Modal Dark Mode Adaptation */
-.about-modal-content {
-    background-color: #f9fafb; /* Tailwind gray-50 */
-    color: #1f2937; /* Tailwind gray-900 */
-}
-
-body.dark-mode .about-modal-content {
-    background-color: #1f2937; /* Tailwind gray-900 */
-    color: #f9fafb; /* Tailwind gray-50 */
-}
-
-body.dark-mode .about-modal-content h2 {
-    color: #f9fafb; /* Tailwind gray-50 */
 }

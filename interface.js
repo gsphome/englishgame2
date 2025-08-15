@@ -27,7 +27,7 @@ const MESSAGES = {
         allCorrectMessage: "¡Todo correcto! ¡Bien hecho!",
         lightMode: "Modo Claro",
         darkMode: "Modo Oscuro",
-        footerWeb: "&copy; Advanced Learning App",
+        footerWeb: "Advanced Learning App",
         footerMobile: ""
     },
     en: {
@@ -55,7 +55,7 @@ const MESSAGES = {
         allCorrectMessage: "All correct! Well done!",
         lightMode: "Light Mode",
         darkMode: "Dark Mode",
-        footerWeb: "&copy; Advanced Learning App",
+        footerWeb: "Advanced Learning App",
         footerMobile: ""
     },
 
