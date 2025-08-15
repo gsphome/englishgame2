@@ -88,8 +88,6 @@ const game = {
         if (this.sortingCompletionReplayBtn) {
             this.sortingCompletionReplayBtn.addEventListener('click', () => {
                 this.sortingCompletionModal.classList.add('hidden');
-                this.menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
-                this.menuOverlay.classList.add('opacity-0', 'pointer-events-none');
                 this.renderSorting(this.currentModule); // Replay the current sorting module
             });
         }
@@ -97,8 +95,6 @@ const game = {
         if (this.sortingCompletionBackToMenuBtn) {
             this.sortingCompletionBackToMenuBtn.addEventListener('click', () => {
                 this.sortingCompletionModal.classList.add('hidden');
-                this.menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
-                this.menuOverlay.classList.add('opacity-0', 'pointer-events-none');
                 this.renderMenu(); // Go back to main menu
             });
         }
@@ -546,8 +542,6 @@ const game = {
         backToMenuBtn.textContent = MESSAGES.get('backToMenu');
 
         modal.classList.remove('hidden');
-        this.menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
-        this.menuOverlay.classList.add('opacity-50', 'pointer-events-auto');
     },
 
     flashcard: {

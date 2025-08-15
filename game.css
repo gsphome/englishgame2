@@ -229,6 +229,31 @@ body.dark-mode .about-modal-content h2 {
     color: #f9fafb; /* Tailwind gray-50 */
 }
 
+/* Sorting Completion Modal Styles */
+#sorting-completion-modal {
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background for light mode */
+}
+
+.sorting-completion-modal-content {
+    background-color: #fff; /* Opaque white for light mode */
+    color: #1f2937; /* Tailwind gray-900 for text */
+}
+
+body.dark-mode #sorting-completion-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .sorting-completion-modal-content {
+    background-color: #1f2937; /* Tailwind gray-900 */
+    color: #f9fafb; /* Tailwind gray-50 */
+}
+
+/* Ensure about modal content is opaque in light mode */
+.about-modal-content {
+    background-color: #fff; /* Opaque white for light mode */
+    color: #1f2937; /* Tailwind gray-900 for text */
+}
+
 /* Existing styles */
 
 body {

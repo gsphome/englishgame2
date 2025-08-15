@@ -96,8 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aboutBtn && aboutModal && closeAboutModalBtn && menuOverlay && hamburgerMenu) {
         aboutBtn.addEventListener('click', () => {
             aboutModal.classList.remove('hidden');
-            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            menuOverlay.classList.add('opacity-50', 'pointer-events-auto');
+            // menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            // menuOverlay.classList.add('opacity-50', 'pointer-events-auto');
             // Close hamburger menu when About is clicked
             hamburgerMenu.classList.remove('translate-x-0');
             hamburgerMenu.classList.add('translate-x-full');
@@ -105,23 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         closeAboutModalBtn.addEventListener('click', () => {
             aboutModal.classList.add('hidden');
-            menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
-            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            // menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+            // menuOverlay.classList.add('opacity-0', 'pointer-events-none');
         });
 
         menuOverlay.addEventListener('click', () => {
             if (!aboutModal.classList.contains('hidden')) { // Only close about modal if it's open
                 aboutModal.classList.add('hidden');
-                menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
-                menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                // menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+                // menuOverlay.classList.add('opacity-0', 'pointer-events-none');
             }
         });
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' && !aboutModal.classList.contains('hidden')) {
                 aboutModal.classList.add('hidden');
-                menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
-                menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                // menuOverlay.classList.remove('opacity-50', 'pointer-events-auto');
+                // menuOverlay.classList.add('opacity-0', 'pointer-events-none');
             }
         });
     }
