@@ -163,8 +163,7 @@ const game = {
     showExplanationModal(wordData) {
         const modal = this.explanationModal;
         document.getElementById('explanation-word').textContent = wordData.word;
-        document.getElementById('explanation-translation-label').textContent = MESSAGES.get('translationLabel') + ': ';
-        document.getElementById('explanation-word-translation').textContent = wordData.es;
+        document.getElementById('explanation-word-translation').textContent = wordData.translation_es;
         document.getElementById('explanation-example-en').textContent = `"${wordData.example}"`;
         document.getElementById('explanation-example-es').textContent = `"${wordData.example_es}"`;
         modal.classList.remove('hidden');
@@ -579,11 +578,14 @@ const game = {
         }
 
         // Add words to the modal
-        moduleData.data.forEach(item => {
+        const presentedWords = game.sorting.words; // Get the words actually presented in the game
+        const wordsToExplain = moduleData.data.filter(item => presentedWords.includes(item.word));
+
+        wordsToExplain.forEach(item => {
             const wordItem = document.createElement('div');
             wordItem.className = 'flex justify-between items-center py-1 border-b border-gray-200';
             wordItem.innerHTML = `
-                <span class="text-lg font-semibold">${item.word}</span>
+                <span class="text-lg font-semibold">${item.word}</span> <span class="text-gray-600 text-base">(${item.translation_es})</span>
                 <button class="explanation-btn text-blue-500 hover:text-blue-700 font-bold py-1 px-2 rounded-full text-sm">?</button>
             `;
             wordItem.querySelector('.explanation-btn').addEventListener('click', () => {
