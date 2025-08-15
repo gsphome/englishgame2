@@ -257,17 +257,16 @@ const game = {
             const icon = module.icon || '📚'; // Placeholder icon
             const description = module.description || ''; // Placeholder description
 
-            const button = document.createElement('button');
-            button.className = `${colorClass} text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 hover:scale-110 flex flex-col items-center justify-center text-center md:w-32 md:h-32 md:py-4 md:px-2`;
+            const buttonTemplate = document.getElementById('module-button-template');
+            const button = buttonTemplate.content.cloneNode(true).querySelector('button');
+
+            button.classList.add(colorClass); // Add the dynamic color class
             button.dataset.moduleId = module.id;
-            button.innerHTML = `
-                <h2 class="text-[0.6rem] mb-0 font-bold md:text-lg md:mb-1">
-                    <span class="mr-1">${String.fromCharCode(65 + index)}.</span><span id="module-name-${module.id}">${module.name.replace('Flashcard: ', '').replace('Quiz: ', '').replace('Completion: ', '')}</span>
-                </h2>
-                <p class="text-[0.5rem] opacity-90 md:text-xs" id="module-description-${module.id}">
-                    <span class="text-xs">${module.gameMode === 'flashcard' ? '🧠' : module.gameMode === 'quiz' ? '❓' : module.gameMode === 'sorting' ? '🧩' : '✍️'}</span>
-                </p>
-            `;
+
+            button.querySelector('[data-module-index]').textContent = `${String.fromCharCode(65 + index)}.`;
+            button.querySelector('[data-module-name]').textContent = module.name.replace('Flashcard: ', '').replace('Quiz: ', '').replace('Completion: ', '');
+            button.querySelector('[data-game-mode-icon]').textContent = `${module.gameMode === 'flashcard' ? '🧠' : module.gameMode === 'quiz' ? '❓' : module.gameMode === 'sorting' ? '🧩' : '✍️'}`;
+
             moduleButtonsContainer.appendChild(button);
         });
 

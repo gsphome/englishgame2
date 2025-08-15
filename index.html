@@ -100,11 +100,25 @@
 
     <template id="main-menu-template">
         <h1 id="main-menu-title" class="text-3xl font-bold text-center mb-8"></h1>
-        <div id="main-menu-scroll-wrapper" class="overflow-y-auto bg-gray-50 rounded-xl p-[5px] mx-auto max-w-4xl border-2 border-gray-300">
-            <div id="module-buttons-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">
+        <div id="main-menu-scroll-wrapper"
+            class="overflow-y-auto bg-gray-50 rounded-xl p-[5px] mx-auto max-w-4xl border-2 border-gray-300">
+            <div id="module-buttons-container"
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mx-auto">
                 <!-- Module buttons will be inserted here by JavaScript -->
             </div>
         </div>
+    </template>
+
+    <template id="module-button-template">
+        <button
+            class="text-white font-semibold w-18 h-18 py-0.5 px-0.5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 hover:scale-110 flex flex-col items-center justify-center text-center md:w-32 md:h-32 md:py-4 md:px-2">
+            <h2 class="text-[0.6rem] mb-0 font-bold md:text-lg md:mb-1">
+                <span class="mr-1" data-module-index></span><span data-module-name></span>
+            </h2>
+            <p class="text-[0.5rem] opacity-90 md:text-xs">
+                <span class="text-xs" data-game-mode-icon></span>
+            </p>
+        </button>
     </template>
 
     <!-- JavaScript Files -->
