@@ -564,7 +564,7 @@ const game = {
         const backToMenuBtn = document.getElementById('sorting-completion-back-to-menu-btn');
         const wordsContainer = document.createElement('div');
         wordsContainer.id = 'sorting-completion-words-container';
-        wordsContainer.className = 'mt-4 mb-4 text-left max-h-48 overflow-y-auto pr-4';
+        wordsContainer.className = 'mt-4 mb-4 text-left pr-4';
 
         title.textContent = MESSAGES.get('sortingCompletionTitle');
         message.textContent = MESSAGES.get('sortingCompletionMessage');
@@ -1813,10 +1813,7 @@ const game = {
                         wordElem.classList.remove('bg-green-500', 'bg-red-500', 'text-white'); // Clear existing colors first
                         const isCorrect = this.wordFeedbackStatus[word];
                         if (isCorrect === true) {
-                            const isDarkMode = document.body.classList.contains('dark-mode');
-                            if (!isDarkMode) {
-                                wordElem.classList.add('bg-green-500', 'text-white');
-                            }
+                            wordElem.classList.add('bg-green-500', 'text-white');
                         } else if (isCorrect === false) {
                             wordElem.classList.add('bg-red-500', 'text-white');
                         }
