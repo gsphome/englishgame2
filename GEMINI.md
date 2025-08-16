@@ -27,8 +27,8 @@ These guidelines optimize the CLI's behavior for your workflow.
         - Fixed bug Z related to A.
         - Improved performance by B.
         ```
--   **Commit Behavior:** Do not automatically commit changes; only provide the commit message.
--   **Confirmation:** After proposing a commit message, confirm with `yes` or `no`.
+-   **Commit Behavior:** After making code changes, propose a draft commit message. Do not automatically commit changes; await user confirmation.
+-   **Confirmation:** After proposing a commit message, confirm with `yes` or `no` to proceed with the commit.
 -   **No Push:** Never push changes to a remote repository without explicit instruction.
 
 ## Problem Solving
