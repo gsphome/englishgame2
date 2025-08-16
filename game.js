@@ -425,132 +425,145 @@ const game = {
             this.toggleModal(false);
         });
 
-        document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('hidden')) { // If modal is open
+                document.addEventListener('keydown', (e) => {
+            // 1. Handle explanation modal (highest priority)
+            const explanationModal = document.getElementById('explanation-modal');
+            if (explanationModal && !explanationModal.classList.contains('hidden')) {
+                if (e.key === 'Enter' || e.key === 'Escape') {
+                    document.getElementById('close-explanation-modal-btn').click();
+                }
+                return; // Consume event if modal is handled
+            }
+
+            // 2. Handle sorting completion modal (next priority)
+            const sortingCompletionModal = document.getElementById('sorting-completion-modal');
+            if (sortingCompletionModal && !sortingCompletionModal.classList.contains('hidden')) {
+                if (e.key === 'Enter') {
+                    document.getElementById('sorting-completion-replay-btn').click();
+                } else if (e.key === 'Escape') {
+                    document.getElementById('sorting-completion-back-to-menu-btn').click();
+                }
+                return; // Consume event if modal is handled
+            }
+
+            // 3. Handle general modals (logout confirmation)
+            if (!modal.classList.contains('hidden')) { // If logout modal is open
                 if (e.key === 'Enter') {
                     yesButton.click();
                 } else if (e.key === 'Escape') {
                     this.toggleModal(false); // Close modal on Escape
                 }
-            } else if (document.body.classList.contains('hamburger-menu-open')) { // If hamburger menu is open
-                this.toggleHamburgerMenu(false); // Close hamburger menu on Escape
-            } else { // Modal and hamburger menu are not open
-                if (e.key === 'Escape') {
-                    if (document.getElementById('app-container').classList.contains('main-menu-active')) {
-                        this.toggleModal(true); // Show logout modal
-                    } else {
-                        this.renderMenu(); // Go back to main menu
-                    }
-                } else if (e.key === '.') {
-                    const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
-                    MESSAGES.setLanguage(newLang);
-                    localStorage.setItem('appLang', newLang);
-                    this.renderCurrentView();
-                    this.updateMenuText();
-                } else if (this.currentView === 'menu') { // Check if main menu is active
-                    const pressedKey = e.key.toUpperCase();
-                    const moduleButtons = document.querySelectorAll('[data-module-id]');
-                    moduleButtons.forEach((button, index) => {
-                        if (String.fromCharCode(65 + index) === pressedKey) {
-                            button.click();
-                        }
-                    });
-                } else if (this.currentView === 'flashcard') { // If flashcard is active
-                    const flashcardSummaryContainer = document.getElementById('flashcard-summary-container');
-                    if (flashcardSummaryContainer && e.key === 'Enter') {
-                        document.getElementById('flashcard-summary-back-to-menu-btn').click();
-                        return; // Exit early if summary handled
-                    }
-
-                    if (e.key === 'Enter') {
-                        const card = document.querySelector('.flashcard');
-                        if (card) {
-                            if (card.classList.contains('flipped')) {
-                                card.classList.remove('flipped'); // Unflip the card
-                                setTimeout(() => {
-                                    if (game.flashcard.currentIndex === game.flashcard.moduleData.data.length - 1) {
-                                        game.showFlashcardSummary(game.flashcard.moduleData.data.length);
-                                    } else {
-                                        game.flashcard.next();
-                                    }
-                                }, 150); // Small delay to allow unflip animation
-                            } else {
-                                game.flashcard.flip();
-                            }
-                        }
-                    } else if (e.key === 'Backspace') {
-                        e.preventDefault();
-                        game.flashcard.prev();
-                    }
-                } else if (this.currentView === 'quiz') { // If quiz is active
-                    const quizSummaryContainer = document.getElementById('quiz-summary-container');
-                    if (quizSummaryContainer && e.key === 'Enter') {
-                        game.renderMenu(); // Go back to menu from summary
-                        return; // Exit early if summary handled
-                    }
-
-                    const feedbackContainer = document.getElementById('feedback-container');
-                    const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
-
-                    if (e.key === 'Enter' && optionsDisabled) {
-                        game.quiz.next();
-                    } else if (e.key === 'Backspace') {
-                        e.preventDefault();
-                        game.quiz.prev();
-                    } else {
-                        const pressedKey = e.key.toUpperCase();
-                        const optionLetters = ['A', 'B', 'C', 'D'];
-                        const optionIndex = optionLetters.indexOf(pressedKey);
-                        if (optionIndex !== -1) {
-                            const options = document.querySelectorAll('[data-option]');
-                            if (options[optionIndex]) {
-                                options[optionIndex].click();
-                            }
-                        }
-                    }
-                } else if (this.currentView === 'completion') { // If completion is active
-                    const completionSummaryContainer = document.getElementById('completion-summary-container');
-                    if (completionSummaryContainer && e.key === 'Enter') {
-                        document.querySelector('#completion-summary-container button').click(); // Click the back to menu button
-                        return; // Exit early if summary handled
-                    }
-
-                    if (e.key === 'Enter') {
-                        game.completion.handleNextAction();
-                    } else if (e.key === 'Backspace') {
-                        const inputElement = document.getElementById('completion-input');
-                        if (inputElement && document.activeElement === inputElement) {
-                            // Allow default backspace behavior for input field
-                            return;
-                        }
-                        e.preventDefault();
-                        game.completion.prev();
-                    }
-                } else if (this.currentView === 'sorting') { // If sorting is active
-                    const sortingCompletionModal = document.getElementById('sorting-completion-modal');
-                    if (sortingCompletionModal && !sortingCompletionModal.classList.contains('hidden')) {
-                        if (e.key === 'Enter') {
-                            document.getElementById('sorting-completion-replay-btn').click();
-                        } else if (e.key === 'Escape') {
-                            document.getElementById('sorting-completion-back-to-menu-btn').click();
-                        }
-                        return; // Exit early if sorting completion modal is handled
-                    }
-
-                    if (e.key === 'Enter') {
-                        document.getElementById('check-btn').click();
-                    } else if (e.key === 'Backspace') {
-                        e.preventDefault();
-                        document.getElementById('undo-btn').click();
-                    }
-                }
+                return; // Consume event if modal is handled
             }
 
-            // Handle explanation modal
-            const explanationModal = document.getElementById('explanation-modal');
-            if (explanationModal && !explanationModal.classList.contains('hidden')) {
-                if (e.key === 'Enter' || e.key === 'Escape') {
-                    document.getElementById('close-explanation-modal-btn').click();
+            // 4. Handle hamburger menu
+            if (document.body.classList.contains('hamburger-menu-open')) { // If hamburger menu is open
+                if (e.key === 'Escape') {
+                    this.toggleHamburgerMenu(false); // Close hamburger menu on Escape
+                }
+                return; // Consume event if menu is handled
+            }
+
+            // 5. Handle game-specific escape behavior (lowest priority)
+            if (e.key === 'Escape') {
+                if (this.currentView === 'sorting') { // If sorting is active, go back to menu
+                    this.renderMenu();
+                } else if (document.getElementById('app-container').classList.contains('main-menu-active')) {
+                    this.toggleModal(true); // Show logout modal if in main menu
+                } else {
+                    this.renderMenu(); // Go back to main menu from other games
+                }
+            } else if (e.key === '.') {
+                const newLang = MESSAGES.getLanguage() === 'en' ? 'es' : 'en';
+                MESSAGES.setLanguage(newLang);
+                localStorage.setItem('appLang', newLang);
+                this.renderCurrentView();
+                this.updateMenuText();
+            } else if (this.currentView === 'menu') { // Check if main menu is active
+                const pressedKey = e.key.toUpperCase();
+                const moduleButtons = document.querySelectorAll('[data-module-id]');
+                moduleButtons.forEach((button, index) => {
+                    if (String.fromCharCode(65 + index) === pressedKey) {
+                        button.click();
+                    }
+                });
+            } else if (this.currentView === 'flashcard') { // If flashcard is active
+                const flashcardSummaryContainer = document.getElementById('flashcard-summary-container');
+                if (flashcardSummaryContainer && e.key === 'Enter') {
+                    document.getElementById('flashcard-summary-back-to-menu-btn').click();
+                    return; // Exit early if summary handled
+                }
+
+                if (e.key === 'Enter') {
+                    const card = document.querySelector('.flashcard');
+                    if (card) {
+                        if (card.classList.contains('flipped')) {
+                            card.classList.remove('flipped'); // Unflip the card
+                            setTimeout(() => {
+                                if (game.flashcard.currentIndex === game.flashcard.moduleData.data.length - 1) {
+                                    game.showFlashcardSummary(game.flashcard.moduleData.data.length);
+                                } else {
+                                    game.flashcard.next();
+                                }
+                            }, 150); // Small delay to allow unflip animation
+                        } else {
+                            game.flashcard.flip();
+                        }
+                    }
+                } else if (e.key === 'Backspace') {
+                    e.preventDefault();
+                    game.flashcard.prev();
+                }
+            } else if (this.currentView === 'quiz') { // If quiz is active
+                const quizSummaryContainer = document.getElementById('quiz-summary-container');
+                if (quizSummaryContainer && e.key === 'Enter') {
+                    game.renderMenu(); // Go back to menu from summary
+                    return; // Exit early if summary handled
+                }
+
+                const feedbackContainer = document.getElementById('feedback-container');
+                const optionsDisabled = document.querySelectorAll('[data-option][disabled]').length > 0;
+
+                if (e.key === 'Enter' && optionsDisabled) {
+                    game.quiz.next();
+                } else if (e.key === 'Backspace') {
+                    e.preventDefault();
+                    game.quiz.prev();
+                } else {
+                    const pressedKey = e.key.toUpperCase();
+                    const optionLetters = ['A', 'B', 'C', 'D'];
+                    const optionIndex = optionLetters.indexOf(pressedKey);
+                    if (optionIndex !== -1) {
+                        const options = document.querySelectorAll('[data-option]');
+                        if (options[optionIndex]) {
+                            options[optionIndex].click();
+                        }
+                    }
+                }
+            } else if (this.currentView === 'completion') { // If completion is active
+                const completionSummaryContainer = document.getElementById('completion-summary-container');
+                if (completionSummaryContainer && e.key === 'Enter') {
+                    document.querySelector('#completion-summary-container button').click(); // Click the back to menu button
+                    return; // Exit early if summary handled
+                }
+
+                if (e.key === 'Enter') {
+                    game.completion.handleNextAction();
+                } else if (e.key === 'Backspace') {
+                    const inputElement = document.getElementById('completion-input');
+                    if (inputElement && document.activeElement === inputElement) {
+                        // Allow default backspace behavior for input field
+                        return;
+                    }
+                    e.preventDefault();
+                    game.completion.prev();
+                }
+            } else if (this.currentView === 'sorting') { // If sorting is active
+                if (e.key === 'Enter') {
+                    document.getElementById('check-btn').click();
+                } else if (e.key === 'Backspace') {
+                    e.preventDefault();
+                    document.getElementById('undo-btn').click();
                 }
             }
         });
