@@ -425,7 +425,7 @@ const game = {
             this.toggleModal(false);
         });
 
-                document.addEventListener('keydown', (e) => {
+                        document.addEventListener('keydown', (e) => {
             // 1. Handle explanation modal (highest priority)
             const explanationModal = document.getElementById('explanation-modal');
             if (explanationModal && !explanationModal.classList.contains('hidden')) {
